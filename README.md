@@ -1,5 +1,50 @@
 # Forgetting under noise is undecidable: ergodicity of positive-rate cellular automata at a fixed noise rate
 
-Seth Douglas and Nidhal Mghirbi.
+Seth Douglas and Nidhal Mghirbi. Version 1.0.0, November 2026. The version DOI is recorded in the commit that follows the release.
 
-The preprint and its source will appear here with release 1.0.0.
+**This is a preprint. It has not been peer reviewed.**
+
+## Abstract
+
+Can noise make the long-run behaviour of a cellular automaton predictable? A probabilistic cellular automaton with positive rates, in which every site can take every value with positive probability at every step, is ergodic when it forgets its initial configuration. Deciding ergodicity is known to be impossible when some transitions may have probability zero. We show that positive noise does not restore decidability. There are a dimension d, a rate ε₀ > 0 and a computable family of positive-rate cellular automata on ℤ^d, each a deterministic local rule followed by uniform random replacement, such that for every noise rate ε in (0, ε₀] the automaton built from a Turing machine M is ergodic if and only if M halts.
+
+The proof links a logical quantity to a physical one. A tile set that tiles the plane makes a noisy quorum rule remember. A tile set whose contradictions can always be cornered by a fixed number of local tokens, a refutation of bounded width in the sense of existential pebble games, makes the same rule forget. We build a computable family of tile sets in which every contradiction that exists has a refutation of one fixed width, by reading a recognizable substitution with certificates of bounded treewidth and running the machine in a layer closed under intersection. Two consequences: no computable function bounds how long the ergodic members take to forget, and uniqueness of the translation-invariant Gibbs state of the associated space–time interactions is undecidable.
+
+## What the paper proves
+
+A probabilistic cellular automaton updates every site of a lattice at once. Each site reads a few neighbours and picks its next value at random, from one fixed table. When every entry of that table is positive, nothing is ever forbidden. The automaton is ergodic if it forgets where it started: one invariant measure, reached from every starting law.
+
+- **Theorem A.** There are integers j, k, a rate ε₀ > 0 and a total computable map M ↦ R_M from Turing machines to finite Wang tile sets. For every ε in (0, ε₀], the quorum rule of R_M on ℤ^(2+k), followed by uniform random replacement at rate ε, is a positive-rate automaton that is ergodic if and only if M halts.
+- **Theorem B.** For every finite Wang set R, at one rate ε₀ fixed before R:
+  - if R tiles the plane, the noisy quorum rule remembers a bit forever;
+  - if every contradiction of R can be cornered by j local tokens (k ≥ 2j), the rule forgets its start exponentially fast after a delay set by the refutation.
+- **Theorem C.** One computable family of tile sets and one fixed number of tokens j: R_M tiles exactly when M does not halt, and every halting member is refuted by j tokens.
+- **Corollaries.**
+  - One family works at every rate in (0, ε₀], and for other replacement laws.
+  - A computable map sends every Wang set to a noisy automaton that is ergodic exactly when the set does not tile.
+  - No computable function bounds how long the halting members take to forget.
+  - Uniqueness of the translation-invariant space–time Gibbs state of these automata is undecidable.
+
+The dimension 2 + k and the rate ε₀ are fixed, but very large and very small; this construction gives at least 761,042 dimensions. How small the dimension can be made is the first open problem in the paper.
+
+The proofs build on prior work that the paper credits in detail:
+- Toom's contours and the Peierls bounds of Swart, Szabó and Toninelli;
+- the checker reduction of Čulik, Pachl and Yu, and of Kari;
+- Ollinger's two-by-two substitution;
+- recognizability (Mozes);
+- pebble games and treewidth (Kolaitis, Vardi, Dalmau);
+- closure properties of constraints (Jeavons, Cohen, Gyssens; Feder, Vardi);
+- the space–time Gibbs correspondence (Goldstein, Kuik, Lebowitz, Maes).
+
+## Contents and reproduction
+
+- `paper/main.pdf`: manuscript.
+- `paper/`: LaTeX source (`main.tex`, `preamble-core.tex`, `sections/`), plain-text abstract and a strict build driver. Run `python -B build.py` there with pdflatex installed. The build disables shell escape, runs pdflatex three times and rejects warnings, unresolved references and box defects.
+- `SHA256SUMS`: SHA-256 hashes of every shipped file except this manifest. Check with `sha256sum -c SHA256SUMS` from the repository root.
+
+No computation is used in any proof.
+
+## Citation and rights
+
+See `CITATION.cff` for citation metadata.
+Paper and documentation: CC BY 4.0. Build script: MIT or Apache 2.0, at your option. See `RIGHTS.md`, the license files and `NOTICE`.

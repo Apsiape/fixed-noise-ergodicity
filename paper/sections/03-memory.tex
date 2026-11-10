@@ -1,0 +1,138 @@
+\section{Tilings give memory}\label{sec:memory}
+
+This section proves \cref{thm:memory}, which is part~(i) of Theorem~B. When $R$ tiles the plane, copy one tiling onto every plane. The copy is a fixed point of $F^{[k]}_R$. Under noise of small rate, each site stays in the copy with high probability at every time. From the all-bottom start, each site stays bottom with high probability. So the process remembers where it started, and it is not ergodic.
+
+The proof is Toom's contour argument \cite{Toom80}; see also \cite{Gacs21}. A site that has left the copy, and was not hit by noise, has two such sites one step earlier, in two different planes. So the sites that have left the copy lie inside the binary field used in the proof of \cref{thm:forgetting}. The contour lemma for that field, \cref{lem:contour}, which builds contours from poles in the manner of \cite[Theorem~33, Definitions~35 and~37, Lemma~36]{SST26}, then forces many noise events near such a site, and a Peierls count bounds the probability. Copying a rule onto parallel planes that correct one another by a Toom-type vote goes back to the repeated planes of \cite{GacsReif88}. Toom-stable clones of Wang-tile models appear in \cite{MiekiszTaati26}.
+
+Throughout, $k\ge2$, $q=k+1$, $a=2q^2+1$ and $D_0=50q$. A site is $v=(u,P)$ with $u\in\Z^2$ and $P\in\Z^k$. A space-time point is $(u,P,t)$ with $t\in\Z$. The providers are $c_0=0$ and $c_1,\dots,c_k$, the unit vectors of $\Z^k$.
+
+\begin{definition}\label{mem:clone}
+Let $\theta\colon\Z^2\to R$ be a tiling. For $u\in\Z^2$ let $\theta[u]$ be the block $w\mapsto\theta(u+w)$ on $\{-1,0,1\}^2$; it lies in $T_R$ because $\theta$ matches on every edge. The \emph{cloned tiling} of $\theta$ is the configuration $\xi\in\A_R^{\Z^2\times\Z^k}$ given by $\xi(u,P)=(\theta[u],0)$ for all $u$ and $P$.
+\end{definition}
+
+\begin{theorem}[Memory]\label{thm:memory}
+Let $k\ge2$, let $0<\eps\le(4D_0^2)^{-a}$, and put $\lambda=2D_0^2\,\eps^{1/q^2}$. Let $R$ be a Wang set that tiles $\Z^2$ and let $\xi$ be a cloned tiling. Let $(X_t)$ be the noisy $F^{[k]}_R$ at rate $\eps$ started from $\xi$, and $(Y_t)$ the same process started from $\bot$. Then for every site $v$ and every time $t\ge0$,
+\begin{equation}\label{mem:bounds}
+\Prob\bigl(X_t(v)\ne\xi(v)\bigr)\le\eps\Bigl(1+\frac{2\lambda}{1-\lambda}\Bigr)<1.01\,\eps
+\quad\text{and}\quad
+\Prob\bigl(Y_t(v)\ne\bot\bigr)\le\eps\Bigl(1+\frac{2\lambda}{1-\lambda}\Bigr)<1.01\,\eps .
+\end{equation}
+Hence the noisy $F^{[k]}_R$ has two distinct invariant measures, and it is not ergodic.
+\end{theorem}
+
+In particular \cref{thm:memory} applies to every $\eps\in(0,\eps_k]$.
+
+\subsection{The rule and the cloned tiling}\label{mem:rule}
+
+Write $\overline C$ for the planar checker applied in every plane, $(\overline Cx)(u,P)=C(x(\cdot,P))(u)$. Write $Q_k$ for the quorum step: $Q_k(y)(u,P)=s$ if $s$ is live and $y(u,P+c_i)=s$ for at least $k$ of the $q$ indices $i$, and $Q_k(y)(u,P)=\bot$ otherwise. Thus $F^{[k]}_R=Q_k\circ\overline C$. Order $\A_R$ flatly: $\bot\preceq s$ for every symbol $s$, and distinct live symbols are incomparable. Order configurations site by site.
+
+We realize the noise as follows. For every site $v$ and time $t\ge1$ there are an indicator $\eta_t(v)$, equal to $1$ with probability $\eps$, and a value $\zeta_t(v)$, uniform on $\A_R$; all of these are independent. The run from $x$ is $X_0=x$ and, for $t\ge1$, $X_t(v)=\zeta_t(v)$ if $\eta_t(v)=1$ and $X_t(v)=F^{[k]}_R(X_{t-1})(v)$ otherwise. The space-time point $(v,t)$ is an \emph{event} if $\eta_t(v)=1$, whatever the value $\zeta_t(v)$. Runs from different starts with the same $\eta$ and $\zeta$ form the \emph{common-noise coupling}.
+
+\begin{lemma}\label{mem:basic}
+Let $k\ge2$.
+\begin{itemize}
+\item[(a)] For every configuration $y$ and site $(u,P)$, at most one live symbol $s$ satisfies the quorum condition. So $Q_k$ and $F^{[k]}_R$ are well defined.
+\item[(b)] $C$, $\overline C$ and $Q_k$ are monotone for $\preceq$, and hence so is $F^{[k]}_R$.
+\item[(c)] Under the common-noise coupling, $X_0\preceq X_0'$ implies $X_t\preceq X_t'$ for every $t$. In particular the run from $\bot$ lies below every run.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+(a) Two distinct symbols, each at $k$ or more of the $k+1$ provider positions, would need $2k\le k+1$ positions, that is $k\le1$.
+
+(b) Let $x\preceq x'$ be planar configurations and let $C(x)(u)=s$ be live. Then $x(u)=s$, the symbols $x(u)$ and $x(u+d)$, $d\in D$, are live, and each $x(u+d)$ is compatible with $x(u)$. A live symbol lies below only itself, so $x'$ agrees with $x$ on these nine sites, and $C(x')(u)=s$. If $C(x)(u)=\bot$ there is nothing to prove. So $C$ is monotone, and so is $\overline C$, plane by plane. If $y\preceq y'$ and $Q_k(y)(u,P)=s$ is live, the $k$ or more provider positions with $y(u,P+c_i)=s$ also carry $s$ in $y'$, so $Q_k(y')(u,P)=s$.
+
+(c) Induction on $t$. At a non-event the claim follows from (b). At an event both runs take the same value $\zeta_t(v)$. The last sentence holds because $\bot\preceq x$ for every $x$.
+\end{proof}
+
+\begin{lemma}\label{mem:fixed}
+Let $\xi$ be a cloned tiling. If a configuration $x$ agrees with $\xi$ at the nine sites $(u+d,P)$, $d\in\{-1,0,1\}^2$, then $(\overline Cx)(u,P)=\xi(u,P)$. In particular $\overline C\xi=\xi$ and $F^{[k]}_R(\xi)=\xi$.
+\end{lemma}
+
+\begin{proof}
+The nine symbols $\xi(u+d,P)=(\theta[u+d],0)$ are live. For $d\in D$ the bits of $\xi(u+d,P)$ and $\xi(u,P)$ are both $0$, and at a common cell $z$ of $u+\{-1,0,1\}^2$ and $u+d+\{-1,0,1\}^2$ both blocks show $\theta(z)$. So every neighbour is compatible with the centre, and $C$ keeps $\xi(u,P)$. For the last claim, $(\overline C\xi)(u,P+c_i)=\xi(u,P+c_i)=\xi(u,P)$ for all $q$ indices $i$, and $\xi(u,P)$ is live.
+\end{proof}
+
+\subsection{Two bad parents}\label{mem:parents}
+
+\begin{lemma}[Two bad parents]\label{mem:two-parents}
+Let $k\ge2$, and fix any realization of the events and of the replacement values.
+\begin{itemize}
+\item[(a)] Run from $\xi$, and call $(u,P,t)$ \emph{bad} if $X_t(u,P)\ne\xi(u,P)$. No point of time $0$ is bad. If $(u,P,t)$ is bad and not an event, there are providers $c\ne c'$ and offsets $d,d'\in\{-1,0,1\}^2$ such that $(u+d,P+c,t-1)$ and $(u+d',P+c',t-1)$ are bad.
+\item[(b)] Run from $\bot$, and call $(u,P,t)$ \emph{bad} if $Y_t(u,P)$ is live. No point of time $0$ is bad. If $(u,P,t)$ is bad and not an event, there are providers $c\ne c'$ such that $(u,P+c,t-1)$ and $(u,P+c',t-1)$ are bad.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+At time $0$ the runs equal $\xi$ and $\bot$, so no point is bad. Let $t\ge1$.
+
+(a) Put $x=X_{t-1}$, $y=\overline Cx$ and $s=\xi(u,P)$, which is live. As $(u,P,t)$ is not an event, $F^{[k]}_R(x)(u,P)=X_t(u,P)\ne s$. If $y(u,P+c_i)=s$ held for $k$ or more indices $i$, the quorum step would output $s$. Hence $y(u,P+c_i)\ne s$ for at least two indices $i\ne i'$. Fix such an $i$. Since $\xi(u,P+c_i)=s$, \cref{mem:fixed} shows that $x$ differs from $\xi$ at some site $(u+d,P+c_i)$ with $d\in\{-1,0,1\}^2$; that is, $(u+d,P+c_i,t-1)$ is bad. The same holds for $i'$, and $c_i\ne c_{i'}$.
+
+(b) Let $s=Y_t(u,P)$, which is live. As $(u,P,t)$ is not an event, $(\overline CY_{t-1})(u,P+c_i)=s$ for at least $k\ge2$ indices $i$. The checker outputs a live symbol only by keeping its centre, so $Y_{t-1}(u,P+c_i)=s$ is live for these indices.
+\end{proof}
+
+In both cases one bad plane among the providers is outvoted; a bad point that is not an event needs two.
+
+\subsection{Domination by the binary field}\label{mem:domination}
+
+Define a field $E$ on space-time points from the event indicators alone. Put $E_0\equiv0$. For $t\ge1$, put $E_t(u,P)=1$ if $(u,P,t)$ is an event; otherwise put $E_t(u,P)=1$ if and only if there are providers $c\ne c'$ and offsets $d,d'\in\{-1,0,1\}^2$ with $E_{t-1}(u+d,P+c)=E_{t-1}(u+d',P+c')=1$. This is the binary field used in the proof of \cref{thm:forgetting}.
+
+\begin{lemma}\label{mem:dominate}
+For every realization of the events and of the replacement values, every bad point of either run in \cref{mem:two-parents} has $E=1$.
+\end{lemma}
+
+\begin{proof}
+Induction on time. At time $0$ no point is bad. Let $(u,P,t)$ be bad with $t\ge1$. If it is an event, $E_t(u,P)=1$. Otherwise \cref{mem:two-parents} gives two bad points at time $t-1$, at providers $c\ne c'$ and planar offsets in $\{-1,0,1\}^2$. By induction both have $E_{t-1}=1$, so $E_t(u,P)=1$.
+\end{proof}
+
+\subsection{Counting, and the proof of the theorem}\label{mem:counting}
+
+Let $H_k$ be the graph on $\Z^2\times\Z^k\times\Z$ in which each point $(u,P,t)$ is joined to $(u+d,P+c,t-1)$ for every $d\in\{-1,0,1\}^2$ and every provider $c$. Each point has $9q$ neighbours one step lower and $9q$ one step higher, so every vertex of $H_k$ has $18q\le D_0$ neighbours.
+
+\begin{lemma}\label{mem:count}
+Let $H$ be a graph in which every vertex has at most $\Delta$ neighbours, let $z$ be a vertex, and let $n\ge1$. At most $\Delta^{2n}$ sets $I$ of $n$ edges of $H$ form a connected graph having $z$ as an end of one of their edges.
+\end{lemma}
+
+\begin{proof}
+Number the edges at each vertex of $H$ injectively by $\{1,\dots,\Delta\}$. Double every edge of such a set $I$. The resulting multigraph is connected and all its degrees are even, so it has a closed walk from $z$ of length $2n$ that uses each of its edges once. For each step of the walk, record the number of the edge it uses at the vertex where the step starts. Starting at $z$, the sequence determines the walk, and the walk determines $I$. So distinct sets $I$ give distinct sequences in $\{1,\dots,\Delta\}^{2n}$.
+\end{proof}
+
+\begin{lemma}\label{mem:field-bound}
+Let $k\ge2$, $0<\eps<1$ and $\lambda=2D_0^2\eps^{1/q^2}<1$. For every site $v$ and time $t\ge0$,
+\[
+\Prob\bigl(E_t(v)=1\bigr)\le\eps\Bigl(1+\frac{2\lambda}{1-\lambda}\Bigr).
+\]
+\end{lemma}
+
+\begin{proof}
+For $t=0$ the probability is $0$; let $t\ge1$. Fix a realization of the events. The field $E$ has $E_0\equiv0$, and every point with $E=1$ that is not an event has two points with $E=1$ one step earlier, at distinct providers and planar offsets in $\{-1,0,1\}^2$; choose two such points for each of them. Suppose $E_t(v)=1$ and $(v,t)$ is not an event. \Cref{lem:contour} gives a set $I$ of $n\ge1$ edges, each joining a point with $E=1$ to one of its two chosen points, such that $I$ forms a connected graph with $(v,t)$ as an end, and the ends of edges in $I$ include $m$ distinct events with $n\le q^2(m-1)$. So $I$ is a set of edges of $H_k$, and its ends include a set $S$ of at least $1+n/q^2$ events. A connected graph with $n$ edges has at most $n+1$ vertices, so $S$ is one of at most $2^{n+1}$ subsets of the ends of $I$. Hence
+\[
+\{E_t(v)=1\}\subseteq\{(v,t)\text{ is an event}\}\ \cup\ \bigcup_{n\ge1}\ \bigcup_{(I,S)}\{\text{every point of }S\text{ is an event}\},
+\]
+where $(I,S)$ runs over the connected $n$-edge sets $I$ of $H_k$ having $(v,t)$ as an end and the sets $S$ of at least $1+n/q^2$ ends of edges of $I$. By \cref{mem:count} there are at most $D_0^{2n}2^{n+1}$ such pairs. Events occur only at positive times, independently with probability $\eps$, so each pair contributes at most $\eps^{|S|}\le\eps^{1+n/q^2}$. Therefore
+\[
+\Prob\bigl(E_t(v)=1\bigr)\le\eps+\sum_{n\ge1}D_0^{2n}\,2^{n+1}\,\eps^{1+n/q^2}=\eps+2\eps\sum_{n\ge1}\lambda^n=\eps\Bigl(1+\frac{2\lambda}{1-\lambda}\Bigr).
+\qedhere
+\]
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:memory}]
+Since $a/q^2>2$ and $4D_0^2>1$, the hypothesis $\eps\le(4D_0^2)^{-a}$ gives $\eps^{1/q^2}\le(4D_0^2)^{-2}$, so
+\[
+\lambda\le\frac{2D_0^2}{16D_0^4}=\frac1{8D_0^2}\le\frac1{180000},
+\]
+because $D_0=50q\ge150$. Then $2\lambda/(1-\lambda)\le3\lambda<0.01$. By \cref{mem:dominate}, the sets $\{X_t(v)\ne\xi(v)\}$ and $\{Y_t(v)\ne\bot\}$ are contained in $\{E_t(v)=1\}$, and \cref{mem:field-bound} gives \eqref{mem:bounds}.
+
+Put $\delta=1-2.02\,\eps$, which is positive. Fix a site $v$ and let $W$ be the set of configurations $x$ with $x(v)=\xi(v)$. Since $\xi(v)$ is live, \eqref{mem:bounds} gives, for every $t$,
+\begin{equation}\label{mem:gap}
+\Prob(X_t\in W)>1-1.01\,\eps,\qquad
+\Prob(Y_t\in W)\le\Prob\bigl(Y_t(v)\ne\bot\bigr)<1.01\,\eps .
+\end{equation}
+So $\dtv\bigl(\mathrm{Law}_\xi(X_t(v)),\mathrm{Law}_\bot(Y_t(v))\bigr)>\delta$ for every $t$: the process has memory.
+
+By \eqref{mem:gap} the process has memory, and \cref{set:memory-nonergodic} gives two distinct invariant measures.
+\end{proof}
+
+\begin{remark}\label{mem:laws}
+The field $E$ depends only on the event indicators, \cref{mem:dominate} holds for every realization of the replacement values, and \cref{mem:field-bound} uses the noise only through the bound $\Prob(\text{every point of }S\text{ is an event})\le\eps^{|S|}$ for finite sets $S$ of points of positive time. So \eqref{mem:bounds} holds for any law of the replacement values, which may depend on the events and on the past, as long as that bound holds.
+\end{remark}

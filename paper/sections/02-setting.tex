@@ -1,0 +1,347 @@
+\section{The model and the token game}\label{sec:setting}
+
+This section fixes the cellular automaton, its noise, and the notions of ergodicity, forgetting and memory used in the paper. It then defines token tables, a finite procedure that may refute a Wang set. \Cref{thm:game} shows two things. The procedure never refutes a Wang set that tiles. When it fails to refute a set, it leaves behind an existential pebble family, and the proof of \cref{thm:width} works with that family.
+
+For $r\ge0$ write $V_r=\{-r,\dots,r\}^2\subseteq\Z^2$, and put $\Lambda=V_1=\{-1,0,1\}^2$. For $u\in\Z^2$, $|u|_\infty$ is the largest absolute value of a coordinate of $u$. A \emph{window} is a finite set of sites.
+
+\subsection{Wang sets, blocks and the checker}\label{set:sub-wang}
+
+\begin{definition}[Wang sets]\label{set:def-wang}
+A \emph{Wang set} is a finite set $R$ of tiles. Each tile has a north, east, south and west edge colour, written with the subscripts $\mathrm N,\mathrm E,\mathrm S,\mathrm W$. A \emph{pattern} on a set $U\subseteq\Z^2$ is a map $p\colon U\to R$. It is \emph{legal} if $p(u)_{\mathrm E}=p(u+(1,0))_{\mathrm W}$ whenever $u,u+(1,0)\in U$, and $p(u)_{\mathrm N}=p(u+(0,1))_{\mathrm S}$ whenever $u,u+(0,1)\in U$. A \emph{tiling} is a legal pattern on $\Z^2$, and $R$ \emph{tiles} if it has a tiling.
+\end{definition}
+
+Restrictions and translates of legal patterns are legal.
+
+\begin{lemma}[Compactness]\label{set:compact}
+If $R$ does not tile, then there is $n\ge1$ such that no legal pattern on $V_n$ exists. For such $n$, no square of side at least $2n+1$ carries a legal pattern.
+\end{lemma}
+
+\begin{proof}
+Take the legal patterns on the boxes $V_0,V_1,\dots$ as the nodes of a tree. The parent of a pattern on $V_{n+1}$ is its restriction to $V_n$, and a root is joined to every pattern on $V_0$. Each box carries finitely many patterns, so the tree is finitely branching. If every box carried a legal pattern, the tree would be infinite, and K\"onig's lemma would give a branch $p_0,p_1,\dots$ in which each $p_n$ is the restriction of $p_{n+1}$. The union of the branch would be a tiling. So some box $V_{n_0}$ carries no legal pattern, and neither does any larger box; take $n=\max(n_0,1)$. A legal pattern on a square of side at least $2n+1$ would restrict and translate to a legal pattern on $V_n$.
+\end{proof}
+
+\begin{definition}[Blocks, live symbols and compatibility]\label{set:def-live}
+Let $R$ be a Wang set. The set $T_R$ of \emph{legal $3\times3$ blocks} is the set of legal patterns on $\Lambda$. A \emph{live symbol} is a pair $s=(\lambda,b)$ of a block $\lambda\in T_R$ and a \emph{checker bit} $b\in\{0,1\}$, and $L_R=T_R\times\{0,1\}$ is the set of live symbols. The alphabet is $\A_R=L_R\cup\{\bot\}$, where $\bot$ (bottom) is one further symbol. The \emph{Moore directions} are $D=\Lambda\setminus\{(0,0)\}$. For live symbols $s=(\lambda,b)$ and $s'=(\lambda',b')$ and for $d\in D$, the symbol $s'$ is \emph{compatible with $s$ at displacement $d$} if $b=b'$ and $\lambda(w)=\lambda'(w-d)$ for every $w\in\Lambda\cap(d+\Lambda)$. The \emph{centre} of $s=(\lambda,b)$ is the tile $\operatorname{ctr}(s)=\lambda(0,0)$.
+\end{definition}
+
+Place $s$ at a site $u$ and $s'$ at $u+d$. Their blocks cover $u+\Lambda$ and $u+d+\Lambda$. Compatibility says that the two bits are equal and that the two blocks agree on every common cell. The relation is symmetric: $s'$ is compatible with $s$ at displacement $d$ exactly when $s$ is compatible with $s'$ at displacement $-d$, as the substitution $w\mapsto w-d$ shows. The alphabet has $2|T_R|+1$ symbols; if $T_R$ is empty, $\bot$ is the only symbol.
+
+\begin{lemma}[Centres match]\label{set:centre}
+Let $s,s'$ be live. If $s'$ is compatible with $s$ at displacement $(1,0)$, then $\operatorname{ctr}(s)_{\mathrm E}=\operatorname{ctr}(s')_{\mathrm W}$. If $s'$ is compatible with $s$ at displacement $(0,1)$, then $\operatorname{ctr}(s)_{\mathrm N}=\operatorname{ctr}(s')_{\mathrm S}$.
+\end{lemma}
+
+\begin{proof}
+Write $s=(\lambda,b)$ and $s'=(\lambda',b)$; the bits agree by compatibility. Let $d=(1,0)$. The cell $w=(1,0)$ lies in $\Lambda\cap(d+\Lambda)$, so compatibility gives $\lambda(1,0)=\lambda'(0,0)=\operatorname{ctr}(s')$. The block $\lambda$ is legal, so $\lambda(0,0)_{\mathrm E}=\lambda(1,0)_{\mathrm W}$. Hence $\operatorname{ctr}(s)_{\mathrm E}=\operatorname{ctr}(s')_{\mathrm W}$. The vertical case is the same, with $d=(0,1)$ and the colours $\mathrm N$ and $\mathrm S$.
+\end{proof}
+
+For a tiling $z$ and a site $u$, the \emph{block of $z$ at $u$} is $z^{[u]}\in T_R$, given by $z^{[u]}(w)=z(u+w)$ for $w\in\Lambda$. The \emph{block configuration} of $z$ is $\hat z\in L_R^{\Z^2}$, $\hat z(u)=(z^{[u]},0)$. For every $u$ and every $d\in D$, the symbol $\hat z(u+d)$ is compatible with $\hat z(u)$ at displacement $d$: both bits are $0$, and $z^{[u]}(w)=z(u+w)=z^{[u+d]}(w-d)$ for $w\in\Lambda\cap(d+\Lambda)$.
+
+\begin{definition}[Planar checker]\label{set:def-checker}
+The \emph{checker} $C\colon\A_R^{\Z^2}\to\A_R^{\Z^2}$ is given by $C(x)(u)=x(u)$ if $x(u)$ is live and, for every $d\in D$, $x(u+d)$ is live and compatible with $x(u)$ at displacement $d$. Otherwise $C(x)(u)=\bot$.
+\end{definition}
+
+Thus $C(x)(u)\in\{x(u),\bot\}$ for every $x$ and $u$, and $C(\hat z)=\hat z$ for every tiling $z$.
+
+\begin{remark}[The checker reduction]\label{set:checker}
+The checker is the planar form of the classical reduction from tilings to the nilpotency of cellular automata \cite{CPY89,Kari92}. If $R$ tiles, $C$ has the live fixed point $\hat z$. If $R$ does not tile, take $n\ge1$ from \cref{set:compact}; then $C^n(x)=\bot$ for every $x\in\A_R^{\Z^2}$.
+
+To see this, let $m\ge1$, $x\in\A_R^{\Z^2}$ and $u\in\Z^2$ with $C^m(x)(u)$ live. We show that $R$ has a legal pattern on $u+V_m$. A live output of $C$ at a site needs live inputs at the nine sites of its window, so induction on $m$ shows that $C(x)(v)$ is live for every $v\in u+V_{m-1}$. Hence, for $v\in u+V_{m-1}$, the symbol $x(v)$ is live, say with block $\lambda_v$, and $x(v+d)$ is compatible with $x(v)$ at displacement $d$ for every $d\in D$. For $w\in u+V_m$ choose $v\in u+V_{m-1}$ with $|w-v|_\infty\le1$ and put $p(w)=\lambda_v(w-v)$. The value does not depend on the choice. For two choices $v,v'$ with $|v-v'|_\infty\le1$ this is compatibility. Otherwise define $v''$ coordinatewise by $v''_c=v_c$ if $|v_c-v'_c|\le1$ and $v''_c=w_c$ if $|v_c-v'_c|=2$. Then $v''\in u+V_{m-1}$, and $v''$ lies within distance $1$ of $v$, of $v'$ and of $w$, so two applications of compatibility link the values at $v$ and $v'$. Finally, let $\{w,w+\Delta\}$ with $\Delta\in\{(1,0),(0,1)\}$ be an edge inside $u+V_m$, and let $v$ be a point of $u+V_{m-1}$ nearest to $w+\Delta/2$ in each coordinate. Both $w$ and $w+\Delta$ lie in $v+\Lambda$, and $\lambda_v$ is legal, so the edge matches. So $p$ is legal. With $m=n$ this contradicts the choice of $n$.
+\end{remark}
+
+\subsection{The quorum rule and replacement noise}\label{set:sub-pca}
+
+\begin{definition}[Quorum rule]\label{set:def-quorum}
+Let $k\ge2$. A \emph{site} is a pair $(u,P)\in\Z^2\times\Z^k$, and the sites with a fixed transverse coordinate $P$ form the \emph{plane} $P$. The configuration space is $\Omega=\A_R^{\Z^2\times\Z^k}$. For $x\in\Omega$, $x(\cdot,P)\in\A_R^{\Z^2}$ is its restriction to the plane $P$. The \emph{providers} are $c_0=0$ and $c_i=e_i$ for $i=1,\dots,k$, where $e_i$ is the $i$-th unit vector of $\Z^k$. Put $y(u,P)=C(x(\cdot,P))(u)$. The \emph{quorum rule} is
+\[
+F^{[k]}_R(x)(u,P)=
+\begin{cases}
+s & \text{if $s$ is live and $\#\{i\in\{0,\dots,k\}:y(u,P+c_i)=s\}\ge k$,}\\
+\bot & \text{otherwise.}
+\end{cases}
+\]
+\end{definition}
+
+Each plane runs the checker. The rule then reads the checked symbol at the site itself and at its $k$ transverse neighbours $(u,P+e_i)$, and keeps a live symbol only when at least $k$ of these $k+1$ readings agree on it. Two different live symbols cannot both be read $k$ times, since $2k>k+1$; so $F^{[k]}_R$ is well defined. The value $F^{[k]}_R(x)(v)$ depends only on $x$ restricted to $v+\mathcal N$, where $\mathcal N=\Lambda\times\{c_0,\dots,c_k\}$. So $F^{[k]}_R$ is a cellular automaton on $\Z^2\times\Z^k=\Z^{2+k}$, and its local rule is a finite table computable from $R$ and $k$. If $z$ is a tiling, the \emph{cloned tiling configuration} $\xi_z\in\Omega$, $\xi_z(u,P)=\hat z(u)$, satisfies $F^{[k]}_R(\xi_z)=\xi_z$, because all $k+1$ providers read $\hat z(u)$.
+
+\begin{definition}[Replacement noise]\label{set:def-noise}
+Fix $\eps\in(0,1)$. Let $\eta_t(v)\in\{0,1\}$ and $\zeta_t(v)\in\A_R$, for $t\ge1$ and $v\in\Z^2\times\Z^k$, be independent random variables with $\Prob(\eta_t(v)=1)=\eps$ and $\zeta_t(v)$ uniform on $\A_R$. The \emph{process from} $x\in\Omega$ is given by $X_0=x$ and, for $t\ge0$,
+\[
+X_{t+1}(v)=
+\begin{cases}
+\zeta_{t+1}(v) & \text{if } \eta_{t+1}(v)=1,\\
+F^{[k]}_R(X_t)(v) & \text{if } \eta_{t+1}(v)=0.
+\end{cases}
+\]
+A site $v$ at a time $t\ge1$ with $\eta_t(v)=1$ is a \emph{replacement event}, whatever value $\zeta_t(v)$ takes.
+\end{definition}
+
+So after each application of $F^{[k]}_R$, each site independently is replaced, with probability $\eps$, by a uniformly random symbol of $\A_R$. Given $X_t$, the values $X_{t+1}(v)$ are independent, and for every symbol $s$
+\[
+\Prob\bigl(X_{t+1}(v)=s\mid X_t\bigr)=(1-\eps)\,\mathbf 1\bigl[F^{[k]}_R(X_t)(v)=s\bigr]+\frac{\eps}{|\A_R|}\ \ge\ \frac{\eps}{|\A_R|}>0 .
+\]
+The process is therefore a probabilistic cellular automaton with positive rates. We write $\mathrm{Law}_x$ for the law of $(X_t)_{t\ge0}$ from $x$, and $\Prob_x$, $\E_x$ for probabilities and expectations under it. The symbol $\bot$ also denotes the all-bottom configuration. For a probability measure $\mu$ on $\Omega$, $\mathrm{Law}_\mu$ is the law of the process when $X_0$ has law $\mu$ and is independent of the variables $\eta_t(v)$, $\zeta_t(v)$.
+
+By induction on $t$, $X_t(v)$ is a function of $X_0$ restricted to the finite set $v+\mathcal N_t$, where $\mathcal N_0=\{0\}$ and $\mathcal N_{t+1}=\mathcal N_t+\mathcal N$, and of finitely many noise variables. Hence, for a window $O$, the law of $X_t|_O$ under $\mathrm{Law}_x$ depends on only finitely many coordinates of $x$, and
+\[
+\Prob_\mu(X_t|_O\in\mathcal E)=\int\Prob_x(X_t|_O\in\mathcal E)\,\mu(dx)\qquad\text{for every }\mathcal E\subseteq\A_R^O .
+\]
+Running all starts with the same variables $\eta_t(v),\zeta_t(v)$ couples them. This is the common-noise coupling used in \cref{thm:forgetting}.
+
+Write $\mu\Phi^t$ for the law of $X_t$ under $\mathrm{Law}_\mu$, and $\Phi f(x)=\E_x f(X_1)$ for bounded measurable $f\colon\Omega\to\R$, so that $(\mu\Phi)(f)=\mu(\Phi f)$. The noise after time $t$ is independent of $X_t$, so given $X_t$ the process $(X_{t+t'})_{t'\ge0}$ is the process from $X_t$. In particular $\mu\Phi^{t+1}=(\mu\Phi^t)\Phi$. A probability measure $\mu$ on $\Omega$ is \emph{invariant} if $\mu\Phi=\mu$.
+
+\subsection{Ergodicity, forgetting and memory}\label{set:sub-ergodic}
+
+The space $\Omega$ carries the product topology; it is compact and metrizable.
+
+\begin{definition}[Ergodicity]\label{set:def-ergodic}
+The process is \emph{ergodic} if it has exactly one invariant probability measure $\pi$ and $\mu\Phi^t\to\pi$ weakly as $t\to\infty$ for every probability measure $\mu$ on $\Omega$.
+\end{definition}
+
+For a window $O$ and $\mathcal E\subseteq\A_R^O$, the cylinder $\{\omega\in\Omega:\omega|_O\in\mathcal E\}$ is open and closed. Functions that depend on finitely many coordinates are finite combinations of cylinder indicators, and they are dense in the continuous functions on $\Omega$. Hence $\mu_t\to\mu$ weakly if and only if $\dtv(\mu_t|_O,\mu|_O)\to0$ for every window $O$. Here $\mu|_O$ is the marginal law on $\A_R^O$, and $\dtv(\nu,\nu')=\max_{\mathcal E\subseteq\A_R^O}|\nu(\mathcal E)-\nu'(\mathcal E)|$.
+
+\begin{lemma}[Invariant measures exist]\label{set:feller}
+For every continuous $f\colon\Omega\to\R$, the function $\Phi f$ is continuous. For every probability measure $\mu$ on $\Omega$ and every sequence $n_m\to\infty$, the averages $\bar\mu_n=\frac1n\sum_{t=0}^{n-1}\mu\Phi^t$ have a weak limit along a subsequence of $(n_m)$, and every such limit is invariant.
+\end{lemma}
+
+\begin{proof}
+If $f$ depends only on the coordinates in a window $O$, then $\Phi f(x)$ depends only on $x$ restricted to the window $O+\mathcal N$, so $\Phi f$ is continuous. A general continuous $f$ is uniformly continuous on the compact space $\Omega$, so it is a uniform limit of functions $f_\ell$ that depend on finitely many coordinates. Since $\|\Phi g\|_\infty\le\|g\|_\infty$, the function $\Phi f$ is the uniform limit of the continuous functions $\Phi f_\ell$, hence continuous. The probability measures on the compact metrizable space $\Omega$ form a weakly sequentially compact set, which gives the convergent subsequence. Let $\bar\mu_{n_m}\to\pi$ weakly. For continuous $f$, using that $\Phi f$ is continuous,
+\[
+|\pi(\Phi f)-\pi(f)|=\lim_{m\to\infty}\bigl|\bar\mu_{n_m}(\Phi f)-\bar\mu_{n_m}(f)\bigr|
+=\lim_{m\to\infty}\frac{|\mu\Phi^{n_m}(f)-\mu(f)|}{n_m}\le\lim_{m\to\infty}\frac{2\|f\|_\infty}{n_m}=0 .
+\]
+So $\pi\Phi=\pi$.
+\end{proof}
+
+\begin{definition}[Forgetting and memory]\label{set:def-forget}
+For a window $O$ and $t\ge0$ put
+\[
+\delta_O(t)=\sup_{x\in\Omega}\dtv\bigl(\mathrm{Law}_x(X_t|_O),\,\mathrm{Law}_\bot(X_t|_O)\bigr).
+\]
+The process \emph{forgets} if $\delta_O(t)\to0$ as $t\to\infty$ for every window $O$. It has \emph{memory} if there are configurations $x,x'\in\Omega$, a window $O$, a set $\mathcal E\subseteq\A_R^O$ and $\alpha>0$ such that
+\[
+\Prob_x(X_t|_O\in\mathcal E)\ \ge\ \Prob_{x'}(X_t|_O\in\mathcal E)+\alpha\qquad\text{for every }t\ge0 .
+\]
+\end{definition}
+
+Under memory the laws of $X_t|_O$ from $x$ and from $x'$ stay at total variation distance at least $\alpha$ for all $t$, and one fixed event sees the distance. In \cref{thm:memory} the two starts are a cloned tiling configuration and the all-bottom configuration, and the event is that one site carries its tiling symbol. For forgetting, any coupling of $\mathrm{Law}_x$ and $\mathrm{Law}_\bot$ bounds the distance on $O$ by the probability that the two processes differ somewhere on $O$; \cref{thm:forgetting} bounds $\delta_O(t)$ in this way.
+
+\begin{lemma}[Forgetting implies ergodicity]\label{set:forget-ergodic}
+If the process forgets, it is ergodic. Its invariant measure $\pi$ satisfies $\dtv(\mu\Phi^t|_O,\pi|_O)\le2\delta_O(t)$ for every probability measure $\mu$, every window $O$ and every $t\ge0$.
+\end{lemma}
+
+\begin{proof}
+Let $\mu,\nu$ be probability measures on $\Omega$, let $O$ be a window, $t\ge0$ and $\mathcal E\subseteq\A_R^O$. By the mixture formula,
+\[
+\Prob_\mu(X_t|_O\in\mathcal E)-\Prob_\nu(X_t|_O\in\mathcal E)
+=\iint\bigl(\Prob_x(X_t|_O\in\mathcal E)-\Prob_{x'}(X_t|_O\in\mathcal E)\bigr)\,\mu(dx)\,\nu(dx').
+\]
+By the triangle inequality through $\mathrm{Law}_\bot$, the integrand has absolute value at most $2\delta_O(t)$. Hence $\dtv(\mu\Phi^t|_O,\nu\Phi^t|_O)\le2\delta_O(t)$. By \cref{set:feller} there is an invariant measure $\pi$. Taking $\nu=\pi$, for which $\pi\Phi^t=\pi$, gives the stated bound, and so $\mu\Phi^t\to\pi$ weakly for every $\mu$. If $\pi'$ is invariant, the bound with $\mu=\pi'$ gives $\dtv(\pi'|_O,\pi|_O)\le2\delta_O(t)$ for every $t$. So $\pi'$ and $\pi$ agree on every cylinder, and $\pi'=\pi$.
+\end{proof}
+
+\begin{lemma}[Memory excludes ergodicity]\label{set:memory-nonergodic}
+If the process has memory, it has two different invariant measures. In particular it is not ergodic.
+\end{lemma}
+
+\begin{proof}
+Let $\bar\mu_n$ and $\bar\mu'_n$ be the averages of \cref{set:feller} for the point masses at $x$ and at $x'$. Choose $n_m\to\infty$ with $\bar\mu_{n_m}\to\pi$ weakly, and then pass to a subsequence along which also $\bar\mu'_{n_m}\to\pi'$. Both limits are invariant by \cref{set:feller}. The indicator of the cylinder $\Gamma=\{\omega:\omega|_O\in\mathcal E\}$ is continuous, so
+\[
+\pi(\Gamma)-\pi'(\Gamma)=\lim_{m\to\infty}\frac1{n_m}\sum_{t=0}^{n_m-1}\bigl(\Prob_x(X_t|_O\in\mathcal E)-\Prob_{x'}(X_t|_O\in\mathcal E)\bigr)\ \ge\ \alpha .
+\]
+Hence $\pi\ne\pi'$.
+\end{proof}
+
+A weaker hypothesis already excludes ergodicity: if $\dtv(\mathrm{Law}_x(X_t|_O),\mathrm{Law}_{x'}(X_t|_O))\ge\alpha$ for every $t$, then the process is not ergodic, since under ergodicity both marginals converge to $\pi|_O$. That hypothesis alone does not produce two invariant measures through averages, because the separating event may change with $t$; memory fixes the event for this reason.
+
+\subsection{Token tables}\label{set:sub-tables}
+
+Fix a Wang set $R$, a number $j\ge1$ of tokens and a radius $r\ge0$, and put $V=V_r$. A position tuple $\mathbf u=(u_1,\dots,u_j)\in V^j$ and a symbol tuple $\mathbf s=(s_1,\dots,s_j)\in L_R^j$ describe $j$ tokens: token $i$ sits at $u_i$ and carries $s_i$. Write $\mathbf s[i\leftarrow s']$ for $\mathbf s$ with entry $i$ replaced by $s'$, and $\mathbf u[i\leftarrow w]$ likewise. A \emph{table} $S$ assigns to each $\mathbf u\in V^j$ a set $S(\mathbf u)\subseteq L_R^j$. Tables are compared by inclusion at every $\mathbf u$.
+
+\begin{definition}[Token tables]\label{set:def-tables}
+The deletion rules act on a table $S$ as follows.
+\begin{description}
+\item[(D1) Coincidence rule.] Delete $\mathbf s$ from $S(\mathbf u)$ if $u_i=u_{i'}$ and $s_i\ne s_{i'}$ for some $i,i'$.
+\item[(D2) Move rule.] Delete $\mathbf s$ from $S(\mathbf u)$ if there are an index $i$ and a direction $d\in D$ with $u_i+d\in V$ such that no live symbol $s'$ compatible with $s_i$ at displacement $d$ has $\mathbf s[i\leftarrow s']\in S(\mathbf u[i\leftarrow u_i+d])$.
+\item[(D3) Clone rule.] Delete $\mathbf s$ from $S(\mathbf u)$ if $\mathbf s[i'\leftarrow s_i]\notin S(\mathbf u[i'\leftarrow u_i])$ for some $i\ne i'$.
+\end{description}
+$\operatorname{Inst}(S)$ is obtained from $S$ by applying (D1) and (D3) until neither applies. $\operatorname{Timed}(S)$ is obtained from $S$ by applying (D2) once, simultaneously, to every tuple of $S$, with the condition evaluated in $S$. The \emph{token tables} are
+\[
+S_0=\operatorname{Inst}(\text{all tuples}),\qquad S_{n+1}=\operatorname{Inst}\bigl(\operatorname{Timed}(S_n)\bigr)\quad(n\ge0),
+\]
+where the table of all tuples has $S(\mathbf u)=L_R^j$ for every $\mathbf u\in V^j$. We write $S^{(r)}_n$ when the radius matters.
+\end{definition}
+
+The clone rule makes token $i'$ jump onto token $i$ and take its symbol. The move rule moves token $i$ by one Moore step inside $V$ and asks for a compatible new symbol at the new site. The rules commute with translations of $\Z^2$, so tables on a translate $u+V_r$ are defined by translating positions.
+
+\begin{lemma}[Tables are well defined]\label{set:tables}
+Fix $j$ and $r$. Call a table \emph{closed} if neither (D1) nor (D3) deletes anything from it.
+\begin{enumerate}
+\item[(i)] $\operatorname{Inst}(S)$ is the largest closed table contained in $S$. In particular it does not depend on the order of the deletions.
+\item[(ii)] If $S\subseteq S'$, then $\operatorname{Inst}(S)\subseteq\operatorname{Inst}(S')$ and $\operatorname{Timed}(S)\subseteq\operatorname{Timed}(S')$. Moreover $S_{n+1}\subseteq S_n$ for every $n\ge0$.
+\item[(iii)] There is $n_0$ with $S_n=S_{n_0}$ for every $n\ge n_0$. We write $S_\infty=S^{(r)}_\infty$ for this final table.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) Closedness asks, of each tuple separately, that coincident tokens carry equal symbols and that its clones lie in the table. So a union of closed tables is closed, and $S$ contains a largest closed table $S^*$. Run the deletions in any order. By induction on the number of deletions, the current table contains $S^*$. A tuple deleted by (D1) violates the coincidence condition, so it is not in $S^*$. A tuple deleted by (D3) has a clone missing from the current table, hence missing from $S^*$; since $S^*$ is closed, the tuple is not in $S^*$. The run stops, because the table is finite, and it stops at a closed table contained in $S$, hence contained in $S^*$. So it stops at $S^*$.
+
+(ii) If $S\subseteq S'$, then $\operatorname{Inst}(S)$ is a closed table contained in $S'$, so it is contained in $\operatorname{Inst}(S')$ by (i). A tuple of $S$ that survives (D2) evaluated in $S$ has, for each allowed move, a witness in $S\subseteq S'$, so it survives (D2) evaluated in $S'$. Hence $\operatorname{Timed}(S)\subseteq\operatorname{Timed}(S')$. Now $S_1\subseteq\operatorname{Timed}(S_0)\subseteq S_0$, and if $S_n\subseteq S_{n-1}$, then $S_{n+1}=\operatorname{Inst}(\operatorname{Timed}(S_n))\subseteq\operatorname{Inst}(\operatorname{Timed}(S_{n-1}))=S_n$.
+
+(iii) The tables are subsets of the finite set $V^j\times L_R^j$, and they decrease by (ii).
+\end{proof}
+
+Let $\mathbf 0=(0,\dots,0)\in V^j$. By (D1), every tuple in $S_n(\mathbf 0)$ is constant, $(s,\dots,s)$ with $s$ live.
+
+\begin{definition}[Refutability]\label{set:def-refutable}
+The Wang set $R$ is \emph{$j$-token refutable} if $S^{(r)}_\tau(\mathbf 0)=\emptyset$ for some radius $r\ge0$ and some time $\tau\ge0$. For a $j$-token refutable $R$, the \emph{refutation time} $\tau(R)$ is the least $\tau$ for which some $r$ works. The \emph{token width} of $R$ is the least $j$ for which $R$ is $j$-token refutable, and $\infty$ if there is none.
+\end{definition}
+
+So a refutation deletes every live symbol at the origin. Each table $S^{(r)}_n$ is a finite computation from $R$, $j$, $r$ and $n$. Hence, for each $j$, the $j$-token refutable Wang sets form a computably enumerable set.
+
+\subsection{The token game}\label{set:sub-game}
+
+The tables have a game reading. Two players act on $j$ tokens. Spoiler either makes one token jump onto another, so that it takes over that token's position and symbol, or moves one token by a Moore step. After a move, Duplicator chooses the new symbol of the moved token, which must be compatible with its old symbol at that displacement. Duplicator loses when two tokens on one site carry different symbols, or when she has no reply. In a box, Spoiler may move only inside the box. We work with the following sets of game states, from which Duplicator can play forever by keeping the play inside the set.
+
+\begin{definition}[States and safe sets]\label{set:def-safe}
+A \emph{$j$-token state} is a pair $(\mathbf u,\mathbf s)\in(\Z^2)^j\times L_R^j$. For $i\ne i'$, the \emph{clone} of token $i$ onto token $i'$ is the state $(\mathbf u[i'\leftarrow u_i],\mathbf s[i'\leftarrow s_i])$. For an index $i$ and $d\in D$, a \emph{move} of token $i$ by $d$ is a state $(\mathbf u[i\leftarrow u_i+d],\mathbf s[i\leftarrow s'])$ with $s'$ live and compatible with $s_i$ at displacement $d$. Let $V$ be a box $V_r$ or the plane $\Z^2$. A set $\mathcal W$ of states with positions in $V^j$ is \emph{$V$-safe} if every $(\mathbf u,\mathbf s)\in\mathcal W$ satisfies:
+\begin{description}
+\item[(W1)] if $u_i=u_{i'}$, then $s_i=s_{i'}$;
+\item[(W2)] for all $i\ne i'$, the clone of token $i$ onto token $i'$ lies in $\mathcal W$;
+\item[(W3)] for every $i$ and every $d\in D$ with $u_i+d\in V$, some move of token $i$ by $d$ lies in $\mathcal W$.
+\end{description}
+A \emph{plane-safe} set is a $\Z^2$-safe set. For a state satisfying (W1), $h_{\mathbf u,\mathbf s}$ denotes the map $\{u_1,\dots,u_j\}\to L_R$ with $h_{\mathbf u,\mathbf s}(u_i)=s_i$.
+\end{definition}
+
+We identify a table $S$ on $V_r$ with the set of states $(\mathbf u,\mathbf s)$ with $\mathbf s\in S(\mathbf u)$. Then (W1) says that (D1) deletes nothing, (W2) says that (D3) deletes nothing, and (W3) with $V=V_r$ says that (D2) deletes nothing.
+
+\begin{lemma}[Walking to the origin]\label{set:walk}
+Let $V$ be a box $V_r$ or the plane $\Z^2$. Every nonempty $V$-safe set contains a state $(\mathbf 0,\mathbf s)$.
+\end{lemma}
+
+\begin{proof}
+Take a state $(\mathbf u,\mathbf s)$ in the set. Cloning token $1$ onto each other token gives, by (W2), a state of the set with all tokens at $u_1$. While token $1$ is not at the origin, move it by the step $d\in D$ whose coordinates are the signs of the coordinates of its negated position, with the sign of $0$ equal to $0$. The new position lies in $V$, since no coordinate grows in absolute value, so (W3) gives a move in the set. After finitely many steps token $1$ is at the origin. Cloning it onto the other tokens gives a state $(\mathbf 0,\mathbf s')$ of the set.
+\end{proof}
+
+\begin{lemma}[Finite time and finite boxes]\label{set:stable}
+Fix $j\ge1$.
+\begin{enumerate}
+\item[(i)] For every $r$, $S^{(r)}_\infty$ is the largest $V_r$-safe set.
+\item[(ii)] If $r\le r'$, the states of $S^{(r')}_\infty$ with positions in $V_r^j$ lie in $S^{(r)}_\infty$.
+\item[(iii)] $R$ is $j$-token refutable if and only if $S^{(r)}_\infty=\emptyset$ for some $r$. In that case $S^{(r')}_\infty=\emptyset$ for every $r'\ge r$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) By \cref{set:tables}(iii), $S_\infty=S_{n_0}=S_{n_0+1}=\operatorname{Inst}(\operatorname{Timed}(S_\infty))\subseteq\operatorname{Timed}(S_\infty)\subseteq S_\infty$. So $\operatorname{Timed}(S_\infty)=S_\infty$, which is (W3), and $\operatorname{Inst}(S_\infty)=S_\infty$, which is (W1) and (W2). Conversely, let $\mathcal W$ be $V_r$-safe. It is a closed table, so $\mathcal W\subseteq S_0$ by \cref{set:tables}(i). If $\mathcal W\subseteq S_n$, then every state of $\mathcal W$ survives (D2) evaluated in $S_n$, because (W3) supplies its witnesses in $\mathcal W\subseteq S_n$. So $\mathcal W\subseteq\operatorname{Timed}(S_n)$, and since $\mathcal W$ is closed, $\mathcal W\subseteq\operatorname{Inst}(\operatorname{Timed}(S_n))=S_{n+1}$. Hence $\mathcal W\subseteq S_\infty$.
+
+(ii) The states of $S^{(r')}_\infty$ with positions in $V_r^j$ form a $V_r$-safe set. Indeed (W1) is inherited, clones do not create new positions, and a move with $u_i+d\in V_r$ is allowed in $V_{r'}$ and its witness has positions in $V_r^j$. Apply (i).
+
+(iii) If $S^{(r)}_\tau(\mathbf 0)=\emptyset$, then $S^{(r)}_\infty(\mathbf 0)=\emptyset$ by \cref{set:tables}(ii). By (i) and \cref{set:walk}, a nonempty $S^{(r)}_\infty$ would contain a state at $\mathbf 0$, so $S^{(r)}_\infty=\emptyset$. Conversely, if $S^{(r)}_\infty=\emptyset$, then $S^{(r)}_{n_0}(\mathbf 0)=\emptyset$. If $r'\ge r$, then (ii) gives $S^{(r')}_\infty(\mathbf 0)\subseteq S^{(r)}_\infty(\mathbf 0)=\emptyset$, and the same argument gives $S^{(r')}_\infty=\emptyset$.
+\end{proof}
+
+\begin{lemma}[Boxes and the plane]\label{set:plane}
+$R$ is $j$-token refutable if and only if there is no nonempty plane-safe set of $j$-token states.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal W$ be a nonempty plane-safe set. By \cref{set:walk} it contains a state $(\mathbf 0,\mathbf s)$. For every $r$, the states of $\mathcal W$ with positions in $V_r^j$ form a $V_r$-safe set: (W1) is inherited, clones keep positions in $V_r^j$, and for a move with $u_i+d\in V_r$ the move supplied by (W3) in the plane has positions in $V_r^j$. By \cref{set:stable}(i) this set lies in $S^{(r)}_\infty$, so $(\mathbf 0,\mathbf s)\in S^{(r)}_\infty\subseteq S^{(r)}_n$ for every $n$. Hence $S^{(r)}_n(\mathbf 0)\ne\emptyset$ for all $r$ and $n$, and $R$ is not $j$-token refutable.
+
+Conversely, suppose that $R$ is not $j$-token refutable. Then $S^{(r)}_\infty(\mathbf 0)\ne\emptyset$ for every $r$. Let $\mathcal W$ be the set of states that lie in $S^{(r)}_\infty$ for infinitely many $r$. Since $L_R^j$ is finite, some $\mathbf s$ lies in $S^{(r)}_\infty(\mathbf 0)$ for infinitely many $r$, so $\mathcal W$ is nonempty. Each $S^{(r)}_\infty$ is $V_r$-safe, and we check (W1)--(W3) for $\mathcal W$. Property (W1) holds because it holds in each $S^{(r)}_\infty$. If $(\mathbf u,\mathbf s)\in\mathcal W$, each of its clones lies in $S^{(r)}_\infty$ whenever $(\mathbf u,\mathbf s)$ does, by (W2) in $S^{(r)}_\infty$, so the clone lies in $\mathcal W$. For (W3), fix $i$ and $d\in D$. For each of the infinitely many $r\ge|u_i|_\infty+1$ with $(\mathbf u,\mathbf s)\in S^{(r)}_\infty$, the site $u_i+d$ lies in $V_r$, so (W3) in $S^{(r)}_\infty$ gives a live $s'_r$ with $(\mathbf u[i\leftarrow u_i+d],\mathbf s[i\leftarrow s'_r])\in S^{(r)}_\infty$ and $s'_r$ compatible with $s_i$ at displacement $d$. There are finitely many live symbols, so one value $s'$ occurs for infinitely many $r$, and the corresponding move lies in $\mathcal W$. So $\mathcal W$ is a nonempty plane-safe set.
+\end{proof}
+
+The next lemma is where the move rule and the coincidence rule combine.
+
+\begin{lemma}[Neighbouring tokens are compatible]\label{set:adjacent}
+Let $\mathcal W$ be plane-safe, $(\mathbf u,\mathbf s)\in\mathcal W$, and $u_{i'}=u_i+d$ with $d\in D$. Then $s_{i'}$ is compatible with $s_i$ at displacement $d$.
+\end{lemma}
+
+\begin{proof}
+By (W3) some move $(\mathbf u[i\leftarrow u_i+d],\mathbf s[i\leftarrow s'])$ lies in $\mathcal W$, with $s'$ compatible with $s_i$ at displacement $d$. In this state tokens $i$ and $i'$ both sit at $u_{i'}$; note $i\ne i'$ because $d\ne0$. By (W1), $s'=s_{i'}$.
+\end{proof}
+
+\begin{definition}[Existential pebble families]\label{set:def-pebble}
+A \emph{partial homomorphism into the live target} is a map $h\colon U\to L_R$ on a finite set $U\subseteq\Z^2$ such that $h(u+d)$ is compatible with $h(u)$ at displacement $d$ whenever $d\in D$ and $u,u+d\in U$. A \emph{partial homomorphism into $R$} is a legal pattern on a finite set $U\subseteq\Z^2$. Fix one of the two targets. An \emph{existential $j$-pebble family}, or \emph{$E_j$ family}, is a nonempty set $H$ of partial homomorphisms into the target such that:
+\begin{description}
+\item[(Size)] every $h\in H$ has at most $j$ sites in its domain;
+\item[(Restriction)] if $h\in H$ and $U\subseteq\operatorname{dom}h$, then $h|_U\in H$;
+\item[(Extension)] if $h\in H$, $|\operatorname{dom}h|<j$ and $w\in\Z^2$, then some $h'\in H$ extends $h$ and has $w\in\operatorname{dom}h'$.
+\end{description}
+\end{definition}
+
+These families are the winning strategies of Duplicator in the existential $j$-pebble game of Kolaitis and Vardi \cite{KolaitisVardi00}, played from the grid $\Z^2$ to the target; see also \cite{ABD07}. In that game Spoiler places and removes up to $j$ pebbles on sites, Duplicator answers each placement with a target symbol, and Duplicator must keep the pebbled correspondence a partial homomorphism. For the live target the grid carries the eight Moore relations; for $R$ it carries the horizontal and vertical edge relations.
+
+\begin{remark}\label{set:pebble-basic}
+Let $H$ be an $E_j$ family. By (Restriction) it contains the empty map. For every set $U\subseteq\Z^2$ with $|U|\le j$, some $h\in H$ has domain exactly $U$: add the sites of $U$ one at a time with (Extension), and after each step restrict with (Restriction) to the sites added so far. For $1\le K\le j$, the members of $H$ with at most $K$ sites form an $E_K$ family, since an extension supplied by (Extension) can be restricted to the old domain plus the new site.
+\end{remark}
+
+\begin{lemma}[Pebble families from safe sets]\label{set:family}
+Let $\mathcal W$ be a nonempty plane-safe set of $j$-token states. Let $H(\mathcal W)$ be the set of restrictions $h_{\mathbf u,\mathbf s}|_U$ with $(\mathbf u,\mathbf s)\in\mathcal W$ and $U\subseteq\{u_1,\dots,u_j\}$. Then $H(\mathcal W)$ is an $E_j$ family for the live target, and $\operatorname{ctr}\circ H(\mathcal W)=\{\operatorname{ctr}\circ h: h\in H(\mathcal W)\}$ is an $E_j$ family for $R$.
+\end{lemma}
+
+\begin{proof}
+Each $h_{\mathbf u,\mathbf s}$ is well defined by (W1). It is a partial homomorphism into the live target: if $u$ and $u+d$ are sites of $\mathbf u$ with $d\in D$, pick $i,i'$ with $u_i=u$ and $u_{i'}=u+d$ and apply \cref{set:adjacent}. Restrictions of partial homomorphisms are partial homomorphisms. The family is nonempty, has at most $j$ sites per map, and is closed under restriction by construction.
+
+For (Extension), let $h=h_{\mathbf u,\mathbf s}|_U$ with $(\mathbf u,\mathbf s)\in\mathcal W$ and $|U|<j$, and let $w\in\Z^2$. If $w\in U$ there is nothing to do. Otherwise, for each $u\in U$ choose one index $i(u)$ with $u_{i(u)}=u$. These are fewer than $j$ indices, so some index $i_0$ is not among them. Choose finitely many Moore steps leading from $u_{i_0}$ to $w$, and apply (W3) to token $i_0$ once for each step. This gives states of $\mathcal W$ in which every token other than $i_0$ keeps its position and symbol, ending with a state $(\mathbf u^*,\mathbf s^*)\in\mathcal W$ with $u^*_{i_0}=w$. The map $h'=h_{\mathbf u^*,\mathbf s^*}|_{U\cup\{w\}}$ lies in $H(\mathcal W)$, contains $w$ in its domain, and extends $h$, since $h'(u)=s^*_{i(u)}=s_{i(u)}=h(u)$ for $u\in U$.
+
+For the second family, \cref{set:centre} shows that $\operatorname{ctr}\circ h$ is a legal pattern whenever $h$ is a partial homomorphism into the live target, because $(1,0)$ and $(0,1)$ are Moore directions. Restriction commutes with composition by $\operatorname{ctr}$. For (Extension), write a member as $\operatorname{ctr}\circ h$ with $h\in H(\mathcal W)$, extend $h$ in $H(\mathcal W)$, and compose the extension with $\operatorname{ctr}$.
+\end{proof}
+
+\begin{theorem}[Tokens and pebble families]\label{thm:game}
+Let $R$ be a finite Wang set and $j\ge1$.
+\begin{enumerate}
+\item[(i)] $R$ is $j$-token refutable if and only if there is no nonempty plane-safe set of $j$-token states.
+\item[(ii)] For every nonempty plane-safe set $\mathcal W$ of $j$-token states, the restrictions of the maps $h_{\mathbf u,\mathbf s}$, $(\mathbf u,\mathbf s)\in\mathcal W$, form an $E_j$ family for the live target, and their compositions with $\operatorname{ctr}$ form an $E_j$ family for $R$.
+\item[(iii)] If $R$ is not $j$-token refutable, there is an $E_j$ family for $R$. Equivalently, if there is no $E_j$ family for $R$, then $R$ is $j$-token refutable.
+\item[(iv)] If $R$ tiles the plane, then $R$ is not $j$-token refutable.
+\item[(v)] If there is an $E_{j+1}$ family for the live target, then $R$ is not $j$-token refutable.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Part (i) is \cref{set:plane}, and part (ii) is \cref{set:family}. Part (iii) follows: if $R$ is not $j$-token refutable, (i) gives a nonempty plane-safe set, and (ii) turns it into an $E_j$ family for $R$.
+
+For (iv), let $z$ be a tiling and let $\mathcal W_z$ be the set of states $(\mathbf u,(\hat z(u_1),\dots,\hat z(u_j)))$ with $\mathbf u\in(\Z^2)^j$. It is nonempty. Property (W1) holds because equal positions carry equal symbols. The clone of token $i$ onto token $i'$ is the state of $\mathcal W_z$ at the positions $\mathbf u[i'\leftarrow u_i]$, so (W2) holds. For (W3), the symbol $\hat z(u_i+d)$ is compatible with $\hat z(u_i)$ at displacement $d$, and the resulting move is the state of $\mathcal W_z$ at the positions $\mathbf u[i\leftarrow u_i+d]$. So $\mathcal W_z$ is plane-safe, and (i) shows that $R$ is not $j$-token refutable. Concretely, for every $r$ and $n$ the tuple $(\hat z(0),\dots,\hat z(0))$ lies in $S^{(r)}_n(\mathbf 0)$.
+
+For (v), let $H$ be an $E_{j+1}$ family for the live target, and let $\mathcal W$ be the set of $j$-token states $(\mathbf u,\mathbf s)$ that satisfy (W1) and have $h_{\mathbf u,\mathbf s}\in H$. Let $g\in H$, and let $(\mathbf u',\mathbf s')$ be a $j$-token state with $u'_i\in\operatorname{dom}g$ and $s'_i=g(u'_i)$ for every $i$. Then $(\mathbf u',\mathbf s')$ satisfies (W1), and $h_{\mathbf u',\mathbf s'}$ is the restriction of $g$ to $\{u'_1,\dots,u'_j\}$, so it lies in $H$ by (Restriction); hence $(\mathbf u',\mathbf s')\in\mathcal W$. By \cref{set:pebble-basic}, $H$ contains the empty map and, for every $w\in\Z^2$, a map with domain $\{w\}$. The state with all $j$ tokens at $w$, each carrying the value of that map, therefore lies in $\mathcal W$, and $\mathcal W$ is nonempty. Now let $(\mathbf u,\mathbf s)\in\mathcal W$ and $h=h_{\mathbf u,\mathbf s}$. Every token of a clone of $(\mathbf u,\mathbf s)$ sits at a site of $\operatorname{dom}h$ and carries the value of $h$ there. So the map of the clone is a restriction of $h$, the clone lies in $\mathcal W$, and (W2) holds. For (W3), let $i$ be an index and $d\in D$. The map $h$ has at most $j$ sites, fewer than $j+1$, so (Extension) gives $h'\in H$ that extends $h$ and has $u_i+d\in\operatorname{dom}h'$. Put $s'=h'(u_i+d)$. Since $h'$ is a partial homomorphism into the live target and $h'(u_i)=s_i$, the live symbol $s'$ is compatible with $s_i$ at displacement $d$, so $(\mathbf u[i\leftarrow u_i+d],\mathbf s[i\leftarrow s'])$ is a move of token $i$ by $d$. Every token of this move sits at a site of $\operatorname{dom}h'$ and carries the value of $h'$ there. So the map of the moved state is a restriction of $h'$, and the move lies in $\mathcal W$. Hence $\mathcal W$ is a nonempty plane-safe set, and (i) shows that $R$ is not $j$-token refutable.
+\end{proof}
+
+Part (ii) applies to every nonempty plane-safe set. An argument may therefore first pass to a smaller nonempty plane-safe set with extra properties, and then take its family.
+
+\subsection{One token, and finite token width}\label{set:sub-width}
+
+\begin{proposition}[One token is arc consistency]\label{set:one-token}
+Let $L^{(0)}=L_R$, and for $n\ge0$ let $L^{(n+1)}$ be the set of $s\in L^{(n)}$ such that for every $d\in D$ some $s'\in L^{(n)}$ is compatible with $s$ at displacement $d$. The sets $L^{(n)}$ decrease, and $L^{(n)}=L^{(|L_R|)}$ for every $n\ge|L_R|$; call this set $L^{(\infty)}$. Then $R$ is $1$-token refutable if and only if $L^{(\infty)}=\emptyset$. In particular, $1$-token refutability is decidable.
+\end{proposition}
+
+\begin{proof}
+By definition $L^{(n+1)}\subseteq L^{(n)}$. Once $L^{(n+1)}=L^{(n)}$, the sequence is constant from $n$ on, and each strict decrease removes at least one of the $|L_R|$ symbols; this gives the second claim. For $j=1$ there is no pair $i\ne i'$, so (W1) and (W2) hold for every set of $1$-token states, and such a set is plane-safe exactly when (W3) holds.
+
+If $L^{(\infty)}\ne\emptyset$, the set $\Z^2\times L^{(\infty)}$ of $1$-token states is plane-safe. Indeed $L^{(\infty)}=L^{(|L_R|+1)}$, so every $s\in L^{(\infty)}$ has, for every $d\in D$, a partner $s'\in L^{(\infty)}$ compatible with $s$ at displacement $d$. By \cref{thm:game}(i), $R$ is not $1$-token refutable.
+
+Conversely, let $\mathcal W$ be a nonempty plane-safe set of $1$-token states, and let $Q$ be the set of symbols carried by its states. Then $Q\ne\emptyset$ and $Q\subseteq L^{(0)}$. If $Q\subseteq L^{(n)}$ and $(u,s)\in\mathcal W$, then for each $d\in D$, (W3) gives $(u+d,s')\in\mathcal W$ with $s'$ compatible with $s$ at displacement $d$, and $s'\in Q\subseteq L^{(n)}$; so $s\in L^{(n+1)}$. Hence $\emptyset\ne Q\subseteq L^{(\infty)}$. By \cref{thm:game}(i), if $R$ is not $1$-token refutable then $L^{(\infty)}\ne\emptyset$.
+
+The set $L^{(\infty)}$ is computed from $R$ by a finite procedure, which gives decidability.
+\end{proof}
+
+The proof also shows that $L^{(\infty)}$ is the largest set of live symbols in which every symbol has a compatible partner in every Moore direction. This is arc consistency for the network on $\Z^2$ in which every site has domain $L_R$ and Moore neighbours must carry compatible symbols.
+
+\begin{corollary}[One token is not enough]\label{set:one-token-family}
+Let $\ell\mapsto R_\ell$ be a total computable map from $\N$ to finite Wang sets such that every $R_\ell$ that does not tile is $1$-token refutable. Then $\{\ell: R_\ell\text{ tiles}\}$ is decidable.
+\end{corollary}
+
+\begin{proof}
+Given $\ell$, compute $L^{(\infty)}$ for $R_\ell$. If $L^{(\infty)}=\emptyset$, then $R_\ell$ is $1$-token refutable by \cref{set:one-token}, so it does not tile by \cref{thm:game}(iv). If $L^{(\infty)}\ne\emptyset$, then $R_\ell$ is not $1$-token refutable, so it tiles by the hypothesis on the family.
+\end{proof}
+
+So the fixed number of tokens in \cref{thm:width} is at least $2$. For $j\ge2$ the tokens of a state can be arbitrarily far apart, the states up to translation form an infinite set, and the argument of \cref{set:one-token} does not apply.
+
+\begin{proposition}[Finite token width]\label{set:finite-width}
+If $R$ is $j$-token refutable, then it is $(j+1)$-token refutable. If no legal pattern exists on a square of side $m$, then $R$ is $m^2$-token refutable. Hence the token width of $R$ is finite if and only if $R$ does not tile, and $R$ is $j$-token refutable exactly when $j$ is at least its token width.
+\end{proposition}
+
+\begin{proof}
+Let $\mathcal W$ be a nonempty plane-safe set of $(j+1)$-token states. Deleting the last token from every state gives a nonempty set of $j$-token states, and this set is plane-safe. Indeed (W1) is inherited, a clone among the first $j$ tokens is the image of a clone in $\mathcal W$, and a move of one of the first $j$ tokens is the image of a move in $\mathcal W$. By \cref{thm:game}(i), if $R$ is not $(j+1)$-token refutable, it is not $j$-token refutable. This is the first claim.
+
+Suppose that no legal pattern exists on the square $U=\{0,\dots,m-1\}^2$, and that $R$ is not $m^2$-token refutable. By \cref{thm:game}(iii) there is an $E_{m^2}$ family $H$ for $R$. Since $|U|=m^2$, \cref{set:pebble-basic} gives a member of $H$ with domain $U$. It is a legal pattern on $U$, a contradiction. This is the second claim.
+
+If $R$ does not tile, \cref{set:compact} gives such a square, so the token width is finite. If $R$ tiles, \cref{thm:game}(iv) shows that it is not $j$-token refutable for any $j$. The last claim follows from the first.
+\end{proof}

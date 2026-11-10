@@ -1,0 +1,20 @@
+% =====================================================================
+\section*{How this work was done}
+\addcontentsline{toc}{section}{How this work was done}
+% =====================================================================
+
+The authors chose the question, directed the work and judged every result. AI models from two developers explored the problem, derived and drafted the arguments, and challenged each other's results: OpenAI's \OPENAIMODEL{} and Anthropic's Claude Fable~5.2 and Claude Opus~5.5. The forgetting theorem and the construction of Theorem~C were each derived by one model and then re-derived refutation-first, step by step, by a model of the other developer, which did not write them. The memory theorem rests on the contour lemma of the forgetting proof, which was cross-checked in this way; its remaining steps were written and checked by models of one developer, the check in a separate run that did not write them. These reviews found one gap in the parser of \cref{sec:scaffold} (a missing transport of the phase from the anchor to a queried block in the point certificate) and one constant in the memory bound that rested on an unproved property; both were repaired and re-checked. The reconstruction of the manuscript from the proofs was itself read refutation-first by a reviewer of the other developer. Models are not listed as authors; the authors take responsibility for every claim.
+
+% =====================================================================
+\section*{Verification status}
+\addcontentsline{toc}{section}{Verification status}
+% =====================================================================
+
+\begin{itemize}
+\item \textbf{Proved in the text.} Theorems A, B and C and every lemma and corollary of \cref{sec:setting,sec:forgetting,sec:memory,sec:scaffold,sec:family,sec:refutation,sec:proofs}, given the cited inputs below.
+\item \textbf{Imported with stated scope.} For \cref{cor:gibbs}, the correspondence between translation-invariant Gibbs states of the space--time interaction and stationary trajectories, and the uniqueness of the periodic Gibbs state of an ergodic positive-rate automaton \cite{DM26,GKLM89}; for the remark on the arithmetical degree, the $\Pi^0_2$ placement of \cite{DM26}.
+\item \textbf{Existence only.} The parser constant $B$ of \cref{thm:parser}, and hence $j$, $k$ and $\eps_0$, are shown to exist; their values were not computed. The map $M\mapsto R_M$ does not use them.
+\item \textbf{Checked by machine.} No computation is used in any proof.
+\item \textbf{Not formalized.} Nothing is verified in Lean.
+\item \textbf{Internal only.} Every review is internal; none of it is journal peer review.
+\end{itemize}

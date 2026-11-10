@@ -1,0 +1,148 @@
+\section{Proof of the main theorem and corollaries}\label{sec:proofs}
+
+Throughout this section $j=10(B+\ell+100)$ is the integer of \cref{thm:halting}, with $\ell=\binom{276}{2}+1=37951$, and
+\[
+k=\max(2,2j)=2j,\qquad q=k+1,\qquad a=2q^2+1,\qquad D_0=50q,\qquad \eps_0=\eps_k=(4D_0^2)^{-a}.
+\]
+The dimension is $d=2+k$. The family $M\mapsto R_M$ is the one of \cref{thm:width}. We write $\delta_O(t)$ as in \cref{set:def-forget}, adding a superscript $M$ when the Wang set is $R_M$.
+
+\begin{lemma}[One threshold]\label{pf:threshold}
+Let $0<\eps\le\eps_0$. Then $\beta=2D_0^2\eps^{1/a}\le\frac12$, the hypothesis of \cref{thm:memory} holds, and $\eps<10^{-9}$. Both conditions on the rate have the form $\eps\le\eps_0$, so they hold at every rate in $(0,\eps_0]$.
+\end{lemma}
+
+\begin{proof}
+The map $\eps\mapsto\beta$ is increasing, and at $\eps_0$ it equals $2D_0^2(4D_0^2)^{-1}=\frac12$. \Cref{thm:memory} asks for $0<\eps\le(4D_0^2)^{-a}=\eps_0$. Since $q\ge3$, $D_0\ge150$ and $a\ge19$, we get $\eps_0\le(90000)^{-19}<10^{-9}$.
+\end{proof}
+
+\begin{theorem}[Theorem A]\label{thm:main}
+For every $\eps\in(0,\eps_0]$ and every Turing machine $M$, the noisy quorum rule $F^{[k]}_{R_M}$ on $\Z^{2+k}$ with uniform replacement at rate $\eps$ is a positive-rate probabilistic cellular automaton, and it is ergodic if and only if $M$ halts. The map $M\mapsto F^{[k]}_{R_M}$ is total computable.
+\end{theorem}
+
+\begin{proof}[Proof of \cref{thm:main}]
+Fix $\eps\in(0,\eps_0]$ and use uniform replacement noise at rate $\eps$. The map $M\mapsto R_M$ is total computable by \cref{thm:width}, and $T_R$, $\A_R$ and the local rule of $F^{[k]}_R$ on $\mathcal N=\Lambda\times\{c_0,\dots,c_k\}$ are computed from $R$ by finite enumeration. So $M\mapsto F^{[k]}_{R_M}$ is total computable.
+
+Suppose $M$ halts. By \cref{thm:width}, $R_M$ is $j$-token refutable; let $\tau=\tau(R_M)$ be its refutation time. The hypotheses of \cref{thm:forgetting} hold: $j\ge1$, $k\ge\max(2,2j)$, $0<\eps<1$, and $\beta\le\frac12<1$ by \cref{pf:threshold}. So for every window $O$ and every $t\ge0$,
+\begin{equation}\label{pf:eq-forget}
+\delta^M_O(t)\le2|O|\,\eps^{-\tau/a}\,\frac{\beta^t}{1-\beta}\le4|O|\,\eps^{-\tau/a}\,2^{-t},
+\end{equation}
+which tends to $0$. The process forgets, and it is ergodic by \cref{set:forget-ergodic}.
+
+Suppose $M$ does not halt. By \cref{thm:width}, $R_M$ tiles; let $\xi$ be the cloned tiling configuration of a tiling. By \cref{thm:memory} and \cref{pf:threshold}, for every site $v$ and every $t\ge0$,
+\begin{equation}\label{pf:eq-memory}
+\Prob_\xi\bigl(X_t(v)\ne\xi(v)\bigr)<1.01\,\eps,\qquad \Prob_\bot\bigl(X_t(v)\text{ is live}\bigr)<1.01\,\eps .
+\end{equation}
+Take the window $\{v\}$ and the event that $v$ carries the live symbol $\xi(v)$. Then $\Prob_\xi(X_t(v)=\xi(v))>1-1.01\eps$ and $\Prob_\bot(X_t(v)=\xi(v))<1.01\eps$, so the process has memory with $\alpha=1-2.02\eps>0$. By \cref{set:memory-nonergodic} it has two different invariant measures, and it is not ergodic.
+
+Both cases hold for every $\eps\in(0,\eps_0]$, and $j$, $k$ and $\eps_0$ do not depend on $M$.
+\end{proof}
+
+\begin{remark}[Scope of the constants]\label{pf:scope}
+Since $B\ge1$, we have $j\ge10(1+37951+100)=380520$, so $d=2+2j$ is a fixed integer, at least $761042$ in this construction. Its exact value depends on the constant $B$ of \cref{thm:parser}, a fixed integer, shown to exist, that we do not evaluate. The rate $\eps_0$ depends only on $k$, and $\beta$ only on $k$ and $\eps$; the Wang set enters the forgetting bound only through $\tau(R_M)$. The alphabet $\A_{R_M}$ varies with $M$, so the least transition probability $\eps/|\A_{R_M}|$ is not bounded below over the family. A fixed noise rate, as in the title, means a fixed replacement rate $\eps$ with uniform replacement on the alphabet of each member.
+\end{remark}
+
+\subsection{Corollaries}\label{pf:sec-cor}
+
+\begin{corollary}[Every small rate]\label{cor:rates}
+For every machine $M$ the following are equivalent:
+\begin{itemize}
+\item[(i)] $M$ halts;
+\item[(ii)] $F^{[k]}_{R_M}$ with uniform replacement noise is ergodic at some rate $\eps\in(0,\eps_0]$;
+\item[(iii)] it is ergodic at every rate $\eps\in(0,\eps_0]$.
+\end{itemize}
+Consequently, for each fixed $\eps\in(0,\eps_0]$, no algorithm decides, given a finite Wang set $R$, whether $F^{[k]}_R$ with uniform replacement noise at rate $\eps$ is ergodic.
+\end{corollary}
+
+\begin{proof}
+By \cref{pf:threshold} the hypotheses of \cref{thm:forgetting,thm:memory} used in the proof of \cref{thm:main} hold at every rate in $(0,\eps_0]$. So (i) implies (iii), (iii) implies (ii), and if $M$ does not halt the process is not ergodic at any rate in $(0,\eps_0]$, which is (ii) implies (i). For the last claim, a decision procedure at rate $\eps$, composed with the computable map $M\mapsto R_M$, would decide halting.
+\end{proof}
+
+\begin{corollary}[Every Wang set at once]\label{cor:tiling}
+There is a total computable map $R\mapsto G_R$ from finite Wang sets to positive-rate probabilistic cellular automata on $\Z^{2+k}$, each with uniform replacement noise, such that for every $\eps\in(0,\eps_0]$ and every finite Wang set $R$, the automaton $G_R$ at rate $\eps$ is ergodic if and only if $R$ does not tile the plane.
+\end{corollary}
+
+\begin{proof}
+Let $M_R$ be the machine that, for $n=1,2,\dots$ in turn, checks whether $R$ has a legal pattern on the $n\times n$ square, and halts at the first $n$ for which it has none. The map $R\mapsto M_R$ is computable, and each check is finite. If $R$ tiles, restrictions of a tiling give legal squares of every size, so $M_R$ does not halt. If $M_R$ does not halt, $R$ has legal squares of every size; by compactness of $R^{\Z^2}$ (König's lemma on the finitely branching tree of legal centred squares) it tiles. So $M_R$ halts if and only if $R$ does not tile. Put $G_R=F^{[k]}_{R_{M_R}}$ with uniform replacement noise, and apply \cref{thm:main} to $M_R$.
+\end{proof}
+
+The automaton $G_R$ is built from the recoded set $R_{M_R}$, not from $R$ itself. So \cref{cor:tiling} gives one fixed dimension for every Wang set, whatever its token width, through the family of \cref{thm:width}; it says nothing new about the quorum rule of $R$ itself.
+
+The next corollary concerns other noise. For a probability law $\nu$ on $\A_R$, \emph{$\nu$-replacement noise} at rate $\eps$ is defined as in \cref{set:def-noise}, with the values $\zeta_t(v)$ independent with law $\nu$ in place of the uniform law. Uniform replacement is the case where $\nu$ is uniform. \Cref{set:feller,set:forget-ergodic,set:memory-nonergodic} and their proofs hold verbatim for $\nu$-replacement noise: they use only the mixture formula and the fact that $X_1|_O$ depends on finitely many coordinates of $X_0$ and on independent noise.
+
+\begin{corollary}[Other replacement laws]\label{cor:laws}
+For each machine $M$ let $\nu_M$ be a probability law on $\A_{R_M}$, and let $\eps\in(0,\eps_0]$.
+\begin{itemize}
+\item[(i)] $F^{[k]}_{R_M}$ with $\nu_M$-replacement noise at rate $\eps$ is ergodic if and only if $M$ halts. Every transition probability of this process is at least $\eps\min_s\nu_M(s)$, which is positive when $\nu_M$ has full support.
+\item[(ii)] Suppose $M$ does not halt. Let the replacement events be as in \cref{set:def-noise}, and let the values written at events be arbitrary random variables, which may depend on the event indicators, on the past of the run and on further randomness. Then the bounds \eqref{pf:eq-memory} hold for the run from every cloned tiling configuration $\xi$ and for the run from $\bot$, at every site and time.
+\end{itemize}
+\end{corollary}
+
+\begin{proof}
+(ii) The proof of \cref{thm:memory} has a deterministic part and a counting part. The deterministic part (\cref{mem:two-parents}) holds for every realization of the events and of the values: a bad point that is not an event has two bad points one step earlier, in two different provider planes, and no point of time $0$ is bad. The counting part uses the noise only through the bound $\Prob(\text{every point of }S\text{ is an event})\le\eps^{|S|}$ for finite sets $S$ of points of positive time (\cref{mem:laws}). Both parts hold under the stated hypotheses, so the bounds hold.
+
+(i) Suppose $M$ does not halt. Values drawn independently from $\nu_M$ are a special case of (ii), so \eqref{pf:eq-memory} holds, the process has memory as in the proof of \cref{thm:main}, and \cref{set:memory-nonergodic} shows that it is not ergodic.
+
+Suppose $M$ halts. In the proof of \cref{thm:forgetting}, the runs from $x$ and from $\bot$ use the same indicators $\eta$ and the same values $\zeta$. The covering field $E$ is a function of $\eta$ alone (\cref{def:domination}). The transport and cover lemmas and \cref{fgt:live} hold for every realization of $\eta$ and $\zeta$. The discrepancy path of \cref{fgt:path} uses only that both runs take the common value at an event. The final count uses only the independence of the indicators and $\Prob(\eta_t(v)=1)=\eps$. None of these steps uses the law of $\zeta$. So \eqref{fgt:eq-main} and \eqref{fgt:eq-tv} hold for $\nu_M$-replacement noise with the same constants, the process forgets, and \cref{set:forget-ergodic} shows that it is ergodic.
+
+Finally, given $X_t$, the value $X_{t+1}(v)$ equals $s$ with probability $(1-\eps)\mathbf 1[F^{[k]}_{R_M}(X_t)(v)=s]+\eps\,\nu_M(s)\ge\eps\,\nu_M(s)$.
+\end{proof}
+
+The forgetting half needs the values to be drawn without looking at the configuration, because its coupling gives both runs the same value at each event. The memory half needs nothing about the values.
+
+\begin{corollary}[Mixing times are not computably bounded]\label{cor:mixing}
+Let $\eps\in(0,\eps_0]$ be rational, and use uniform replacement noise at rate $\eps$.
+\begin{itemize}
+\item[(i)] For every machine $M$, window $O$ and time $t$, the supremum in $\delta^M_O(t)$ is a maximum over finitely many restrictions of the start, and $\delta^M_O(t)$ is a rational number computable from $M$, $O$ and $t$.
+\item[(ii)] Let $t_{\mathrm{mix}}(M)$ be the least $t_0\ge0$ such that $\delta^M_{\{0\}}(t)<\frac12$ for every $t\ge t_0$, and $t_{\mathrm{mix}}(M)=\infty$ if there is none. Then $t_{\mathrm{mix}}(M)<\infty$ if and only if $M$ halts.
+\item[(iii)] No computable function $b$ satisfies $t_{\mathrm{mix}}(M)\le b(M)$ for every halting $M$. No computable function $b$ satisfies $\tau(R_M)\le b(M)$ for every halting $M$.
+\end{itemize}
+\end{corollary}
+
+\begin{proof}
+(i) Let $\mathcal N=\Lambda\times\{c_0,\dots,c_k\}$ and $\mathcal N_t$ be as in \cref{sec:setting}, and write $\A=\A_{R_M}$ and $F=F^{[k]}_{R_M}$. Given $X_s$, the values $X_{s+1}(v)$ are independent, and $X_{s+1}(v)=s'$ with probability $(1-\eps)\mathbf 1[F(X_s)(v)=s']+\eps/|\A|$, where $F(X_s)(v)$ depends on $X_s$ only on $v+\mathcal N$. Hence, for a window $S$ and $w\in\A^S$,
+\[
+\Prob_x\bigl(X_{s+1}|_S=w\bigr)=\sum_{y\in\A^{S+\mathcal N}}\Prob_x\bigl(X_s|_{S+\mathcal N}=y\bigr)\prod_{v\in S}\Bigl((1-\eps)\mathbf 1\bigl[F(y)(v)=w(v)\bigr]+\frac{\eps}{|\A|}\Bigr).
+\]
+where $F(y)(v)$ is the local rule applied to $y$ on $v+\mathcal N$. Apply this $t$ times, with $S=O+\mathcal N_{t-s-1}$ at step $s$, from $X_0|_{O+\mathcal N_t}=x|_{O+\mathcal N_t}$ to $X_t|_O$. Each step is a finite sum of products of rationals computable from $M$. So $\mathrm{Law}_x(X_t|_O)$ is a rational vector, computable from $M$, $O$, $t$ and $x|_{O+\mathcal N_t}$, and it depends on $x$ only through this restriction. The supremum over $x$ is a maximum over the finite set $\A^{O+\mathcal N_t}$, and the total variation distance of two rational vectors is rational.
+
+(ii) If $M$ halts, \eqref{pf:eq-forget} with $O=\{0\}$ gives $\delta^M_{\{0\}}(t)\to0$, so $t_{\mathrm{mix}}(M)<\infty$. If $M$ does not halt, let $\xi$ be a cloned tiling configuration. By \eqref{pf:eq-memory}, for every $t$,
+\[
+\delta^M_{\{0\}}(t)\ge\Prob_\xi\bigl(X_t(0)=\xi(0)\bigr)-\Prob_\bot\bigl(X_t(0)=\xi(0)\bigr)>1-2.02\,\eps>\tfrac12,
+\]
+so $t_{\mathrm{mix}}(M)=\infty$.
+
+(iii) Suppose $b$ is computable and $t_{\mathrm{mix}}(M)\le b(M)$ for every halting $M$. Given $M$, compute $\delta^M_{\{0\}}(b(M))$ by (i) and answer ``halts'' exactly when it is below $\frac12$. If $M$ halts, then $b(M)\ge t_{\mathrm{mix}}(M)$, so the value is below $\frac12$. If $M$ does not halt, the value exceeds $\frac12$ by the proof of (ii). This decides the halting problem, which is impossible.
+
+For the refutation time, let $M$ halt and $\tau=\tau(R_M)$. By \eqref{pf:eq-forget} with $|O|=1$, $\delta^M_{\{0\}}(t)<\frac12$ whenever $2^t>8\eps^{-\tau/a}$, that is, whenever $t>3+(\tau/a)\log_2(1/\eps)$. So $t_{\mathrm{mix}}(M)\le4+\tau L$ with $L=\lceil\log_2(1/\eps)\rceil$, since $a\ge1$. A computable $b$ with $\tau(R_M)\le b(M)$ for every halting $M$ would give the computable bound $4+b(M)L$ on $t_{\mathrm{mix}}(M)$, which we have excluded.
+\end{proof}
+
+The process and the all-bottom start are invariant under translations of $\Z^{2+k}$, so $\delta^M_{\{v\}}=\delta^M_{\{0\}}$ for every site $v$. Restricting to a smaller window does not increase total variation, so $\delta^M_O\ge\delta^M_{\{0\}}$ for every nonempty window $O$. The conclusions of \cref{cor:mixing} therefore hold for the mixing time of every nonempty window. Forgetting happens for every halting member, but its onset is not computably bounded. The bound \eqref{pf:eq-forget} reads $\delta^M_O(t)\le2^{-(t-t_1)}$ with $t_1=(\tau(R_M)/a)\log_2(1/\eps)+\log_2(4|O|)$: a delay set by the refutation time, followed by decay at a rate that does not depend on $M$.
+
+Ergodicity also has an equilibrium reading. A PCA on $\Z^d$ with a strictly positive transition table defines a Gibbs specification on $\Z^{d+1}$, its space-time interaction, in which time is one more lattice direction \cite{DM26}. For $F^{[k]}_{R_M}$ with uniform replacement noise at rate $\eps$, the table is
+\[
+p_M(s\mid y)=(1-\eps)\,\mathbf 1\bigl[s=f_M(y)\bigr]+\frac{\eps}{|\A_{R_M}|},\qquad s\in\A_{R_M},\ y\in\A_{R_M}^{\mathcal N},
+\]
+where $f_M$ is the local rule of $F^{[k]}_{R_M}$ on $\mathcal N$. Each entry is at least $\eps/|\A_{R_M}|>0$. Write a space-time point as $(v,t)\in\Z^{2+k}\times\Z$; its parents are the points $(v+w,t-1)$, $w\in\mathcal N$. The \emph{space-time interaction} $\Psi_M$ assigns to each point $(v,t)$ the energy $-\log p_M\bigl(\omega(v,t)\mid\omega\text{ at the parents of }(v,t)\bigr)$ of a configuration $\omega\in\A_{R_M}^{\Z^{3+k}}$. It has finite range and is invariant under all translations of $\Z^{3+k}$. A \emph{Gibbs measure} for $\Psi_M$ is a DLR state of its specification, as defined in \cite{DM26}.
+
+\begin{corollary}[Space-time Gibbs measures]\label{cor:gibbs}
+Let $\eps\in(0,\eps_0]$. If $M$ halts, $\Psi_M$ has exactly one translation-invariant Gibbs measure. If $M$ does not halt, it has at least two. For rational $\eps$, the table $p_M$ is computable from $M$; so it is undecidable whether a member of this computable family of finite-range, translation-invariant interactions on $\Z^{3+k}$ has a unique translation-invariant Gibbs measure.
+\end{corollary}
+
+\begin{proof}
+We use three results of \cite{DM26}, stated there for every spatial dimension, every finite alphabet with at least two symbols, every finite neighbourhood containing the origin, and every strictly positive table. Our process fits: the alphabet is finite, $\mathcal N$ is finite and contains $0=(0,c_0)$, and every entry of $p_M$ is positive. The three results are: the lemma that PCA histories satisfy the DLR equations, so that every two-sided stationary trajectory law is a Gibbs measure; the corollary that periodic states are stationary trajectories, which with that lemma identifies the translation-invariant Gibbs measures with the trajectory laws of translation-invariant stationary laws, the correspondence of Goldstein, Kuik, Lebowitz and Maes \cite{GKLM89}; and item~(i) of the theorem on the Gibbs simplex of an ergodic PCA: an ergodic strictly positive PCA has exactly one periodic, in particular one translation-invariant, Gibbs measure. The notion of ergodicity in \cite{DM26}, a stationary law that attracts every initial law, is the one of \cref{set:def-ergodic}.
+
+If $\A_{R_M}=\{\bot\}$, then $R_M$ has no legal $3\times3$ block, so it does not tile and $M$ halts by \cref{thm:width}. The configuration space is then one point, which carries exactly one measure, and the claim holds. Otherwise $\A_{R_M}$ has at least three symbols.
+
+Suppose $M$ halts. By \cref{thm:main} the process is ergodic, with invariant measure $\pi$. The process commutes with the translations of $\Z^{2+k}$, so every translate of $\pi$ is invariant, and $\pi$ is translation invariant by uniqueness. Its two-sided stationary trajectory law is invariant under all translations of $\Z^{3+k}$ and is a Gibbs measure. By the theorem on the Gibbs simplex, item~(i), it is the only translation-invariant one.
+
+Suppose $M$ does not halt. By \cref{thm:width}, $R_M$ tiles, so the set $\mathcal T_M\subseteq R_M^{\Z^2}$ of tilings is nonempty. It is closed in the compact product space and invariant under the shifts of $\Z^2$. Fix $z_0\in\mathcal T_M$ and let $m_n$ be the average of the point masses at the translates $z_0(\cdot+w)$, $w\in[-n,n]^2$. A weak limit point $m$ of $(m_n)$ is a probability measure on $\mathcal T_M$, and it is shift invariant: for a unit vector $e$ of $\Z^2$, the measures $m_n$ and their translates by $e$ differ by at most $2(2n+1)/(2n+1)^2$ in total variation. For a tiling $z$ let $\xi_z$ be its cloned tiling configuration. The map $z\mapsto\xi_z$ is continuous, since $\xi_z(u,P)$ depends on $z$ only on $u+\Lambda$. It satisfies $\xi_{z(\cdot+w)}=\xi_z(\cdot+(w,0))$, and $\xi_z$ is invariant under translations of the transverse coordinate. So the image $\kappa$ of $m$ is a probability measure on $\Omega$ that is invariant under all translations of $\Z^{2+k}$.
+
+Fix a site $v$. The function $x\mapsto\Prob_x(X_t(v)\text{ is live})$ depends on finitely many coordinates of $x$, and by \eqref{pf:eq-memory} it exceeds $1-1.01\eps$ at every $\xi_z$. By the mixture formula of \cref{sec:setting}, $\Prob_\kappa(X_t(v)\text{ is live})\ge1-1.01\eps$ for every $t$. The laws $\kappa\Phi^t$ are translation invariant, because $\kappa$ is and the process commutes with translations. By \cref{set:feller}, the averages $\frac1n\sum_{t<n}\kappa\Phi^t$ have a weak limit point $\pi^+$, which is invariant. It is translation invariant, as a weak limit of translation-invariant measures, and $\pi^+(\omega(v)\text{ is live})\ge1-1.01\eps$, because the cylinder is open and closed. In the same way the averages from the all-bottom configuration, which is translation invariant, have an invariant, translation-invariant limit point $\pi^-$, with $\pi^-(\omega(v)\text{ is live})\le1.01\eps$ by \eqref{pf:eq-memory}. As $1.01\eps<1-1.01\eps$, the measures $\pi^+$ and $\pi^-$ differ.
+
+For an invariant $\pi$, its two-sided stationary trajectory law is the measure on $\A_{R_M}^{\Z^{3+k}}$ whose restriction to the times $t_0,\dots,t_0+n$ is the law of $(X_0,\dots,X_n)$ under $\mathrm{Law}_\pi$; these restrictions are consistent because $\pi$ is invariant, and Kolmogorov's theorem gives the measure. For $\pi=\pi^\pm$ it is invariant under time translations, and under space translations because $\pi^\pm$ is and the process commutes with them. So both trajectory laws are translation-invariant Gibbs measures. Their marginals at time $0$ are $\pi^+\ne\pi^-$, so they differ.
+
+The last claim follows: an algorithm deciding uniqueness of the translation-invariant Gibbs measure for the tables $p_M$ would decide halting.
+\end{proof}
+
+\begin{remark}[Arithmetical placement]\label{pf:arith}
+For a PCA with a strictly positive rational table, ergodicity is a $\Pi^0_2$ property of the table \cite{DM26}. The reason is short. By Halawi's theorem \cite{Halawi22}, an ergodic positive PCA is uniformly ergodic. So ergodicity says: for every window $O$ and every $m\ge1$ there is $t$ with $\Delta_O(t)<1/m$, where $\Delta_O(t)=\sup_{x,y}\dtv\bigl(\mathrm{Law}_x(X_t|_O),\mathrm{Law}_y(X_t|_O)\bigr)$. The argument of \cref{cor:mixing}(i) computes $\Delta_O(t)$ exactly, and $\Delta_O(t)$ does not increase with $t$ \cite{DM26}. \Cref{thm:main} gives a lower bound at the first level. For each rational $\eps\in(0,\eps_0]$, the computable map $M\mapsto F^{[k]}_{R_M}$ reduces the halting problem to ergodicity at rate $\eps$. So ergodicity of positive-rate PCA on $\Z^{2+k}$ at the fixed rate $\eps$, with uniform replacement, is $\Sigma^0_1$-hard, and non-ergodicity is $\Pi^0_1$-hard; in particular the non-ergodic members do not form a computably enumerable set. Whether ergodicity at a fixed rate is $\Pi^0_2$-complete is not settled by \cref{thm:main}.
+\end{remark}

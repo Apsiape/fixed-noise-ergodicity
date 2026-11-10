@@ -1,0 +1,295 @@
+\section{Bounded-width refutations give forgetting}\label{sec:forgetting}
+
+This section proves \cref{thm:forgetting}. If $R$ is $j$-token refutable and $k\ge\max(2,2j)$, then the noisy rule $F^{[k]}_R$ forgets its initial configuration at every noise rate below a threshold that depends only on $k$. The refutation time enters the bound only through a constant factor.
+
+The proof has four steps. First, a violated tuple of tokens that carries no replacement has violated parent tuples in at least $k+1-j$ provider planes, all on one common set of at most $j$ planar sites (\cref{fgt:transport}). Second, a pigeonhole step turns this into a binary field $E$. The field is computed from the replacement indicators alone, and after the refutation time it covers every live site of every run (\cref{fgt:cover,fgt:live}). Third, Toom's contour argument bounds the size of an explanation of a marked point by the number of replacements in it (\cref{lem:contour}). Fourth, contours placed along a discrepancy path in disjoint time slabs force linearly many distinct replacements (\cref{fgt:packing}), and a Peierls count ends the proof (\cref{fgt:sec-proof}). The field $E$ (\cref{def:domination}) and the contour lemma (\cref{lem:contour}) are stated in the generality in which the proof of \cref{thm:memory} uses them again.
+
+\subsection{Setting and statement}\label{fgt:sec-setting}
+
+Throughout this section $j\ge1$ and $k\ge\max(2,2j)$ are integers, $q=k+1$, and $R$ is a Wang set with live symbols $L_R$. We write $F=F^{[k]}_R$. A site of $\Z^{2+k}=\Z^2\times\Z^k$ is written $v=(u,P)$, with planar part $u\in\Z^2$ and transverse part $P=(P_1,\dots,P_k)\in\Z^k$. The providers are $c_0=0$ and $c_i=e_i$ for $1\le i\le k$, and $\bar D=D\cup\{0\}=\{-1,0,1\}^2$. The value $C(x(\cdot,P))(u)$ depends only on the symbols $x(u+d,P)$ with $d\in\bar D$. Hence $F(x)(v)$ depends only on the restriction of $x$ to
+\begin{equation}\label{fgt:eq-nbhd}
+\mathcal N(v)=\bigl\{(u+d,\,P+c_i):\ d\in\bar D,\ 0\le i\le k\bigr\}.
+\end{equation}
+
+\paragraph{Noise and coupling.}
+Let $\eta_t(v)\in\{0,1\}$ and $\zeta_t(v)\in\A_R$, for $t\ge1$ and $v\in\Z^{2+k}$, be independent random variables with $\Prob(\eta_t(v)=1)=\eps$ and $\zeta_t(v)$ uniform on $\A_R$. The run from a configuration $x$ is given by $X_0=x$ and, for $t\ge1$,
+\begin{equation}\label{fgt:eq-run}
+X_t(v)=\begin{cases}\zeta_t(v)&\text{if }\eta_t(v)=1,\\ F(X_{t-1})(v)&\text{if }\eta_t(v)=0.\end{cases}
+\end{equation}
+Its law is $\mathrm{Law}_x$. A space-time point $(v,t)$ with $t\ge1$ and $\eta_t(v)=1$ is an \emph{event}. Being an event does not depend on the value $\zeta_t(v)$: a replacement whose value equals $F(X_{t-1})(v)$ is still an event. The \emph{common-noise coupling} runs $X$ from $x$ and $Y$ from $\bot$ with the same variables $\eta$ and $\zeta$. Then $Y$ has law $\mathrm{Law}_\bot$.
+
+\paragraph{Token tables.}
+We recall the token tables. Fix $r\ge0$ and the box $V=\{-r,\dots,r\}^2$. A \emph{table} $S$ assigns to each position tuple $\mathbf z=(z_1,\dots,z_j)\in V^j$ a set $S(\mathbf z)$ of symbol tuples $\mathbf b=(b_1,\dots,b_j)\in L_R^j$. Token $l$ sits at $z_l$ and carries $b_l$. We write $\mathbf b[l\leftarrow b]$ and $\mathbf z[l\leftarrow z]$ for the tuples with entry $l$ replaced. We write $S\subseteq S'$ if $S(\mathbf z)\subseteq S'(\mathbf z)$ for every $\mathbf z$. Three rules delete $\mathbf b$ from $S(\mathbf z)$, with $S$ itself as the reference table:
+\begin{itemize}
+\item the \emph{coincidence rule}, if $z_l=z_{l'}$ and $b_l\ne b_{l'}$ for some $l,l'$;
+\item the \emph{clone rule}, if $\mathbf b[l'\leftarrow b_l]\notin S(\mathbf z[l'\leftarrow z_l])$ for some $l\ne l'$;
+\item the \emph{move rule}, if for some $l$ and some $d\in D$ with $z_l+d\in V$ there is no live symbol $b$ such that $b_l$ at $z_l$ and $b$ at $z_l+d$ are compatible and $\mathbf b[l\leftarrow b]\in S(\mathbf z[l\leftarrow z_l+d])$.
+\end{itemize}
+$\mathrm{Inst}(S)$ is obtained from $S$ by applying the coincidence and clone rules, one deletion at a time, until neither applies. $\mathrm{Timed}(S)$ is obtained from $S$ by deleting at once every tuple that the move rule deletes with reference $S$. Let $S_{\mathrm{all}}(\mathbf z)=L_R^j$ for every $\mathbf z$, and put
+\[
+S_0=\mathrm{Inst}(S_{\mathrm{all}}),\qquad S_{n+1}=\mathrm{Inst}(\mathrm{Timed}(S_n))\quad(n\ge0).
+\]
+The set $R$ is \emph{$j$-token refutable with time $\tau$} if $S_\tau(0,\dots,0)=\emptyset$ for some $r$.
+
+For $w\in\Z^2$ and $\mathbf z\in(w+V)^j$ put $S^w_n(\mathbf z)=S_n(\mathbf z-w)$, where $\mathbf z-w=(z_1-w,\dots,z_j-w)$. Fix a run $X$. A pair $(\mathbf z,\mathbf b)$ with $\mathbf z\in(w+V)^j$ and $\mathbf b\in L_R^j$ is \emph{present at $(P,t)$} if $X_t(z_l,P)=b_l$ for every $l$. It is \emph{clean} if none of the points $((z_l,P),t)$ is an event. It \emph{violates} $S^w_n$ if $\mathbf b\notin S^w_n(\mathbf z)$.
+
+\begin{theorem}[forgetting]\label{thm:forgetting}
+Let $j\ge1$ and $k\ge\max(2,2j)$, and put $q=k+1$, $a=2q^2+1$ and $D_0=50q$. Let $R$ be a Wang set that is $j$-token refutable with time $\tau$. Let $0<\eps<1$ be such that $\beta=2D_0^2\eps^{1/a}<1$. Under the common-noise coupling, for every configuration $x$, every site $v$ and every time $t\ge0$,
+\begin{equation}\label{fgt:eq-main}
+\Prob\bigl(X_t(v)\ne Y_t(v)\bigr)\le 2\eps^{-\tau/a}\,\frac{\beta^t}{1-\beta}.
+\end{equation}
+Consequently, for every finite set $O\subset\Z^{2+k}$ and every $t\ge0$,
+\begin{equation}\label{fgt:eq-tv}
+\sup_x\ \dtv\bigl(\mathrm{Law}_x(X_t|_O),\,\mathrm{Law}_\bot(X_t|_O)\bigr)\le 2|O|\,\eps^{-\tau/a}\,\frac{\beta^t}{1-\beta},
+\end{equation}
+which tends to $0$ as $t\to\infty$. So the noisy rule forgets its initial configuration, and it is ergodic.
+\end{theorem}
+
+\begin{remark}\label{fgt:rem-constants}
+The rate $\beta$ depends only on $k$ and $\eps$. The set $R$, the box and the time $\tau$ enter only through the factor $\eps^{-\tau/a}$. If $0<\eps\le\eps_k=(4D_0^2)^{-a}$, then $\beta\le2D_0^2(4D_0^2)^{-1}=1/2$. The hypothesis $k\ge2j$ is used once, in the pigeonhole step of \cref{fgt:cover}.
+\end{remark}
+
+\subsection{Instant rules and transport}\label{fgt:sec-transport}
+
+A table $S'$ is \emph{closed} if neither the coincidence rule nor the clone rule, with reference $S'$, deletes a tuple of $S'$, as in \cref{set:tables}.
+
+\begin{lemma}\label{fgt:stable}
+Let $S$ be a table.
+\begin{enumerate}[label=(\alph*)]
+\item $\mathrm{Inst}(S)$ is the largest closed table contained in $S$. In particular it does not depend on the order of the deletions.
+\item Let $\mathcal Q$ be a set of pairs $(\mathbf z,\mathbf b)\in V^j\times L_R^j$ with three properties: if $z_l=z_{l'}$ then $b_l=b_{l'}$; if $(\mathbf z,\mathbf b)\in\mathcal Q$ and $l\ne l'$, then $(\mathbf z[l'\leftarrow z_l],\mathbf b[l'\leftarrow b_l])\in\mathcal Q$; and $\mathbf b\in S(\mathbf z)$ for every $(\mathbf z,\mathbf b)\in\mathcal Q$. Then $\mathbf b\in\mathrm{Inst}(S)(\mathbf z)$ for every $(\mathbf z,\mathbf b)\in\mathcal Q$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) This is \cref{set:tables}(i).
+
+(b) Let $S^*=\mathrm{Inst}(S)$, which is closed by (a), and let $S'(\mathbf z)=S^*(\mathbf z)\cup\{\mathbf b:(\mathbf z,\mathbf b)\in\mathcal Q\}$. Then $S'\subseteq S$. The table $S'$ is closed. For a pair of $\mathcal Q$, the coincidence rule does not apply by the first property, and the clone rule consults a member of $\mathcal Q$ by the second. A tuple of $S^*$ is kept because $S^*$ is closed and $S^*\subseteq S'$. By (a), $S'\subseteq S^*=\mathrm{Inst}(S)$.
+\end{proof}
+
+Present pairs give such families. Fix a run, $w$, $P$, $t$ and a set $Z\subseteq w+V$. Let $\mathcal Q$ consist of the pairs $(\mathbf z-w,\mathbf b)$ such that $(\mathbf z,\mathbf b)$ is present at $(P,t)$ and all positions of $\mathbf z$ lie in $Z$. Two tokens on one site read the one symbol there, and cloning a token of a present pair gives a present pair. So $\mathcal Q$ has the first two properties of \cref{fgt:stable}(b).
+
+The rule $F$ commutes with planar translations. Replacing $X_t(u,P)$ by $X_t(u+w,P)$, and the noise variables likewise, therefore turns a run into a run, present pairs on $w+V$ into present pairs on $V$, and $S^w_n$ into $S_n$. So it suffices to state the next lemma for every $w$ and to prove it for $w=0$.
+
+\begin{lemma}[transport]\label{fgt:transport}
+Fix a configuration $x$, a realisation of the noise, and the run $X$ from $x$. Let $w\in\Z^2$, $P\in\Z^k$, $t\ge1$ and $n\ge1$. Let $(\mathbf z,\mathbf b)$, with $\mathbf z\in(w+V)^j$, be a clean pair present at $(P,t)$ that violates $S^w_n$. Then there exist
+\begin{itemize}
+\item a set $\Gamma\subseteq w+V$ with $|\Gamma|\le j$,
+\item a map $\pi:\Gamma\to\{z_1,\dots,z_j\}$ with $z-\pi(z)\in\bar D$ for every $z\in\Gamma$, and
+\item a set $I\subseteq\{0,\dots,k\}$ with $|I|\ge k+1-j$,
+\end{itemize}
+such that the following holds for every $i\in I$: there is a pair $(\mathbf z',\mathbf b')$ with $\mathbf z'\in\Gamma^j$ that is present at $(P+c_i,t-1)$ and violates $S^w_{n-1}$.
+\end{lemma}
+
+In the statement, $\Gamma$ and $\pi$ are chosen before the index $i$. The same set $\Gamma$ and the same map $\pi$ serve every $i\in I$; only the pair $(\mathbf z',\mathbf b')$ depends on $i$.
+
+\begin{proof}
+We take $w=0$ and write $S_n$ for $S^0_n$. For $t\ge1$ let $y_{t-1}$ be the configuration obtained by applying $C$ to $X_{t-1}$ in every plane, so that $y_{t-1}(u,P')=C(X_{t-1}(\cdot,P'))(u)$.
+
+\emph{Step 1: a tuple that fails the move round.} Let $\mathcal Q$ be the set of pairs present at $(P,t)$ whose positions lie in $\{z_1,\dots,z_j\}$. It has the first two properties of \cref{fgt:stable}(b). If every member $(\mathbf z',\mathbf b')$ of $\mathcal Q$ had $\mathbf b'\in\mathrm{Timed}(S_{n-1})(\mathbf z')$, then \cref{fgt:stable}(b) with $S=\mathrm{Timed}(S_{n-1})$ would give $\mathcal Q\subseteq\mathrm{Inst}(\mathrm{Timed}(S_{n-1}))=S_n$. This is false, since $(\mathbf z,\mathbf b)\in\mathcal Q$ and $\mathbf b\notin S_n(\mathbf z)$. So some $(\mathbf z^*,\mathbf b^*)\in\mathcal Q$ has $\mathbf b^*\notin\mathrm{Timed}(S_{n-1})(\mathbf z^*)$. Then either $\mathbf b^*\notin S_{n-1}(\mathbf z^*)$, or $\mathbf b^*\in S_{n-1}(\mathbf z^*)$ and the move rule with reference $S_{n-1}$ deletes it.
+
+\emph{Step 2: common providers.} The positions of $\mathbf z^*$ form a set of at most $j$ sites among $z_1,\dots,z_j$. Let $z$ be one of them. Say that the index $i$ \emph{succeeds} at $z$ if $y_{t-1}(z,P+c_i)=X_t(z,P)$. The point $((z,P),t)$ is not an event, because $(\mathbf z,\mathbf b)$ is clean, so $X_t(z,P)=F(X_{t-1})(z,P)$, and this value is live. By the definition of $F$, at least $k$ of the $k+1$ indices succeed at $z$, so at most one fails. Let $I$ be the set of indices that succeed at every position of $\mathbf z^*$. Then $|I|\ge k+1-j$. Let $i\in I$ and $1\le l\le j$. Then $y_{t-1}(z^*_l,P+c_i)=X_t(z^*_l,P)=b^*_l$, which is live. By the definition of $C$, $X_{t-1}(z^*_l,P+c_i)=b^*_l$, and for every $d\in D$ the symbol $X_{t-1}(z^*_l+d,P+c_i)$ is live and compatible with $b^*_l$ (the latter at $z^*_l$, the former at $z^*_l+d$).
+
+\emph{Step 3: the parents.} Suppose first that $\mathbf b^*\notin S_{n-1}(\mathbf z^*)$. Let $\Gamma$ be the set of positions of $\mathbf z^*$ and let $\pi$ be the identity. By Step 2, $(\mathbf z^*,\mathbf b^*)$ is present at $(P+c_i,t-1)$ for every $i\in I$, and it violates $S_{n-1}$.
+
+Otherwise the move rule deletes $\mathbf b^*$: there are $l$ and $d\in D$ with $z^*_l+d\in V$ such that no live symbol $b$ compatible with $b^*_l$ (with $b^*_l$ at $z^*_l$ and $b$ at $z^*_l+d$) has $\mathbf b^*[l\leftarrow b]\in S_{n-1}(\mathbf z')$, where $\mathbf z'=\mathbf z^*[l\leftarrow z^*_l+d]$. Let $\Gamma$ be the set of positions of $\mathbf z'$. Put $\pi(z^*_l+d)=z^*_l$ and $\pi(z)=z$ for the other points $z$ of $\Gamma$; then $z-\pi(z)\in\bar D$ for every $z\in\Gamma$. For $i\in I$ let $b_i=X_{t-1}(z^*_l+d,P+c_i)$. By Step 2, $b_i$ is live and compatible with $b^*_l$, so $\mathbf b^*[l\leftarrow b_i]\notin S_{n-1}(\mathbf z')$. The pair $(\mathbf z',\mathbf b^*[l\leftarrow b_i])$ is present at $(P+c_i,t-1)$: the position $z^*_{l'}$, $l'\ne l$, carries $b^*_{l'}$ by Step 2, and the position $z^*_l+d$ carries $b_i$. If $z^*_l+d$ equals some $z^*_{l'}$, both statements describe the one symbol there.
+
+In both cases $\Gamma\subseteq V$ and $|\Gamma|\le j$. The positions of $\mathbf z^*$ lie in $\{z_1,\dots,z_j\}$, so $\pi$ maps into this set. The set $I$ was fixed in Step 2, and $\Gamma$ and $\pi$ are determined by $\mathbf z^*$, $\mathbf b^*$ and, in the second case, $l$ and $d$. All of these were chosen before any $i\in I$ was considered.
+\end{proof}
+
+The lemma is the only place where the quorum enters. Every provider that succeeds at all positions of the tuple carries a violating parent, and all these parents sit on the same set $\Gamma$.
+
+\subsection{A covering field computed from the noise}\label{fgt:sec-field}
+
+As in Toom's stability proofs \cite{Toom80,Gacs21}, we dominate the errors by a binary field that is driven by the noise alone.
+
+\begin{definition}[domination field]\label{def:domination}
+Let $\eta=(\eta_t(v))_{t\ge1,\,v\in\Z^{2+k}}$ be the replacement indicators. The \emph{domination field} $E_t(v)\in\{0,1\}$, for $t\ge0$ and $v\in\Z^{2+k}$, is defined recursively by $E_0\equiv0$ and, for $t\ge1$ and $v=(u,P)$, as follows. If $\eta_t(v)=1$, then $E_t(v)=1$. If $\eta_t(v)=0$, then $E_t(v)=1$ if and only if there are indices $i\ne i'$ in $\{0,\dots,k\}$ and offsets $d,d'\in\bar D$ with
+\begin{equation}\label{fgt:eq-E}
+E_{t-1}(u+d,\,P+c_i)=E_{t-1}(u+d',\,P+c_{i'})=1.
+\end{equation}
+\end{definition}
+
+The field $E$ is a function of the indicators $\eta$ alone. It does not depend on $R$, on the initial configuration or on the replacement values $\zeta$. In \eqref{fgt:eq-E} the two points with value $1$ lie in different planes, their planar offsets may differ, and the offset $0$ is allowed.
+
+\begin{lemma}[cover]\label{fgt:cover}
+Let $k\ge2j$. Fix a configuration $x$, a realisation of the noise and the run $X$ from $x$. Let $0\le n\le t$, $w\in\Z^2$ and $P\in\Z^k$. If a pair $(\mathbf z,\mathbf b)$ with $\mathbf z\in(w+V)^j$ is present at $(P,t)$ and violates $S^w_n$, then $E_t(z_l,P)=1$ for some $l$.
+\end{lemma}
+
+\begin{proof}
+We prove by induction on $n\ge0$ the statement
+\begin{itemize}
+\item[$(\mathrm C_n)$] for every $t\ge n$, every $w\in\Z^2$, every $P\in\Z^k$ and every pair $(\mathbf z,\mathbf b)$ with $\mathbf z\in(w+V)^j$ that is present at $(P,t)$ and violates $S^w_n$, there is an index $l$ with $E_t(z_l,P)=1$.
+\end{itemize}
+The configuration $x$ and the realisation of the noise stay fixed throughout.
+
+\emph{The case $n=0$.} Fix $t$, $w$ and $P$. The family $\mathcal Q$ of all pairs $(\mathbf z-w,\mathbf b)$ with $(\mathbf z,\mathbf b)$ present at $(P,t)$ has the first two properties of \cref{fgt:stable}(b), and it lies in $S_{\mathrm{all}}$. So every present pair lies in $S^w_0$. No pair satisfies the hypothesis of $(\mathrm C_0)$, and $(\mathrm C_0)$ holds.
+
+\emph{From $n-1$ to $n$.} Let $n\ge1$ and assume $(\mathrm C_{n-1})$. Fix $t\ge n$, $w$, $P$ and a pair $(\mathbf z,\mathbf b)$ with $\mathbf z\in(w+V)^j$ that is present at $(P,t)$ and violates $S^w_n$.
+
+If some point $((z_l,P),t)$ is an event, then $E_t(z_l,P)=1$ by \cref{def:domination}, since $t\ge1$. We are done in this case.
+
+Otherwise the pair is clean. Since $t\ge1$ and $n\ge1$, \cref{fgt:transport} applies. It gives a set $\Gamma$, a map $\pi$ and a set $I$ as there. We fix them now; nothing below changes them. For each $i\in I$ the lemma gives a pair $(\mathbf z^{(i)},\mathbf b^{(i)})$ with $\mathbf z^{(i)}\in\Gamma^j$ that is present at $(P+c_i,t-1)$ and violates $S^w_{n-1}$; fix one such pair for each $i$. Since $0\le n-1\le t-1$, the statement $(\mathrm C_{n-1})$, applied with time $t-1$, translate $w$, plane $P+c_i$ and the pair $(\mathbf z^{(i)},\mathbf b^{(i)})$, gives an index $l_i$ with
+\[
+E_{t-1}\bigl(z'_i,\,P+c_i\bigr)=1,\qquad\text{where }z'_i=z^{(i)}_{l_i}\in\Gamma.
+\]
+Now consider the map $i\mapsto\pi(z'_i)$ from $I$ to $\{z_1,\dots,z_j\}$. Its domain has $|I|\ge k+1-j\ge j+1$ elements, because $k\ge2j$, and its target has at most $j$ elements. So there are indices $i\ne i'$ in $I$ with $\pi(z'_i)=\pi(z'_{i'})$; call this point $z_l$. This comparison is possible because $\pi$ is one map, fixed before the indices $i$ were considered. Put $d=z'_i-z_l$ and $d'=z'_{i'}-z_l$. Since $z_l=\pi(z'_i)$, the defining property of $\pi$ gives $d\in\bar D$, and likewise $d'\in\bar D$. So
+\[
+E_{t-1}(z_l+d,\,P+c_i)=E_{t-1}(z_l+d',\,P+c_{i'})=1,\qquad i\ne i'.
+\]
+The point $((z_l,P),t)$ is not an event, because the pair is clean. By \cref{def:domination}, $E_t(z_l,P)=1$. This proves $(\mathrm C_n)$.
+\end{proof}
+
+\begin{corollary}\label{fgt:live}
+Let $k\ge2j$, and let $S_\tau(0,\dots,0)=\emptyset$ for the box $V$. Fix a configuration $x$, a realisation of the noise and the run $X$ from $x$. For every $t\ge\tau$ and every site $v$, if $X_t(v)$ is live then $E_t(v)=1$.
+\end{corollary}
+
+\begin{proof}
+Let $v=(u,P)$ and $X_t(v)=b$ live. The diagonal pair $((u,\dots,u),(b,\dots,b))$ is present at $(P,t)$ on $u+V$. It violates $S^u_\tau$, because $S^u_\tau(u,\dots,u)=S_\tau(0,\dots,0)=\emptyset$. \Cref{fgt:cover} with $n=\tau\le t$ and $w=u$ gives $E_t(u,P)=1$, since all positions equal $u$.
+\end{proof}
+
+The corollary holds for every initial configuration and every realisation of $\eta$ and $\zeta$, with the same field $E$. In particular it holds for both runs of the common-noise coupling.
+
+\subsection{Contours}\label{fgt:sec-contour}
+
+Let $\mathcal G$ be the graph with vertex set $\Z^2\times\Z^k\times\{0,1,2,\dots\}$ in which each vertex $(u,P,t)$ with $t\ge1$ is joined to the points $(u+d,P+c_i,t-1)$, $d\in\bar D$, $0\le i\le k$. We call $(u+d,P+c_i,t-1)$ a \emph{lower neighbour of $(u,P,t)$ through provider $i$}. We identify $(u,P,t)$ with the space-time point $(v,t)$, $v=(u,P)$. Every edge of $\mathcal G$ joins two consecutive times. A vertex has at most $9q$ lower and $9q$ upper neighbours, so every degree is at most $18q\le D_0$. By \eqref{fgt:eq-nbhd}, $(v',t-1)$ is a lower neighbour of $(v,t)$ whenever $v'\in\mathcal N(v)$.
+
+The next lemma is Toom's contour argument \cite{Toom80}; see also \cite{Gacs21}. The poles, the charges, the linear functions that sum to zero, and the splitting of frontier components in Step~3 below follow \cite[Theorem~33, Definitions~35 and~37, Lemma~36]{SST26}. We state it for any set of vertices in which every non-fault has two lower neighbours through different providers. Only the sinks need to be distinct faults; arms may meet and may pass through the same vertices. We include the proof to keep the section self-contained.
+
+\begin{lemma}[contours]\label{lem:contour}
+Let $\mathcal U$ be a set of vertices of $\mathcal G$, all of positive time, and let $\mathcal U_{\mathrm f}\subseteq\mathcal U$; we call the points of $\mathcal U_{\mathrm f}$ \emph{faults}. Suppose that every vertex of $\mathcal U\setminus\mathcal U_{\mathrm f}$ has two lower neighbours in $\mathcal U$ through different providers. Let $\rho=(v,t_\rho)\in\mathcal U\setminus\mathcal U_{\mathrm f}$. Then there are an integer $m\ge2$, a set $\Sigma\subseteq\mathcal U_{\mathrm f}$ of $m$ faults and a finite set $K$ of edges of $\mathcal G$ with the following properties.
+\begin{enumerate}[label=(\roman*)]
+\item The edges of $K$ form a connected graph. Each edge of $K$ joins a vertex of $\mathcal U\setminus\mathcal U_{\mathrm f}$ to one of its lower neighbours in $\mathcal U$. The vertices of $K$ lie in $\mathcal U$ and include $\rho$ and every point of $\Sigma$.
+\item $1\le|K|\le q^2(m-1)$. In particular $|\Sigma|=m\ge1+|K|/q^2$.
+\item Let $s$ be the least time of a point of $\Sigma$. Every vertex of $K$ has time in $[s,t_\rho]$, and $t_\rho-s\le q^2(m-1)$.
+\end{enumerate}
+In particular, fix a realisation of the indicators $\eta$, let $E$ be the domination field of \cref{def:domination}, and let $\rho=(v,t_\rho)$ with $t_\rho\ge1$, $E_{t_\rho}(v)=1$ and $\eta_{t_\rho}(v)=0$. Then there is a set $K$ of $n=|K|\ge1$ edges of $\mathcal G$, each joining a vertex to one of its lower neighbours, that forms a connected graph containing $\rho$, whose vertices include $m$ distinct events, and with $n\le q^2(m-1)$.
+\end{lemma}
+
+A vertex $(v,t)$ is \emph{marked} if $E_t(v)=1$. The last assertion of \cref{lem:contour} is the case in which $\mathcal U$ is the set of marked vertices and $\mathcal U_{\mathrm f}$ is the set of events. These sets satisfy the hypothesis of the lemma. Indeed, marked vertices have positive time because $E_0\equiv0$; events are marked by \cref{def:domination}; and by \eqref{fgt:eq-E} a marked vertex that is not an event has two marked lower neighbours through different providers, at offsets in $\bar D$.
+
+\begin{proof}[Proof of \cref{lem:contour}]
+The last assertion follows from the general one, applied to the sets of the preceding paragraph, which satisfy its hypothesis; we prove the general assertion.
+
+\emph{Step 1: the support graph.} For every vertex $\theta\in\mathcal U\setminus\mathcal U_{\mathrm f}$ fix once and for all two lower neighbours $\theta^{(1)},\theta^{(2)}\in\mathcal U$ of $\theta$ through different providers, the \emph{supports} of $\theta$. They lie in different planes, so they are distinct. Let $\mathcal B$ be the set of vertices reached from $\rho$ by following supports, including $\rho$. It is contained in $\mathcal U$. Times decrease by one along each support and stay positive, so $\mathcal B$ is finite. The faults in $\mathcal B$ are the \emph{terminals}; let $\Phi=\mathcal B\cap\mathcal U_{\mathrm f}$ be the set of terminals. Every other vertex of $\mathcal B$, including $\rho$, has both supports in $\mathcal B$. For $\theta\in\mathcal B$ let $\Phi(\theta)$ be the set of terminals reached from $\theta$. Following supports from $\theta$ ends at a terminal, so $\Phi(\theta)\ne\emptyset$. Moreover $\Phi(\rho)=\Phi$, and
+\begin{equation}\label{fgt:eq-Phi}
+\Phi(\varphi)=\{\varphi\}\ \text{for }\varphi\in\Phi,\qquad \Phi(\theta)=\Phi(\theta^{(1)})\cup\Phi(\theta^{(2)})\ \text{for }\theta\in\mathcal B\setminus\Phi.
+\end{equation}
+
+\emph{Step 2: charges, arms and the potential.} The \emph{charges} are the indices $i\in\{0,\dots,k\}$. An edge from a vertex to its lower neighbour through provider $i'$ is \emph{good} for charge $i$ if $i'\ne i$. The two supports of a non-terminal vertex $\theta$ come through different providers, so for each charge $i$ at least one of them is reached by a good edge; fix such a support $g_i(\theta)$. A \emph{pole} $\sigma$ consists of a non-terminal vertex $\theta_\sigma\in\mathcal B$, its \emph{location}, and a \emph{first step} $f_i(\sigma)\in\{\theta_\sigma^{(1)},\theta_\sigma^{(2)}\}$ for each charge $i$. Its \emph{arm} of charge $i$ is the path
+\[
+\theta_\sigma,\ f_i(\sigma),\ g_i(f_i(\sigma)),\ g_i(g_i(f_i(\sigma))),\ \dots
+\]
+stopped at its first terminal. Let $\mathrm{end}_i(\sigma)\in\Phi(f_i(\sigma))$ be the last vertex of this arm. Every arm has at least one edge, and every edge of an arm except possibly the first is good for its charge. The \emph{root pole} $\sigma_\rho$ has location $\rho$ and first steps $f_i(\sigma_\rho)=g_i(\rho)$, so all its edges are good.
+
+For $P\in\Z^k$ and $t\ge0$ put
+\[
+\psi_0(P,t)=q(P_1+\dots+P_k)+kt,\qquad \psi_i(P,t)=-qP_i-t\quad(1\le i\le k),
+\]
+and $\psi_i(\theta)=\psi_i(P,t)$ for $\theta=(u,P,t)$. Then
+\begin{equation}\label{fgt:eq-sum}
+\sum_{i=0}^k\psi_i(\theta)=0\qquad\text{for every vertex }\theta.
+\end{equation}
+Let $\theta'$ be a lower neighbour of $\theta$ through provider $i'$. The function $\psi_0$ changes by $-k$ if $i'=0$ and by $q-k=1$ otherwise. For $i\ge1$, the function $\psi_i$ changes by $1-q=-k$ if $i'=i$ and by $1$ otherwise. Hence
+\begin{equation}\label{fgt:eq-incr}
+\psi_i(\theta')-\psi_i(\theta)=\begin{cases}1&\text{if }i'\ne i,\\-k&\text{if }i'=i.\end{cases}
+\end{equation}
+So a good edge raises the function of its charge by exactly $1$, and any edge lowers it by at most $k$.
+
+\emph{Step 3: the poles.} List the non-terminal vertices of $\mathcal B$ as $\theta_1=\rho,\theta_2,\dots,\theta_N$ in order of non-increasing time. Put $W_0=\{\rho\}$. For $1\le h\le N$ let $W_h$ be the set of vertices of $\mathcal B\setminus\{\theta_1,\dots,\theta_h\}$ that are supports of at least one of $\theta_1,\dots,\theta_h$. On $W_h$ join $\theta$ and $\theta'$ if $\Phi(\theta)\cap\Phi(\theta')\ne\emptyset$. For a connected component $\mathcal K$ of this graph put $\Phi(\mathcal K)=\bigcup_{\theta\in\mathcal K}\Phi(\theta)$. We use four facts.
+
+(a) For $0\le h<N$, we have $\theta_{h+1}\in W_h$ and $W_{h+1}=(W_h\setminus\{\theta_{h+1}\})\cup\{\theta_{h+1}^{(1)},\theta_{h+1}^{(2)}\}$. For $h=0$ this is the definition. Let $h\ge1$. The vertex $\theta_{h+1}\ne\rho$ is a support of some vertex of $\mathcal B$. That vertex is non-terminal and has larger time, so it is among $\theta_1,\dots,\theta_h$. The supports of $\theta_{h+1}$ have smaller time than $\theta_{h+1}$, so they are not among $\theta_1,\dots,\theta_{h+1}$. The formula follows.
+
+(b) For each $h$, the sets $\Phi(\mathcal K)$, over the components $\mathcal K$ of $W_h$, partition $\Phi$. They are disjoint by the definition of the graph. Their union $\bigcup_{\theta\in W_h}\Phi(\theta)$ equals $\Phi(\rho)=\Phi$ for $h=0$, and by (a) and \eqref{fgt:eq-Phi} it does not change from $h$ to $h+1$.
+
+(c) $W_N=\Phi$, and the components of $W_N$ are single terminals. Indeed $W_N$ contains no non-terminal vertex, so $\Phi(\theta)=\{\theta\}$ for $\theta\in W_N$, and (b) gives $W_N=\Phi$. Two distinct terminals are not joined.
+
+(d) Let $\theta=\theta_{h+1}$, let $\mathcal K$ be its component in $W_h$, and let $\mathcal K'=(\mathcal K\setminus\{\theta\})\cup\{\theta^{(1)},\theta^{(2)}\}$. Then the components of $W_{h+1}$ are the components of $W_h$ other than $\mathcal K$, together with one or two components whose union is $\mathcal K'$. Each of the latter contains $\theta^{(1)}$ or $\theta^{(2)}$, and $\Phi(\mathcal K')=\Phi(\mathcal K)$.
+
+To prove (d), note first that a support $\theta^{(l)}$ lying in $W_h$ lies in $\mathcal K$, because $\emptyset\ne\Phi(\theta^{(l)})\subseteq\Phi(\theta)$. So $W_{h+1}$ is the disjoint union of $W_h\setminus\mathcal K$ and $\mathcal K'$. By \eqref{fgt:eq-Phi}, $\Phi(\mathcal K')=\Phi(\mathcal K)$, and this set is disjoint from $\Phi(\theta')$ for every $\theta'\in W_h\setminus\mathcal K$. So no vertex of $\mathcal K'$ is joined to a vertex outside $\mathcal K'$, and the components of $W_h$ other than $\mathcal K$ remain components. Now let $\theta'\in\mathcal K\setminus\{\theta\}$, and take a shortest path $\theta'=\theta'_0,\theta'_1,\dots,\theta'_p=\theta$ in $\mathcal K$. Its vertices other than $\theta$ lie in $\mathcal K'$, and $\Phi(\theta'_{p-1})$ meets $\Phi(\theta)=\Phi(\theta^{(1)})\cup\Phi(\theta^{(2)})$. So $\theta'$ is joined inside $\mathcal K'$ to $\theta^{(1)}$ or to $\theta^{(2)}$.
+
+We now choose finite sets $\mathcal P_0\subseteq\mathcal P_1\subseteq\dots\subseteq\mathcal P_N$ of poles with the following property.
+\begin{itemize}
+\item[$(\mathrm I_h)$] For every component $\mathcal K$ of $W_h$ and every charge $i$, exactly one pole $\sigma\in\mathcal P_h$ has $\mathrm{end}_i(\sigma)\in\Phi(\mathcal K)$.
+\end{itemize}
+Put $\mathcal P_0=\{\sigma_\rho\}$. Property $(\mathrm I_0)$ holds, since $W_0$ has the single component $\{\rho\}$ and $\Phi(\rho)=\Phi$. Suppose $(\mathrm I_h)$ holds, and let $\theta$, $\mathcal K$ and $\mathcal K'$ be as in (d). If $\mathcal K'$ is connected, put $\mathcal P_{h+1}=\mathcal P_h$. Otherwise $\mathcal K'$ has two components, $\mathcal K_1\ni\theta^{(1)}$ and $\mathcal K_2\ni\theta^{(2)}$. For each charge $i$, the unique pole of $\mathcal P_h$ whose arm of charge $i$ ends in $\Phi(\mathcal K)=\Phi(\mathcal K_1)\cup\Phi(\mathcal K_2)$ ends in exactly one of these two sets; let $\iota(i)\in\{1,2\}$ be the index of the other one. Let $\mathcal P_{h+1}$ be $\mathcal P_h$ together with the pole $\sigma_\theta$ located at $\theta$ with first steps $f_i(\sigma_\theta)=\theta^{(\iota(i))}$. Its arm of charge $i$ ends in $\Phi(\theta^{(\iota(i))})\subseteq\Phi(\mathcal K_{\iota(i)})$. In both cases $(\mathrm I_{h+1})$ follows from (d): the other components keep their terminal sets and their poles, and the arms of the new pole end in $\Phi(\mathcal K)$.
+
+Let $\mathcal P=\mathcal P_N$. By (c) and $(\mathrm I_N)$,
+\begin{equation}\label{fgt:eq-bij}
+\text{for every terminal }\varphi\text{ and every charge }i,\ \text{exactly one pole }\sigma\in\mathcal P\text{ has }\mathrm{end}_i(\sigma)=\varphi.
+\end{equation}
+Every pole other than $\sigma_\rho$ was added at a split; its first steps are arbitrary supports, and all later edges of its arms are good.
+
+\emph{Step 4: the contour.} Build an abstract graph $H$ as follows. Take a separate copy of every arm of every pole of $\mathcal P$, as a path graph whose vertices are labelled by the vertices of $\mathcal B$ that the arm visits. Identify the initial vertices of the $q$ arms of each pole $\sigma$ into one vertex, the \emph{source} of $\sigma$. Identify all final vertices labelled by the same terminal $\varphi$ into one vertex, the \emph{sink} of $\varphi$. The other vertices of $H$ are \emph{interior}. Each edge of $H$ joins two vertices whose labels are joined in $\mathcal G$.
+
+Let $H_\rho$ be the connected component of $H$ that contains the source of $\sigma_\rho$. Let $\mathcal P_\rho$ be the set of poles whose sources lie in $H_\rho$, and $\Phi_\rho$ the set of terminals whose sinks lie in $H_\rho$. The arms of a pole in $\mathcal P_\rho$ lie in $H_\rho$, and every edge of $H_\rho$ lies on such an arm. For each charge $i$, the map $\mathrm{end}_i$ restricts to a bijection from $\mathcal P_\rho$ onto $\Phi_\rho$. Indeed, $\mathrm{end}_i$ is injective on $\mathcal P$ by \eqref{fgt:eq-bij}; an arm ends in the component of its source; and by \eqref{fgt:eq-bij} the unique arm of charge $i$ that ends at a sink of $H_\rho$ starts at a source of $H_\rho$. Let $m=|\mathcal P_\rho|=|\Phi_\rho|$, and let $e_\rho$ be the number of edges of $H_\rho$.
+
+Consider the sum of $\psi_i(\mathrm{end}_i(\sigma))-\psi_i(\theta_\sigma)$ over all $\sigma\in\mathcal P_\rho$ and all charges $i$. By the bijections, it equals
+\[
+\sum_{\varphi\in\Phi_\rho}\sum_{i=0}^k\psi_i(\varphi)-\sum_{\sigma\in\mathcal P_\rho}\sum_{i=0}^k\psi_i(\theta_\sigma)=0,
+\]
+by \eqref{fgt:eq-sum}. On the other hand, each difference is the sum of the increments \eqref{fgt:eq-incr} along the edges of the arm. A good edge contributes $1$ and any other edge at least $-k$. Only the first edges of the poles in $\mathcal P_\rho\setminus\{\sigma_\rho\}$ can fail to be good, and there are at most $q(m-1)$ of them. Hence
+\[
+0\ge\bigl(e_\rho-q(m-1)\bigr)-kq(m-1)=e_\rho-q^2(m-1),
+\]
+so $e_\rho\le q^2(m-1)$. The arms of $\sigma_\rho$ have at least one edge each, so $e_\rho\ge q\ge1$, and therefore $m\ge2$.
+
+Let $K$ be the set of edges of $\mathcal G$ that are labels of edges of $H_\rho$, and let $\Sigma=\Phi_\rho$. Then $|K|\le e_\rho\le q^2(m-1)$, and $K$ contains the first edges of the arms of $\sigma_\rho$, so $|K|\ge1$. This is (ii). The labelling maps the connected graph $H_\rho$ onto the graph formed by $K$, so the latter is connected. Each edge of an arm goes from a non-terminal vertex $\theta\in\mathcal B$ to one of its supports, so each edge of $K$ joins a vertex of $\mathcal U\setminus\mathcal U_{\mathrm f}$ to one of its lower neighbours in $\mathcal U$. The vertices of $K$ are labels, so they lie in $\mathcal B\subseteq\mathcal U$. They include $\rho$, the label of the source of $\sigma_\rho$, and every point of $\Sigma$, the labels of the sinks. Distinct sinks carry distinct terminals, so $\Sigma$ consists of $m$ distinct faults. This proves (i). All labels lie in $\mathcal B$, so every vertex of $K$ has time at most $t_\rho$. Let $\theta$ be a vertex of $H_\rho$ whose label has the least time. If $\theta$ were a source or an interior vertex, an arm would continue from $\theta$ to a vertex of $H_\rho$ whose label has time one less. So $\theta$ is a sink, and the least time of a vertex of $K$ is $s$. Finally, a path in $H_\rho$ from the source of $\sigma_\rho$ to a sink labelled at time $s$ uses distinct edges of $H_\rho$, so it has at most $e_\rho$ edges, and the time changes by one along each of them. Hence $t_\rho-s\le e_\rho\le q^2(m-1)$, which is (iii).
+\end{proof}
+
+\subsection{Packing contours along a discrepancy path}\label{fgt:sec-packing}
+
+\begin{lemma}\label{fgt:path}
+Fix a configuration $x$ and a realisation of the noise, and let $X$ and $Y$ be the runs from $x$ and from $\bot$. If $t\ge1$ and $X_t(v)\ne Y_t(v)$, then there are sites $v_t=v,v_{t-1},\dots,v_0$ such that, for $1\le s\le t$, the point $(v_s,s)$ is not an event, $v_{s-1}\in\mathcal N(v_s)$, and $X_{s-1}(v_{s-1})\ne Y_{s-1}(v_{s-1})$. In particular $(v_s,s)$ and $(v_{s-1},s-1)$ are joined in $\mathcal G$.
+\end{lemma}
+
+\begin{proof}
+Let $s\ge1$ and $X_s(v_s)\ne Y_s(v_s)$. Then $\eta_s(v_s)=0$, since otherwise both values equal $\zeta_s(v_s)$. So $F(X_{s-1})(v_s)\ne F(Y_{s-1})(v_s)$. By \eqref{fgt:eq-nbhd}, $X_{s-1}$ and $Y_{s-1}$ differ at some $v_{s-1}\in\mathcal N(v_s)$. Repeat down to $s=1$.
+\end{proof}
+
+\begin{lemma}[packing]\label{fgt:packing}
+Let $k\ge2j$, and let $S_\tau(0,\dots,0)=\emptyset$ for the box $V$, with $\tau\ge1$. Fix a configuration $x$ and a realisation of the noise, and let $X$ and $Y$ be the runs from $x$ and from $\bot$. If $t\ge\tau$ and $X_t(v)\ne Y_t(v)$, then there are an integer $e\ge t$, a set $K$ of $e$ edges of $\mathcal G$ and a set $\Sigma$ of events with the following properties: the edges of $K$ form a connected graph; its vertices include $(v,t)$ and every point of $\Sigma$; and $|\Sigma|\ge(e-\tau)/a$.
+\end{lemma}
+
+\begin{proof}
+Let $v_t,\dots,v_0$ be the sites of \cref{fgt:path}. For $\tau\le s\le t$ the point $(v_s,s)$ is not an event, because $s\ge1$. One of $X_s(v_s)$ and $Y_s(v_s)$ is live, because they differ. \Cref{fgt:live}, applied to that run, gives $E_s(v_s)=1$. So $(v_s,s)$ is a marked vertex that is not an event.
+
+Define times $t_1>t_2>\dots$ as follows. Put $t_1=t$. Given $t_l\ge\tau$, apply \cref{lem:contour} with $\mathcal U$ the set of marked vertices and $\mathcal U_{\mathrm f}$ the set of events, at $\rho_l=(v_{t_l},t_l)$. It gives $m_l$, a set $\Sigma_l$ of $m_l$ events, a set $K_l$ of edges, and the least time $s_l$ of a point of $\Sigma_l$. If $s_l-1\ge\tau$, put $t_{l+1}=s_l-1$. Otherwise stop, and let $L=l$. Since $s_l\le t_l$, the times decrease and the construction stops.
+
+By \cref{lem:contour}(iii), the vertices of $K_l$ have times in $[s_l,t_l]$. These intervals are pairwise disjoint, since $t_{l+1}=s_l-1$. Hence the sets $\Sigma_l$ are pairwise disjoint, and $\Sigma=\Sigma_1\cup\dots\cup\Sigma_L$ has $m=m_1+\dots+m_L$ elements. One event may lie in the support graphs of many marked vertices; the disjoint slabs ensure that it is counted at most once. The intervals $[s_l,t_l]$ cover $[s_L,t]$, and $s_L\le\tau$ by the stopping rule. By \cref{lem:contour}(iii),
+\[
+t-\tau+1\le t-s_L+1=\sum_{l=1}^L(t_l-s_l+1)\le\sum_{l=1}^L\bigl(q^2(m_l-1)+1\bigr)\le q^2m.
+\]
+
+Let $K$ consist of the $t$ edges joining $(v_s,s)$ and $(v_{s-1},s-1)$, $1\le s\le t$, together with $K_1,\dots,K_L$. The path is connected, and each $K_l$ is connected and contains the path vertex $\rho_l$. So $K$ forms a connected graph, and its vertices include $(v,t)$ and $\Sigma$. Let $e=|K|$. The $t$ path edges join different pairs of times, so they are distinct and $e\ge t$. By \cref{lem:contour}(ii),
+\[
+e\le t+\sum_{l=1}^L|K_l|\le t+q^2\sum_{l=1}^L(m_l-1)\le t+q^2m\le\tau-1+2q^2m.
+\]
+So $2q^2m>e-\tau$. If $e\ge\tau$ this gives $m\ge(e-\tau)/(2q^2)\ge(e-\tau)/a$. If $e<\tau$ the bound $m\ge(e-\tau)/a$ is trivial.
+\end{proof}
+
+\subsection{Counting, and the proof of the theorem}\label{fgt:sec-proof}
+
+\begin{lemma}\label{fgt:count}
+Let $\theta_0$ be a vertex of $\mathcal G$ and $e\ge1$. There are at most $D_0^{2e}$ sets $K$ of $e$ edges of $\mathcal G$ that form a connected graph with $\theta_0$ among its vertices.
+\end{lemma}
+
+\begin{proof}
+Every vertex of $\mathcal G$ has degree at most $D_0$. Fix, for every vertex, a numbering of its neighbours by numbers in $\{1,\dots,D_0\}$. Let $K$ be such a set of edges. Doubling every edge of $K$ gives a connected multigraph in which every degree is even. By Euler's theorem it has a closed walk $p_0=\theta_0,p_1,\dots,p_{2e}=\theta_0$ that uses each of its $2e$ edges once. Fix one such walk for each $K$, and encode it by the word $(\omega_1,\dots,\omega_{2e})$, where $\omega_s$ is the number of $p_s$ among the neighbours of $p_{s-1}$. The word and $\theta_0$ determine the walk, and the walk determines $K$ as the set of edges it uses. So distinct sets $K$ have distinct words, and there are at most $D_0^{2e}$ words.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:forgetting}]
+If $L_R=\emptyset$, then $\A_R=\{\bot\}$, so $X_t=Y_t$ and there is nothing to prove. Let $L_R\ne\emptyset$, and fix $r$ with $S_\tau(0,\dots,0)=\emptyset$ for the box $V=\{-r,\dots,r\}^2$. For a live symbol $b$, the one-element family $\{((0,\dots,0),(b,\dots,b))\}$ has the three properties of \cref{fgt:stable}(b) with $S=S_{\mathrm{all}}$. So $(b,\dots,b)\in S_0(0,\dots,0)$, and therefore $\tau\ge1$.
+
+Fix $x$, $v$ and $t$. If $t<\tau$, the right side of \eqref{fgt:eq-main} equals $2(2D_0^2)^t\eps^{(t-\tau)/a}/(1-\beta)\ge2$, because $0<\eps<1$; so \eqref{fgt:eq-main} holds. Let $t\ge\tau$. By \cref{fgt:packing}, on the event $X_t(v)\ne Y_t(v)$ there are an integer $e\ge t$, a set $K$ of $e$ edges of $\mathcal G$ that forms a connected graph with $(v,t)$ among its vertices, and a set $\Sigma$ of vertices of $K$, all of positive time, such that $|\Sigma|\ge(e-\tau)/a$ and $\eta=1$ on $\Sigma$. The pairs $(K,\Sigma)$ range over a countable family of fixed sets, so the union bound applies. For a fixed set $\Sigma$ of distinct points of positive time, independence gives $\Prob(\eta=1\text{ on }\Sigma)=\eps^{|\Sigma|}$, and this is at most $\eps^{(e-\tau)/a}$ when $|\Sigma|\ge(e-\tau)/a$, since $0<\eps<1$. By \cref{fgt:count} there are at most $D_0^{2e}$ choices of $K$. A connected graph with $e$ edges has at most $e+1$ vertices, so there are at most $2^{e+1}$ choices of $\Sigma$. Therefore
+\[
+\Prob\bigl(X_t(v)\ne Y_t(v)\bigr)\le\sum_{e\ge t}D_0^{2e}\,2^{e+1}\,\eps^{(e-\tau)/a}=2\eps^{-\tau/a}\sum_{e\ge t}\bigl(2D_0^2\eps^{1/a}\bigr)^e=2\eps^{-\tau/a}\,\frac{\beta^t}{1-\beta}.
+\]
+The right side does not depend on $x$ or $v$. This proves \eqref{fgt:eq-main}.
+
+For a finite set $O$, the pair $(X_t|_O,Y_t|_O)$ is a coupling of $\mathrm{Law}_x(X_t|_O)$ and $\mathrm{Law}_\bot(X_t|_O)$. So
+\[
+\dtv\bigl(\mathrm{Law}_x(X_t|_O),\mathrm{Law}_\bot(X_t|_O)\bigr)\le\Prob\bigl(X_t|_O\ne Y_t|_O\bigr)\le\sum_{v\in O}\Prob\bigl(X_t(v)\ne Y_t(v)\bigr),
+\]
+and \eqref{fgt:eq-main} gives \eqref{fgt:eq-tv}. Since $\beta<1$, the right side of \eqref{fgt:eq-tv} tends to $0$, so the rule forgets its initial configuration. \Cref{set:forget-ergodic} gives ergodicity.
+\end{proof}

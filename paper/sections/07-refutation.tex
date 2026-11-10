@@ -1,0 +1,197 @@
+\section{Every halting member has a bounded-width refutation}\label{sec:refutation}
+
+This section proves the second half of \cref{thm:width}.
+
+\begin{theorem}\label{thm:halting}
+Let $B$ be the constant of \cref{thm:parser}, let $\ell=\binom{276}{2}+1=37951$, and put $j=10(B+\ell+100)$. If the machine $M$ halts, then $R_M$ is $j$-token refutable.
+\end{theorem}
+
+The proof is by contradiction. Fix a machine $M$ that halts, and let $T$ be its halting time as in \cref{prop:horn}. Suppose that $R_M$ is not $j$-token refutable. By \cref{thm:game}(iii) there is an $E_j$ family $H$ for $R_M$. From $H$ we build, in order: a family with one common quarter phase (\cref{ref:sec-phase}); a family on the index grid with the same $j$ (\cref{ref:sec-index}); a pin map $p$ on at most $\ell+3$ sites under which one whole substitution word is forced site by site (\cref{ref:sec-pins}); the exact roles on one initialized carrier grid (\cref{ref:sec-roles}); and, by a meet argument, a payload assignment on that grid that compresses to a legal $T_M$-pattern which \cref{prop:horn} forbids (\cref{ref:sec-meet,ref:sec-compress}). \Cref{ref:sec-budget} checks that $j$ sites suffice at every step. The constants $B$, $\ell$ and $j$ do not depend on $M$, on the depth $n$ chosen below, or on $T$.
+
+\subsection{What we use from Sections 2, 5 and 6}\label{ref:sec-inputs}
+
+Write $\mathbf e_1=(1,0)$ and $\mathbf e_2=(0,1)$ in $\Z^2$. Tiles $\vartheta,\vartheta'$ of a Wang set \emph{match horizontally} if $\vartheta_{\mathrm E}=\vartheta'_{\mathrm W}$, and \emph{match vertically} if $\vartheta_{\mathrm N}=\vartheta'_{\mathrm S}$. Integer intervals are written $[a,b]=\{a,a+1,\dots,b\}$ and $[0,m)=\{0,\dots,m-1\}$.
+
+\paragraph{Families.} We use $E_K$ families for a Wang set as in \cref{set:def-pebble}: nonempty sets of legal patterns on finite subsets of $\Z^2$, with at most $K$ sites each, closed under restriction and with the extension property for maps on fewer than $K$ sites. If $h\in H$ and $h'$ is supplied by (Extension) for a new site $w$, then $h'|_{\operatorname{dom}h\cup\{w\}}$ also extends $h$; so we may and do assume that an extension adds exactly the requested site. Repeating this, a map $h\in H$ extends to a map of $H$ on $\operatorname{dom}h\cup U'$ whenever $|\operatorname{dom}h\cup U'|\le K$ (\cref{set:pebble-basic}). By \cref{thm:game}(iii), a Wang set that is not $j$-token refutable has an $E_j$ family.
+
+\paragraph{The scaffold and the parser.} Let $\mathbb A$ be the scaffold Wang set of $276$ letters and $\sigma\colon\mathbb A\to\mathbb A^{[0,4)^2}$ its substitution, from \cref{prop:scaffold}. For $n\ge0$ and $\mathfrak a\in\mathbb A$, $\sigma^n(\mathfrak a)$ is a legal pattern on $[0,4^n)^2$. Let $\chi_1,\chi_2\colon\mathbb A\to\{0,1\}$ be the column bit and the row bit of the ruler. For $u\in\Z^2$ put $\operatorname{Anc}_n(u)=\{u,\,u+4^n\mathbf e_1,\,u+4^n\mathbf e_2\}$. A map $g$ into $\mathbb A$ defined on $\operatorname{Anc}_n(u)$ is a \emph{good $n$-anchor at $u$} if $\chi_1(g(u))\ne\chi_1(g(u+4^n\mathbf e_1))$ and $\chi_2(g(u))\ne\chi_2(g(u+4^n\mathbf e_2))$. The port set $\operatorname{Port}_n(u)\subseteq u+[0,4^n)^2$ has at most $\ell$ sites, and the readout $\mathfrak a\mapsto\bigl(\sigma^n(\mathfrak a)(y-u)\bigr)_{y\in\operatorname{Port}_n(u)}$ is injective on $\mathbb A$. We use two consequences of \cref{thm:parser,lem:transfer,prop:anchors}.
+\begin{description}
+\item[(P1) Anchors.] For every $E_K$ family $G$ for $\mathbb A$ with $K\ge B$ and every $n\ge0$, there are $u\in\Z^2$ and $g\in G$ with domain $\operatorname{Anc}_n(u)$ that is a good $n$-anchor at $u$ (\cref{prop:anchors}).
+\item[(P2) Type and point certificates.] Let $G$ be an $E_K$ family for $\mathbb A$ with $K\ge B$, let $n\ge0$ and $u\in\Z^2$, and let $g\in G$ be defined on $\operatorname{Anc}_n(u)\cup\operatorname{Port}_n(u)$, with $g|_{\operatorname{Anc}_n(u)}$ a good $n$-anchor at $u$. Then there is $\mathfrak a\in\mathbb A$ with $g(y)=\sigma^n(\mathfrak a)(y-u)$ for every $y\in\operatorname{Port}_n(u)$. If $g$ is also defined at a site $s\in u+[0,4^n)^2$, then $g(s)=\sigma^n(\mathfrak a)(s-u)$. (The type and point certificates of \cref{thm:parser} have rooted tree decompositions with bags of at most $B$ sites and contain these sites in their boundary; \cref{lem:transfer} carries their conclusions to every $E_K$ family with $K\ge B$.)
+\end{description}
+
+\paragraph{The family $R_M$.} From \cref{prop:routing,def:family,prop:horn,prop:board} we use the following.
+\begin{description}
+\item[(Q1) Quarters.] Every tile $\vartheta$ of $R_M$ has a \emph{quadrant} $\operatorname{quad}(\vartheta)\in\{0,1\}^2$ and a \emph{parent} $\operatorname{par}(\vartheta)\in\mathbb A$; the pair $(\operatorname{quad}(\vartheta),\operatorname{par}(\vartheta))$ is its \emph{scaffold pair}. Let $\vartheta,\vartheta'$ match horizontally. Then $\operatorname{quad}(\vartheta')\equiv\operatorname{quad}(\vartheta)+\mathbf e_1\pmod 2$. If the first coordinate of $\operatorname{quad}(\vartheta)$ is $0$, the two quarters belong to one parent cell and $\operatorname{par}(\vartheta')=\operatorname{par}(\vartheta)$; if it is $1$, then $\operatorname{par}(\vartheta)$ and $\operatorname{par}(\vartheta')$ match horizontally in $\mathbb A$. The same holds for vertical matching, with $\mathbf e_2$ and the second coordinate.
+\item[(Q2) Walls and flows.] A scaffold pair may lie on a light vertical wall, as a \emph{left side} or a \emph{right side}, and it may lie on a light horizontal wall, as a \emph{bottom side} or a \emph{top side}; these attributes are functions of the scaffold pair. Each tile $\vartheta$ carries flows $\phi_{\mathrm W}(\vartheta),\phi_{\mathrm E}(\vartheta)\subseteq\{\mathrm{left},\mathrm{right}\}$ and $\phi_{\mathrm S}(\vartheta),\phi_{\mathrm N}(\vartheta)\subseteq\{\mathrm{down},\mathrm{up}\}$. If $\vartheta,\vartheta'$ match horizontally then $\phi_{\mathrm E}(\vartheta)=\phi_{\mathrm W}(\vartheta')$, and if they match vertically then $\phi_{\mathrm N}(\vartheta)=\phi_{\mathrm S}(\vartheta')$. If the scaffold pair of $\vartheta$ lies on no light vertical wall, then $\phi_{\mathrm W}(\vartheta)=\phi_{\mathrm E}(\vartheta)$. On a left side, $\phi_{\mathrm W}(\vartheta)\ne\emptyset$ and $\phi_{\mathrm E}(\vartheta)\subseteq\{\mathrm{left}\}$. On a right side, $\phi_{\mathrm E}(\vartheta)\ne\emptyset$ and $\phi_{\mathrm W}(\vartheta)\subseteq\{\mathrm{right}\}$. The vertical rules are the same after rotation: with no light horizontal wall $\phi_{\mathrm S}(\vartheta)=\phi_{\mathrm N}(\vartheta)$; on a bottom side $\phi_{\mathrm S}(\vartheta)\ne\emptyset$ and $\phi_{\mathrm N}(\vartheta)\subseteq\{\mathrm{down}\}$; on a top side $\phi_{\mathrm N}(\vartheta)\ne\emptyset$ and $\phi_{\mathrm S}(\vartheta)\subseteq\{\mathrm{up}\}$.
+\item[(Q3) Roles and palettes.] A tile $\vartheta$ is a \emph{horizontal carrier} if $\phi_{\mathrm W}(\vartheta)=\phi_{\mathrm E}(\vartheta)=\emptyset$, and a \emph{vertical carrier} if $\phi_{\mathrm S}(\vartheta)=\phi_{\mathrm N}(\vartheta)=\emptyset$. Its \emph{role} is inactive, horizontal, vertical or active according as it is neither, only a horizontal carrier, only a vertical carrier, or both; an active tile whose scaffold pair is the north-east quarter of an index-$0$ letter with dark ruler bits has the \emph{seed} role instead. Each tile carries a payload $\operatorname{pay}(\vartheta)\in C_M^4$, a tuple of colours indexed by $\mathrm W,\mathrm E,\mathrm S,\mathrm N$. Horizontally matching tiles have $\operatorname{pay}(\vartheta)_{\mathrm E}=\operatorname{pay}(\vartheta')_{\mathrm W}$, and vertically matching tiles have $\operatorname{pay}(\vartheta)_{\mathrm N}=\operatorname{pay}(\vartheta')_{\mathrm S}$. The payload lies in the palette of the role: all of $C_M^4$ for inactive, $\{\mathbf c:\mathbf c_{\mathrm W}=\mathbf c_{\mathrm E}\}$ for horizontal, $\{\mathbf c:\mathbf c_{\mathrm S}=\mathbf c_{\mathrm N}\}$ for vertical, $T_M$ for active, and $\{s_M\}$ for seed.
+\item[(Q4) The Horn layer.] $C_M$ is a finite set with a binary operation $\wedge$ (intersection of packets) that is associative, commutative and idempotent. Write $\wedge$ also coordinatewise on $C_M^4$. The tile set $T_M\subseteq C_M^4$ is closed under $\wedge$, and $s_M\in T_M$. If $M$ halts at time $T$, there is no legal $T_M$-pattern $\Xi$ on $[0,2T+10)^2$ with $\Xi(0,0)=s_M$ (\cref{prop:horn}).
+\item[(Q5) The initialized board.] For a pattern $W$ on $[0,4^n)^2$ and $\xi\in[0,2\cdot4^n)^2$, the \emph{quarter of $W$ at $\xi$} is the scaffold pair $(\xi\bmod 2,\,W(\lfloor\xi/2\rfloor))$, coordinatewise. Let $n\ge2$, $\mathfrak a\in\mathbb A$, $W=\sigma^n(\mathfrak a)$ and $\Delta_n=4^{n-1}$, and put $J=[\Delta_n+1,3\Delta_n]$ and $J^\circ=[\Delta_n+2,3\Delta_n-1]$. By \cref{prop:board} there is a set $\mathcal F\subseteq J^\circ$, the \emph{free coordinates}, such that:
+\begin{itemize}
+\item[(a)] $2\Delta_n+1\in\mathcal F$, and at least $2^n-1$ elements of $\mathcal F$ are $\ge2\Delta_n+1$;
+\item[(b)] the quarter of $W$ at $(2\Delta_n+1,2\Delta_n+1)$ is the north-east quarter of an index-$0$ letter with dark ruler bits;
+\item[(c)] for every $\xi=(\xi_1,\xi_2)\in Z_W=(\mathcal F\times J^\circ)\cup(J^\circ\times\mathcal F)$, the quarter of $W$ at $\xi$ lies on no light wall. In the row of $\xi$, the nearest quarters of $W$ to the left and to the right of $\xi$ that lie on a light vertical wall both lie in $J\times\{\xi_2\}$, and they are a left side and a right side, in this order, if and only if $\xi_2\in\mathcal F$. In the column of $\xi$, the nearest quarters below and above $\xi$ that lie on a light horizontal wall both lie in $\{\xi_1\}\times J$, and they are a bottom side and a top side, in this order, if and only if $\xi_1\in\mathcal F$.
+\end{itemize}
+\end{description}
+Item (c) is the statement that every carrier role on the board is forced by a corridor between two walls inside the board. Since $3\Delta_n<2\cdot4^n$, all these corridors lie in $[0,2\cdot4^n)^2$.
+
+\subsection{One adjusted quarter phase}\label{ref:sec-phase}
+
+\begin{lemma}\label{ref:phase}
+Let $H$ be an $E_K$ family for $R_M$ with $K\ge3$. For every $h\in H$ and all $v,w\in\operatorname{dom}h$,
+\[
+\operatorname{quad}(h(v))-v\equiv\operatorname{quad}(h(w))-w\pmod 2 .
+\]
+\end{lemma}
+
+\begin{proof}
+Choose a path $v=y_0,y_1,\dots,y_m=w$ of distinct sites with $y_{l+1}-y_l\in\{\pm\mathbf e_1,\pm\mathbf e_2\}$. If $m\le1$, the claim is (Q1) applied to the legal pattern $h$. Let $m\ge2$. Put $h_0=h|_{\{y_0,w\}}$. For $0\le l\le m-2$, extend $h_l$ by the site $y_{l+1}$ and restrict the result to $\{y_{l+1},w\}$; call it $h_{l+1}$. Each step extends a map on two sites, which is possible since $K\ge3$. Put $\vartheta_l=h_l(y_l)$, so that $\vartheta_0=h(v)$, and note $h_l(w)=h(w)$ for every $l$. For $l\le m-2$, the tiles $\vartheta_l$ and $\vartheta_{l+1}$ are values of one legal pattern at the adjacent sites $y_l,y_{l+1}$, so (Q1) gives $\operatorname{quad}(\vartheta_{l+1})-\operatorname{quad}(\vartheta_l)\equiv y_{l+1}-y_l$. Finally $\vartheta_{m-1}$ and $h(w)$ are values of $h_{m-1}$ at the adjacent sites $y_{m-1},w$. Summing the increments gives the claim.
+\end{proof}
+
+For $\gamma\in(\Z/2\Z)^2$ let $H_\gamma$ be the set of $h\in H$ with $\operatorname{quad}(h(v))-v\equiv\gamma$ for every $v\in\operatorname{dom}h$. We call it the \emph{phase-$\gamma$ component} of $H$.
+
+\begin{lemma}\label{ref:component}
+Let $H$ be an $E_K$ family for $R_M$ with $K\ge3$. Some $\gamma$ has a map with nonempty domain in $H_\gamma$, and for each such $\gamma$ the set $H_\gamma$ is an $E_K$ family for $R_M$.
+\end{lemma}
+
+\begin{proof}
+Extending the empty map gives $h\in H$ defined at some site $v$; with $\gamma=\operatorname{quad}(h(v))-v$, \cref{ref:phase} puts $h$ in $H_\gamma$. Now fix such a $\gamma$. The set $H_\gamma$ consists of legal patterns with at most $K$ sites, and it is closed under restriction. Let $h\in H_\gamma$ with $|\operatorname{dom}h|<K$ and let $w\in\Z^2$. If $\operatorname{dom}h\ne\emptyset$, extend $h$ in $H$ by $w$; by \cref{ref:phase} the new value has the phase of the old values, so the extension lies in $H_\gamma$. If $h$ is empty, take a site $v$ of some map of $H_\gamma$, extend its restriction to $\{v\}$ by $w$ in $H$ (possible since $K\ge2$), and restrict to $\{w\}$; by \cref{ref:phase} the result lies in $H_\gamma$.
+\end{proof}
+
+Apply this to the $E_j$ family $H$ of $R_M$; here $j\ge3$. Fix $\gamma$ as in \cref{ref:component}, and let $\bar\gamma\in\{0,1\}^2$ be its representative. Then $\operatorname{quad}(h(v))\equiv v-\bar\gamma\pmod2$ for every $h\in H_\gamma$ and $v\in\operatorname{dom}h$. The phase is common to all maps of $H_\gamma$; no site is spent to fix it.
+
+\subsection{The index family}\label{ref:sec-index}
+
+For $z\in\Z^2$ put $\iota(z)=\bar\gamma+2z$. The four sites $\iota(z)+\{0,1\}^2$ form the \emph{cell} of $z$, and in every map of $H_\gamma$ the value at $\iota(z)+\varsigma$ has quadrant $\varsigma$. For $h\in H_\gamma$ with $\operatorname{dom}h\subseteq\iota(\Z^2)$, define $\hat h$ on $\iota^{-1}(\operatorname{dom}h)$ by $\hat h(z)=\operatorname{par}(h(\iota(z)))$, and let $\widehat H$ be the set of these maps.
+
+\begin{lemma}\label{ref:index}
+$\widehat H$ is an $E_j$ family for $\mathbb A$.
+\end{lemma}
+
+\begin{proof}
+Restriction commutes with the hat, and extending $h$ in $H_\gamma$ by a site $\iota(w)$ extends $\hat h$ by $w$. It remains to show that each $\hat h$ is a legal pattern. Let $z,z+\mathbf e_1\in\operatorname{dom}\hat h$ and $v=\iota(z)$, so that $\iota(z+\mathbf e_1)=v+2\mathbf e_1$. Restrict $h$ to the pair $\{v,v+2\mathbf e_1\}$ and extend the restriction by the site $v+\mathbf e_1$; call the result $h'$. The values $h'(v)$ and $h'(v+\mathbf e_1)$ match horizontally and have quadrants $(0,0)$ and $(1,0)$, so (Q1) gives $\operatorname{par}(h'(v))=\operatorname{par}(h'(v+\mathbf e_1))$. The values $h'(v+\mathbf e_1)$ and $h'(v+2\mathbf e_1)$ match horizontally, and the first has quadrant $(1,0)$, so their parents match horizontally in $\mathbb A$. Since $h'$ agrees with $h$ at $v$ and $v+2\mathbf e_1$, the letters $\hat h(z)$ and $\hat h(z+\mathbf e_1)$ match horizontally. The vertical case is the same with $\mathbf e_2$.
+\end{proof}
+
+The check is binary: we restrict to the pair before adding the middle quarter, so we never extend a map that already has $j$ sites.
+
+\subsection{Pins and the forced word}\label{ref:sec-pins}
+
+Fix $n\ge2$ with $2^n-2\ge2T+10$. By (P1), applied to $\widehat H$ with $K=j\ge B$, there are $u\in\Z^2$ and $g_0\in\widehat H$ with domain $\operatorname{Anc}_n(u)$ that is a good $n$-anchor at $u$. Extend $g_0$ in $\widehat H$ to a map $g_1$ on $\operatorname{Anc}_n(u)\cup\operatorname{Port}_n(u)$, a set of at most $\ell+3\le j$ sites. By the first part of (P2) there is $\mathfrak a\in\mathbb A$ with $g_1(y)=\sigma^n(\mathfrak a)(y-u)$ for $y\in\operatorname{Port}_n(u)$; it is unique because the readout is injective. Put
+\[
+W=\sigma^n(\mathfrak a),\qquad o=\iota(u).
+\]
+By the definition of $\widehat H$ there is $p\in H_\gamma$ with $\operatorname{dom}p=\iota(\operatorname{Anc}_n(u)\cup\operatorname{Port}_n(u))$ and $\hat p=g_1$. These are the \emph{pins}. They occupy at most $\ell+3$ sites, and every $h\in H_\gamma$ with $p\subseteq h$ projects to an index map that keeps the same good anchor and the same readout of $W$.
+
+\begin{lemma}[The forced word]\label{ref:forced}
+Let $\xi\in[0,2\cdot4^n)^2$, and let $h\in H_\gamma$ satisfy $p\subseteq h$ and $o+\xi\in\operatorname{dom}h$. Then the scaffold pair of $h(o+\xi)$ is the quarter of $W$ at $\xi$.
+\end{lemma}
+
+\begin{proof}
+Write $x=o+\xi$, $\varsigma=\xi\bmod2$ and $s=u+\lfloor\xi/2\rfloor$, so that $x=\iota(s)+\varsigma$ lies in the cell of $s$. The quadrant of $h(x)$ is $x-\bar\gamma\equiv\xi\equiv\varsigma$. For the parent, let $Y$ be the path from $x$ to $\iota(s)$ inside the cell of $s$ that has no step if $\varsigma=(0,0)$, one step if $\varsigma\in\{(1,0),(0,1)\}$, and the two steps $x\to\iota(s)+\mathbf e_1\to\iota(s)$ if $\varsigma=(1,1)$. Restrict $h$ to $\operatorname{dom}p\cup\{x\}$ and extend it by the at most two other sites of $Y$; call the result $h'$. It has at most $\ell+6$ sites. In each step of $Y$, the western or southern of the two quarters has coordinate $0$ in the direction of the step, so (Q1) gives equal parents along $Y$. Hence $\operatorname{par}(h(x))=\operatorname{par}(h'(\iota(s)))$. Let $h''=h'|_{\operatorname{dom}p\cup\{\iota(s)\}}$. Then $\hat h''\in\widehat H$ is defined on $\operatorname{Anc}_n(u)\cup\operatorname{Port}_n(u)\cup\{s\}$ and agrees with $g_1$ on $\operatorname{Anc}_n(u)\cup\operatorname{Port}_n(u)$. So (P2) applies to $\hat h''$, and by injectivity of the readout the letter it provides is $\mathfrak a$. Since $s\in u+[0,4^n)^2$, the second part of (P2) gives $\hat h''(s)=W(s-u)=W(\lfloor\xi/2\rfloor)$, and $\hat h''(s)=\operatorname{par}(h'(\iota(s)))$.
+\end{proof}
+
+The lemma is pointwise. Each query uses the pins and at most three further sites, never all sites of $W$ at once; and it holds for every map of $H_\gamma$ that keeps the pins, not for one favourable map per query.
+
+\subsection{The forced role chart}\label{ref:sec-roles}
+
+Let $\Delta_n$, $J$, $J^\circ$, $\mathcal F$ and $Z_W$ be as in (Q5) for the word $W$.
+
+\begin{lemma}[Corridors]\label{ref:roles}
+Let $\xi\in Z_W$, and let $h\in H_\gamma$ satisfy $p\subseteq h$ and $v=o+\xi\in\operatorname{dom}h$. Then $h(v)$ is a horizontal carrier if and only if $\xi_2\in\mathcal F$, and a vertical carrier if and only if $\xi_1\in\mathcal F$. Consequently the role of $h(v)$ is horizontal if $\xi_1\notin\mathcal F$, vertical if $\xi_2\notin\mathcal F$, active or seed if $\xi\in\mathcal F^2$, and seed if $\xi=(2\Delta_n+1,2\Delta_n+1)$.
+\end{lemma}
+
+\begin{proof}
+By (Q5)(c), let $\xi+m\mathbf e_1$ and $\xi-m'\mathbf e_1$, with $m,m'\ge1$, be the nearest quarters of $W$ to the right and to the left of $\xi$ in its row that lie on a light vertical wall. Both lie in $J\times\{\xi_2\}$.
+
+We walk to the right. Put $h_0=h$ and $v_l=v+l\mathbf e_1$. For $l=1,\dots,m$, restrict $h_{l-1}$ to $\operatorname{dom}p\cup\{v_{l-1}\}$, a set of at most $\ell+4$ sites, and extend it by $v_l$; call the result $h_l$. Then $p\subseteq h_l$. Put $\vartheta_l=h_l(v_l)$, so that $\vartheta_0=h(v)$. For $1\le l\le m$, the tiles $\vartheta_{l-1}=h_l(v_{l-1})$ and $\vartheta_l$ are values of one legal pattern at horizontally adjacent sites, so $\phi_{\mathrm E}(\vartheta_{l-1})=\phi_{\mathrm W}(\vartheta_l)$ by (Q2). By \cref{ref:forced}, the scaffold pair of $\vartheta_l$ is the quarter of $W$ at $\xi+l\mathbf e_1$. For $0\le l<m$ this quarter lies on no light vertical wall: for $l=0$ by (Q5)(c), and for $0<l<m$ by the choice of $m$. So $\phi_{\mathrm W}(\vartheta_l)=\phi_{\mathrm E}(\vartheta_l)$ for $0\le l<m$. Writing $\psi=\phi_{\mathrm W}(\vartheta_0)=\phi_{\mathrm E}(\vartheta_0)$, we get $\psi=\phi_{\mathrm W}(\vartheta_m)$, where $\vartheta_m$ sits at the right wall. Walking to the left in the same way gives a tile $\vartheta'$ at the left wall, with the scaffold pair of the quarter of $W$ at $\xi-m'\mathbf e_1$, and $\psi=\phi_{\mathrm E}(\vartheta')$.
+
+If $\xi_2\in\mathcal F$, the left wall is a left side and the right wall a right side. By (Q2), $\psi=\phi_{\mathrm E}(\vartheta')\subseteq\{\mathrm{left}\}$ and $\psi=\phi_{\mathrm W}(\vartheta_m)\subseteq\{\mathrm{right}\}$, so $\psi=\emptyset$ and $h(v)$ is a horizontal carrier. If $\xi_2\notin\mathcal F$, then the left wall is not a left side or the right wall is not a right side. In the first case it is a right side and $\psi=\phi_{\mathrm E}(\vartheta')\ne\emptyset$; in the second it is a left side and $\psi=\phi_{\mathrm W}(\vartheta_m)\ne\emptyset$. Either way $h(v)$ is not a horizontal carrier.
+
+The vertical statement is proved the same way along the column of $\xi$, with $\mathbf e_2$, the flows $\phi_{\mathrm S},\phi_{\mathrm N}$, and bottom and top sides. The roles follow from (Q3). At $\xi=(2\Delta_n+1,2\Delta_n+1)$ the tile is active, and by \cref{ref:forced} and (Q5)(b) its scaffold pair is the north-east quarter of an index-$0$ letter with dark ruler bits, so its role is seed.
+\end{proof}
+
+The roles do not depend on the nonempty flow values that the family may choose: the walk only uses which flows are empty. An extra active crossing between two consecutive free coordinates would break a wire of the compression in \cref{ref:sec-compress}; the lemma excludes it for every map that keeps the pins.
+
+\subsection{The selected component}\label{ref:sec-select}
+
+Put $N=2T+10$. By (Q5)(a) and $2^n-1>N$, let $f_0<f_1<\dots<f_{N-1}$ be the $N$ smallest elements of $\mathcal F$ that are at least $2\Delta_n+1$; thus $f_0=2\Delta_n+1$. Let $F_N=\{f_0,\dots,f_{N-1}\}$ and
+\[
+Z=\bigl\{\xi:\xi_2\in F_N,\ f_0\le\xi_1\le f_{N-1}\bigr\}\cup\bigl\{\xi:\xi_1\in F_N,\ f_0\le\xi_2\le f_{N-1}\bigr\}.
+\]
+Since $f_0,f_{N-1}\in J^\circ$, we have $Z\subseteq Z_W$. An integer strictly between $f_i$ and $f_{i+1}$ is not in $\mathcal F$. The \emph{channel edges} of $Z$ are the pairs $\{\xi,\xi+\mathbf e_1\}$ with $\xi_2\in F_N$ and $f_0\le\xi_1<f_{N-1}$, and the pairs $\{\xi,\xi+\mathbf e_2\}$ with $\xi_1\in F_N$ and $f_0\le\xi_2<f_{N-1}$. Assign to each $\xi\in Z$ the palette
+\[
+\operatorname{Pal}(\xi)=\begin{cases}
+\{s_M\}&\text{if }\xi=(f_0,f_0),\\
+T_M&\text{if }\xi\in F_N^2\setminus\{(f_0,f_0)\},\\
+\{\mathbf c\in C_M^4:\mathbf c_{\mathrm W}=\mathbf c_{\mathrm E}\}&\text{if }\xi_2\in F_N,\ \xi_1\notin F_N,\\
+\{\mathbf c\in C_M^4:\mathbf c_{\mathrm S}=\mathbf c_{\mathrm N}\}&\text{if }\xi_1\in F_N,\ \xi_2\notin F_N.
+\end{cases}
+\]
+By \cref{ref:roles} and (Q3), $\operatorname{pay}(h(o+\xi))\in\operatorname{Pal}(\xi)$ for every $\xi\in Z$ and every $h\in H_\gamma$ with $p\subseteq h$ and $o+\xi\in\operatorname{dom}h$. On $F_N^2\setminus\{(f_0,f_0)\}$ the role is active or seed, and both palettes lie in $T_M$ because $s_M\in T_M$. Lower-depth initialized components may occur elsewhere in the board; they do not meet $Z$, and they are not used.
+
+\subsection{The projected meet}\label{ref:sec-meet}
+
+For $\xi\in Z$ and $v=o+\xi$ put
+\[
+U_v=\bigl\{\operatorname{pay}(h(v)):h\in H_\gamma,\ p\subseteq h,\ v\in\operatorname{dom}h\bigr\},\qquad m_v=\textstyle\bigwedge U_v .
+\]
+For a channel edge $\{\xi,\xi'\}$ with $\xi'=\xi+\mathbf e_1$ or $\xi'=\xi+\mathbf e_2$, and $v=o+\xi$, $w=o+\xi'$, put
+\[
+Q_{vw}=\bigl\{(\operatorname{pay}(h(v)),\operatorname{pay}(h(w))):h\in H_\gamma,\ p\subseteq h,\ v,w\in\operatorname{dom}h\bigr\}.
+\]
+
+\begin{lemma}[Projected meet]\label{ref:meet}
+\begin{itemize}
+\item[(a)] Each $U_v$ is a nonempty finite set, and $m_v\in\operatorname{Pal}(\xi)$.
+\item[(b)] The two coordinate projections of $Q_{vw}$ are exactly $U_v$ and $U_w$.
+\item[(c)] If $\xi'=\xi+\mathbf e_1$ then $(m_v)_{\mathrm E}=(m_w)_{\mathrm W}$; if $\xi'=\xi+\mathbf e_2$ then $(m_v)_{\mathrm N}=(m_w)_{\mathrm S}$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+(a) Extending $p$ by $v$ gives an element of $U_v$, and $U_v\subseteq C_M^4$ is finite. Every palette is closed under $\wedge$: for $T_M$ this is (Q4); for $\{s_M\}$ it is idempotence; and if $\mathbf c_{\mathrm W}=\mathbf c_{\mathrm E}$ and $\mathbf c'_{\mathrm W}=\mathbf c'_{\mathrm E}$, then $(\mathbf c\wedge\mathbf c')_{\mathrm W}=\mathbf c_{\mathrm W}\wedge\mathbf c'_{\mathrm W}=(\mathbf c\wedge\mathbf c')_{\mathrm E}$, and likewise for the vertical palette. Since $U_v\subseteq\operatorname{Pal}(\xi)$ by \cref{ref:sec-select}, the meet of its finitely many elements lies in $\operatorname{Pal}(\xi)$.
+
+(b) A pair in $Q_{vw}$ comes from a map that keeps $p$ and is defined at $v$, so its first coordinate lies in $U_v$. Conversely, let $\mathbf c=\operatorname{pay}(h(v))\in U_v$. Restrict $h$ to $\operatorname{dom}p\cup\{v\}$ and extend by $w$; the result has at most $\ell+5$ sites, keeps $p$, and has the value $h(v)$ at $v$, so it gives a pair of $Q_{vw}$ with first coordinate $\mathbf c$. The second coordinate is symmetric.
+
+(c) Let $\xi'=\xi+\mathbf e_1$ and list $Q_{vw}=\{(\mathbf c^1,\mathbf d^1),\dots,(\mathbf c^l,\mathbf d^l)\}$. Each pair consists of the payloads of one legal pattern at horizontally adjacent sites, so $\mathbf c^i_{\mathrm E}=\mathbf d^i_{\mathrm W}$ by (Q3). By (b), $\{\mathbf c^1,\dots,\mathbf c^l\}=U_v$ and $\{\mathbf d^1,\dots,\mathbf d^l\}=U_w$. As $\wedge$ acts coordinatewise,
+\[
+(m_v)_{\mathrm E}=\textstyle\bigwedge_i\mathbf c^i_{\mathrm E}=\bigwedge_i\mathbf d^i_{\mathrm W}=(m_w)_{\mathrm W}.
+\]
+The vertical case is the same.
+\end{proof}
+
+So the single assignment $v\mapsto m_v$ satisfies every palette and every channel equality at once. Neither $H$ nor the sets $U_v$ need to be closed under meets; only the palettes and the equality constraints are. This is the classical fact that constraints closed under a semilattice operation are solved by local consistency \cite{JCG97}, applied to relations projected from $H$.
+
+\subsection{Compression and the contradiction}\label{ref:sec-compress}
+
+\begin{proof}[Proof of \cref{thm:halting}]
+With $N=2T+10$, define $\Xi$ on $[0,N)^2$ by $\Xi(i,i')=m_{o+(f_i,f_{i'})}$. By \cref{ref:meet}(a), $\Xi(i,i')\in T_M$ for all $i,i'$, and $\Xi(0,0)=s_M$.
+
+Fix $i'$ and $i<N-1$, and let $v_y=o+(y,f_{i'})$ for $f_i\le y\le f_{i+1}$. These sites lie in $o+Z$, and consecutive ones form channel edges. For $f_i<y<f_{i+1}$ the palette at $(y,f_{i'})$ is horizontal, so $(m_{v_y})_{\mathrm W}=(m_{v_y})_{\mathrm E}$. By \cref{ref:meet}(c), $(m_{v_y})_{\mathrm E}=(m_{v_{y+1}})_{\mathrm W}$ for $f_i\le y<f_{i+1}$. Chaining these equalities gives $\Xi(i,i')_{\mathrm E}=\Xi(i+1,i')_{\mathrm W}$. In the same way, along the column $f_i$ through vertical palettes, $\Xi(i,i')_{\mathrm N}=\Xi(i,i'+1)_{\mathrm S}$.
+
+So $\Xi$ is a legal $T_M$-pattern on $[0,2T+10)^2$ with $\Xi(0,0)=s_M$. Since $M$ halts at time $T$, (Q4) says that no such pattern exists. This contradiction shows that $R_M$ has no $E_j$ family. By \cref{thm:game}(iii), $R_M$ is $j$-token refutable.
+\end{proof}
+
+The argument excludes every $E_j$ family, so it excludes every possible surviving live symbol at the origin, not only a seeded one. The box radius and the refutation time of $R_M$ depend on $M$; no bound on them is claimed.
+
+\subsection{The token budget}\label{ref:sec-budget}
+
+Every map used above has a bounded number of sites, independent of $M$, $n$ and $T$:
+\begin{itemize}
+\item \cref{ref:phase,ref:component}: maps on at most $3$ sites;
+\item \cref{ref:index}: the binary sibling check uses $3$ sites;
+\item (P1) and (P2) are applied to $\widehat H$, which needs $j\ge B$; the maps they are applied to have at most $\ell+4$ sites, and their proofs use members of $\widehat H$ on at most $B$ sites;
+\item the pins $p$: at most $\ell+3$ sites;
+\item \cref{ref:forced}: at most $\ell+6$ sites in $H_\gamma$, and at most $\ell+4$ sites in $\widehat H$;
+\item \cref{ref:roles}: the walk uses maps on at most $\ell+5$ sites, and each step calls \cref{ref:forced};
+\item \cref{ref:meet}: at most $\ell+5$ sites.
+\end{itemize}
+So $j\ge\max(B,\ell+6)$ suffices, and $j=10(B+\ell+100)$ exceeds $B+\ell+6$. The margin also covers a sibling check through two full parent cells, with $8$ quarter sites, in place of the $3$-site path of \cref{ref:index}. The payload alphabet $C_M$ grows with $M$; the number of sites does not.
+
+\begin{theorem}[Theorem C]\label{thm:width}
+Let $j=10(B+\ell+100)$ be the integer of \cref{thm:halting}. The map $M\mapsto R_M$ of \cref{def:family} is total computable, $R_M$ tiles the plane if and only if $M$ does not halt, and $R_M$ is $j$-token refutable whenever $M$ halts.
+\end{theorem}
+
+\begin{proof}[Proof of \cref{thm:width}]
+The map $M\mapsto R_M$ is total computable (\cref{def:family}). If $M$ does not halt, $R_M$ tiles (\cref{prop:tiles}). If $M$ halts, $R_M$ is $j$-token refutable by \cref{thm:halting}, so it does not tile by \cref{thm:game}(iv). Hence $R_M$ tiles if and only if $M$ does not halt, and every halting member is $j$-token refutable for the one integer $j=10(B+\ell+100)$.
+\end{proof}

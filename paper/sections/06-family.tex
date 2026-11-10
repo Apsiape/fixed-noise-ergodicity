@@ -1,0 +1,385 @@
+\section{Routing a machine onto the scaffold}\label{sec:family}
+
+This section builds the family $M\mapsto R_M$. A tile of $R_M$ sits on one quarter of a letter of the scaffold $\mathbb A$ of \cref{sec:scaffold}. It carries the scaffold letter and its quadrant, two flows that read the light red walls of the scaffold, and a payload. The flows mark the free rows and columns of nested boards, and the payload carries a computation of $M$ along them. Routing a computation through the free rows and columns of nested boards is Robinson's method \cite{Robinson71}; Berger embedded Turing machines in Wang sets to show that tiling is undecidable \cite{Berger66}. Our payload is a system of Horn clauses. Its local constraints are closed under intersection, the property that lets \cref{sec:refutation} rebuild a payload by local consistency \cite{JCG97,FederVardi98}.
+
+\Cref{fam:sub-red} classifies the red paths of the scaffold. \Cref{fam:sub-walls} defines the quarters, the walls, the flows and the roles, and proves that walls force the carriers (\cref{prop:routing}). \Cref{fam:sub-frames} studies the light frames. \Cref{fam:sub-positive} builds a routing model on the whole plane, and \cref{fam:sub-board} finds an initialized board inside every word $\sigma^n(\mathfrak a)$ (\cref{prop:board}). \Cref{fam:sub-horn} builds the Horn payload (\cref{prop:horn}), and \cref{fam:sub-family} defines $R_M$ and shows that it tiles when $M$ does not halt (\cref{def:family,prop:tiles}).
+
+We keep the notation of \cref{sec:scaffold}: letters $\mathfrak a=(\theta,\kappa,\omega,b_1,b_2)$ of $\mathbb A$, column bit $\chi_1$, row bit $\chi_2$, the substitutions $\varphi,\varphi'$ and $\sigma=(\varphi')^2$, and the endpoints $\partial_{\mathrm N},\partial_{\mathrm E},\partial_{\mathrm S},\partial_{\mathrm W}$ of \cref{scf:tab-edges}. Integer intervals are $[a,b]=\{a,\dots,b\}$, and $z\bmod m\in[0,m)$. An atom $\mathsf r_i$ is \emph{red} and an atom $\mathsf g_i$ is \emph{green}. The base tile $(\mathsf a,\angle\mathsf b,\mathsf A)$ is the \emph{index-$0$ tile}, and a letter with this base is an \emph{index-$0$ letter}. Ruler bits $b_1=b_2=0$ are \emph{dark}.
+
+\subsection{Towers and red paths}\label{fam:sub-red}
+
+\begin{definition}[Towers]\label{fam:def-tower}
+Let $h\in\{1,2,\dots\}\cup\{\infty\}$ and $\upsilon_m\in\{0,1\}^2$ for $0\le m<h$. A \emph{tower of height $h$ with digits $(\upsilon_m)$} is a family of legal patterns $f_m$ of $\mathbb A$ on sets $U_m\subseteq\Z^2$, for integers $0\le m\le h$, such that for every $m<h$
+\[
+U_m=\upsilon_m+2U_{m+1}+[0,2)^2,\qquad f_m(\upsilon_m+2v+\varsigma)=\varphi'\bigl(f_{m+1}(v)\bigr)(\varsigma)\quad(v\in U_{m+1},\ \varsigma\in[0,2)^2).
+\]
+If $h=\infty$ we require $U_m=\Z^2$ for all $m$, so every $f_m$ is a tiling. The \emph{phase} of the tower is $\varpi=\sum_{m<h}2^m\upsilon_m$, an element of $\Z^2$ if $h<\infty$ and of the $2$-adic integers $\Z_2^2$ if $h=\infty$.
+\end{definition}
+
+For a letter $\mathfrak a$ and $n\ge1$, the patterns $f_m=(\varphi')^{2n-m}(\mathfrak a)$ on $[0,2^{2n-m})^2$, $0\le m\le 2n$, form a tower of height $2n$ with all digits $0$ and phase $0$. Its bottom pattern is $f_0=(\varphi')^{2n}(\mathfrak a)=\sigma^n(\mathfrak a)$, because blockwise substitution of patterns composes. Its patterns are legal by \cref{scf:ruler-forward}.
+
+\begin{lemma}[Towers of every phase]\label{fam:tower-exists}
+For every $\varpi\in\Z_2^2$ there is a tower of height $\infty$ with phase $\varpi$.
+\end{lemma}
+
+\begin{proof}
+Write $\varpi=\sum_{m\ge0}2^m\upsilon_m$ with $\upsilon_m\in\{0,1\}^2$. For a tiling $f$ of $\mathbb A$ and $\upsilon\in\{0,1\}^2$, the pattern $\operatorname{sub}_\upsilon(f)(\upsilon+2v+\varsigma)=\varphi'(f(v))(\varsigma)$ is a tiling by \cref{scf:ruler-forward}(b). Let $\mathcal T_l$ be the set of sequences $(f_m)_{m\ge0}$ of tilings with $f_m=\operatorname{sub}_{\upsilon_m}(f_{m+1})$ for $m<l$. It is nonempty: take any tiling $f$ (\cref{prop:scaffold}), put $f_m=f$ for $m\ge l$ and $f_m=\operatorname{sub}_{\upsilon_m}(f_{m+1})$ for $m<l$. Each condition $f_m=\operatorname{sub}_{\upsilon_m}(f_{m+1})$ is a family of conditions on finitely many sites each, so $\mathcal T_l$ is closed in the product of the compact spaces $\mathbb A^{\Z^2}$. The sets $\mathcal T_l$ decrease, so their intersection is nonempty. An element of it is a tower with phase $\varpi$.
+\end{proof}
+
+Fix a tower. For $x\in U_0$ put $x^{(0)}=x$, and for $m<h$ let $\varsigma_m(x)\in\{0,1\}^2$ and $x^{(m+1)}\in U_{m+1}$ be the unique pair with
+\[
+x^{(m)}=\upsilon_m+2x^{(m+1)}+\varsigma_m(x).
+\]
+Then $f_m(x^{(m)})=\varphi'(f_{m+1}(x^{(m+1)}))(\varsigma_m(x))$, and by induction
+\begin{equation}\label{fam:eq-digits}
+x-\varpi\equiv\sum_{m<l}2^m\varsigma_m(x)\pmod{2^l}\qquad(l\le h,\ l<\infty).
+\end{equation}
+The first coordinate $\varsigma_{m,1}(x)$ depends only on $x_1$, and the second only on $x_2$. The \emph{rank} of a column $x_1$ is the least $m<h$ with $\varsigma_{m,1}(x)=1$, if there is one; the rank of a row $x_2$ is defined with $\varsigma_{m,2}$. By \eqref{fam:eq-digits}, a column of rank $r$ satisfies $x_1-\varpi_1\equiv 2^r\pmod{2^{r+1}}$. If $h=\infty$ and $\varpi_1\notin\Z$, every column has a finite rank, namely the $2$-adic valuation of $x_1-\varpi_1$.
+
+\begin{lemma}[Ruler bits]\label{fam:rank-bits}
+If the column $x_1$ has rank $r$, then $\chi_1(f_0(x))\equiv r\pmod 2$ for every $x\in U_0$ in this column. If the row $x_2$ has rank $r$, then $\chi_2(f_0(x))\equiv r\pmod2$.
+\end{lemma}
+
+\begin{proof}
+By \cref{scf:tab-subst}, a child $\varsigma$ of a letter has column bit $0$ if $\varsigma_1=1$, and the complement of the column bit of the parent if $\varsigma_1=0$. The letter $f_r(x^{(r)})$ is a child with $\varsigma_{r,1}(x)=1$, so its column bit is $0$. For $m<r$ we have $\varsigma_{m,1}(x)=0$, so each of the $r$ steps down to $f_0(x)$ complements the bit. Rows are the same.
+\end{proof}
+
+A thick type has a \emph{vertical red atom} if its north or its south endpoint is red, and a \emph{horizontal red atom} if its east or its west endpoint is red. A line $\langle\alpha,\gamma\rangle$ has a vertical red atom exactly when $\alpha$ is red. Every corner has exactly one red endpoint in each direction (\cref{scf:tab-edges}): $\angle\mathsf b$ has red north $\mathsf r_0$ and red east $\mathsf r_1$, $\angle\mathsf c$ red north $\mathsf r_2$ and red west $\mathsf r_1$, $\angle\mathsf a$ red south $\mathsf r_0$ and red east $\mathsf r_3$, and $\angle\mathsf d$ red south $\mathsf r_2$ and red west $\mathsf r_3$. So $\angle\mathsf b$ is the south-west corner of a red rectangle, $\angle\mathsf c$ the south-east, $\angle\mathsf a$ the north-west and $\angle\mathsf d$ the north-east corner.
+
+\begin{lemma}[Red paths]\label{fam:red}
+Let $(f_m)$ be a tower of height $h$, and let $r\ge0$ with $r+2\le h$. For $i=1,2$ and $z\in\Z$ put $s_i(z)=(z-\varpi_i)\bmod 2^{r+2}$. Let $x_1$ be a column of rank $r$. Then $s_1(x_1)\in\{2^r,3\cdot2^r\}$, and for every $x=(x_1,x_2)\in U_0$:
+\begin{itemize}
+\item[(a)] the thick type of $f_0(x)$ has a vertical red atom if and only if $s_2(x_2)\in[2^r,3\cdot2^r]$;
+\item[(b)] this atom is $\mathsf r_0$ if $s_1(x_1)=2^r$ and $\mathsf r_2$ if $s_1(x_1)=3\cdot2^r$;
+\item[(c)] the thick type is the corner with red north endpoint ($\angle\mathsf b$ or $\angle\mathsf c$) if $s_2(x_2)=2^r$, the corner with red south endpoint ($\angle\mathsf a$ or $\angle\mathsf d$) if $s_2(x_2)=3\cdot2^r$, and a line if $2^r<s_2(x_2)<3\cdot2^r$.
+\end{itemize}
+The same holds for a row $x_2$ of rank $r$ with the coordinates exchanged: $s_2(x_2)\in\{2^r,3\cdot2^r\}$; a horizontal red atom occurs if and only if $s_1(x_1)\in[2^r,3\cdot2^r]$; it is $\mathsf r_1$ if $s_2(x_2)=2^r$ and $\mathsf r_3$ if $s_2(x_2)=3\cdot2^r$; and the thick type is the corner with red east endpoint ($\angle\mathsf b$ or $\angle\mathsf a$) if $s_1(x_1)=2^r$, the corner with red west endpoint ($\angle\mathsf c$ or $\angle\mathsf d$) if $s_1(x_1)=3\cdot2^r$, and a line in between.
+\end{lemma}
+
+\begin{proof}
+By \eqref{fam:eq-digits} with $l=r+2$, $s_1(x_1)=2^r+2^{r+1}\varsigma_{r+1,1}(x)$, which is $2^r$ or $3\cdot2^r$. We prove (a)--(c) by induction on $r$, for all towers of height at least $r+2$ at once.
+
+Let $r=0$, so $\varsigma_{0,1}(x)=1$. The letter $f_0(x)$ is child $(1,\varsigma_{0,2})$ of $P=f_1(x^{(1)})$, and $P$ is child $\varsigma_1(x)$ of $f_2(x^{(2)})$; this uses $h\ge2$. By \cref{scf:tab-subst} the thin type $\theta$ of $P$ is $\mathsf a,\mathsf c,\mathsf d,\mathsf b$ for $\varsigma_1(x)=(0,0),(1,0),(0,1),(1,1)$, and the thick type of $f_0(x)$ is the line $\langle\partial_{\mathrm S}\theta,\cdot\rangle$ if $\varsigma_{0,2}=0$ and the corner $F(\theta)$ if $\varsigma_{0,2}=1$. Here $s_2(x_2)=\varsigma_{0,2}+2\varsigma_{1,2}$ and $s_1(x_1)=1+2\varsigma_{1,1}$. \Cref{scf:tab-edges} and $F(\mathsf a,\mathsf b,\mathsf c,\mathsf d)=(\angle\mathsf b,\angle\mathsf d,\angle\mathsf c,\angle\mathsf a)$ give:
+\[
+\begin{array}{c|cccc}
+s_2(x_2) & 0 & 1 & 2 & 3\\\hline
+s_1(x_1)=1 & \partial_{\mathrm S}\mathsf a=\mathsf g_2 & F(\mathsf a)=\angle\mathsf b & \partial_{\mathrm S}\mathsf d=\mathsf r_0 & F(\mathsf d)=\angle\mathsf a\\
+s_1(x_1)=3 & \partial_{\mathrm S}\mathsf c=\mathsf g_0 & F(\mathsf c)=\angle\mathsf c & \partial_{\mathrm S}\mathsf b=\mathsf r_2 & F(\mathsf b)=\angle\mathsf d
+\end{array}
+\]
+This is (a)--(c) for $r=0$.
+
+Let $r\ge1$, so $\varsigma_{0,1}(x)=0$. The family $(f_{m+1})_{m}$ is a tower of height $h-1\ge r+1$ with digits $(\upsilon_{m+1})$ and phase $\varpi'$, where $\varpi=\upsilon_0+2\varpi'$. In it, the column of $x^{(1)}$ has rank $r-1$, the digits of $x^{(1)}$ are $\varsigma_{m+1}(x)$, and $x-\varpi=2(x^{(1)}-\varpi')+\varsigma_0(x)$. With $s'_i(z)=(z-\varpi'_i)\bmod2^{r+1}$ this gives $s_i(x_i)=2s'_i(x^{(1)}_i)+\varsigma_{0,i}(x)$ and $s_1(x_1)=2s'_1(x^{(1)}_1)$. The letter $f_0(x)$ is child $(0,\varsigma_{0,2})$ of $P=f_1(x^{(1)})$, with thick type $\kappa_P$. By \cref{scf:tab-subst}, child $(0,0)$ has thick type $\kappa_P$, and child $(0,1)$ has the line $\langle\partial_{\mathrm N}\kappa_P,\cdot\rangle$. Apply the induction hypothesis to $P$. If $\varsigma_{0,2}=0$, then $s_2=2s'_2$ and $f_0(x)$ has the thick type of $P$; (a)--(c) follow, since $s'_2\in[2^{r-1},3\cdot2^{r-1}]$ if and only if $2s'_2\in[2^r,3\cdot2^r]$, and the end values correspond. If $\varsigma_{0,2}=1$, then $s_2=2s'_2+1$ is odd, and $f_0(x)$ is a line whose vertical atom is $\partial_{\mathrm N}\kappa_P$. This endpoint is red exactly when $\kappa_P$ is a line with a red vertical atom or the corner with red north endpoint, that is when $s'_2\in[2^{r-1},3\cdot2^{r-1})$. Since $r\ge1$, the odd numbers $2s'_2+1$ with this property are exactly the odd numbers in $[2^r,3\cdot2^r]$, and they lie strictly between $2^r$ and $3\cdot2^r$. In both cases the atom is that of $P$, so (b) follows from $s_1(x_1)=2s'_1(x^{(1)}_1)$.
+
+For rows the proof is the same with the coordinates exchanged. For $r=0$ the letter is child $(\varsigma_{0,1},1)$ of $P$, that is the line $\langle\cdot,\partial_{\mathrm W}\theta\rangle$ or the corner $F(\theta)$, and the table reads, for $s_1(x_1)=0,1,2,3$: $\partial_{\mathrm W}\mathsf a=\mathsf g_3$, $F(\mathsf a)=\angle\mathsf b$, $\partial_{\mathrm W}\mathsf c=\mathsf r_1$, $F(\mathsf c)=\angle\mathsf c$ when $s_2(x_2)=1$, and $\partial_{\mathrm W}\mathsf d=\mathsf g_1$, $F(\mathsf d)=\angle\mathsf a$, $\partial_{\mathrm W}\mathsf b=\mathsf r_3$, $F(\mathsf b)=\angle\mathsf d$ when $s_2(x_2)=3$. In the induction step child $(1,0)$ is the line $\langle\cdot,\partial_{\mathrm E}\kappa_P\rangle$, and $\partial_{\mathrm E}\kappa_P$ is red exactly for a line with red horizontal atom or the corner with red east endpoint.
+\end{proof}
+
+So the red atoms in the columns and rows of rank $r$ form the boundaries of squares: for a column $x_1$ with $s_1(x_1)=2^r$, the column $x_1+2^{r+1}$ has $s_1=3\cdot2^r$ and the same rank, and the two sides run over the same rows. By \cref{fam:rank-bits} every letter on a vertical side of such a boundary has column bit $r\bmod2$, every letter on a horizontal side has row bit $r\bmod2$, and the four corners have both bits equal to $r\bmod2$.
+
+\subsection{Quarters, walls, flows and roles}\label{fam:sub-walls}
+
+Each letter of $\mathbb A$ is cut into four quarters. A \emph{scaffold pair} is a pair $(\varsigma,\mathfrak a)\in\{0,1\}^2\times\mathbb A$; the first entry is its \emph{quadrant} and the second its \emph{parent}. Let $\circ$ and $\bullet$ be two new symbols.
+
+\begin{definition}[Quarters]\label{fam:def-quarter}
+The quarter set $\mathbb A^{\mathrm q}$ is the Wang set of the $4\cdot276$ scaffold pairs. The colours of $(\varsigma,\mathfrak a)$, $\varsigma=(\varsigma_1,\varsigma_2)$, are
+\[
+\begin{array}{lll}
+\text{east:} & (\circ,\mathfrak a,\varsigma_2)\text{ if }\varsigma_1=0, & (\bullet,\mathfrak a_{\mathrm E},\varsigma_2)\text{ if }\varsigma_1=1;\\
+\text{west:} & (\circ,\mathfrak a,\varsigma_2)\text{ if }\varsigma_1=1, & (\bullet,\mathfrak a_{\mathrm W},\varsigma_2)\text{ if }\varsigma_1=0;\\
+\text{north:} & (\circ,\mathfrak a,\varsigma_1)\text{ if }\varsigma_2=0, & (\bullet,\mathfrak a_{\mathrm N},\varsigma_1)\text{ if }\varsigma_2=1;\\
+\text{south:} & (\circ,\mathfrak a,\varsigma_1)\text{ if }\varsigma_2=1, & (\bullet,\mathfrak a_{\mathrm S},\varsigma_1)\text{ if }\varsigma_2=0.
+\end{array}
+\]
+Here $\mathfrak a_{\mathrm E},\dots$ are the colours of $\mathfrak a$ in $\mathbb A$. The \emph{quartering} of a pattern $f$ of $\mathbb A$ on $U$ is the pattern $f^{\mathrm q}$ on $2U+[0,2)^2$ with $f^{\mathrm q}(2x+\varsigma)=(\varsigma,f(x))$. Its value at $\xi$ is the \emph{quarter of $f$ at $\xi$}.
+\end{definition}
+
+\begin{lemma}[Quarter encoding]\label{fam:quarter}
+\begin{itemize}
+\item[(a)] Scaffold pairs $(\varsigma,\mathfrak a)$ and $(\varsigma',\mathfrak a')$ match horizontally if and only if $\varsigma'\equiv\varsigma+\mathbf e_1\pmod 2$ and either $\varsigma_1=0$ and $\mathfrak a'=\mathfrak a$, or $\varsigma_1=1$ and $\mathfrak a,\mathfrak a'$ match horizontally in $\mathbb A$. They match vertically if and only if $\varsigma'\equiv\varsigma+\mathbf e_2\pmod2$ and either $\varsigma_2=0$ and $\mathfrak a'=\mathfrak a$, or $\varsigma_2=1$ and $\mathfrak a,\mathfrak a'$ match vertically in $\mathbb A$.
+\item[(b)] A pattern $f$ of $\mathbb A$ is legal if and only if $f^{\mathrm q}$ is legal. A map $\mathcal Y$ on $\Z^2$ is a tiling of $\mathbb A^{\mathrm q}$ if and only if $\mathcal Y(\xi)=f^{\mathrm q}(\xi-c)$ for some $c\in\{0,1\}^2$ and some tiling $f$ of $\mathbb A$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+(a) If $\varsigma_1=0$, the east colour $(\circ,\mathfrak a,\varsigma_2)$ equals a west colour only if that colour is internal; so $\varsigma'_1=1$, $\mathfrak a'=\mathfrak a$ and $\varsigma'_2=\varsigma_2$. If $\varsigma_1=1$, the east colour is external; so $\varsigma'_1=0$, $\varsigma'_2=\varsigma_2$ and $\mathfrak a_{\mathrm E}=\mathfrak a'_{\mathrm W}$. The converse is read off the same colours. The vertical case is the same.
+
+(b) The first claim follows from (a): inside a block $2x+[0,2)^2$ the four quarters have one parent, and across blocks the external colours compare the parents. For the second, let $\mathcal Y$ be a tiling. By (a), the quadrant of $\mathcal Y(\xi)$ minus $\xi$ is constant modulo $2$ along rows and along columns, so it is a constant $c$ modulo $2$. By (a) again, the four quarters of each block $c+2x+[0,2)^2$ have a common parent $f(x)$, and adjacent blocks have matching parents. The converse follows from the first claim.
+\end{proof}
+
+\begin{definition}[Walls]\label{fam:def-walls}
+Let $(\varsigma,\mathfrak a)$ be a scaffold pair whose parent has thick type $\kappa$.
+\begin{itemize}
+\item The pair lies on a \emph{vertical red path} if $\kappa$ has a vertical red atom, $\varsigma_1=1$ if this atom is $\mathsf r_0$ and $\varsigma_1=0$ if it is $\mathsf r_2$, and, when $\kappa$ is a corner, $\varsigma_2=1$ if its north endpoint is red and $\varsigma_2=0$ if its south endpoint is red. It is then a \emph{left side} if the atom is $\mathsf r_0$ and a \emph{right side} if it is $\mathsf r_2$. The path is \emph{light} at the pair if $\chi_1(\mathfrak a)=1$ and \emph{dark} if $\chi_1(\mathfrak a)=0$. A pair on a light vertical red path lies on a \emph{light vertical wall}.
+\item The pair lies on a \emph{horizontal red path} if $\kappa$ has a horizontal red atom, $\varsigma_2=1$ if this atom is $\mathsf r_1$ and $\varsigma_2=0$ if it is $\mathsf r_3$, and, when $\kappa$ is a corner, $\varsigma_1=1$ if its east endpoint is red and $\varsigma_1=0$ if its west endpoint is red. It is then a \emph{bottom side} if the atom is $\mathsf r_1$ and a \emph{top side} if it is $\mathsf r_3$. The path is light if $\chi_2(\mathfrak a)=1$, and the pair then lies on a \emph{light horizontal wall}.
+\end{itemize}
+\end{definition}
+
+So the lane $\mathsf r_0$ runs in the east half of a letter and $\mathsf r_2$ in the west half; $\mathsf r_1$ runs in the north half and $\mathsf r_3$ in the south half. A corner turns in one quarter: $\angle\mathsf b$ in quadrant $(1,1)$, $\angle\mathsf c$ in $(0,1)$, $\angle\mathsf a$ in $(1,0)$ and $\angle\mathsf d$ in $(0,0)$. That quarter is on a vertical and on a horizontal path, and both have the shade $b_1=b_2$ by (R3). A pair lies on at most one vertical and at most one horizontal red path, so the side of a wall is well defined.
+
+\begin{definition}[Frames]\label{fam:def-frames}
+Let integers $a_d$, $d\ge1$, satisfy $a_{d+1}\equiv a_d\pmod{4^{d+1}}$. The \emph{frames of depth $d$} are the intervals
+\[
+I_d(m)=\bigl[a_d+(4m+1)4^d+1,\ a_d+(4m+3)4^d\bigr],\qquad m\in\Z .
+\]
+The \emph{left endpoint} of $I_d(m)$ is $a_d+(4m+1)4^d+1$ and its \emph{right endpoint} is $a_d+(4m+3)4^d$. We write $\mathring I$ for the interior of an interval $I$, that is $I$ without its two endpoints.
+\end{definition}
+
+For a tower whose phase $(\varpi_0,\varpi_0)$ has equal coordinates we use the frames with $a_d\equiv2\varpi_0\pmod{4^{d+1}}$. They are the light red squares of the tower, seen in quarter coordinates.
+
+\begin{lemma}[Light walls]\label{fam:walls}
+Let $(f_m)$ be a tower of height $h$ with phase $(\varpi_0,\varpi_0)$, take the frames with $a_d\equiv2\varpi_0\pmod{4^{d+1}}$, and let $\xi\in2U_0+[0,2)^2$. Suppose the column $\lfloor\xi_1/2\rfloor$ has rank at most $h-2$. Then the quarter of $f_0$ at $\xi$ lies on a light vertical wall if and only if there are $d\ge1$ and $m,m'\in\Z$ such that $\xi_1$ is an endpoint of $I_d(m)$ and $\xi_2\in I_d(m')$. It is a left side when $\xi_1$ is the left endpoint and a right side when $\xi_1$ is the right endpoint, and the rank of the column is then $2d-1$. Dually, if the row $\lfloor\xi_2/2\rfloor$ has rank at most $h-2$, the quarter lies on a light horizontal wall if and only if $\xi_2$ is an endpoint of some $I_d(m')$ and $\xi_1\in I_d(m)$ for some $m$; it is a bottom side at the left endpoint and a top side at the right endpoint.
+\end{lemma}
+
+\begin{proof}
+Write $\xi=2x+\varsigma$ and let $r\le h-2$ be the rank of the column $x_1$. With $s_i$ as in \cref{fam:red}, put $\hat s_i=(\xi_i-2\varpi_0)\bmod2^{r+3}$, so that $\hat s_i=2s_i(x_i)+\varsigma_i$. By \cref{fam:red}(a)--(c) and \cref{fam:def-walls}, the quarter lies on a vertical red path if and only if three conditions hold: $s_2(x_2)\in[2^r,3\cdot2^r]$; $\varsigma_1=1$ if $s_1(x_1)=2^r$ and $\varsigma_1=0$ if $s_1(x_1)=3\cdot2^r$; and $\varsigma_2=1$ if $s_2(x_2)=2^r$, $\varsigma_2=0$ if $s_2(x_2)=3\cdot2^r$. Since $s_1(x_1)\in\{2^r,3\cdot2^r\}$, this says
+\[
+\hat s_1\in\{2^{r+1}+1,\ 3\cdot2^{r+1}\}\quad\text{and}\quad \hat s_2\in[2^{r+1}+1,\ 3\cdot2^{r+1}],
+\]
+with a left side exactly when $\hat s_1=2^{r+1}+1$. By \cref{fam:rank-bits} the path is light if and only if $r$ is odd. For $r=2d-1$ we have $2^{r+1}=4^d$, $2^{r+3}=4^{d+1}$ and $\hat s_i\equiv\xi_i-a_d\pmod{4^{d+1}}$, and the two conditions say that $\xi_1$ is an endpoint of a frame of depth $d$ and that $\xi_2$ lies in a frame of depth $d$. Conversely, if $\xi_1$ is an endpoint of a frame of depth $d$, then $\xi_1-2\varpi_0\equiv4^d+1$ or $3\cdot4^d\pmod{4^{d+1}}$. Hence $x_1-\varpi_0\equiv2^{2d-1}$ or $3\cdot2^{2d-1}\pmod{2^{2d+1}}$, the column has rank $2d-1$, and the first part applies. Rows are the same, with the second half of \cref{fam:red}.
+\end{proof}
+
+\paragraph{Flows and roles.} Each edge of a tile of $R_M$ carries a \emph{flow}: a subset of $\{\mathrm{left},\mathrm{right}\}$ on the west and east edges, and a subset of $\{\mathrm{down},\mathrm{up}\}$ on the south and north edges.
+
+\begin{definition}[Routed scaffold]\label{fam:def-routed}
+The \emph{routed scaffold} $\mathbb A^{\mathrm r}$ is the Wang set of tuples
+\[
+(\varsigma,\mathfrak a,\phi_{\mathrm W},\phi_{\mathrm E},\phi_{\mathrm S},\phi_{\mathrm N})
+\]
+with $(\varsigma,\mathfrak a)\in\mathbb A^{\mathrm q}$, $\phi_{\mathrm W},\phi_{\mathrm E}\subseteq\{\mathrm{left},\mathrm{right}\}$ and $\phi_{\mathrm S},\phi_{\mathrm N}\subseteq\{\mathrm{down},\mathrm{up}\}$ that satisfy the \emph{flow rules}:
+\begin{itemize}
+\item[(F1)] if $(\varsigma,\mathfrak a)$ lies on no light vertical wall, then $\phi_{\mathrm W}=\phi_{\mathrm E}$;
+\item[(F2)] on a left side of a light vertical wall, $\phi_{\mathrm W}\ne\emptyset$ and $\phi_{\mathrm E}\subseteq\{\mathrm{left}\}$;
+\item[(F3)] on a right side of a light vertical wall, $\phi_{\mathrm E}\ne\emptyset$ and $\phi_{\mathrm W}\subseteq\{\mathrm{right}\}$;
+\item[(F4)] if $(\varsigma,\mathfrak a)$ lies on no light horizontal wall, then $\phi_{\mathrm S}=\phi_{\mathrm N}$;
+\item[(F5)] on a bottom side of a light horizontal wall, $\phi_{\mathrm S}\ne\emptyset$ and $\phi_{\mathrm N}\subseteq\{\mathrm{down}\}$;
+\item[(F6)] on a top side of a light horizontal wall, $\phi_{\mathrm N}\ne\emptyset$ and $\phi_{\mathrm S}\subseteq\{\mathrm{up}\}$.
+\end{itemize}
+The colour of a tile on a side $X\in\{\mathrm N,\mathrm E,\mathrm S,\mathrm W\}$ is the pair of the colour of $(\varsigma,\mathfrak a)$ in $\mathbb A^{\mathrm q}$ on side $X$ and the flow $\phi_X$.
+\end{definition}
+
+A corner quarter on a light wall obeys one horizontal and one vertical rule, and the two concern different edges. A tile is a \emph{horizontal carrier} if $\phi_{\mathrm W}=\phi_{\mathrm E}=\emptyset$, and a \emph{vertical carrier} if $\phi_{\mathrm S}=\phi_{\mathrm N}=\emptyset$. Its \emph{role} is \emph{inactive} if it is neither, \emph{horizontal} if it is only a horizontal carrier, \emph{vertical} if it is only a vertical carrier, and \emph{active} if it is both, except that an active tile whose scaffold pair is $((1,1),\mathfrak a)$, with $\mathfrak a$ an index-$0$ letter with dark ruler bits, has the \emph{seed} role. The role is a function of the tile.
+
+\begin{proposition}[Walls force carriers]\label{prop:routing}
+Let $P$ be a legal pattern of $\mathbb A^{\mathrm r}$ whose domain contains the sites $(x,z)$ with $w_1\le x\le w_2$, where $w_1<w_2$. Suppose that the scaffold pairs of $P(w_1,z)$ and $P(w_2,z)$ lie on light vertical walls and that those of $P(x,z)$, $w_1<x<w_2$, do not. Then:
+\begin{itemize}
+\item[(a)] the flows $\phi_{\mathrm E}(P(w_1,z))$, $\phi_{\mathrm W}(P(x,z))$ and $\phi_{\mathrm E}(P(x,z))$ for $w_1<x<w_2$, and $\phi_{\mathrm W}(P(w_2,z))$ are all equal to one set $\psi$;
+\item[(b)] $\psi=\emptyset$ if and only if $(w_1,z)$ carries a left side and $(w_2,z)$ a right side;
+\item[(c)] for $w_1<x<w_2$, the tile $P(x,z)$ is a horizontal carrier if and only if $(w_1,z)$ carries a left side and $(w_2,z)$ a right side. No tile on a light vertical wall is a horizontal carrier.
+\end{itemize}
+The same holds for a vertical segment between two quarters on light horizontal walls, with the flows $\phi_{\mathrm S},\phi_{\mathrm N}$, bottom and top sides, and vertical carriers. It also holds for legal patterns of $R_M$ (\cref{def:family}), whose tiles carry scaffold pairs and flows with the same rules.
+\end{proposition}
+
+\begin{proof}
+(a) Matching edges carry equal flows, and (F1) makes the west and east flows of each tile strictly between the walls equal. (b) The set $\psi$ is the east flow of the tile at $w_1$ and the west flow of the tile at $w_2$. If $w_1$ carries a left side then $\psi\subseteq\{\mathrm{left}\}$ by (F2); if a right side, $\psi\ne\emptyset$ by (F3). If $w_2$ carries a right side then $\psi\subseteq\{\mathrm{right}\}$ by (F3); if a left side, $\psi\ne\emptyset$ by (F2). So $\psi=\emptyset$ when the walls are a left side and a right side in this order, since $\{\mathrm{left}\}\cap\{\mathrm{right}\}=\emptyset$. In the three other cases one of the walls forces $\psi\ne\emptyset$. (c) The first claim is (a) and (b). A tile on a left side has $\phi_{\mathrm W}\ne\emptyset$, and a tile on a right side has $\phi_{\mathrm E}\ne\emptyset$. The vertical case is the same with (F4)--(F6).
+\end{proof}
+
+Only the emptiness of a flow is forced; a nonempty flow may take several values. We use an elementary fact about nested intervals.
+
+\begin{lemma}[Laminar walls]\label{fam:laminar}
+Let $\mathcal J$ be a set of integer intervals with at least two points each, such that any two distinct members are disjoint or one lies in the interior of the other. Let $E$ be the set of their endpoints. Then every $e\in E$ is an endpoint of exactly one member, so it is a left or a right endpoint. If $w_1<w_2$ are consecutive elements of $E$, $w_1$ is a left endpoint and $w_2$ is a right endpoint, then $[w_1,w_2]\in\mathcal J$. Conversely, if a member $I$ contains no other member, its endpoints are consecutive in $E$.
+\end{lemma}
+
+\begin{proof}
+If $e$ were an endpoint of two members, they would meet, so one would lie in the interior of the other, and that one would not have $e$ as an endpoint. Now let $w_1=\min I$ and $w_2=\max I'$ be consecutive, with $I,I'\in\mathcal J$, and suppose $I\ne I'$. If $I\cap I'=\emptyset$, then $\max I<\min I'$ because $\min I<\max I'$, so $\max I$ lies strictly between $w_1$ and $w_2$. If $I$ lies in the interior of $I'$, then $\max I$ lies strictly between $w_1$ and $w_2$. If $I'$ lies in the interior of $I$, then $\min I'$ does. Each case contradicts consecutiveness, so $I=I'=[w_1,w_2]$. Conversely, let $I$ contain no other member, and let $I'\ne I$. If $I'\cap I=\emptyset$, no endpoint of $I'$ lies in $I$. Otherwise $I$ lies in the interior of $I'$, since the reverse is excluded, and then both endpoints of $I'$ lie outside $I$. So no element of $E$ lies strictly between the endpoints of $I$.
+\end{proof}
+
+\subsection{Frames and free coordinates}\label{fam:sub-frames}
+
+Fix frames as in \cref{fam:def-frames}. For $d\ge1$ and $m\in\Z$, the \emph{free coordinates} of $I_d(m)$ are the elements of
+\[
+\mathcal F_d(m)=\bigl\{z\in\mathring I_d(m):\ z\notin I_e(m')\text{ for all }1\le e<d\text{ and }m'\in\Z\bigr\},
+\]
+and its \emph{centre} is $\operatorname{cen}_d(m)=a_d+(4m+2)4^d+1$. Lower frames are excluded together with their endpoints.
+
+\begin{lemma}[Frames]\label{fam:frames}
+\begin{itemize}
+\item[(a)] Frames of the same depth are disjoint. If $e<d$, no endpoint of a frame of depth $d$ lies in a frame of depth $e$. Hence two frames of different depths are disjoint, or the one of smaller depth lies in the interior of the other.
+\item[(b)] If $e<d$, every frame of depth $d$ contains a frame of depth $e$.
+\item[(c)] $|\mathcal F_d(m)|=2^{d+2}-2$. The centre $\operatorname{cen}_d(m)$ lies in $\mathcal F_d(m)$, and $\mathcal F_d(m)$ has exactly $2^{d+1}-1$ elements smaller than $\operatorname{cen}_d(m)$ and $2^{d+1}-2$ elements larger.
+\item[(d)] Suppose $a_d\equiv2/3\pmod{4^{d+1}}$ in $\Z_2$ for every $d$. Then every integer lies in the interior of some frame.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+(a) The frame $I_d(m)$ lies in $[a_d+4m\cdot4^d,\ a_d+4(m+1)4^d)$, and these windows are disjoint. Let $e<d$. Then $a_d\equiv a_e\pmod{4^{e+1}}$ and $4^{e+1}$ divides $4^d$, so the endpoints of a frame of depth $d$ are congruent to $a_e+1$ and $a_e$ modulo $4^{e+1}$. An integer $z$ lies in a frame of depth $e$ exactly when $(z-a_e)\bmod4^{e+1}\in[4^e+1,3\cdot4^e]$, which excludes $0$ and $1$. If a frame $I$ of depth $e$ meets a frame $I'$ of depth $d$ and contains neither endpoint of $I'$, then $I$ lies in the interior of $I'$.
+
+(b) Let $I_d(m)=[L,L+2\cdot4^d-1]$. Left endpoints of frames of depth $e$ form one residue class modulo $4^{e+1}$, so one of them, $p$, lies in $[L,L+4^{e+1}-1]$. Its frame $[p,p+2\cdot4^e-1]$ ends before $L+4^{e+1}+2\cdot4^e-1\le L+2\cdot4^d-1$, because $4^{e+1}+2\cdot4^e\le2\cdot4^{e+1}\le2\cdot4^d$.
+
+(c) Call a residue $s\in[0,4^d)$ \emph{allowed} if $s\bmod4^{e+1}\notin[4^e+1,3\cdot4^e]$ for every $1\le e<d$, and let $N_d$ be the number of allowed residues. Since $a_e\equiv a_d\pmod{4^{e+1}}$, an integer $z$ lies in no frame of depth below $d$ exactly when $(z-a_d)\bmod4^d$ is allowed. Clearly $N_1=4$. Write $s\in[0,4^{d+1})$ as $s=t\cdot4^d+s'$ with $t\in[0,4)$ and $s'\in[0,4^d)$; the conditions for $e<d$ concern only $s'$, and the condition for $e=d$ is $s\notin[4^d+1,3\cdot4^d]$. For $t=0$ all $N_d$ allowed $s'$ remain; for $t=1$ only $s'=0$; for $t=2$ none; for $t=3$ all allowed $s'$ except $s'=0$. The residue $0$ is allowed, so $N_{d+1}=N_d+1+0+(N_d-1)=2N_d$, and $N_d=2^{d+1}$.
+
+Now write $z=a_d+4m\cdot4^d+t\cdot4^d+s'$. Then $z\in\mathring I_d(m)$ exactly when $t=1$ and $s'\ge2$, or $t=2$. The residues $s'=0$ and $s'=1$ are both allowed, since $1<4^e+1$. So $\mathcal F_d(m)$ has $N_d-2$ elements with $t=1$ and $N_d$ elements with $t=2$, in total $2^{d+2}-2$. The centre has $t=2$ and $s'=1$, so it is free. The free coordinates below it are the $N_d-2$ with $t=1$ and the one with $t=2$, $s'=0$; those above it are the $N_d-2$ with $t=2$, $s'\ge2$.
+
+(d) In $\Z_2$ we have $-1/3=\sum_{l\ge0}4^l$, so $-2/3=\sum_{l\ge0}2\cdot4^l$ has every base-$4$ digit equal to $2$. Adding a nonnegative integer $z$ changes only finitely many digits, because a carry into a digit $2$ stops there; subtracting a positive integer changes only finitely many digits, because a borrow from a digit $2$ stops there. So $z-2/3$ has base-$4$ digit $2$ in every position $d\ge d_0$. For such $d\ge1$, $(z-a_d)\bmod4^{d+1}\in[2\cdot4^d,3\cdot4^d-1]$, so $z$ lies in the interior of a frame of depth $d$.
+\end{proof}
+
+When every integer lies in a frame, the \emph{owner depth} $\operatorname{own}(z)$ of an integer $z$ is the least $d\ge1$ such that $z$ lies in a frame of depth $d$. By definition, $z\in\mathcal F_d(m)$ if and only if $z\in\mathring I_d(m)$ and $\operatorname{own}(z)=d$. The centres are the only free coordinates with residue $a_d+2\cdot4^d+1$ modulo $4^{d+1}$.
+
+\subsection{A routing model on the plane}\label{fam:sub-positive}
+
+We now take the phase $(1/3,1/3)$. Both coordinates are $2$-adic integers that are not integers, so every column and row has a finite rank, and $2\varpi_0=2/3$.
+
+\begin{lemma}[Routing on the plane]\label{fam:positive}
+Let $(f_m)$ be a tower of height $\infty$ with phase $(1/3,1/3)$ (\cref{fam:tower-exists}). Take the frames with $a_d\equiv2/3\pmod{4^{d+1}}$, and let $\mathcal Y=f_0^{\mathrm q}$, a tiling of $\mathbb A^{\mathrm q}$.
+\begin{itemize}
+\item[(a)] There are flows on the edges of $\Z^2$ such that $\mathcal Y$ together with these flows is a tiling $\vartheta$ of $\mathbb A^{\mathrm r}$.
+\item[(b)] Let $\vartheta$ be any tiling of $\mathbb A^{\mathrm r}$ with scaffold pairs $\mathcal Y$. Then $\vartheta(\xi)$ is a horizontal carrier if and only if $\xi_1\in\mathring I_d(m)$ for $d=\operatorname{own}(\xi_2)$ and some $m$, and it is a vertical carrier if and only if $\xi_2\in\mathring I_{d'}(m')$ for $d'=\operatorname{own}(\xi_1)$ and some $m'$.
+\item[(c)] In such a tiling, $\vartheta(\xi)$ is active or seed if and only if $\xi\in\mathcal F_d(m)\times\mathcal F_d(m')$ for some $d\ge1$ and $m,m'\in\Z$. Every seed tile sits at a pair of centres $(\operatorname{cen}_d(m),\operatorname{cen}_d(m'))$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+By \cref{fam:frames}(d) the owner depth is defined everywhere. Fix a row $\xi_2$, let $D$ be the set of depths $d$ such that $\xi_2$ lies in a frame of depth $d$, and let $d_0=\operatorname{own}(\xi_2)=\min D$. Let $\mathcal J$ be the set of all frames of the depths in $D$. By \cref{fam:walls}, applied with $h=\infty$, the quarters of the row $\xi_2$ that lie on light vertical walls are exactly the endpoints of the members of $\mathcal J$, left endpoints carrying left sides and right endpoints right sides. By \cref{fam:frames}(a), $\mathcal J$ satisfies the hypothesis of \cref{fam:laminar}. Its members that contain no other member are exactly the frames of depth $d_0$: a frame of a larger depth in $\mathcal J$ contains a frame of depth $d_0$ by \cref{fam:frames}(b), and a member inside a frame of depth $d_0$ would have a smaller depth by \cref{fam:frames}(a), which $D$ does not contain. The frames of depth $d_0$ are unbounded in both directions, so every horizontal edge of the row lies between two consecutive walls.
+
+(a) Each horizontal edge of the row lies between a nearest wall to its west and a nearest wall to its east. Give it the flow $\emptyset$ if these are a left side and a right side, $\{\mathrm{left}\}$ if both are left sides, and $\{\mathrm{right}\}$ if the western one is a right side. A tile on no light vertical wall has both edges between the same two walls, so (F1) holds. At a left side, the edge to the west ends at a left side, so its flow is $\{\mathrm{left}\}$ or $\{\mathrm{right}\}$, and the edge to the east starts at a left side, so its flow is $\emptyset$ or $\{\mathrm{left}\}$; this is (F2). At a right side, the edge to the east starts at a right side and has flow $\{\mathrm{right}\}$, and the edge to the west has flow $\emptyset$ or $\{\mathrm{right}\}$; this is (F3). Columns are treated in the same way with (F4)--(F6). Matching edges carry one flow, and $\mathcal Y$ is legal by \cref{fam:quarter}(b), so $\vartheta$ is a tiling.
+
+(b) If $\xi_1$ is a wall of the row, $\vartheta(\xi)$ is not a horizontal carrier by \cref{prop:routing}(c), and $\xi_1$ lies in the interior of no frame of depth $d_0$, because the endpoints of such a frame are consecutive walls (\cref{fam:laminar}). Otherwise let $w_1<\xi_1<w_2$ be the nearest walls. By \cref{prop:routing}(c), $\vartheta(\xi)$ is a horizontal carrier if and only if $w_1$ is a left side and $w_2$ a right side. By \cref{fam:laminar} this holds if and only if $[w_1,w_2]$ is a member of $\mathcal J$ whose endpoints are consecutive, that is a member containing no other member, that is a frame of depth $d_0$. The vertical claim is the same along the column $\xi_1$.
+
+(c) If $\vartheta(\xi)$ is both a horizontal and a vertical carrier, then $\xi_1$ lies in a frame of depth $\operatorname{own}(\xi_2)$, so $\operatorname{own}(\xi_1)\le\operatorname{own}(\xi_2)$, and symmetrically $\operatorname{own}(\xi_2)\le\operatorname{own}(\xi_1)$. With $d$ the common value, $\xi_1\in\mathring I_d(m)$ and $\operatorname{own}(\xi_1)=d$, that is $\xi_1\in\mathcal F_d(m)$; likewise $\xi_2\in\mathcal F_d(m')$. The converse follows from (b).
+
+Let $\vartheta(\xi)$ be a seed tile, with $\xi=2x+(1,1)$ and $f_0(x)$ an index-$0$ letter with dark bits. Its thick type $\angle\mathsf b$ has red north endpoint $\mathsf r_0$. Let $r$ be the rank of the column $x_1$. By \cref{fam:red}(b),(c), $s_1(x_1)=2^r$ and $s_2(x_2)=2^r$. By \cref{fam:rank-bits}, $r$ is even. If $r=0$, then $\varsigma_{0,1}(x)=1$ and $f_0(x)$ is a child of thin type $\mathsf c$ or $\mathsf b$, not $\mathsf a$. So $r=2d$ with $d\ge1$, and $x_i-1/3\equiv4^d\pmod{2^{2d+2}}$ for $i=1,2$. Hence $\xi_i-2/3\equiv2\cdot4^d+1\pmod{4^{d+1}}$, so $\xi_i$ is a centre of a frame of depth $d$.
+\end{proof}
+
+Distinct seed tiles therefore never share a product $\mathcal F_d(m)\times\mathcal F_d(m')$: each product contains at most one pair of centres.
+
+\subsection{The initialized board in every word}\label{fam:sub-board}
+
+The refutation of \cref{sec:refutation} cannot use a plane tiling. It reads one finite word $\sigma^n(\mathfrak a)$, with $\mathfrak a$ unknown, and needs a complete initialized board inside it. Every such word has one, at the same place.
+
+\begin{proposition}[The initialized board]\label{prop:board}
+Let $n\ge2$, $\mathfrak a\in\mathbb A$ and $W=\sigma^n(\mathfrak a)$, a pattern on $[0,4^n)^2$. Put $\Delta_n=4^{n-1}$, $J=[\Delta_n+1,3\Delta_n]$ and $J^\circ=[\Delta_n+2,3\Delta_n-1]$. Let $\mathcal F$ be the set of $z\in J^\circ$ that lie in no interval $[(4m+1)4^e+1,(4m+3)4^e]$ with $1\le e\le n-2$ and $m\in\Z$; these are the \emph{free coordinates}. Then:
+\begin{itemize}
+\item[(a)] $2\Delta_n+1\in\mathcal F$ and $|\mathcal F|=2^{n+1}-2$; exactly $2^n-1$ elements of $\mathcal F$ are smaller than $2\Delta_n+1$ and $2^n-2$ are larger. In particular at least $2^n-1$ elements of $\mathcal F$ are $\ge2\Delta_n+1$.
+\item[(b)] The quarter of $W$ at $(2\Delta_n+1,2\Delta_n+1)$ is $((1,1),\mathfrak b)$, where $\mathfrak b$ is an index-$0$ letter with dark ruler bits.
+\item[(c)] Let $Z_W=(\mathcal F\times J^\circ)\cup(J^\circ\times\mathcal F)$ and $\xi\in Z_W$. The quarter of $W$ at $\xi$ lies on no light wall. In the row of $\xi$, the nearest quarters of $W$ to the left and to the right of $\xi$ that lie on a light vertical wall both lie in $J\times\{\xi_2\}$, and they are a left side and a right side, in this order, if and only if $\xi_2\in\mathcal F$. In the column of $\xi$, the nearest quarters below and above $\xi$ that lie on a light horizontal wall both lie in $\{\xi_1\}\times J$, and they are a bottom side and a top side, in this order, if and only if $\xi_1\in\mathcal F$.
+\item[(d)] Let $P$ be a legal pattern of $\mathbb A^{\mathrm r}$ or of $R_M$ on $J\times J$ whose scaffold pairs are the quarters of $W$. For $\xi\in Z_W$, $P(\xi)$ is a horizontal carrier if and only if $\xi_2\in\mathcal F$, and a vertical carrier if and only if $\xi_1\in\mathcal F$. So the role of $P(\xi)$ is seed at $(2\Delta_n+1,2\Delta_n+1)$, active at the other sites of $\mathcal F\times\mathcal F$, horizontal if $\xi_2\in\mathcal F$ and $\xi_1\notin\mathcal F$, and vertical if $\xi_1\in\mathcal F$ and $\xi_2\notin\mathcal F$.
+\end{itemize}
+None of this depends on $\mathfrak a$.
+\end{proposition}
+
+\begin{proof}
+Use the tower $f_m=(\varphi')^{2n-m}(\mathfrak a)$ of height $h=2n$, with all digits $0$ and phase $0$, so that $f_0=W$ and $U_0=[0,4^n)^2$. Take the frames with $a_d=0$. Then $J=I_{n-1}(0)$, $\mathcal F=\mathcal F_{n-1}(0)$ and $2\Delta_n+1=\operatorname{cen}_{n-1}(0)$, so (a) is \cref{fam:frames}(c) with $d=n-1$.
+
+\emph{Walls in the board.} Let $\xi\in J\times J$. Its index coordinates $\lfloor\xi_i/2\rfloor$ lie in $[2^{2n-3},3\cdot2^{2n-3}]$, so they are positive and below $2^{2n-1}$. With phase $0$, \eqref{fam:eq-digits} shows that the rank of an index coordinate $x\in(0,4^n)$ is the $2$-adic valuation of $x$; here it is at most $2n-2=h-2$. So \cref{fam:walls} applies to $\xi$ in both directions. A light wall at $\xi$ comes from a frame of a depth $e$ with $2e-1\le2n-2$, that is $e\le n-1$; so every light wall in the board has rank at most $2n-3$, and it is determined by the word. A frame of depth $n-1$ that meets $J$ is $J$ itself, and a frame of smaller depth that meets $J$ lies in $\mathring J$, by \cref{fam:frames}(a). Hence, for $\xi_2\in J$, the quarters $(z,\xi_2)$ with $z\in J$ that lie on light vertical walls are exactly the endpoints of the members of
+\[
+\mathcal J(\xi_2)=\{J\}\cup\bigl\{I_e(m)\subseteq J:\ e<n-1,\ \xi_2\text{ lies in a frame of depth }e\bigr\},
+\]
+with left endpoints carrying left sides and right endpoints right sides. The same holds for columns. This family satisfies the hypothesis of \cref{fam:laminar}.
+
+(b) The letter $W(x)$ at $x=(\Delta_n,\Delta_n)$ gives the quarter at $2x+(1,1)$. The column $x_1=2^{2n-2}$ has rank $r=2n-2$, and $s_1(x_1)=s_2(x_2)=2^r$ in \cref{fam:red}. By \cref{fam:red}(b),(c) the thick type of $W(x)$ is the corner with red north endpoint $\mathsf r_0$, which is $\angle\mathsf b$. Since $\varsigma_0(x)=(0,0)$, the letter is a child $(0,0)$ and has thin type $\mathsf a$. Every corner of $\mathbb O$ has black type $\mathsf A$ (\cref{scf:tab-alphabet}). By \cref{fam:rank-bits} both bits equal $r\bmod2=0$.
+
+(c) Let $\xi\in Z_W$ and suppose first $\xi_1\in\mathcal F$. A light vertical wall at $\xi$ would make $\xi_1$ an endpoint of a frame of depth $e\le n-1$ meeting $J$. For $e<n-1$ this puts $\xi_1$ in a lower frame, which $\mathcal F$ excludes; for $e=n-1$ the frame is $J$, whose endpoints are not in $J^\circ$. A light horizontal wall at $\xi$ would need $\xi_1$ in a frame of depth $e$ and $\xi_2$ an endpoint of a frame of the same depth. For $e<n-1$ the first is excluded; for $e=n-1$ the second frame is $J$ and $\xi_2\in J^\circ$ is not its endpoint. The case $\xi_2\in\mathcal F$ is symmetric. So no light wall lies at $\xi$.
+
+The endpoints $\Delta_n+1$ and $3\Delta_n$ of $J$ carry a left and a right side in every row $\xi_2\in J$, and $\Delta_n+1<\xi_1<3\Delta_n$. So the nearest walls $w_1<\xi_1<w_2$ in the row exist and lie in $J$. If $\xi_2\in\mathcal F$, no frame of depth below $n-1$ contains $\xi_2$, so $\mathcal J(\xi_2)=\{J\}$, and the nearest walls are $\Delta_n+1$ and $3\Delta_n$: a left side and a right side. If $\xi_2\notin\mathcal F$, then $\xi_1\in\mathcal F$, and $\xi_2$ lies in a frame of some depth $e<n-1$. Suppose $w_1$ were a left side and $w_2$ a right side. By \cref{fam:laminar}, $[w_1,w_2]$ is a member of $\mathcal J(\xi_2)$. It is not $J$, because $J$ contains a frame of depth $e$ (\cref{fam:frames}(b)), which is a member, and whose endpoints lie strictly between those of $J$. So $[w_1,w_2]$ is a frame of depth below $n-1$ containing $\xi_1$, which contradicts $\xi_1\in\mathcal F$. The column statement is the same with rows and columns exchanged.
+
+(d) By (c), the segment from $\xi$ to its nearest walls in its row lies in $J\times\{\xi_2\}$, and \cref{prop:routing}(c) gives the horizontal claim; the vertical one is the same. Hence $P(\xi)$ is active or seed on $\mathcal F\times\mathcal F$, and its role is as stated off $\mathcal F\times\mathcal F$. At $(2\Delta_n+1,2\Delta_n+1)$ it is seed by (b). Let $\xi\in\mathcal F\times\mathcal F$ be a quarter $((1,1),W(x))$ with $W(x)$ an index-$0$ letter with dark bits. As in the proof of \cref{fam:positive}(c), the column $x_1$ has an even rank $r=2e\ge2$ and $s_1(x_1)=s_2(x_2)=2^r$; here $r\le2n-2$, so $e\le n-1$. With phase $0$ this gives $\xi_i\equiv2\cdot4^e+1\pmod{4^{e+1}}$, so $\xi_i$ is the centre of a frame of depth $e$. For $e<n-1$, $\xi_i$ would lie in a lower frame; so $e=n-1$, and the only centre of depth $n-1$ in $J$ is $2\Delta_n+1$. Thus the seed role occurs on $\mathcal F\times\mathcal F$ only at $(2\Delta_n+1,2\Delta_n+1)$.
+\end{proof}
+
+Every role in (d) is certified by two straight corridors from $\xi$ to walls inside $J\times J$, together with the flow rules along them. The corridors may be long, but each step involves only two adjacent quarters. \Cref{sec:refutation} walks along them with a bounded number of tokens.
+
+\subsection{The pointed Horn layer}\label{fam:sub-horn}
+
+\paragraph{Machines.} A Turing machine $M$ has finitely many states, among them an initial state and a set of halting states, a finite tape alphabet with a blank symbol $\sqcup$, and a transition function. It starts on a blank two-sided tape and \emph{halts} if it enters a halting state. A \emph{one-sided} machine has tape cells $1,2,\dots$, starts with its head on cell $1$, moves its head one cell to the left or to the right at every step, and never moves left from cell $1$. A standard simulation computes from $M$ a one-sided machine $M^\circ$ with a nonhalting initial state that halts if and only if $M$ halts: $M^\circ$ keeps the two halves of the tape of $M$ on two tracks, marks cell $1$ at its first step, and performs a stay of $M$, or a change of track at cell $1$, as a step to the right followed by a step to the left. Let $T(M)\in\{1,2,\dots\}\cup\{\infty\}$ be the number of steps $M^\circ$ makes before it enters a halting state; we call $T(M)$ the \emph{halting time} of $M$.
+
+\paragraph{A cellular automaton.} Let $\Gamma$, $\mathsf Q$ and $\mathrm{tr}$ be the tape alphabet, the state set and the transition function of $M^\circ$, with initial state $\mathsf q_0$. Let $\mathcal S_M=\Gamma\cup(\mathsf Q\times\Gamma)\cup\{\mathsf w\}$, where $\mathsf w$ marks the wall at cell $0$. Define $\mathrm{next}\colon\mathcal S_M^3\to\mathcal S_M$ by
+\begin{itemize}
+\item $\mathrm{next}(a,\mathsf w,c)=\mathsf w$;
+\item $\mathrm{next}(a,(\mathsf q,\gamma),c)=\gamma'$ if $\mathsf q$ is not halting and $\mathrm{tr}(\mathsf q,\gamma)=(\mathsf q',\gamma',\pm1)$;
+\item for $\gamma\in\Gamma$: $\mathrm{next}((\mathsf q,\gamma_a),\gamma,c)=(\mathsf q',\gamma)$ if $\mathsf q$ is not halting and $\mathrm{tr}(\mathsf q,\gamma_a)=(\mathsf q',\cdot,+1)$; otherwise $\mathrm{next}(a,\gamma,(\mathsf q,\gamma_c))=(\mathsf q',\gamma)$ if $\mathsf q$ is not halting and $\mathrm{tr}(\mathsf q,\gamma_c)=(\mathsf q',\cdot,-1)$;
+\item $\mathrm{next}(a,b,c)=b$ in all other cases.
+\end{itemize}
+Let $\mathcal C_t\colon\{0,1,2,\dots\}\to\mathcal S_M$ be given by $\mathcal C_t(0)=\mathsf w$ for all $t$, $\mathcal C_0(1)=(\mathsf q_0,\sqcup)$, $\mathcal C_0(x)=\sqcup$ for $x\ge2$, and $\mathcal C_{t+1}(x)=\mathrm{next}(\mathcal C_t(x-1),\mathcal C_t(x),\mathcal C_t(x+1))$ for $x\ge1$. For $t\le T(M)$, $\mathcal C_t$ is the configuration of $M^\circ$ at time $t$: the head cell holds the pair of the state and the scanned symbol, and the other cells hold their symbols. Indeed, in a configuration with one head, the head cell writes, the neighbour in the direction of the move receives the head, and every other cell keeps its symbol; the head never reaches cell $0$. If $M$ halts, the head at time $T=T(M)$ is at a cell $x_T\le T+1$, and $\mathcal C_T(x_T)=(\mathsf q,\gamma)$ with $\mathsf q$ halting.
+
+\paragraph{Facts and clauses.} Let $\mathcal H_M=\{\mathsf{Seed},\mathsf{Start},\mathsf{Ray}\}\cup\{\mathsf P_b:b\in\mathcal S_M\}$. A \emph{fact field} on a set $V\subseteq\Z^2$ is a map $\mathsf G\colon V\to2^{\mathcal H_M}$; we write $\mathsf F(\xi)$ for $\mathsf F\in\mathsf G(\xi)$. The clauses, for every $\xi\in\Z^2$, are:
+\[
+\begin{array}{ll}
+\text{(H1) } \mathsf{Seed}(\xi)\to\mathsf P_{\mathsf w}(\xi), & \text{(H2) } \mathsf{Seed}(\xi)\to\mathsf{Start}(\xi+\mathbf e_1),\\
+\text{(H3) } \mathsf{Start}(\xi)\to\mathsf P_{(\mathsf q_0,\sqcup)}(\xi), & \text{(H4) } \mathsf{Start}(\xi)\to\mathsf{Ray}(\xi+\mathbf e_1),\\
+\text{(H5) } \mathsf{Ray}(\xi)\to\mathsf P_{\sqcup}(\xi), & \text{(H6) } \mathsf{Ray}(\xi)\to\mathsf{Ray}(\xi+\mathbf e_1),\\
+\text{(H7) } \mathsf P_{\mathsf w}(\xi)\to\mathsf P_{\mathsf w}(\xi+\mathbf e_2), & \\
+\multicolumn{2}{l}{\text{(H8) } \mathsf P_a(\xi-\mathbf e_1)\wedge\mathsf P_b(\xi)\wedge\mathsf P_c(\xi+\mathbf e_1)\to\mathsf P_{\mathrm{next}(a,b,c)}(\xi+\mathbf e_2)\quad(a,b,c\in\mathcal S_M),}\\
+\multicolumn{2}{l}{\text{(H9) } \neg\mathsf P_b(\xi)\quad\text{for every }b=(\mathsf q,\gamma)\text{ with }\mathsf q\text{ halting}.}
+\end{array}
+\]
+Each clause has at most one positive literal, so it is a Horn clause, and the sites it mentions lie in $\xi+\Lambda$, with $\Lambda$ as in \cref{sec:setting}. A fact field on $V$ \emph{satisfies} a clause instance if the instance mentions only sites of $V$ and holds there. A \emph{model} is a fact field on $\Z^2$ that satisfies every instance.
+
+\paragraph{The Wang presentation.} A \emph{legal fact block} is a fact field $\Theta$ on $\Lambda$ that satisfies every clause instance mentioning only sites of $\Lambda$. Let $\mathcal U_M=\{\mathrm h,\mathrm v\}\times\Lambda\times\mathcal H_M$ and $C_M=2^{\mathcal U_M}$, with $\wedge$ the intersection of sets. The tile of $\Theta$ is $\operatorname{tile}(\Theta)=(\Theta_{\mathrm W},\Theta_{\mathrm E},\Theta_{\mathrm S},\Theta_{\mathrm N})\in C_M^4$, where
+\[
+\begin{aligned}
+\Theta_{\mathrm E}&=\{(\mathrm h,y,\mathsf F):y\in\Lambda,\ y_1\ge0,\ \mathsf F\in\Theta(y)\},\\
+\Theta_{\mathrm W}&=\{(\mathrm h,y+\mathbf e_1,\mathsf F):y\in\Lambda,\ y_1\le0,\ \mathsf F\in\Theta(y)\},\\
+\Theta_{\mathrm N}&=\{(\mathrm v,y,\mathsf F):y\in\Lambda,\ y_2\ge0,\ \mathsf F\in\Theta(y)\},\\
+\Theta_{\mathrm S}&=\{(\mathrm v,y+\mathbf e_2,\mathsf F):y\in\Lambda,\ y_2\le0,\ \mathsf F\in\Theta(y)\}.
+\end{aligned}
+\]
+$T_M$ is the Wang set of the tiles of all legal fact blocks, with these colours. Thus $\operatorname{tile}(\Theta)_{\mathrm E}=\operatorname{tile}(\Theta')_{\mathrm W}$ exactly when $\Theta(y)=\Theta'(y-\mathbf e_1)$ for every $y\in\Lambda$ with $y_1\ge0$: the two blocks agree on their overlap of two columns. The same holds vertically. Since the east and west colours together record all of $\Theta$, the map $\Theta\mapsto\operatorname{tile}(\Theta)$ is injective.
+
+The \emph{least field} $\mathsf G_M$ on $\Z^2$ is $\mathsf G_M(0,0)=\{\mathsf{Seed},\mathsf P_{\mathsf w}\}$, $\mathsf G_M(1,0)=\{\mathsf{Start},\mathsf P_{(\mathsf q_0,\sqcup)}\}$, $\mathsf G_M(x,0)=\{\mathsf{Ray},\mathsf P_\sqcup\}$ for $x\ge2$, $\mathsf G_M(0,t)=\{\mathsf P_{\mathsf w}\}$ for $t\ge1$, $\mathsf G_M(x,t)=\{\mathsf P_{\mathcal C_t(x)}\}$ for $x,t\ge1$, and $\mathsf G_M(\xi)=\emptyset$ at all other sites. The \emph{seed tile} is $s_M=\operatorname{tile}(\mathsf G_M|_\Lambda)$.
+
+\begin{proposition}[The pointed Horn layer]\label{prop:horn}
+The map $M\mapsto(T_M,s_M)$ is total computable, $C_M$ is a finite set with the associative, commutative and idempotent operation $\wedge$, and:
+\begin{itemize}
+\item[(a)] $T_M\subseteq C_M^4$ is closed under coordinatewise $\wedge$, and $s_M\in T_M$. The palettes $C_M^4$, $\{\mathbf c\in C_M^4:\mathbf c_{\mathrm W}=\mathbf c_{\mathrm E}\}$, $\{\mathbf c\in C_M^4:\mathbf c_{\mathrm S}=\mathbf c_{\mathrm N}\}$, $T_M$ and $\{s_M\}$ are all closed under $\wedge$.
+\item[(b)] If $M$ does not halt, $T_M$ has a tiling $\Upsilon$ with $\Upsilon(0,0)=s_M$.
+\item[(c)] If $M$ halts, with halting time $T$, then for every $N\ge2T+2$ there is no legal pattern $\Xi$ of $T_M$ on $[0,N)^2$ with $\Xi(0,0)=s_M$. In particular there is none on $[0,2T+10)^2$.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+\emph{Computability.} $M^\circ$, $\mathcal S_M$, $\mathrm{next}$ and $\mathcal H_M$ are computed from $M$. Legal fact blocks are found by checking the finitely many clause instances inside $\Lambda$ for each of the finitely many fact fields on $\Lambda$, and $s_M$ needs only $\mathcal C_0$ and $\mathcal C_1$ on cells $0,1,2$.
+
+(a) Let $\Theta,\Theta'$ be legal blocks and $\Theta\cap\Theta'$ their pointwise intersection. If the antecedents of an instance of (H1)--(H8) hold in $\Theta\cap\Theta'$, they hold in $\Theta$ and in $\Theta'$, so the consequent holds in both and in $\Theta\cap\Theta'$. A fact forbidden by (H9) is absent from $\Theta$, hence from $\Theta\cap\Theta'$. So $\Theta\cap\Theta'$ is legal, and $\operatorname{tile}(\Theta\cap\Theta')=\operatorname{tile}(\Theta)\wedge\operatorname{tile}(\Theta')$ because every colour is a set of facts read off $\Theta$. Thus $T_M$ is closed under $\wedge$. For the palettes: $C_M^4$ is closed, $\{s_M\}$ is closed by idempotence, and if $\mathbf c_{\mathrm W}=\mathbf c_{\mathrm E}$ and $\mathbf c'_{\mathrm W}=\mathbf c'_{\mathrm E}$ then $(\mathbf c\wedge\mathbf c')_{\mathrm W}=(\mathbf c\wedge\mathbf c')_{\mathrm E}$; the vertical palette is the same.
+
+We show that $\mathsf G_M$ satisfies every instance of (H1)--(H8). The instances of (H1)--(H6) hold by the definition of row $0$. (H7) holds because $\mathsf P_{\mathsf w}$ occurs exactly at the sites $(0,t)$, $t\ge0$. In (H8) the three antecedents hold only if $\xi=(x,t)$ with $x\ge1$ and $t\ge0$, since no site with negative coordinates carries a fact; then the antecedents are $\mathsf P_{\mathcal C_t(x-1)},\mathsf P_{\mathcal C_t(x)},\mathsf P_{\mathcal C_t(x+1)}$, and the consequent $\mathsf P_{\mathcal C_{t+1}(x)}$ holds at $(x,t+1)$. The block $\mathsf G_M|_\Lambda$ carries $\mathsf P$-facts only for $\mathcal C_0(0)=\mathcal C_1(0)=\mathsf w$, $\mathcal C_0(1)=(\mathsf q_0,\sqcup)$ and $\mathcal C_1(1)$. The state $\mathsf q_0$ is not halting, and $\mathcal C_1(1)\in\Gamma$ because the head leaves cell $1$ at the first step. So (H9) holds on $\Lambda$, and $s_M\in T_M$.
+
+(b) If $M$ does not halt, no $\mathcal C_t(x)$ contains a halting state, so $\mathsf G_M$ also satisfies (H9) and is a model. Put $\Upsilon(u)=\operatorname{tile}(\Theta_u)$ with $\Theta_u(y)=\mathsf G_M(u+y)$ for $y\in\Lambda$. Each $\Theta_u$ is legal, and neighbouring blocks agree on their overlaps, so $\Upsilon$ is a tiling with $\Upsilon(0,0)=s_M$.
+
+(c) Let $\Xi(u)=\operatorname{tile}(\Theta_u)$, $u\in[0,N)^2$, be a legal pattern with $\Xi(0,0)=s_M$. For a site $\xi$, the set of $u\in[0,N)^2$ with $\xi-u\in\Lambda$ is a product of two integer intervals; along each step inside it the two blocks agree at $\xi$, by the overlap property. So $\mathsf G(\xi)=\Theta_u(\xi-u)$ is a well defined fact field on $[-1,N]^2$, and $\mathsf G$ satisfies every instance that mentions only sites of $u+\Lambda$ for some $u\in[0,N)^2$. Every instance used below has this property with $u=\xi$ for its site $\xi\in[0,2T+1]\times[0,T]\subseteq[0,N)^2$.
+
+Since $s_M=\operatorname{tile}(\mathsf G_M|_\Lambda)$, $\mathsf{Seed}(0,0)$ holds in $\mathsf G$. By (H1)--(H6) at the sites $(x,0)$ with $0\le x\le2T+1$, $\mathsf G$ contains $\mathsf P_{\mathsf w}(0,0)$ and $\mathsf P_{\mathcal C_0(x)}(x,0)$ for $1\le x\le2T+1$. By (H7), $\mathsf P_{\mathsf w}(0,t)$ holds for $0\le t\le T$. By induction on $t\le T$, $\mathsf P_{\mathcal C_t(x)}(x,t)$ holds for $1\le x\le2T+1-t$: the instance of (H8) at $(x,t)$, with $x\le2T-t$, has its antecedents at $(x-1,t)$, $(x,t)$ and $(x+1,t)$, which hold by the induction hypothesis and by $\mathsf P_{\mathsf w}(0,t)$. At $t=T$ this covers $1\le x\le T+1$, and in particular $x_T$. So $\mathsf P_{\mathcal C_T(x_T)}(x_T,T)$ holds with a halting state, which violates (H9) at $(x_T,T)$. Hence no such $\Xi$ exists. Since $2T+10\ge2T+2$, the last claim follows.
+\end{proof}
+
+A whole-plane model always exists, the empty one; only the seed forces the computation. Relations closed under a semilattice operation such as $\wedge$ form a classical tractable class of constraints, decided by local consistency \cite{JCG97,FederVardi98,BartoKozik14}. \Cref{sec:refutation} uses this through the closure in (a).
+
+\subsection{The family}\label{fam:sub-family}
+
+\begin{definition}[The family $R_M$]\label{def:family}
+For a Turing machine $M$, $R_M$ is the Wang set of tuples
+\[
+\vartheta=\bigl(\operatorname{quad}(\vartheta),\operatorname{par}(\vartheta),\phi_{\mathrm W}(\vartheta),\phi_{\mathrm E}(\vartheta),\phi_{\mathrm S}(\vartheta),\phi_{\mathrm N}(\vartheta),\operatorname{pay}(\vartheta)\bigr)
+\]
+such that the first six entries form a tile of the routed scaffold $\mathbb A^{\mathrm r}$ (\cref{fam:def-routed}), and the payload $\operatorname{pay}(\vartheta)=(\mathbf c_{\mathrm W},\mathbf c_{\mathrm E},\mathbf c_{\mathrm S},\mathbf c_{\mathrm N})\in C_M^4$ lies in the palette of the role of $\vartheta$:
+\[
+\begin{array}{ll}
+\text{inactive: } C_M^4, & \text{horizontal: } \{\mathbf c:\mathbf c_{\mathrm W}=\mathbf c_{\mathrm E}\},\qquad \text{vertical: } \{\mathbf c:\mathbf c_{\mathrm S}=\mathbf c_{\mathrm N}\},\\
+\text{active: } T_M, & \text{seed: } \{s_M\}.
+\end{array}
+\]
+The colour of $\vartheta$ on a side $X$ is the pair of the colour of its $\mathbb A^{\mathrm r}$-tile on side $X$ and $\mathbf c_X$.
+\end{definition}
+
+So matching tiles of $R_M$ have matching scaffold pairs (\cref{fam:quarter}), equal flows on the shared edge, and equal payload colours on the shared edge. The scaffold $\mathbb A$, the quarters, the walls, the flow rules and the roles are fixed; only $C_M$, $T_M$ and $s_M$ depend on $M$. The map $M\mapsto R_M$ is total computable: $\mathbb A^{\mathrm r}$ is a fixed finite set, and $R_M$ is obtained by listing, for each tile of $\mathbb A^{\mathrm r}$, the payloads in its palette, using \cref{prop:horn}.
+
+\begin{proposition}[Nonhalting members tile]\label{prop:tiles}
+If $M$ does not halt, then $R_M$ tiles.
+\end{proposition}
+
+\begin{proof}
+Let $(f_m)$ be a tower with phase $(1/3,1/3)$ (\cref{fam:tower-exists}), take the frames with $a_d\equiv2/3\pmod{4^{d+1}}$, and let $\vartheta^{\mathrm r}$ be a tiling of $\mathbb A^{\mathrm r}$ with scaffold pairs $f_0^{\mathrm q}$, as in \cref{fam:positive}(a). By \cref{prop:horn}(b) there is a tiling $\Upsilon$ of $T_M$ with $\Upsilon(0,0)=s_M$.
+
+\emph{Addresses.} For $d\ge1$ and $m\in\Z$ let $\operatorname{ad}_{d,m}\colon\mathcal F_d(m)\to\Z$ be the increasing map onto an interval of integers with $\operatorname{ad}_{d,m}(\operatorname{cen}_d(m))=0$. For $z\in\mathring I_d(m)$ let $\operatorname{ad}^-_{d,m}(z)=\operatorname{ad}_{d,m}(z')$, where $z'$ is the largest element of $\mathcal F_d(m)$ with $z'\le z$, and $\operatorname{ad}^-_{d,m}(z)=\operatorname{ad}_{d,m}(\min\mathcal F_d(m))-1$ if there is none. Then $\operatorname{ad}^-_{d,m}=\operatorname{ad}_{d,m}$ on $\mathcal F_d(m)$; and for $z,z+1\in\mathring I_d(m)$, $\operatorname{ad}^-_{d,m}(z+1)=\operatorname{ad}^-_{d,m}(z)$ if $z+1\notin\mathcal F_d(m)$, while $\operatorname{ad}^-_{d,m}(z+1)=\operatorname{ad}^-_{d,m}(z)+1$ if $z+1\in\mathcal F_d(m)$.
+
+\emph{Payloads.} We give each site $\xi$ a payload $\operatorname{pay}(\xi)$ according to the role of $\vartheta^{\mathrm r}(\xi)$, described by \cref{fam:positive}(b),(c). We drop the indices of $\operatorname{ad}$ and $\operatorname{ad}^-$, which are determined by the frames containing the coordinates.
+\begin{itemize}
+\item Active or seed, $\xi\in\mathcal F_d(m)\times\mathcal F_d(m')$: $\operatorname{pay}(\xi)=\Upsilon(\operatorname{ad}(\xi_1),\operatorname{ad}(\xi_2))$.
+\item Horizontal, with $d=\operatorname{own}(\xi_2)$ and $\xi_1\in\mathring I_d(m)$: if $\xi_2\in\mathcal F_d(m')$ for some $m'$, put $\mathbf c_{\mathrm W}=\mathbf c_{\mathrm E}=\Upsilon(\operatorname{ad}^-(\xi_1),\operatorname{ad}(\xi_2))_{\mathrm E}$; otherwise put $\mathbf c_{\mathrm W}=\mathbf c_{\mathrm E}=\emptyset$.
+\item Vertical, with $d=\operatorname{own}(\xi_1)$ and $\xi_2\in\mathring I_d(m')$: if $\xi_1\in\mathcal F_d(m)$ for some $m$, put $\mathbf c_{\mathrm S}=\mathbf c_{\mathrm N}=\Upsilon(\operatorname{ad}(\xi_1),\operatorname{ad}^-(\xi_2))_{\mathrm N}$; otherwise $\mathbf c_{\mathrm S}=\mathbf c_{\mathrm N}=\emptyset$.
+\end{itemize}
+These sides are \emph{fixed}: the west and east sides of horizontal carriers, and the south and north sides of vertical carriers. Every other side is \emph{free}. Give a free side the colour of the facing side across its edge if that side is fixed, and $\emptyset$ otherwise. Each free side belongs to one tile and one edge, so this is well defined.
+
+\emph{Palettes.} Active payloads lie in $T_M$. A seed tile sits at a pair of centres by \cref{fam:positive}(c), where $\operatorname{ad}=0$, so its payload is $\Upsilon(0,0)=s_M$. Horizontal and vertical payloads satisfy $\mathbf c_{\mathrm W}=\mathbf c_{\mathrm E}$, respectively $\mathbf c_{\mathrm S}=\mathbf c_{\mathrm N}$, and inactive payloads are unconstrained. So $\vartheta(\xi)=(\vartheta^{\mathrm r}(\xi),\operatorname{pay}(\xi))$ is a tile of $R_M$.
+
+\emph{Matching.} The $\mathbb A^{\mathrm r}$-parts match because $\vartheta^{\mathrm r}$ is a tiling. Consider a horizontal edge from $\xi$ to $\xi+\mathbf e_1$. If at most one of its two sides is fixed, the free side copies the other or both are $\emptyset$. Otherwise both tiles are horizontal carriers. Let $d=\operatorname{own}(\xi_2)$. By \cref{fam:positive}(b), $\xi_1$ and $\xi_1+1$ lie in interiors of frames of depth $d$; these interiors are separated by endpoints, so both lie in one $\mathring I_d(m)$. If $\xi_2$ lies in no $\mathcal F_d(m')$, it is an endpoint of a frame of depth $d$, the row carries no active tile by \cref{fam:positive}(c), and both sides are $\emptyset$. If $\xi_2\in\mathcal F_d(m')$, put $t=\operatorname{ad}(\xi_2)$. A tile on this row inside $\mathring I_d(m)$ is active or seed at the free coordinates and horizontal elsewhere. In both cases the east side of $\xi$ is $\Upsilon(\operatorname{ad}^-(\xi_1),t)_{\mathrm E}$. If $\xi_1+1$ is not free, the west side of $\xi+\mathbf e_1$ is $\Upsilon(\operatorname{ad}^-(\xi_1+1),t)_{\mathrm E}=\Upsilon(\operatorname{ad}^-(\xi_1),t)_{\mathrm E}$. If $\xi_1+1$ is free, it is $\Upsilon(\operatorname{ad}^-(\xi_1)+1,t)_{\mathrm W}$, which equals $\Upsilon(\operatorname{ad}^-(\xi_1),t)_{\mathrm E}$ because $\Upsilon$ is a tiling. Vertical edges are the same with rows and columns exchanged. So $\vartheta$ is a tiling of $R_M$.
+\end{proof}
+
+Every product $\mathcal F_d(m)\times\mathcal F_d(m')$ carries its own copy of $\Upsilon$, centred at its centre pair. Products without a seed tile receive a copy as well, and nothing links different products: the transverse sides of channels are free.
+
