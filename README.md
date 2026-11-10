@@ -1,6 +1,6 @@
 # Forgetting under noise is undecidable: ergodicity of positive-rate cellular automata at a fixed noise rate
 
-Seth Douglas and Nidhal Mghirbi. Version 1.1.0, November 2026. DOI: [10.5281/zenodo.24104252](https://doi.org/10.5281/zenodo.24104252). Version 1.0.0: [10.5281/zenodo.24102672](https://doi.org/10.5281/zenodo.24102672). Concept DOI (all versions): [10.5281/zenodo.24102671](https://doi.org/10.5281/zenodo.24102671).
+Seth Douglas and Nidhal Mghirbi. Version 1.2.0, November 2026. The version 1.2.0 DOI is recorded in the commit that follows the release. Version 1.1.0: [10.5281/zenodo.24104252](https://doi.org/10.5281/zenodo.24104252). Version 1.0.0: [10.5281/zenodo.24102672](https://doi.org/10.5281/zenodo.24102672). Concept DOI (all versions): [10.5281/zenodo.24102671](https://doi.org/10.5281/zenodo.24102671).
 
 **This is a preprint. It has not been peer reviewed.**
 
@@ -8,7 +8,7 @@ Seth Douglas and Nidhal Mghirbi. Version 1.1.0, November 2026. DOI: [10.5281/zen
 
 Can noise make the long-run behaviour of a cellular automaton predictable? A probabilistic cellular automaton with positive rates, in which every site can take every value with positive probability at every step, is ergodic when it forgets its initial configuration. Deciding ergodicity is known to be impossible when some transitions may have probability zero. We show that positive noise does not restore decidability. There are an explicit rate ε₀ > 0 and a computable family of positive-rate cellular automata on ℤ⁸, each a deterministic local rule followed by uniform random replacement, such that for every noise rate ε in (0, ε₀] the automaton built from a Turing machine M is ergodic if and only if M halts.
 
-The proof links a logical quantity to a physical one. A tile set that tiles the plane makes a noisy quorum rule remember. A tile set whose contradictions can always be cornered by a fixed number of local tokens, a refutation of bounded width in the sense of existential pebble games, makes the same rule forget. We build a computable family of tile sets in which every contradiction that exists can be cornered by three tokens: two hold the phase of a recognizable substitution while the third walks, and the machine runs in a layer closed under intersection. Two consequences: no computable function bounds how long the ergodic members take to forget, and uniqueness of the translation-invariant Gibbs state of the associated space–time interactions is undecidable.
+The proof links a logical quantity to a physical one. A tile set that tiles the plane makes a noisy quorum rule remember. A tile set whose contradictions can always be cornered by a fixed number of local tokens, a refutation of bounded width in the sense of existential pebble games, makes the same rule forget. We build a computable family of tile sets in which every contradiction that exists can be cornered by three tokens: two hold the phase of a recognizable substitution while the third walks, and the machine runs in a layer closed under intersection. The classification holds on a ball of one fixed total-variation radius around every member. Two further consequences: no computable function bounds how long the ergodic members take to forget, and uniqueness of the translation-invariant Gibbs state of the associated space–time interactions is undecidable.
 
 ## What the paper proves
 
@@ -19,6 +19,7 @@ A probabilistic cellular automaton updates every site of a lattice at once. Each
   - if R tiles the plane, the noisy quorum rule remembers a bit forever;
   - if every contradiction of R can be cornered by j local tokens (k ≥ 2j), the rule forgets its start exponentially fast after a delay set by the refutation.
 - **Theorem C.** One computable family of tile sets: R_M tiles exactly when M does not halt, and every halting member is refuted by three tokens. A general argument with a large fixed number of tokens comes first; Section 9 lowers it to three.
+- **Robustness (version 1.2.0).** Every probabilistic cellular automaton whose transition table is within total-variation distance ε₀ of a member of the family has the same classification; the radius is the same for every member.
 - **Corollaries.**
   - One family works at every rate in (0, ε₀], and for other replacement laws.
   - A computable map sends every Wang set to a noisy automaton that is ergodic exactly when the set does not tile.

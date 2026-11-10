@@ -146,3 +146,327 @@ The last claim follows: an algorithm deciding uniqueness of the translation-inva
 \begin{remark}[Arithmetical placement]\label{pf:arith}
 For a PCA with a strictly positive rational table, ergodicity is a $\Pi^0_2$ property of the table \cite{DM26}. The reason is short. By Halawi's theorem \cite{Halawi22}, an ergodic positive PCA is uniformly ergodic. So ergodicity says: for every window $O$ and every $m\ge1$ there is $t$ with $\Delta_O(t)<1/m$, where $\Delta_O(t)=\sup_{x,y}\dtv\bigl(\mathrm{Law}_x(X_t|_O),\mathrm{Law}_y(X_t|_O)\bigr)$. The argument of \cref{cor:mixing}(i) computes $\Delta_O(t)$ exactly, and $\Delta_O(t)$ does not increase with $t$ \cite{DM26}. \Cref{thm:main} gives a lower bound at the first level. For each rational $\eps\in(0,\eps_0]$, the computable map $M\mapsto F^{[k]}_{R_M}$ reduces the halting problem to ergodicity at rate $\eps$. So ergodicity of positive-rate PCA on $\Z^{2+k}$ at the fixed rate $\eps$, with uniform replacement, is $\Sigma^0_1$-hard, and non-ergodicity is $\Pi^0_1$-hard; in particular the non-ergodic members do not form a computably enumerable set. Whether ergodicity at a fixed rate is $\Pi^0_2$-complete is not settled by \cref{thm:main}.
 \end{remark}
+
+\subsection{Perturbed kernels}\label{pf:sec-robust}
+
+Theorem~A fixes one noise, uniform replacement at rate $\eps$. The dichotomy does
+not depend on that choice. It holds for every probabilistic cellular automaton whose
+table lies within a fixed total-variation distance of the noiseless rule, with a
+radius that depends on $k$ only. The proof reuses the proofs of
+\cref{thm:memory,thm:forgetting}. The memory half needs nothing beyond
+\cref{mem:laws}. The forgetting half needs two changes: the discrepancy path of
+\cref{fgt:path} may pass through faults, and a fault on that path receives a contour
+with no edges.
+
+Throughout this subsection $R$ is a Wang set, $k\ge2$, $q=k+1$, $a=2q^2+1$,
+$D_0=50q$, $\A=\A_R$, $F=F^{[k]}_R$ and $\mathcal N=\Lambda\times\{c_0,\dots,c_k\}$.
+For $x\in\Omega$ and a site $v$ let $x_v\in\A^{\mathcal N}$ be given by
+$x_v(w)=x(v+w)$, and let $f\colon\A^{\mathcal N}\to\A$ be the local rule of $F$, so
+that $F(x)(v)=f(x_v)$.
+
+\begin{definition}[Local map fields]\label{pf:def-field}
+A \emph{local map field} consists of random variables $\chi_t(v)\in\{0,1\}$ and
+random maps $f_{t,v}\colon\A^{\mathcal N}\to\A$, for $t\ge1$ and
+$v\in\Z^{2+k}$, all defined on one probability space, such that $f_{t,v}=f$
+whenever $\chi_t(v)=0$. A point $(v,t)$ with $\chi_t(v)=1$ is a \emph{fault}. The
+\emph{run} from $x\in\Omega$ is $X_0=x$ and $X_t(v)=f_{t,v}\bigl((X_{t-1})_v\bigr)$
+for $t\ge1$. Runs from several starts driven by one field form the
+\emph{common-map coupling}. For $0<\gamma<1$ the field is \emph{$\gamma$-bounded} if
+\[
+\Prob\bigl(\chi_t(v)=1\text{ for every }(v,t)\in S\bigr)\le\gamma^{|S|}
+\]
+for every finite set $S$ of points of positive time.
+\end{definition}
+
+Nothing else is assumed. Faults may be correlated in space and in time, and the map
+at a fault may be any function of its inputs, chosen at random jointly with all
+other maps. Bounds of this form are the noise condition of Toom's stability theorem \cite{Toom80}; see also \cite{Gacs21}. Replacement noise at rate $\eps$ (\cref{set:def-noise}) is the
+$\eps$-bounded field with $\chi_t(v)=\eta_t(v)$, in which $f_{t,v}$ is the constant
+map with value $\zeta_t(v)$ when $\eta_t(v)=1$.
+
+\begin{lemma}[Common local maps]\label{pf:field}
+Let $0<\gamma<1$, let $(\chi,f_{t,v})$ be a $\gamma$-bounded local map field, and
+let $E$ be the domination field of \cref{def:domination} computed from $\chi$ in
+place of $\eta$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Let $R$ tile, let $\xi$ be a cloned tiling configuration, and suppose
+$\lambda=2D_0^2\gamma^{1/q^2}<1$. Let $X$ be the run from $\xi$ and $Y$ the run from
+$\bot$. For every site $v$ and every $t\ge0$,
+\[
+\Prob\bigl(X_t(v)\ne\xi(v)\bigr)\le\gamma\Bigl(1+\frac{2\lambda}{1-\lambda}\Bigr),
+\qquad
+\Prob\bigl(Y_t(v)\ne\bot\bigr)\le\gamma\Bigl(1+\frac{2\lambda}{1-\lambda}\Bigr).
+\]
+\item Let $j\ge1$, $k\ge\max(2,2j)$, let $R$ be $j$-token refutable with time
+$\tau$, and suppose $\beta=2D_0^2\gamma^{1/a}<1$. Let $X$ and $Y$ be the runs from
+configurations $x$ and $y$ under the common-map coupling. For every site $v$ and
+every $t\ge0$,
+\[
+\Prob\bigl(X_t(v)\ne Y_t(v)\bigr)\le2\gamma^{-\tau/a}\,\frac{\beta^t}{1-\beta}.
+\]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+In both parts, read ``event'' as ``fault'' in \cref{sec:memory,sec:forgetting}.
+At a point that is not a fault the run applies $F$:
+$X_t(v)=f\bigl((X_{t-1})_v\bigr)=F(X_{t-1})(v)$.
+
+(i) The proof of \cref{mem:two-parents} uses a point that is not an event only
+through $X_t(u,P)=F(X_{t-1})(u,P)$, and the start only at time $0$. It never uses
+the value written at an event. So \cref{mem:two-parents} and \cref{mem:dominate}
+hold for every realization of the field. The proof of \cref{mem:field-bound} uses
+the indicators only through the recursive definition of $E$ and through the bound
+that every finite set $S$ of points of positive time consists of events with
+probability at most $\eps^{|S|}$ (\cref{mem:laws}). Here that bound holds with $\gamma$ in
+place of $\eps$. With $|S|=1$ it also gives $\Prob(\chi_t(v)=1)\le\gamma$. So the
+proof of \cref{mem:field-bound} gives
+$\Prob(E_t(v)=1)\le\gamma(1+2\lambda/(1-\lambda))$, and \cref{mem:dominate} gives (i).
+
+(ii) If $L_R=\emptyset$, then $\A=\{\bot\}$ and there is nothing to prove; otherwise
+$\tau\ge1$, as in the proof of \cref{thm:forgetting}. Fix $r$ with
+$S_\tau(0,\dots,0)=\emptyset$ for the box $V=\{-r,\dots,r\}^2$.
+
+\emph{Step 1: the cover.} \Cref{fgt:transport}, \cref{fgt:cover} and \cref{fgt:live}
+are statements about one run and one realization. Their proofs use a point that is
+not an event only through $X_t(v)=F(X_{t-1})(v)$ (Step~2 of the proof of
+\cref{fgt:transport}), and an event only through $E=1$ there. They never use the
+value written at an event. So they hold for every realization of the field and for
+the run from every start, with the one field $E$, which depends on $\chi$ alone.
+Hence, for $t\ge\tau$, every live value $X_t(v)$ or $Y_t(v)$ has $E_t(v)=1$.
+
+\emph{Step 2: the discrepancy path.} Let $t\ge1$ and $X_t(v)\ne Y_t(v)$. Since
+$X_t(v)=f_{t,v}\bigl((X_{t-1})_v\bigr)$ and $Y_t(v)=f_{t,v}\bigl((Y_{t-1})_v\bigr)$
+with one and the same map $f_{t,v}$, the inputs differ:
+$X_{t-1}(v')\ne Y_{t-1}(v')$ for some $v'\in v+\mathcal N=\mathcal N(v)$. This holds
+whether or not $(v,t)$ is a fault. Repeating down to time $0$ gives sites
+$v_t=v,v_{t-1},\dots,v_0$ with $v_{s-1}\in\mathcal N(v_s)$ and
+$X_s(v_s)\ne Y_s(v_s)$ for $0\le s\le t$. So $(v_s,s)$ and $(v_{s-1},s-1)$ are
+joined in $\mathcal G$. This replaces \cref{fgt:path}. The points $(v_s,s)$ may now
+be faults.
+
+\emph{Step 3: marks on the path.} Let $\tau\le s\le t$. If $(v_s,s)$ is a fault,
+then $E_s(v_s)=1$ by \cref{def:domination}. Otherwise, $X_s(v_s)$ and $Y_s(v_s)$ are
+different symbols of $L_R\cup\{\bot\}$, so one of them is live, and Step~1 gives
+$E_s(v_s)=1$.
+
+\emph{Step 4: packing.} Run the proof of \cref{fgt:packing} with one change. Put
+$t_1=t$. Given $t_l\ge\tau$ and $\rho_l=(v_{t_l},t_l)$:
+\begin{itemize}
+\item If $\rho_l$ is not a fault, apply \cref{lem:contour}, with $\mathcal U$ the
+marked points and $\mathcal U_{\mathrm f}$ the faults, at $\rho_l$. This gives
+$m_l$, $\Sigma_l$, $K_l$ and $s_l$ as there.
+\item If $\rho_l$ is a fault, put $K_l=\emptyset$, $\Sigma_l=\{\rho_l\}$, $m_l=1$
+and $s_l=t_l$.
+\end{itemize}
+In both cases:
+\begin{itemize}
+\item $\Sigma_l$ is a set of $m_l$ faults with times in $[s_l,t_l]$, and every point
+of $\Sigma_l$ is $\rho_l$ or a vertex of $K_l$;
+\item every vertex of $K_l$ has time in $[s_l,t_l]$;
+\item if $K_l\ne\emptyset$, its edges form a connected graph with $\rho_l$ among its
+vertices (\cref{lem:contour}(i));
+\item and
+\[
+|K_l|\le q^2(m_l-1),\qquad t_l-s_l\le q^2(m_l-1).
+\]
+\end{itemize}
+For the second case both sides of each inequality are $0$. These are the only
+properties of the contours that the proof of \cref{fgt:packing} uses. Continue with
+$t_{l+1}=s_l-1$ while $s_l-1\ge\tau$. The slabs $[s_l,t_l]$ are pairwise disjoint,
+so the sets $\Sigma_l$ are pairwise disjoint. Moreover
+$t-\tau+1\le\sum_l(t_l-s_l+1)\le q^2m$ with $m=\sum_l m_l$. Let $K$ consist of the
+$t$ path edges together with all $K_l$. The path edges form a connected graph whose
+vertices include every $\rho_l$, since $t\ge\tau\ge1$. Each nonempty $K_l$ is
+connected and contains $\rho_l$. So $K$ is connected, its vertices include $(v,t)$
+and $\Sigma=\bigcup_l\Sigma_l$, and $e=|K|$ satisfies $t\le e\le\tau-1+2q^2m$. Hence
+$|\Sigma|=m\ge(e-\tau)/a$. The proof of \cref{fgt:packing} used the start $\bot$
+only to know that one of two different values is live, and Step~3 supplies this for
+any two runs.
+
+\emph{Step 5: counting.} For $t<\tau$ the right side is at least $2$, as in the proof
+of \cref{thm:forgetting}. For $t\ge\tau$, by Step~4 the event $X_t(v)\ne Y_t(v)$ is
+contained in the union, over $e\ge t$, over connected sets $K$ of $e$ edges of
+$\mathcal G$ with $(v,t)$ among their vertices, and over sets $\Sigma$ of at least
+$(e-\tau)/a$ of their vertices, of the events $\{\chi=1\text{ on }\Sigma\}$. These
+$(K,\Sigma)$ form a countable family of fixed sets. Each event has probability at
+most $\gamma^{|\Sigma|}\le\gamma^{(e-\tau)/a}$, by $\gamma$-boundedness; sets
+$\Sigma$ that contain a point of time $0$ have probability $0$. By \cref{fgt:count}
+there are at most $D_0^{2e}2^{e+1}$ pairs $(K,\Sigma)$ for each $e$. Summing as in the
+proof of \cref{thm:forgetting} gives the bound. No independence is used, only the
+union bound.
+\end{proof}
+
+A \emph{local kernel} on $\A$ is a family $Q=(Q(\cdot\mid y))_{y\in\A^{\mathcal N}}$
+of probability laws on $\A$. The \emph{probabilistic cellular automaton with kernel
+$Q$} is the process with $X_0=x$ in which, given $X_0,\dots,X_t$, the values
+$X_{t+1}(v)$ are independent and $X_{t+1}(v)=s$ with probability
+$Q\bigl(s\mid(X_t)_v\bigr)$. We write $\mathrm{Law}^Q_x$, $\Prob^Q_x$ and
+$\delta^Q_O(t)$ as in \cref{sec:setting}. \Cref{set:feller,set:forget-ergodic,set:memory-nonergodic}
+and their proofs hold verbatim for it: they use only the mixture formula and the fact
+that $X_1|_O$ depends on $X_0$ only on $O+\mathcal N$ and on independent randomness.
+Uniform replacement at rate $\eps$ is the kernel
+$p_\eps(s\mid y)=(1-\eps)\mathbf 1[s=f(y)]+\eps/|\A|$. On local kernels over $\A$ put
+\[
+d(Q,Q')=\max_{y\in\A^{\mathcal N}}\dtv\bigl(Q(\cdot\mid y),Q'(\cdot\mid y)\bigr).
+\]
+Then $d(Q,\delta_f)=\max_y\bigl(1-Q(f(y)\mid y)\bigr)$, where $\delta_f$ is the
+noiseless rule $\delta_f(\cdot\mid y)=\delta_{f(y)}$.
+
+\begin{corollary}[Perturbed kernels]\label{cor:robust}
+Let $j$, $k$, $q$, $a$, $D_0$ and $\eps_0$ be as in this section, or as in
+\cref{cor:eight}. For a machine $M$ write $\A_M=\A_{R_M}$, let $f_M$ be the local
+rule of $F^{[k]}_{R_M}$, and let $p_{M,\eps}$ be uniform replacement at rate $\eps$
+on $\A_M$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Let $0<\gamma\le2\eps_0$ and let $Q$ be a local kernel on $\A_M$ with
+\[
+Q\bigl(f_M(y)\mid y\bigr)\ \ge\ 1-\gamma\qquad\text{for every }y\in\A_M^{\mathcal N}.
+\]
+The probabilistic cellular automaton with kernel $Q$ is ergodic if and only if $M$
+halts. More precisely, put $\beta=2D_0^2\gamma^{1/a}$; then $\beta<0.52$. If $M$
+halts and $\tau=\tau(R_M)$, then for every window $O$ and every $t\ge0$
+\[
+\delta^Q_O(t)\le2|O|\,\gamma^{-\tau/a}\,\frac{\beta^t}{1-\beta}.
+\]
+If $M$ does not halt and $\xi$ is a cloned tiling configuration, then for every site
+$v$ and every $t\ge0$
+\[
+\Prob^Q_\xi\bigl(X_t(v)\ne\xi(v)\bigr)<1.01\,\gamma,\qquad
+\Prob^Q_\bot\bigl(X_t(v)\text{ is live}\bigr)<1.01\,\gamma ,
+\]
+and the process has memory with $\alpha=1-2.02\gamma$.
+\item Let $\eps\in(0,\eps_0]$. Every local kernel $Q$ on $\A_M$ with
+$d(Q,p_{M,\eps})\le\eps_0$ satisfies the hypothesis of (i) with $\gamma=2\eps_0$. So
+the probabilistic cellular automaton with kernel $Q$ is ergodic if and only if $M$
+halts. The radius $\eps_0$ depends on $k$ only. It is the same for every machine $M$
+and every rate $\eps\in(0,\eps_0]$.
+\item Let $M\mapsto Q_M$ be a total computable map to local kernels on $\A_M$ with
+rational entries, each satisfying the hypothesis of (i) with one fixed
+$\gamma\in(0,2\eps_0]$. Then $Q_M$ is ergodic if and only if $M$ halts. So no
+algorithm decides ergodicity for such a family.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+\emph{A map field for $Q$.} Let $Q$ and $\gamma$ be as in (i), and put
+\[
+Q'(s\mid y)=\frac{Q(s\mid y)-(1-\gamma)\mathbf 1[s=f_M(y)]}{\gamma}.
+\]
+By hypothesis $Q'(\cdot\mid y)$ is a probability law on $\A_M$ for every $y$.
+Enumerate $\A_M=\{s_1,\dots,s_n\}$. For $y\in\A_M^{\mathcal N}$ and $w\in(0,1]$ let
+$g(y,w)=s_r$ for the least $r$ with $\sum_{r'\le r}Q'(s_{r'}\mid y)\ge w$. If $W$ is
+uniform on $(0,1]$, then $g(y,W)$ has law $Q'(\cdot\mid y)$. Let $\chi_t(v)$ be
+Bernoulli with parameter $\gamma$ and $W_t(v)$ uniform on $(0,1]$, all independent.
+Put $f_{t,v}=f_M$ if $\chi_t(v)=0$ and $f_{t,v}=g(\cdot,W_t(v))$ if $\chi_t(v)=1$.
+This is a local map field, and it is $\gamma$-bounded because
+$\Prob(\chi=1\text{ on }S)=\gamma^{|S|}$.
+
+Let $X$ be its run from $x$. Then $X_0,\dots,X_t$ are functions of $x$ and of the
+variables of times at most $t$. The variables $(\chi_{t+1}(v),W_{t+1}(v))$, over all
+$v$, are independent of these and of each other. So, given $X_0,\dots,X_t$, the
+values $X_{t+1}(v)$ are independent, and
+\[
+\Prob\bigl(X_{t+1}(v)=s\bigm|X_0,\dots,X_t\bigr)
+=(1-\gamma)\mathbf 1\bigl[s=f_M((X_t)_v)\bigr]+\gamma\,Q'\bigl(s\mid(X_t)_v\bigr)
+=Q\bigl(s\mid(X_t)_v\bigr).
+\]
+Hence the run from $x$ has law $\mathrm{Law}^Q_x$, and the common-map coupling of the
+runs from $x$ and from $\bot$ is a coupling of $\mathrm{Law}^Q_x$ and
+$\mathrm{Law}^Q_\bot$.
+
+\emph{Constants.} Recall $\eps_0=(4D_0^2)^{-a}$, with $q\ge3$, $D_0\ge150$ and
+$a\ge19$ (\cref{pf:threshold}). From $\gamma\le2\eps_0$ we get
+$\beta=2D_0^2\gamma^{1/a}\le2^{1/a}/2\le2^{-18/19}<0.52$. Since $a/q^2>2$ and
+$4D_0^2>1$,
+\[
+\gamma^{1/q^2}\le2^{1/q^2}(4D_0^2)^{-2},\qquad\text{so}\qquad
+\lambda=2D_0^2\gamma^{1/q^2}\le\frac{2^{1/9}}{8D_0^2}<10^{-5},
+\]
+and $2\lambda/(1-\lambda)<0.01$. Also $\gamma\le2\eps_0<10^{-8}$, so
+$1-2.02\gamma>0$.
+
+\emph{(i), $M$ halts.} By \cref{thm:width}, or \cref{thm:three} with the constants
+of \cref{cor:eight}, $R_M$ is $j$-token refutable with time $\tau=\tau(R_M)$, and
+$k\ge\max(2,2j)$. For a window $O$ and a start $x$, \cref{pf:field}(ii) with $y=\bot$
+gives
+\[
+\dtv\bigl(\mathrm{Law}^Q_x(X_t|_O),\mathrm{Law}^Q_\bot(X_t|_O)\bigr)
+\le\sum_{v\in O}\Prob\bigl(X_t(v)\ne Y_t(v)\bigr)
+\le2|O|\,\gamma^{-\tau/a}\,\frac{\beta^t}{1-\beta},
+\]
+which tends to $0$. The process forgets, and it is ergodic by
+\cref{set:forget-ergodic}.
+
+\emph{(i), $M$ does not halt.} $R_M$ tiles (\cref{thm:width}). By
+\cref{pf:field}(i) and the constants, both probabilities are at most
+$\gamma(1+2\lambda/(1-\lambda))<1.01\gamma$. As in the proof of \cref{thm:main},
+$\Prob^Q_\xi(X_t(v)=\xi(v))>1-1.01\gamma$ and
+$\Prob^Q_\bot(X_t(v)=\xi(v))<1.01\gamma$ for every $t$. So the process has memory
+with $\alpha=1-2.02\gamma>0$, and \cref{set:memory-nonergodic} shows that it is not
+ergodic.
+
+(ii) For every $y$,
+\[
+\dtv\bigl(Q(\cdot\mid y),p_{M,\eps}(\cdot\mid y)\bigr)
+\ge p_{M,\eps}(f_M(y)\mid y)-Q(f_M(y)\mid y)
+=1-\eps+\frac{\eps}{|\A_M|}-Q(f_M(y)\mid y).
+\]
+So $Q(f_M(y)\mid y)\ge1-\eps-d(Q,p_{M,\eps})\ge1-2\eps_0$. Apply (i) with
+$\gamma=2\eps_0$.
+
+(iii) By (i), the set of $M$ with $Q_M$ ergodic is the set of halting machines,
+which is not decidable.
+\end{proof}
+
+\begin{remark}[Scope of \cref{cor:robust}]\label{pf:robust-scope}
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item \emph{Uniformity needs the growing alphabet.} The ball in (ii) lives in the
+space of local kernels on $\A_M$, whose dimension grows with $M$. This is
+unavoidable. For one fixed finite alphabet and neighbourhood, the local kernels form
+a compact metric space under $d$. Suppose the members of a computable family with
+rational entries kept their label on closed balls of one fixed rational radius $r$.
+Then members with different labels would lie at distance more than $r$. Take a
+finite net of rational kernels with mesh less than $r/2$. Classify each member by a
+net point at distance less than $r/2$, which exists and is found by exact rational
+computation. Two members with the same net point lie within distance $r$ of each
+other, so they share a label, and a finite table decides the labels.
+\item \emph{Positive rates.} The ball in (ii) contains kernels with zero entries,
+among them the noiseless rule $\delta_{f_M}$. Its positive-rate members, among them
+$p_{M,\eps}$, are positive-rate probabilistic cellular automata in the sense of
+Theorem~A. As in \cref{pf:scope}, their least transition probability is not bounded
+below over the family.
+\item \emph{The joint bound is used.} What the proof of (i) uses is a
+$\gamma$-bounded common-map representation. For a kernel whose sites update
+independently given the past, the construction in the proof provides one. Closeness
+of the one-site conditional laws alone is not enough. Consider the transition that,
+with probability $\gamma$, sets every site to $\bot$ at once, and otherwise updates
+the sites independently by $p_{M,\eps}$. Each one-site conditional law is within
+$\gamma$ of $p_{M,\eps}$. Couple the runs by sharing the reset coin and all
+replacement variables. Then the runs from any two starts agree after the first
+reset, so this process forgets and is ergodic for every $M$. It has no
+$\gamma'$-bounded common-map representation for any $\gamma'<1$: from $\xi$, a reset
+makes every site of any finite set wrong at once, with probability $\gamma$.
+\item \emph{Site-dependent kernels.} The proof of (i) builds the map field site by
+site. So (i) holds verbatim when each site $v$ has its own kernel $Q_v$ satisfying
+the hypothesis with one $\gamma$.
+\item \emph{Correlated faults.} Suppose the layers
+$(\chi_t(\cdot),f_{t,\cdot})$, $t=1,2,\dots$, of a local map field are independent
+and identically distributed, and each layer is $\gamma$-bounded for sets of sites at
+one time, with arbitrary correlations inside a layer. Then:
+\begin{itemize}
+\item the field is $\gamma$-bounded, by independence of the layers;
+\item the runs form a time-homogeneous Markov process in which $X_1|_O$ depends on
+$X_0$ only on $O+\mathcal N$ and on randomness independent of $X_0$;
+\item so \cref{set:feller,set:forget-ergodic,set:memory-nonergodic} apply verbatim;
+\item and with $\gamma\le2\eps_0$, \cref{pf:field} and the constants above give the
+dichotomy of (i), with the same bounds, although the process is not a probabilistic
+cellular automaton.
+\end{itemize}
+For a $\gamma$-bounded field that is not time-homogeneous, \cref{pf:field} still
+gives the separation of (i) at every time and forgetting under the common-map
+coupling, but invariant measures are not defined. Forgetting needs the maps to read
+only $\mathcal N$ at the previous time and both runs to use the same map. Memory
+needs neither (\cref{pf:field}(i), \cref{mem:laws}).
+\end{enumerate}
+\end{remark}

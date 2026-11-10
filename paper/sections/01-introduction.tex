@@ -42,9 +42,10 @@ So a team of three inspectors can always find the flaw, yet nobody can tell in a
 
 \subsection{Consequences}
 
-Five corollaries come with the proof (\cref{sec:proofs}).
+Six corollaries come with the proof (\cref{sec:proofs}).
 \begin{itemize}
 \item \emph{One family for every small rate.} The conditions on $\eps$ in Theorem~B are monotone, so the same family works at every rate in $(0,\eps_0]$ (\cref{cor:rates}). Other replacement laws work as well (\cref{cor:laws}).
+\item \emph{A whole neighbourhood of rules.} Every probabilistic cellular automaton whose transition table lies within total-variation distance $\eps_0$ of a member of the family has the same classification: it is ergodic exactly when $M$ halts (\cref{cor:robust}). The radius is the same for every member.
 \item \emph{Tiling reduces to forgetting.} A computable map sends every finite Wang set to a noisy automaton, in one fixed dimension and at every rate in $(0,\eps_0]$, that is ergodic exactly when the set does not tile the plane (\cref{cor:tiling}).
 \item \emph{Forgetting cannot be timed.} Every halting member forgets, but at every rational rate no computable function of $M$ bounds the time it takes (\cref{cor:mixing}). Otherwise a finite simulation would decide halting.
 \item \emph{Phase coexistence is undecidable.} A positive-rate automaton defines a translation-invariant, finite-range interaction one dimension up, whose Gibbs states contain the trajectories of the dynamics \cite{GKLM89,DM26}. For our family, this interaction has a unique translation-invariant Gibbs state exactly when $M$ halts (\cref{cor:gibbs}).
