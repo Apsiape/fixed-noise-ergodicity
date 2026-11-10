@@ -1,0 +1,381 @@
+% =====================================================================
+\section{Three tokens and dimension eight}\label{sec:three}
+% =====================================================================
+
+This section proves that three tokens refute every halting member of the family of \cref{def:family}. Theorem~A then holds on $\Z^8$, with an explicit rate (\cref{cor:eight}).
+
+\begin{theorem}[Three tokens]\label{thm:three}
+Let $M\mapsto R_M$ be the family of \cref{def:family}. If the machine $M$ halts, then $R_M$ is $3$-token refutable.
+\end{theorem}
+
+The family is the one of \cref{def:family}, without change. With \cref{prop:tiles} and \cref{thm:game}(iv), \cref{thm:three} gives Theorem~C with $j=3$: $R_M$ tiles if and only if $M$ does not halt, and every halting member is $3$-token refutable. By \cref{set:one-token-family}, the integer $3$ cannot be replaced by $1$. Whether it can be replaced by $2$ is open.
+
+The proof keeps the plan of \cref{sec:refutation} and changes how the scaffold is read. Two tokens stay fixed as \emph{pins}, and the third token walks. The letters of $\mathbb A$ that the walker can carry form arc-consistent lists (\cref{thr:sec-lists}). Once a corner letter with ruler bits $0$ fixes the phase, arc consistency alone coarsens such lists by one level of the substitution (\cref{thr:sec-ac}). Two corner letters with opposite bits, at a displacement divisible by $4^n$, then force a whole word $\sigma^n(\mathfrak a)$. Such pairs exist at every scale, by repeated coarsening and one finite lemma, \cref{thr:corner}, whose proof is a computation (\cref{thr:sec-pairs}). The roles, the projected meet and the compression then run as in \cref{sec:refutation} (\cref{thr:sec-end}).
+
+From \cref{sec:scaffold,sec:family} the proof uses the tables of \cref{app:tables}, \cref{prop:scaffold}, and the items (Q1)--(Q5) of \cref{ref:sec-inputs}, which come from \cref{fam:quarter,prop:routing,def:family,prop:horn,prop:board}. The Horn layer enters only through \cref{prop:horn} and its proof in \cref{sec:family}. In particular, the halting time $T$ below is the halting time $T(M)$ of the one-sided machine $M^\circ$ built from $M$ in \cref{fam:sub-horn}, the machine that the Horn clauses simulate.
+
+Fix a machine $M$. Until the proof of \cref{thm:three}, $\mathcal W$ is a nonempty plane-safe set of $3$-token states for $R_M$ (\cref{set:def-safe}). By \cref{thm:game}(i), such a set exists exactly when $R_M$ is not $3$-token refutable. Live symbols, compatibility and the centre $\operatorname{ctr}$ are those of \cref{set:def-live}, for the Wang set $R_M$.
+
+\subsection{Lists read by one moving token}\label{thr:sec-lists}
+
+\begin{lemma}[Moves]\label{thr:move}
+Let $s,s'$ be live symbols of $R_M$, let $d\in D$, and let $s'$ be compatible with $s$ at displacement $d$. Let $\lambda$ be the block of $s$. Then $\operatorname{ctr}(s')=\lambda(d)$. So $\operatorname{ctr}(s)$ and $\operatorname{ctr}(s')$ are the values at $0$ and at $d$ of the legal pattern $\lambda$, and $\operatorname{quad}(\operatorname{ctr}(s'))\equiv\operatorname{quad}(\operatorname{ctr}(s))+d\pmod2$.
+\end{lemma}
+
+\begin{proof}
+Let $\lambda'$ be the block of $s'$. Compatibility gives $\lambda(w)=\lambda'(w-d)$ for every $w\in\Lambda\cap(d+\Lambda)$. The cell $w=d$ lies in this set, so $\lambda(d)=\lambda'(0,0)=\operatorname{ctr}(s')$. The cells $0$ and $d$ of $\Lambda$ are joined inside $\Lambda$ by a path of at most two steps in $\{\pm\mathbf e_1,\pm\mathbf e_2\}$. The pattern $\lambda$ is legal, so (Q1) of \cref{ref:sec-inputs} adds each step to the quadrant modulo $2$.
+\end{proof}
+
+\begin{lemma}[One quarter phase]\label{thr:phase}
+For every state $(\mathbf u,\mathbf s)\in\mathcal W$ and all indices $i,i'$,
+\[
+\operatorname{quad}(\operatorname{ctr}(s_i))-u_i\equiv\operatorname{quad}(\operatorname{ctr}(s_{i'}))-u_{i'}\pmod2 .
+\]
+For $\gamma\in(\Z/2\Z)^2$, let $\mathcal W_\gamma$ be the set of states of $\mathcal W$ in which this common class is $\gamma$. Each $\mathcal W_\gamma$ is plane-safe, and some $\mathcal W_\gamma$ is nonempty.
+\end{lemma}
+
+\begin{proof}
+Let $i\ne i'$. Choose Moore steps leading from $u_i$ to $u_{i'}$, and apply (W3) to token $i$ once for each step. This gives states of $\mathcal W$ in which only token $i$ has moved. By \cref{thr:move}, the class of $\operatorname{quad}(\operatorname{ctr}(s_i))-u_i$ does not change along the way. At the end tokens $i$ and $i'$ share a site, so by (W1) they carry one symbol, and the claim follows. A clone copies the position and the symbol of a token, and a move keeps the class of the moved token, by \cref{thr:move}. So the clones and moves that (W2) and (W3) supply in $\mathcal W$ for a state of $\mathcal W_\gamma$ lie in $\mathcal W_\gamma$, and (W1) is inherited. Every state of $\mathcal W$ lies in one set $\mathcal W_\gamma$.
+\end{proof}
+
+We fix $\gamma$ with $\mathcal W_\gamma\ne\emptyset$ and replace $\mathcal W$ by $\mathcal W_\gamma$. Let $\bar\gamma\in\{0,1\}^2$ represent $\gamma$, and put $\iota(z)=\bar\gamma+2z$ for $z\in\Z^2$, as in \cref{ref:sec-index}. In every state of $\mathcal W$, a token at a site $x$ carries a symbol $s$ with $\operatorname{quad}(\operatorname{ctr}(s))\equiv x-\bar\gamma\pmod2$. The \emph{cell} of $z$ is $\iota(z)+\{0,1\}^2$; the quadrant at $\iota(z)$ is $(0,0)$.
+
+\begin{definition}[Pins and walker]\label{thr:def-pins}
+A \emph{pin pair} is a tuple $\mathbf p=(p_1,s_1;p_2,s_2)$ of sites $p_1,p_2\in\Z^2$ and live symbols $s_1,s_2$ such that $\mathcal W$ contains a state $((p_1,p_2,x),(s_1,s_2,s))$ for some $x$ and $s$. Its \emph{walker set} is
+\[
+\mathcal X_{\mathbf p}=\bigl\{(x,s)\in\Z^2\times L_{R_M}:\ ((p_1,p_2,x),(s_1,s_2,s))\in\mathcal W\bigr\},
+\]
+and its \emph{index lists} are $\mathcal L_{\mathbf p}(z)=\{\operatorname{par}(\operatorname{ctr}(s)):(\iota(z),s)\in\mathcal X_{\mathbf p}\}$ for $z\in\Z^2$.
+\end{definition}
+
+Tokens $1$ and $2$ hold the pins, and token $3$, the \emph{walker}, moves. A pin pair may have $p_1=p_2$ and $s_1=s_2$; it is then a single pin held by two tokens.
+
+\begin{definition}[List families]\label{thr:def-lists}
+Letters $\mathfrak a,\mathfrak b\in\mathbb A$ \emph{fit in direction} $e\in\{\pm\mathbf e_1,\pm\mathbf e_2\}$ if the pattern with $\mathfrak a$ at $0$ and $\mathfrak b$ at $e$ is legal. A \emph{list family} $\mathcal L$ assigns to every $z\in\Z^2$ a nonempty set $\mathcal L(z)\subseteq\mathbb A$. It is \emph{arc consistent} if, for every $z\in\Z^2$, every $\mathfrak a\in\mathcal L(z)$ and every $e\in\{\pm\mathbf e_1,\pm\mathbf e_2\}$, some $\mathfrak b\in\mathcal L(z+e)$ is such that $\mathfrak a,\mathfrak b$ fit in direction $e$.
+\end{definition}
+
+So $\mathfrak a,\mathfrak b$ fit in direction $\mathbf e_1$ exactly when they match in direction $\mathbf e_1$, and in direction $-\mathbf e_1$ exactly when $\mathfrak b,\mathfrak a$ match in direction $\mathbf e_1$; the same holds for $\mathbf e_2$. This is arc consistency as in the paragraph after \cref{set:one-token}, for the grid $\Z^2$ with its four cardinal relations and the target $\mathbb A$.
+
+\begin{lemma}[Walker lists]\label{thr:lists}
+Let $\mathbf p=(p_1,s_1;p_2,s_2)$ be a pin pair.
+\begin{itemize}
+\item[(a)] For every $x\in\Z^2$ some $s$ has $(x,s)\in\mathcal X_{\mathbf p}$. If $(x,s)\in\mathcal X_{\mathbf p}$ and $d\in D$, then $(x+d,s')\in\mathcal X_{\mathbf p}$ for some $s'$ compatible with $s$ at displacement $d$.
+\item[(b)] If $i\in\{1,2\}$ and $(p_i,s)\in\mathcal X_{\mathbf p}$, then $s=s_i$.
+\item[(c)] $\mathcal L_{\mathbf p}$ is an arc-consistent list family.
+\item[(d)] If $i\in\{1,2\}$ and $p_i=\iota(y_i)$ with $y_i\in\Z^2$, then $\mathcal L_{\mathbf p}(y_i)=\{\operatorname{par}(\operatorname{ctr}(s_i))\}$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+(a) The second claim is (W3) for token $3$; the move leaves tokens $1$ and $2$ in place. Start from a state of \cref{thr:def-pins}. Finitely many such moves bring token $3$ to any site $x$.
+
+(b) In the state $((p_1,p_2,p_i),(s_1,s_2,s))$, tokens $i$ and $3$ share a site, so $s=s_i$ by (W1).
+
+(c) The lists are nonempty by (a). Let $\mathfrak a\in\mathcal L_{\mathbf p}(z)$, given by $(\iota(z),s)\in\mathcal X_{\mathbf p}$. Apply (a) twice with $d=\mathbf e_1$. This gives $(\iota(z)+\mathbf e_1,s')$ and $(\iota(z)+2\mathbf e_1,s'')$ in $\mathcal X_{\mathbf p}$, each symbol compatible with the previous one at displacement $\mathbf e_1$. By \cref{thr:move}, $\operatorname{ctr}(s)$ and $\operatorname{ctr}(s')$ match horizontally, and so do $\operatorname{ctr}(s')$ and $\operatorname{ctr}(s'')$. The quadrants of $\operatorname{ctr}(s)$ and $\operatorname{ctr}(s')$ are $(0,0)$ and $(1,0)$. By (Q1), $\operatorname{par}(\operatorname{ctr}(s'))=\mathfrak a$, and $\operatorname{par}(\operatorname{ctr}(s'))$ and $\operatorname{par}(\operatorname{ctr}(s''))$ match horizontally in $\mathbb A$. Since $\iota(z)+2\mathbf e_1=\iota(z+\mathbf e_1)$, the letter $\operatorname{par}(\operatorname{ctr}(s''))$ lies in $\mathcal L_{\mathbf p}(z+\mathbf e_1)$, and $\mathfrak a$ and this letter fit in direction $\mathbf e_1$. For $-\mathbf e_1$, apply (a) twice with $d=-\mathbf e_1$. Now $\operatorname{ctr}(s')$ lies west of $\operatorname{ctr}(s)$ and has quadrant $(1,0)$, so by (Q1) the letters $\operatorname{par}(\operatorname{ctr}(s'))$ and $\mathfrak a$ match horizontally. Next, $\operatorname{ctr}(s'')$ lies west of $\operatorname{ctr}(s')$ and has quadrant $(0,0)$, so $\operatorname{par}(\operatorname{ctr}(s''))=\operatorname{par}(\operatorname{ctr}(s'))$. Hence $\mathfrak a$ and $\operatorname{par}(\operatorname{ctr}(s''))\in\mathcal L_{\mathbf p}(z-\mathbf e_1)$ fit in direction $-\mathbf e_1$. The directions $\pm\mathbf e_2$ are the same, with vertical matching and the second coordinate of the quadrant.
+
+(d) By (a) some $s$ has $(p_i,s)\in\mathcal X_{\mathbf p}$, and by (b) every such $s$ equals $s_i$.
+\end{proof}
+
+\subsection{Arc consistency on the scaffold}\label{thr:sec-ac}
+
+This subsection is about list families on $\mathbb A$ alone. We write a letter as $\mathfrak a=(\theta,\kappa,\omega,b_1,b_2)$, as in \cref{scf:def-ruler}, and use the tables of \cref{app:tables}. For a thin type $\theta$ let $\theta^{\leftrightarrow}$ and $\theta^{\updownarrow}$ be given by
+\[
+\mathsf a^{\leftrightarrow}=\mathsf c,\ \ \mathsf c^{\leftrightarrow}=\mathsf a,\ \ \mathsf b^{\leftrightarrow}=\mathsf d,\ \ \mathsf d^{\leftrightarrow}=\mathsf b,\qquad
+\mathsf a^{\updownarrow}=\mathsf d,\ \ \mathsf d^{\updownarrow}=\mathsf a,\ \ \mathsf b^{\updownarrow}=\mathsf c,\ \ \mathsf c^{\updownarrow}=\mathsf b .
+\]
+Both maps are involutions, and they commute. By \cref{app:tables}, thin types $\theta,\theta'$ match horizontally, $\theta$ to the west, exactly when $\theta'=\theta^{\leftrightarrow}$, and vertically, $\theta$ to the south, exactly when $\theta'=\theta^{\updownarrow}$. The corner $F(\theta)$ has the four endpoints of $\theta$, so $\partial_{\mathrm E}F(\theta)=\partial_{\mathrm W}F(\theta')$ exactly when $\theta'=\theta^{\leftrightarrow}$, and $\partial_{\mathrm N}F(\theta)=\partial_{\mathrm S}F(\theta')$ exactly when $\theta'=\theta^{\updownarrow}$. For every $\theta$, the four types $\theta$, $\theta^{\leftrightarrow}$, $\theta^{\updownarrow}$ and $(\theta^{\leftrightarrow})^{\updownarrow}$ are distinct.
+
+A \emph{corner letter} is a letter whose thin type is $\mathsf a$ and whose thick type is a corner. By \cref{scf:tab-alphabet} its black type is $\mathsf A$, and by (R3) its two bits are equal; so it is $(\mathsf a,\kappa,\mathsf A,b,b)$, and we call $b$ its \emph{bit}. Two corner letters are \emph{opposite} if their bits differ. A letter of thin type $\mathsf b$ is $(\mathsf b,F(\theta),\mathsf A,0,0)$ for exactly one thin type $\theta$ (\cref{scf:tab-alphabet,scf:tab-letters}). We use five facts, read off \cref{scf:tab-edges,scf:tab-alphabet} and \cref{scf:def-ruler}.
+\begin{description}
+\item[(T1)] Every corner has exactly one red endpoint among its north and south endpoints, and exactly one among its east and west endpoints.
+\item[(T2)] The endpoint $\partial_{\mathrm W}\theta$ is green exactly for $\theta\in\{\mathsf a,\mathsf d\}$, and $\partial_{\mathrm S}\theta$ is green exactly for $\theta\in\{\mathsf a,\mathsf c\}$.
+\item[(T3)] A letter of thin type $\mathsf c$ is a line with black $\mathsf B$ or $\mathsf C$ and column bit $0$. Black $\mathsf B$ excludes the vertical atom $\mathsf r_0$, black $\mathsf C$ excludes $\mathsf r_2$, and $\mathsf B$ and $\mathsf C$ have equal east and west bits, $0$ and $1$ respectively. A letter of thin type $\mathsf d$ is a line with black $\mathsf D$ or $\mathsf E$ and row bit $0$. Black $\mathsf D$ excludes the horizontal atom $\mathsf r_3$, black $\mathsf E$ excludes $\mathsf r_1$, and $\mathsf D$ and $\mathsf E$ have equal north and south bits, $1$ and $0$ respectively.
+\item[(T4)] By (R4), a line with equal bits is not a red crossing: if one of its atoms is red, the other is green.
+\item[(T5)] The only black type with north and east bits $0$ is $\mathsf A$. The black types with north bit $1$ and south bit $0$ are $\mathsf B$ and $\mathsf C$. The black types with east bit $1$ and west bit $0$ are $\mathsf D$ and $\mathsf E$. A letter of thin type $\mathsf a$ with black $\mathsf A$ is a corner; with any other black type it is a line.
+\end{description}
+
+A list family $\mathcal L$ has \emph{thin phase} $c\in\Z^2$ if, for every $z\in\Z^2$, every letter of $\mathcal L(z)$ has thin type $\mathsf a$, $\mathsf c$, $\mathsf d$ or $\mathsf b$ according as $z-c$ is congruent to $(0,0)$, $(1,0)$, $(0,1)$ or $(1,1)$ modulo $2$. Only the class of $c$ modulo $2$ matters. This rule is the pattern of \cref{scf:thin}: the type it assigns to $z+\mathbf e_1$ is the image under ${\leftrightarrow}$ of the type at $z$, and the type at $z+\mathbf e_2$ is the image under ${\updownarrow}$. We call it the \emph{thin type of $\mathcal L$ at $z$}.
+
+\begin{lemma}[Thin phase]\label{thr:thin}
+Let $\mathcal L$ be arc consistent, and suppose that for some $z_0$ all letters of $\mathcal L(z_0)$ have one thin type. Then $\mathcal L$ has a thin phase.
+\end{lemma}
+
+\begin{proof}
+Let $\theta_0$ be the thin type at $z_0$, and choose $c$ so that the rule assigns $\theta_0$ to $z_0$. Let $\mathfrak a\in\mathcal L(z)$. Choose a path $z=x_0,x_1,\dots,x_r=z_0$ with steps in $\{\pm\mathbf e_1,\pm\mathbf e_2\}$. By arc consistency there are letters $\mathfrak a_0=\mathfrak a$ and $\mathfrak a_l\in\mathcal L(x_l)$ such that $\mathfrak a_{l-1},\mathfrak a_l$ fit in direction $x_l-x_{l-1}$, for $1\le l\le r$. Along a horizontal step the thin type changes by ${\leftrightarrow}$, and along a vertical step by ${\updownarrow}$. The thin type of $\mathfrak a_r$ is $\theta_0$. The two maps are commuting involutions, so the thin type of $\mathfrak a$ is the image of $\theta_0$ under ${\leftrightarrow}$ applied a number of times congruent to $(z-z_0)_1$ modulo $2$, and ${\updownarrow}$ applied a number of times congruent to $(z-z_0)_2$. The rule assigns the same type to $z$.
+\end{proof}
+
+Let $\mathcal L$ have thin phase $c$. For $z\in\Z^2$ we call $c+2z$, $c+2z+\mathbf e_1$, $c+2z+\mathbf e_2$ and $c+2z+(1,1)$ the \emph{south-west, south-east, north-west and north-east sites of $z$}; their thin types are $\mathsf a$, $\mathsf c$, $\mathsf d$ and $\mathsf b$. Each letter at the north-east site of $z$ is $(\mathsf b,F(\theta),\mathsf A,0,0)$ for one thin type $\theta$. Let $\mathcal L^{\angle}(z)$ be the set of these $\theta$; it is nonempty.
+
+\begin{lemma}[The corner grid]\label{thr:ne}
+Let $\mathcal L$ be arc consistent with thin phase $c$. For every $z\in\Z^2$,
+\[
+\mathcal L^{\angle}(z+\mathbf e_1)=\{\theta^{\leftrightarrow}:\theta\in\mathcal L^{\angle}(z)\},\qquad
+\mathcal L^{\angle}(z+\mathbf e_2)=\{\theta^{\updownarrow}:\theta\in\mathcal L^{\angle}(z)\}.
+\]
+If $\mathcal L^{\angle}(z_0)$ is a singleton for some $z_0$, then every $\mathcal L^{\angle}(z)$ is a singleton $\{\theta_z\}$, and $\theta_{z+\mathbf e_1}=\theta_z^{\leftrightarrow}$ and $\theta_{z+\mathbf e_2}=\theta_z^{\updownarrow}$ for every $z$.
+\end{lemma}
+
+\begin{proof}
+Let $\theta\in\mathcal L^{\angle}(z)$, given by a letter $\mathfrak n$ at the north-east site $x$ of $z$. By arc consistency there are $\mathfrak l\in\mathcal L(x+\mathbf e_1)$ and $\mathfrak n'\in\mathcal L(x+2\mathbf e_1)$ such that $\mathfrak n,\mathfrak l$ and $\mathfrak l,\mathfrak n'$ fit in direction $\mathbf e_1$. The site $x+\mathbf e_1$ is the north-west site of $z+\mathbf e_1$, so $\mathfrak l$ is a line (T3), and its east and west endpoints are both its horizontal atom. The site $x+2\mathbf e_1$ is the north-east site of $z+\mathbf e_1$, so $\mathfrak n'=(\mathsf b,F(\theta'),\mathsf A,0,0)$ with $\theta'\in\mathcal L^{\angle}(z+\mathbf e_1)$. Matching gives $\partial_{\mathrm E}F(\theta)=\partial_{\mathrm W}F(\theta')$, so $\theta'=\theta^{\leftrightarrow}$. Hence the image of $\mathcal L^{\angle}(z)$ under ${\leftrightarrow}$ lies in $\mathcal L^{\angle}(z+\mathbf e_1)$. The same argument in direction $-\mathbf e_1$ shows that the image of $\mathcal L^{\angle}(z+\mathbf e_1)$ under ${\leftrightarrow}$ lies in $\mathcal L^{\angle}(z)$; applying the involution gives equality. The vertical case is the same: the south-east site of $z+\mathbf e_2$ carries lines, whose north and south endpoints are both the vertical atom, and $\partial_{\mathrm N}F(\theta)=\partial_{\mathrm S}F(\theta')$ gives $\theta'=\theta^{\updownarrow}$. The last claim follows because both maps are bijections.
+\end{proof}
+
+\begin{lemma}[A corner letter with bit $0$ fixes the coarse phase]\label{thr:zero}
+Let $\mathcal L$ be arc consistent with thin phase $c$, let $z_0\in\Z^2$, and let $\mathcal L(c+2z_0)=\{\mathfrak p\}$ for a corner letter $\mathfrak p$ with bit $0$. Then every $\mathcal L^{\angle}(z)$ is a singleton $\{\theta_z\}$, and $\theta_z=\mathsf a$ exactly when $z\in z_0+2\Z^2$.
+\end{lemma}
+
+\begin{proof}
+Write $x=c+2z_0$ and $\mathfrak p=(\mathsf a,\kappa,\mathsf A,0,0)$. We show $\mathcal L^{\angle}(z_0)\subseteq\{\mathsf a,\mathsf d\}$ and $\mathcal L^{\angle}(z_0)\subseteq\{\mathsf a,\mathsf c\}$.
+
+By (T1), $\partial_{\mathrm N}\kappa$ or $\partial_{\mathrm S}\kappa$ is red. Suppose that $\partial_{\mathrm N}\kappa$ is red, and let $\theta\in\mathcal L^{\angle}(z_0)$. By arc consistency, the letter $(\mathsf b,F(\theta),\mathsf A,0,0)\in\mathcal L(x+(1,1))$ and some $\mathfrak l\in\mathcal L(x+\mathbf e_2)$ fit in direction $-\mathbf e_1$, and $\mathfrak l$ and the only letter $\mathfrak p$ of $\mathcal L(x)$ fit in direction $-\mathbf e_2$. The site $x+\mathbf e_2$ has thin type $\mathsf d$, so $\mathfrak l$ is a line with row bit $0$ (T3). The first fit makes its horizontal atom $\partial_{\mathrm W}F(\theta)=\partial_{\mathrm W}\theta$. The second makes its vertical atom $\partial_{\mathrm N}\kappa$, which is red, and its column bit $\chi_1(\mathfrak p)=0$. By (T4) the horizontal atom is green, and by (T2) $\theta\in\{\mathsf a,\mathsf d\}$. Suppose instead that $\partial_{\mathrm S}\kappa$ is red, and let $\theta\in\mathcal L^{\angle}(z_0-\mathbf e_2)$. The same argument with the sites $x+(1,-1)$, $x-\mathbf e_2$ and $x$, where now $\mathfrak p$ lies above the line, gives $\theta\in\{\mathsf a,\mathsf d\}$. By \cref{thr:ne}, $\mathcal L^{\angle}(z_0)$ is the image of $\mathcal L^{\angle}(z_0-\mathbf e_2)$ under ${\updownarrow}$, which maps $\{\mathsf a,\mathsf d\}$ onto itself.
+
+By (T1), $\partial_{\mathrm E}\kappa$ or $\partial_{\mathrm W}\kappa$ is red. Suppose that $\partial_{\mathrm E}\kappa$ is red, and let $\theta\in\mathcal L^{\angle}(z_0)$. The letter $(\mathsf b,F(\theta),\mathsf A,0,0)$ and some $\mathfrak l\in\mathcal L(x+\mathbf e_1)$ fit in direction $-\mathbf e_2$, and $\mathfrak l$ and $\mathfrak p$ fit in direction $-\mathbf e_1$. The site $x+\mathbf e_1$ has thin type $\mathsf c$, so $\mathfrak l$ is a line with column bit $0$. Its vertical atom is $\partial_{\mathrm S}F(\theta)=\partial_{\mathrm S}\theta$, its horizontal atom is $\partial_{\mathrm E}\kappa$, which is red, and its row bit is $\chi_2(\mathfrak p)=0$. By (T4) and (T2), $\theta\in\{\mathsf a,\mathsf c\}$. If instead $\partial_{\mathrm W}\kappa$ is red, the sites $x+(-1,1)$, $x-\mathbf e_1$ and $x$ give $\mathcal L^{\angle}(z_0-\mathbf e_1)\subseteq\{\mathsf a,\mathsf c\}$, and ${\leftrightarrow}$ maps $\{\mathsf a,\mathsf c\}$ onto itself.
+
+Hence $\mathcal L^{\angle}(z_0)\subseteq\{\mathsf a\}$, and this set is nonempty. \Cref{thr:ne} gives the singletons, and $\theta_{z_0+w}$ is $\mathsf a$, $\mathsf c$, $\mathsf d$ or $\mathsf b$ according as $w$ is congruent to $(0,0)$, $(1,0)$, $(0,1)$ or $(1,1)$ modulo $2$.
+\end{proof}
+
+\begin{lemma}[Coarsening]\label{thr:coarse}
+Let $\mathcal L$ be arc consistent with thin phase $c$, and suppose that every $\mathcal L^{\angle}(z)$ is a singleton $\{\theta_z\}$. For $z\in\Z^2$ and $\mathfrak a=(\mathsf a,\kappa,\omega,b_1,b_2)\in\mathcal L(c+2z)$ put
+\[
+\mathfrak a^{\uparrow}=(\theta_z,\kappa,\omega,1-b_1,1-b_2),\qquad \mathcal L^{\uparrow}(z)=\{\mathfrak a^{\uparrow}:\mathfrak a\in\mathcal L(c+2z)\}.
+\]
+\begin{itemize}
+\item[(a)] Every $\mathfrak a^{\uparrow}$ is a letter of $\mathbb A$, and the map $\mathfrak a\mapsto\mathfrak a^{\uparrow}$ is injective on $\mathcal L(c+2z)$.
+\item[(b)] $\mathcal L^{\uparrow}$ is an arc-consistent list family, and every letter of $\mathcal L^{\uparrow}(z)$ has thin type $\theta_z$. In particular $\mathcal L^{\uparrow}$ has a thin phase.
+\item[(c)] If $\mathcal L^{\uparrow}(z)=\{\mathfrak c\}$, then $\mathcal L(c+2z+\varsigma)=\{\varphi'(\mathfrak c)(\varsigma)\}$ for every $\varsigma\in\{0,1\}^2$.
+\end{itemize}
+\end{lemma}
+
+The letters of $\mathcal L(c+2z)$ have thin type $\mathsf a$, so $\mathfrak a^{\uparrow}$ is defined. By \cref{scf:tab-subst}, $\mathfrak a^{\uparrow}$ is the letter of thin type $\theta_z$ whose child $(0,0)$ under $\varphi'$ is $\mathfrak a$. We call $\mathcal L^{\uparrow}$ the \emph{coarsening} of $\mathcal L$.
+
+\begin{proof}
+For every $z$, the list at the north-east site of $z$ is $\{(\mathsf b,F(\theta_z),\mathsf A,0,0)\}$. Each letter at the south-east site of $z$ fits this letter in direction $\mathbf e_2$, and each letter at the north-west site of $z$ fits it in direction $\mathbf e_1$. These letters are lines (T3), so:
+\begin{itemize}
+\item[($\ast$)] every letter at the south-east site of $z$ has vertical atom $\partial_{\mathrm S}\theta_z$, and every letter at the north-west site of $z$ has horizontal atom $\partial_{\mathrm W}\theta_z$.
+\end{itemize}
+By \cref{thr:ne}, $\theta_{z-\mathbf e_1}=\theta_z^{\leftrightarrow}$ and $\theta_{z-\mathbf e_2}=\theta_z^{\updownarrow}$.
+
+(a) Fix $z$, write $x=c+2z$, and let $\mathfrak a=(\mathsf a,\kappa,\omega,b_1,b_2)\in\mathcal L(x)$. We first show $(\theta_z,\kappa,\omega)\in\mathbb O$. If $\theta_z=\mathsf a$, this holds because $\mathfrak a\in\mathbb A$.
+
+Let $\theta_z=\mathsf b$. Then $\partial_{\mathrm S}\theta_z=\mathsf r_2$ and $\partial_{\mathrm W}\theta_z=\mathsf r_3$. By ($\ast$) and (T3), every letter of $\mathcal L(x+\mathbf e_1)$ has black $\mathsf B$, and every letter of $\mathcal L(x+\mathbf e_2)$ has black $\mathsf E$. The letter $\mathfrak a$ fits a letter of $\mathcal L(x+\mathbf e_1)$ in direction $\mathbf e_1$ and a letter of $\mathcal L(x+\mathbf e_2)$ in direction $\mathbf e_2$. So $\partial_{\mathrm E}\omega=\partial_{\mathrm W}\mathsf B=0$ and $\partial_{\mathrm N}\omega=\partial_{\mathrm S}\mathsf E=0$. By (T5), $\omega=\mathsf A$ and $\kappa$ is a corner, so $(\mathsf b,\kappa,\mathsf A)\in\mathbb O$.
+
+Let $\theta_z=\mathsf c$. Then $\partial_{\mathrm W}\theta_z=\mathsf r_1$, so every letter of $\mathcal L(x+\mathbf e_2)$ has black $\mathsf D$, by ($\ast$) and (T3), and $\partial_{\mathrm N}\omega=\partial_{\mathrm S}\mathsf D=1$. The letter $\mathfrak a$ and some $\mathfrak n\in\mathcal L(x-\mathbf e_2)$ fit in direction $-\mathbf e_2$. The site $x-\mathbf e_2$ is the north-west site of $z-\mathbf e_2$, and $\theta_{z-\mathbf e_2}=\mathsf c^{\updownarrow}=\mathsf b$. By ($\ast$) the horizontal atom of $\mathfrak n$ is $\partial_{\mathrm W}\mathsf b=\mathsf r_3$, so its black is $\mathsf E$, and $\partial_{\mathrm S}\omega=\partial_{\mathrm N}\mathsf E=0$. By (T5), $\omega\in\{\mathsf B,\mathsf C\}$ and $\kappa$ is a line. For $\omega\in\{\mathsf B,\mathsf C\}$ the conditions of \cref{scf:tab-alphabet} on $(\mathsf a,\kappa,\omega)$ and on $(\mathsf c,\kappa,\omega)$ are the same, so $(\mathsf c,\kappa,\omega)\in\mathbb O$.
+
+Let $\theta_z=\mathsf d$. Then $\partial_{\mathrm S}\theta_z=\mathsf r_0$, so every letter of $\mathcal L(x+\mathbf e_1)$ has black $\mathsf C$, and $\partial_{\mathrm E}\omega=\partial_{\mathrm W}\mathsf C=1$. The letter $\mathfrak a$ and some $\mathfrak l\in\mathcal L(x-\mathbf e_1)$ fit in direction $-\mathbf e_1$. The site $x-\mathbf e_1$ is the south-east site of $z-\mathbf e_1$, and $\theta_{z-\mathbf e_1}=\mathsf d^{\leftrightarrow}=\mathsf b$. So the vertical atom of $\mathfrak l$ is $\partial_{\mathrm S}\mathsf b=\mathsf r_2$, its black is $\mathsf B$, and $\partial_{\mathrm W}\omega=\partial_{\mathrm E}\mathsf B=0$. By (T5), $\omega\in\{\mathsf D,\mathsf E\}$ and $\kappa$ is a line, and as before $(\mathsf d,\kappa,\omega)\in\mathbb O$.
+
+Next the bits. Conditions (R3) and (R4) for $\mathfrak a^{\uparrow}$ follow from the same conditions for $\mathfrak a$, since they depend only on $\kappa$ and on whether the two bits are equal. Condition (R1) asks $b_1=1$ when $\theta_z\in\{\mathsf b,\mathsf c\}$, and (R2) asks $b_2=1$ when $\theta_z\in\{\mathsf b,\mathsf d\}$.
+
+Let $\theta_z=\mathsf b$; then $\kappa$ is a corner. The letter $\mathfrak a$ and some $\mathfrak n\in\mathcal L(x+\mathbf e_2)$ fit in direction $\mathbf e_2$, and $\mathfrak a$ and some $\mathfrak n'\in\mathcal L(x-\mathbf e_2)$ fit in direction $-\mathbf e_2$. Both are lines of thin type $\mathsf d$, with row bit $0$ and column bit $b_1$, and their vertical atoms are $\partial_{\mathrm N}\kappa$ and $\partial_{\mathrm S}\kappa$. By ($\ast$), the horizontal atom of $\mathfrak n$ is $\partial_{\mathrm W}\mathsf b=\mathsf r_3$, and that of $\mathfrak n'$ is $\partial_{\mathrm W}\theta_{z-\mathbf e_2}=\partial_{\mathrm W}\mathsf c=\mathsf r_1$; both are red. If $b_1=0$, then (T4) makes $\partial_{\mathrm N}\kappa$ and $\partial_{\mathrm S}\kappa$ green, against (T1). So $b_1=1$. In the same way, the letters of $\mathcal L(x+\mathbf e_1)$ and $\mathcal L(x-\mathbf e_1)$ that fit $\mathfrak a$ are lines of thin type $\mathsf c$ with column bit $0$ and row bit $b_2$. Their vertical atoms are $\partial_{\mathrm S}\mathsf b=\mathsf r_2$ and $\partial_{\mathrm S}\theta_{z-\mathbf e_1}=\partial_{\mathrm S}\mathsf d=\mathsf r_0$, and their horizontal atoms are $\partial_{\mathrm E}\kappa$ and $\partial_{\mathrm W}\kappa$. So $b_2=1$.
+
+Let $\theta_z=\mathsf c$. Then $\theta_{z+\mathbf e_2}=\mathsf c^{\updownarrow}=\mathsf b$. The letter $\mathfrak a$ fits a letter of $\mathcal L(x+\mathbf e_2)$ in direction $\mathbf e_2$, which fits a letter $\mathfrak a'\in\mathcal L(x+2\mathbf e_2)$ in direction $\mathbf e_2$. Vertical matching keeps the column bit, so $\chi_1(\mathfrak a')=b_1$. The site $x+2\mathbf e_2$ is the south-west site of $z+\mathbf e_2$, so the case $\theta=\mathsf b$ gives $\chi_1(\mathfrak a')=1$. Hence $b_1=1$. Let $\theta_z=\mathsf d$. Then $\theta_{z+\mathbf e_1}=\mathsf b$, and the same argument along the row gives $b_2=1$.
+
+So $\mathfrak a^{\uparrow}\in\mathbb A$. The letter $\mathfrak a^{\uparrow}$ determines $\kappa$, $\omega$ and the bits of $\mathfrak a$, whose thin type is $\mathsf a$; so the map is injective.
+
+(b) The lists are nonempty. Let $\mathfrak a=(\mathsf a,\kappa,\omega,b_1,b_2)\in\mathcal L(x)$. It fits some $\mathfrak l\in\mathcal L(x+\mathbf e_1)$ in direction $\mathbf e_1$, and $\mathfrak l$ fits some $\mathfrak a'=(\mathsf a,\kappa',\omega',b'_1,b'_2)\in\mathcal L(x+2\mathbf e_1)$ in direction $\mathbf e_1$; here $x+2\mathbf e_1$ is the south-west site of $z+\mathbf e_1$. We check that $\mathfrak a^{\uparrow}$ and $\mathfrak a'^{\uparrow}$ match in direction $\mathbf e_1$. Their thin types $\theta_z$ and $\theta_{z+\mathbf e_1}=\theta_z^{\leftrightarrow}$ match. The line $\mathfrak l$ has equal east and west endpoints, so $\partial_{\mathrm E}\kappa=\partial_{\mathrm W}\kappa'$. Its black has equal east and west bits (T3), so $\partial_{\mathrm E}\omega=\partial_{\mathrm W}\omega'$. Its row bit equals $b_2$ and $b'_2$, so $1-b_2=1-b'_2$. Direction $-\mathbf e_1$ is the same with the sites $x-\mathbf e_1$ and $x-2\mathbf e_1$. The directions $\pm\mathbf e_2$ use the lines at $x\pm\mathbf e_2$, whose blacks $\mathsf D,\mathsf E$ have equal north and south bits, and the column bits. So $\mathcal L^{\uparrow}$ is arc consistent. Its letters at $z$ have thin type $\theta_z$, and by \cref{thr:ne} the map $z\mapsto\theta_z$ follows the rule of a thin phase.
+
+(c) Let $\mathcal L^{\uparrow}(z)=\{\mathfrak c\}$ with $\mathfrak c=(\theta_z,\kappa,\omega,c_1,c_2)$. By \cref{scf:tab-subst}, the four children of $\mathfrak c$ under $\varphi'$ are
+\begin{align*}
+\varphi'(\mathfrak c)(0,0)&=(\mathsf a,\kappa,\omega,1-c_1,1-c_2), &
+\varphi'(\mathfrak c)(1,0)&=(\mathsf c,\langle\partial_{\mathrm S}\theta_z,\partial_{\mathrm E}\kappa\rangle,\operatorname{se}(\omega),0,1-c_2),\\
+\varphi'(\mathfrak c)(1,1)&=(\mathsf b,F(\theta_z),\mathsf A,0,0), &
+\varphi'(\mathfrak c)(0,1)&=(\mathsf d,\langle\partial_{\mathrm N}\kappa,\partial_{\mathrm W}\theta_z\rangle,\operatorname{nw}(\omega),1-c_1,0).
+\end{align*}
+By (a), $\mathcal L(x)$ is the singleton of $\mathfrak a_0=\varphi'(\mathfrak c)(0,0)$. The list at $x+(1,1)$ is the singleton of $(\mathsf b,F(\theta_z),\mathsf A,0,0)=\varphi'(\mathfrak c)(1,1)$. Let $\mathfrak l\in\mathcal L(x+\mathbf e_1)$. By (T3) and ($\ast$) it is a line of thin type $\mathsf c$, with column bit $0$ and vertical atom $\partial_{\mathrm S}\theta_z$. It fits $\mathfrak a_0$ in direction $-\mathbf e_1$, so its horizontal atom is $\partial_{\mathrm E}\kappa$, its row bit is $1-c_2$, and its black is the one of $\mathsf B,\mathsf C$ whose west bit is $\partial_{\mathrm E}\omega$, namely $\operatorname{se}(\omega)$ (\cref{app:tables}). So $\mathfrak l=\varphi'(\mathfrak c)(1,0)$. In the same way, every letter of $\mathcal L(x+\mathbf e_2)$ is a line of thin type $\mathsf d$ with row bit $0$ and horizontal atom $\partial_{\mathrm W}\theta_z$; it fits $\mathfrak a_0$ in direction $-\mathbf e_2$, so its vertical atom is $\partial_{\mathrm N}\kappa$, its column bit is $1-c_1$, and its black is the one of $\mathsf D,\mathsf E$ whose south bit is $\partial_{\mathrm N}\omega$, namely $\operatorname{nw}(\omega)$. So it equals $\varphi'(\mathfrak c)(0,1)$. The lists are nonempty, so all four are singletons.
+\end{proof}
+
+\begin{lemma}[Repeated coarsening]\label{thr:dyadic}
+Let $m\ge1$, and let $\mathcal L$ be an arc-consistent list family with $\mathcal L(y_1)=\{\mathfrak p_1\}$ and $\mathcal L(y_2)=\{\mathfrak p_2\}$, where $\mathfrak p_1,\mathfrak p_2$ are opposite corner letters and $y_2-y_1\in2^m\Z^2$. Put $w=(y_2-y_1)/2^m$, $z_1=0$ and $z_2=w$. There are arc-consistent list families $\mathcal L_0,\dots,\mathcal L_m$, with $\mathcal L_0(z)=\mathcal L(y_1+z)$ for every $z$, such that:
+\begin{itemize}
+\item[(a)] for $0\le k<m$, $\mathcal L_k$ has thin phase $0$, every $\mathcal L_k^{\angle}(z)$ is a singleton, and $\mathcal L_{k+1}=\mathcal L_k^{\uparrow}$;
+\item[(b)] for every $z$, the letters of $\mathcal L(y_1+2^mz)$ have thin type $\mathsf a$, and the letters of $\mathcal L_m(z)$ are obtained from them by complementing both bits $m$ times and replacing the thin type by the thin type of $\mathcal L_m$ at $z$;
+\item[(c)] for some $r\in\{1,2\}$, $\mathcal L_m$ has thin phase $z_r$ and $\mathcal L_m(z_r)=\{(\mathsf a,\kappa_r,\mathsf A,1,1)\}$, where $\kappa_r$ is the thick type of $\mathfrak p_r$;
+\item[(d)] if $\mathcal L_m(z)=\{\mathfrak c\}$ for some $z$ and $\mathfrak c$, then $\mathcal L(y_1+2^mz+y)=\{(\varphi')^m(\mathfrak c)(y)\}$ for every $y\in[0,2^m)^2$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+For $0\le k\le m$ and $i\in\{1,2\}$, let $\mathfrak p_i^{(k)}$ be the corner letter with the thick type of $\mathfrak p_i$ whose bit is the bit of $\mathfrak p_i$ complemented $k$ times. We show by induction on $k\in[0,m-1]$ that $\mathcal L_k$ can be defined as in (a), with thin phase $0$, $\mathcal L_k(0)=\{\mathfrak p_1^{(k)}\}$ and $\mathcal L_k(2^{m-k}w)=\{\mathfrak p_2^{(k)}\}$. For $k=0$, $\mathcal L_0$ is arc consistent, and its lists at $0$ and at $2^mw=y_2-y_1$ are $\{\mathfrak p_1\}$ and $\{\mathfrak p_2\}$. Since $\mathfrak p_1$ has thin type $\mathsf a$, \cref{thr:thin} gives thin phase $0$.
+
+Let $0\le k\le m-1$ and assume the claim for $k$. The letters $\mathfrak p_1^{(k)}$ and $\mathfrak p_2^{(k)}$ are opposite; let $x\in\{0,2^{m-k}w\}$ be the site of the one with bit $0$. Since $m-k\ge1$, $x\in2\Z^2$. By \cref{thr:zero}, with $c=0$ and $z_0=x/2$, every $\mathcal L_k^{\angle}(z)$ is a singleton $\{\theta_z\}$, and $\theta_z=\mathsf a$ exactly for $z\in x/2+2\Z^2$. Put $\mathcal L_{k+1}=\mathcal L_k^{\uparrow}$. By \cref{thr:coarse}(b) it is arc consistent and has thin phase $x/2$. By \cref{thr:coarse}(a), its lists at $0$ and at $2^{m-k-1}w$ are the singletons of $(\mathfrak p_1^{(k)})^{\uparrow}$ and $(\mathfrak p_2^{(k)})^{\uparrow}$. These letters have the thick types of $\mathfrak p_1$ and $\mathfrak p_2$, black $\mathsf A$, complemented bits, and the thin types $\theta_0$ and $\theta_{2^{m-k-1}w}$. If $k+1\le m-1$, then $0$, $2^{m-k-1}w$ and $x/2$ lie in $2\Z^2$, so the thin phase is $0$, both thin types are $\mathsf a$, and the claim holds for $k+1$. If $k+1=m$, then $x/2\in\{0,w\}$; let $r$ be the index with $x/2=z_r$. The letter $(\mathfrak p_r^{(m-1)})^{\uparrow}$ has thin type $\theta_{z_r}=\mathsf a$, thick type $\kappa_r$, black $\mathsf A$ and both bits $1$. This proves (a) and (c).
+
+For (b) we show by induction on $k\in[1,m]$ that the letters of $\mathcal L(y_1+2^kz)$ have thin type $\mathsf a$ and that the letters of $\mathcal L_k(z)$ are obtained from them by complementing both bits $k$ times and putting the thin type of $\mathcal L_k$ at $z$. The site $y_1+2^kz$ lies in $y_1+2\Z^2$, where $\mathcal L$ has thin type $\mathsf a$. For $k=1$ the claim is the definition of $\mathcal L_0^{\uparrow}$. Suppose it holds for some $k\le m-1$. The letters of $\mathcal L_k(2z)$ have thin type $\mathsf a$, because $\mathcal L_k$ has thin phase $0$, and by the claim for $k$ they come from the letters of $\mathcal L(y_1+2^{k+1}z)$. The map $\mathfrak a\mapsto\mathfrak a^{\uparrow}$ complements both bits once more and puts the thin type of $\mathcal L_{k+1}$ at $z$.
+
+For (d) we show by induction on $l\in[0,m]$ that $\mathcal L_{m-l}(2^lz+y)=\{(\varphi')^l(\mathfrak c)(y)\}$ for every $y\in[0,2^l)^2$. For $l=0$ this is the hypothesis. Let $l<m$, and let $y\in[0,2^{l+1})^2$, written $y=2y'+\varsigma$ with $y'\in[0,2^l)^2$ and $\varsigma\in\{0,1\}^2$. By the induction hypothesis, $\mathcal L_{m-l}(2^lz+y')$ is the singleton of $(\varphi')^l(\mathfrak c)(y')$. Since $\mathcal L_{m-l}$ is the coarsening of $\mathcal L_{m-l-1}$ with $c=0$, \cref{thr:coarse}(c) gives
+\[
+\mathcal L_{m-l-1}(2^{l+1}z+y)=\bigl\{\varphi'\bigl((\varphi')^l(\mathfrak c)(y')\bigr)(\varsigma)\bigr\}=\bigl\{(\varphi')^{l+1}(\mathfrak c)(y)\bigr\},
+\]
+the last step by the blockwise definition of $\varphi'$ (\cref{scf:def-phiprime}). For $l=m$, $\mathcal L_0(2^mz+y)=\mathcal L(y_1+2^mz+y)$.
+\end{proof}
+
+\subsection{Corner pairs at every scale}\label{thr:sec-pairs}
+
+The next lemma is a finite statement. Let $V_{16}=\{-16,\dots,16\}^2$, as in \cref{sec:setting}. For a corner $\kappa$, define lists $\mathcal D_\kappa(v)\subseteq\mathbb A$ for $v\in V_{16}$ as follows. The list $\mathcal D_\kappa(0)$ is $\{(\mathsf a,\kappa,\mathsf A,1,1)\}$. For $v\ne0$, the list $\mathcal D_\kappa(v)$ consists of the letters whose thin type is $\mathsf a$, $\mathsf c$, $\mathsf d$ or $\mathsf b$ according as $v$ is congruent to $(0,0)$, $(1,0)$, $(0,1)$ or $(1,1)$ modulo $2$, except the four corner letters with bit $0$, namely $(\mathsf a,\kappa',\mathsf A,0,0)$ for the four corners $\kappa'$. Every other letter of $\mathbb A$ with the right thin type is kept, lines and letters with unequal bits included. A family $\mathcal K$ of sets $\mathcal K(v)\subseteq\mathcal D_\kappa(v)$, $v\in V_{16}$, is \emph{consistent on the box} if, for every $v\in V_{16}$, every $\mathfrak a\in\mathcal K(v)$ and every $e\in\{\pm\mathbf e_1,\pm\mathbf e_2\}$ with $v+e\in V_{16}$, some $\mathfrak b\in\mathcal K(v+e)$ is such that $\mathfrak a,\mathfrak b$ fit in direction $e$. Neighbours outside $V_{16}$ impose nothing: the box does not wrap around.
+
+\begin{lemma}[Corner lemma]\label{thr:corner}
+Let $\kappa$ be one of the four corners. Every family $\mathcal K$ that is consistent on the box and contained in $\mathcal D_\kappa$ has $\mathcal K(v)=\emptyset$ for every $v\in V_{16}$.
+\end{lemma}
+
+\begin{proof}
+This is a finite arc-consistency computation, carried out by two independent programs with positive controls. The programs are the files
+\begin{itemize}
+\item \texttt{verification/corner-lemma/ENGINE-PALETTE-A.py},
+\item \texttt{verification/corner-lemma/CORNERS-B.py}
+\end{itemize}
+in the repository of this paper. Each program builds the $276$ letters of $\mathbb A$ and their edge colours from the rules of \cref{app:tables} and \cref{scf:def-ruler}. It sets up the lists $\mathcal D_\kappa$ on the box $[0,32]^2$ with centre $(16,16)$, the translate of $V_{16}$ by the even vector $(16,16)$. It then deletes from a list each letter that has no fitting letter in the current list at some neighbour inside the box, until no deletion applies. A deleted letter lies in no family that is consistent on the box and contained in the current lists. So, by induction on the number of deletions, every family that is consistent on the box and contained in $\mathcal D_\kappa$ stays inside the current lists. The final lists form a family that is consistent on the box. Hence both programs compute the largest such family, whatever the order of the deletions. For each of the four corners $\kappa$, both programs find that every list of this largest family is empty.
+
+The two programs encode the colours differently and delete in different orders: the first revisits one site at a time from a queue, the second sweeps the whole box synchronously. As positive controls, both run the same computation on the lists $\mathcal D^+_\kappa$ in which the four corner letters with bit $0$ are kept. For each $\kappa$ the final lists then have no empty site and $57290$ letters in total, and they contain all $1089$ values of a legal pattern of $\mathbb A$ on the box whose value at the centre is $(\mathsf a,\kappa,\mathsf A,1,1)$; the pattern is a restriction of a word $\sigma^3(\mathfrak o)$. The program \texttt{verification/corner-lemma/CORNERS-B-CONTROLS.py} is the second program with this last check added. A third implementation, written separately, is included in the same folder and gives the same results. The file \texttt{verification/corner-lemma/VERIFY.md} says how to run the programs and what they print.
+\end{proof}
+
+\begin{corollary}[A corner letter with bit $0$ nearby]\label{thr:corner-plane}
+Let $\mathcal L$ be an arc-consistent list family, and let $\mathcal L(z_0)=\{(\mathsf a,\kappa,\mathsf A,1,1)\}$ for some $z_0\in\Z^2$ and some corner $\kappa$. Then some $z\in z_0+V_{16}$ has a corner letter with bit $0$ in $\mathcal L(z)$.
+\end{corollary}
+
+\begin{proof}
+Suppose not. By \cref{thr:thin}, $\mathcal L$ has thin phase $z_0$. Put $\mathcal K(v)=\mathcal L(z_0+v)$ for $v\in V_{16}$. Then $\mathcal K(v)\subseteq\mathcal D_\kappa(v)$ for every $v$: the thin types follow the rule of $\mathcal D_\kappa$, the list $\mathcal K(0)$ is the given singleton, and no corner letter with bit $0$ occurs. The family $\mathcal K$ is consistent on the box, because $\mathcal L$ is arc consistent. By \cref{thr:corner}, $\mathcal K(0)=\emptyset$, which is false.
+\end{proof}
+
+\begin{definition}[Corner pairs]\label{thr:def-pair}
+Let $m\ge1$. A pin pair $(\iota(y_1),s_1;\iota(y_2),s_2)$ is a \emph{corner pair of order $m$} if $\operatorname{par}(\operatorname{ctr}(s_1))$ and $\operatorname{par}(\operatorname{ctr}(s_2))$ are opposite corner letters and $y_2-y_1\in2^m\Z^2$.
+\end{definition}
+
+\begin{lemma}[A first corner pair]\label{thr:start}
+$\mathcal W$ has a corner pair of order $1$.
+\end{lemma}
+
+\begin{proof}
+\emph{A pin on a cell.} Take a state of $\mathcal W$. Move token $1$ by Moore steps to $\iota(0)$, using (W3), and then clone it onto tokens $2$ and $3$, using (W2). The result is a state $((\iota(0),\iota(0),\iota(0)),(s,s,s))\in\mathcal W$, so $\mathbf p_0=(\iota(0),s;\iota(0),s)$ is a pin pair. By \cref{thr:lists}, $\mathcal L_{\mathbf p_0}$ is arc consistent and $\mathcal L_{\mathbf p_0}(0)$ is a singleton. By \cref{thr:thin} it has a thin phase $c$.
+
+\emph{A pin of thin type $\mathsf b$.} Let $y=c+(1,1)$. By \cref{thr:lists}(a) there is $(\iota(y),s')\in\mathcal X_{\mathbf p_0}$, and $\operatorname{par}(\operatorname{ctr}(s'))\in\mathcal L_{\mathbf p_0}(y)$ has thin type $\mathsf b$. In the state $((\iota(0),\iota(0),\iota(y)),(s,s,s'))\in\mathcal W$, clone token $3$ onto tokens $1$ and $2$. So $\mathbf p_1=(\iota(y),s';\iota(y),s')$ is a pin pair, and $\mathcal L_{\mathbf p_1}(y)=\{(\mathsf b,F(\theta^*),\mathsf A,0,0)\}$ for one thin type $\theta^*$.
+
+\emph{A corner pin with bit $1$.} The family $\mathcal L=\mathcal L_{\mathbf p_1}$ has thin phase $c'=y-(1,1)$ by \cref{thr:thin}, and $y$ is the north-east site of $0$. So $\mathcal L^{\angle}(0)=\{\theta^*\}$, and by \cref{thr:ne} every $\mathcal L^{\angle}(z)$ is a singleton $\{\theta_z\}$. The four values $\theta_0$, $\theta_{\mathbf e_1}$, $\theta_{\mathbf e_2}$, $\theta_{(1,1)}$ are distinct, so $\theta_{z_{\mathsf b}}=\mathsf b$ for some $z_{\mathsf b}$. By \cref{thr:coarse}(a),(b), every letter of $\mathcal L^{\uparrow}(z_{\mathsf b})$ is a letter of $\mathbb A$ with thin type $\mathsf b$, so it is $(\mathsf b,F(\theta),\mathsf A,0,0)$ for some thin type $\theta$. These letters are the letters $\mathfrak a^{\uparrow}$ for $\mathfrak a\in\mathcal L(y_{\mathsf b})$, where $y_{\mathsf b}=c'+2z_{\mathsf b}$, and $\mathfrak a^{\uparrow}=(\mathsf b,F(\theta),\mathsf A,0,0)$ forces $\mathfrak a=(\mathsf a,F(\theta),\mathsf A,1,1)$. So every letter of $\mathcal L(y_{\mathsf b})$ is a corner letter with bit $1$. By \cref{thr:lists}(a) there is $(\iota(y_{\mathsf b}),s'')\in\mathcal X_{\mathbf p_1}$. Clone token $3$ onto tokens $1$ and $2$. Then $\mathbf p_2=(\iota(y_{\mathsf b}),s'';\iota(y_{\mathsf b}),s'')$ is a pin pair, and $\mathcal L_{\mathbf p_2}(y_{\mathsf b})=\{(\mathsf a,\kappa,\mathsf A,1,1)\}$ for a corner $\kappa$.
+
+\emph{An opposite corner letter.} By \cref{thr:corner-plane}, applied to $\mathcal L_{\mathbf p_2}$, some $z'\in y_{\mathsf b}+V_{16}$ has a corner letter $\mathfrak b$ with bit $0$ in $\mathcal L_{\mathbf p_2}(z')$. So there is $(\iota(z'),s''')\in\mathcal X_{\mathbf p_2}$ with $\operatorname{par}(\operatorname{ctr}(s'''))=\mathfrak b$. In the state $((\iota(y_{\mathsf b}),\iota(y_{\mathsf b}),\iota(z')),(s'',s'',s'''))\in\mathcal W$, clone token $3$ onto token $2$. The result shows that $(\iota(y_{\mathsf b}),s'';\iota(z'),s''')$ is a pin pair. Its two letters are opposite corner letters. Both have thin type $\mathsf a$, and $\mathcal L_{\mathbf p_2}$ has thin phase $y_{\mathsf b}$ by \cref{thr:thin}, so $z'-y_{\mathsf b}\in2\Z^2$. This is a corner pair of order $1$.
+\end{proof}
+
+\begin{lemma}[Promotion]\label{thr:promote}
+If $\mathcal W$ has a corner pair of order $m\ge1$, then it has a corner pair of order $m+1$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathbf p=(\iota(y_1),s_1;\iota(y_2),s_2)$ be a corner pair of order $m$, with letters $\mathfrak p_i=\operatorname{par}(\operatorname{ctr}(s_i))$. By \cref{thr:lists}, $\mathcal L=\mathcal L_{\mathbf p}$ is arc consistent and $\mathcal L(y_i)=\{\mathfrak p_i\}$ for $i=1,2$. Let $\mathcal L_0,\dots,\mathcal L_m$, $r$ and $z_r$ be as in \cref{thr:dyadic}, and note that $y_1+2^mz_r=y_r$. By \cref{thr:dyadic}(c) and \cref{thr:corner-plane}, applied to $\mathcal L_m$ at $z_r$, some $z\in z_r+V_{16}$ has a corner letter $\mathfrak b$ with bit $0$ in $\mathcal L_m(z)$. Since $\mathcal L_m$ has thin phase $z_r$ and $\mathfrak b$ has thin type $\mathsf a$, $z-z_r\in2\Z^2$.
+
+By \cref{thr:dyadic}(b), $\mathfrak b$ is obtained from a letter $\mathfrak b_0\in\mathcal L(y')$, $y'=y_1+2^mz$, by complementing both bits $m$ times and changing the thin type. So $\mathfrak b_0$ is a corner letter with the thick type of $\mathfrak b$, and its bit is $0$ complemented $m$ times. In the same way, $\mathcal L_m(z_r)=\{(\mathsf a,\kappa_r,\mathsf A,1,1)\}$ comes from $\mathcal L(y_r)=\{\mathfrak p_r\}$, so the bit of $\mathfrak p_r$ is $1$ complemented $m$ times. Hence $\mathfrak b_0$ and $\mathfrak p_r$ are opposite corner letters, and $y'-y_r=2^m(z-z_r)\in2^{m+1}\Z^2$.
+
+By the definition of $\mathcal L_{\mathbf p}$ there is $(\iota(y'),s)\in\mathcal X_{\mathbf p}$ with $\operatorname{par}(\operatorname{ctr}(s))=\mathfrak b_0$, so that
+\[
+((\iota(y_1),\iota(y_2),\iota(y')),(s_1,s_2,s))\in\mathcal W.
+\] If $r=1$, clone token $3$ onto token $2$; if $r=2$, clone token $3$ onto token $1$. The resulting state shows that $(\iota(y_1),s_1;\iota(y'),s)$, respectively $(\iota(y'),s;\iota(y_2),s_2)$, is a pin pair. Its letters are $\mathfrak p_r$ and $\mathfrak b_0$, and its displacement is $\pm(y'-y_r)$. It is a corner pair of order $m+1$.
+\end{proof}
+
+The witness $s$ is a symbol that occurs in $\mathcal X_{\mathbf p}$; the argument chooses a state of $\mathcal W$, not a reply to a move.
+
+\begin{lemma}[The forced word]\label{thr:word}
+Let $n\ge1$, and let $\mathbf p=(\iota(y_1),s_1;\iota(y_2),s_2)$ be a corner pair of order $2n$. There are $r\in\{1,2\}$ and a corner letter $\mathfrak a$ with bit $1$ such that
+\[
+\mathcal L_{\mathbf p}(y_r+y)=\{\sigma^n(\mathfrak a)(y)\}\qquad\text{for every }y\in[0,4^n)^2 .
+\]
+\end{lemma}
+
+\begin{proof}
+Apply \cref{thr:dyadic} to $\mathcal L_{\mathbf p}$, with $m=2n$; this is possible by \cref{thr:lists}. Let $r$ be as there and $\mathfrak a=(\mathsf a,\kappa_r,\mathsf A,1,1)$, so that $\mathcal L_{2n}(z_r)=\{\mathfrak a\}$. By \cref{thr:dyadic}(d), $\mathcal L_{\mathbf p}(y_1+4^nz_r+y)=\{(\varphi')^{2n}(\mathfrak a)(y)\}$ for $y\in[0,4^n)^2$. Here $y_1+4^nz_r=y_r$, and $(\varphi')^{2n}(\mathfrak a)=\sigma^n(\mathfrak a)$ because blockwise substitution of patterns composes, as noted after \cref{fam:def-tower}.
+\end{proof}
+
+\subsection{The forced word and the contradiction}\label{thr:sec-end}
+
+In this subsection $M$ halts, and $T=T(M)$ is its halting time, the number of steps of $M^\circ$ before it halts (\cref{fam:sub-horn}). Fix $n\ge2$ with $2^n-2\ge2T+10$. By \cref{thr:start}, and by \cref{thr:promote} applied $2n-1$ times, $\mathcal W$ has a corner pair $\mathbf p=(\iota(y_1),s_1;\iota(y_2),s_2)$ of order $2n$. Let $r$ and $\mathfrak a$ be given by \cref{thr:word}, and put
+\[
+W=\sigma^n(\mathfrak a),\qquad o=\iota(y_r).
+\]
+Let $\Delta_n$, $J$, $J^\circ$, $\mathcal F$ and $Z_W$ be as in (Q5) of \cref{ref:sec-inputs} for this word, and let $N=2T+10$, $f_0<\dots<f_{N-1}$, $F_N$, $Z$, the channel edges and the palettes $\operatorname{Pal}(\xi)$ be as in \cref{ref:sec-select}. They depend only on $W$ and $T$. Tokens $1$ and $2$ hold $\mathbf p$ throughout, and all statements below concern the walker set $\mathcal X_{\mathbf p}$.
+
+\begin{lemma}[Forced quarters]\label{thr:quarters}
+Let $\xi\in[0,2\cdot4^n)^2$ and $(o+\xi,s)\in\mathcal X_{\mathbf p}$. Then the scaffold pair of $\operatorname{ctr}(s)$ is the quarter of $W$ at $\xi$.
+\end{lemma}
+
+\begin{proof}
+Let $\varsigma=\xi\bmod2$ and $z=\lfloor\xi/2\rfloor$, coordinatewise, so that $o+\xi=\iota(y_r+z)+\varsigma$ and $z\in[0,4^n)^2$. The quadrant of $\operatorname{ctr}(s)$ is $o+\xi-\bar\gamma\equiv\xi\equiv\varsigma\pmod2$. For the parent, if $\varsigma_1=1$, move the walker by $-\mathbf e_1$ (\cref{thr:lists}(a)). By \cref{thr:move}, the new centre lies west of the old one in a legal pattern and has first quadrant coordinate $0$, so by (Q1) the two centres have the same parent. If $\varsigma_2=1$, move the walker by $-\mathbf e_2$ in the same way. This reaches $(\iota(y_r+z),s'')\in\mathcal X_{\mathbf p}$ with $\operatorname{par}(\operatorname{ctr}(s''))=\operatorname{par}(\operatorname{ctr}(s))$. By \cref{thr:word}, $\operatorname{par}(\operatorname{ctr}(s''))\in\mathcal L_{\mathbf p}(y_r+z)=\{W(z)\}$. So the scaffold pair of $\operatorname{ctr}(s)$ is $(\varsigma,W(z))$, the quarter of $W$ at $\xi$.
+\end{proof}
+
+\begin{lemma}[Corridors]\label{thr:roles}
+Let $\xi\in Z_W$ and $(o+\xi,s)\in\mathcal X_{\mathbf p}$. Then $\operatorname{ctr}(s)$ is a horizontal carrier if and only if $\xi_2\in\mathcal F$, and a vertical carrier if and only if $\xi_1\in\mathcal F$. Consequently its role is horizontal if $\xi_1\notin\mathcal F$, vertical if $\xi_2\notin\mathcal F$, active or seed if $\xi\in\mathcal F^2$, and seed if $\xi=(2\Delta_n+1,2\Delta_n+1)$.
+\end{lemma}
+
+\begin{proof}
+By (Q5)(c), let $\xi+m\mathbf e_1$ and $\xi-m'\mathbf e_1$, with $m,m'\ge1$, be the nearest quarters of $W$ to the right and to the left of $\xi$ in its row that lie on a light vertical wall. Both lie in $J\times\{\xi_2\}\subseteq[0,2\cdot4^n)^2$.
+
+Walk to the right: put $s_0=s$, and for $l=1,\dots,m$ use \cref{thr:lists}(a) to get $(o+\xi+l\mathbf e_1,s_l)\in\mathcal X_{\mathbf p}$ with $s_l$ compatible with $s_{l-1}$ at displacement $\mathbf e_1$. By \cref{thr:move}, $\operatorname{ctr}(s_{l-1})$ and $\operatorname{ctr}(s_l)$ match horizontally, so $\phi_{\mathrm E}(\operatorname{ctr}(s_{l-1}))=\phi_{\mathrm W}(\operatorname{ctr}(s_l))$ by (Q2). By \cref{thr:quarters}, the scaffold pair of $\operatorname{ctr}(s_l)$ is the quarter of $W$ at $\xi+l\mathbf e_1$. For $0\le l<m$ this quarter lies on no light vertical wall: for $l=0$ by (Q5)(c), and for $0<l<m$ by the choice of $m$. So $\phi_{\mathrm W}(\operatorname{ctr}(s_l))=\phi_{\mathrm E}(\operatorname{ctr}(s_l))$ for $0\le l<m$, and $\psi=\phi_{\mathrm W}(\operatorname{ctr}(s))$ satisfies $\psi=\phi_{\mathrm E}(\operatorname{ctr}(s))=\phi_{\mathrm W}(\operatorname{ctr}(s_m))$, where $s_m$ sits at the right wall. Walking to the left in the same way gives a symbol $s'$ at the left wall with $\psi=\phi_{\mathrm E}(\operatorname{ctr}(s'))$.
+
+If $\xi_2\in\mathcal F$, the left wall is a left side and the right wall a right side, so by (Q2) $\psi\subseteq\{\mathrm{left}\}\cap\{\mathrm{right}\}=\emptyset$, and $\operatorname{ctr}(s)$ is a horizontal carrier. If $\xi_2\notin\mathcal F$, then the left wall is a right side, which gives $\psi=\phi_{\mathrm E}(\operatorname{ctr}(s'))\ne\emptyset$, or the right wall is a left side, which gives $\psi=\phi_{\mathrm W}(\operatorname{ctr}(s_m))\ne\emptyset$; so $\operatorname{ctr}(s)$ is not a horizontal carrier. The vertical statement is proved in the same way along the column of $\xi$, with $\mathbf e_2$, the flows $\phi_{\mathrm S},\phi_{\mathrm N}$, and bottom and top sides. The roles follow from (Q3). At $\xi=(2\Delta_n+1,2\Delta_n+1)$ the tile is active, and by \cref{thr:quarters} and (Q5)(b) its scaffold pair is the north-east quarter of an index-$0$ letter with dark ruler bits, so its role is seed.
+\end{proof}
+
+The lemma holds for every symbol of the walker set at $o+\xi$, not only for one choice of flows. In this sense the corridors of (Q5)(c) force the roles on the lists themselves: each corridor is a chain of equalities between neighbouring flows, closed by the two wall conditions of (Q2), and the walk checks it for every value that the walker can carry.
+
+By \cref{thr:roles} and (Q3), $\operatorname{pay}(\operatorname{ctr}(s))\in\operatorname{Pal}(\xi)$ for every $\xi\in Z$ and every $(o+\xi,s)\in\mathcal X_{\mathbf p}$. On $F_N^2\setminus\{(f_0,f_0)\}$ the role is active or seed, and both palettes lie in $T_M$, because $s_M\in T_M$.
+
+\begin{lemma}[Projected meet]\label{thr:meet}
+For $\xi\in Z$ and $v=o+\xi$ put
+\[
+U_v=\bigl\{\operatorname{pay}(\operatorname{ctr}(s)):(v,s)\in\mathcal X_{\mathbf p}\bigr\},\qquad m_v=\textstyle\bigwedge U_v .
+\]
+\begin{itemize}
+\item[(a)] Each $U_v$ is a nonempty finite set, and $m_v\in\operatorname{Pal}(\xi)$.
+\item[(b)] Let $\{\xi,\xi+e\}$ be a channel edge with $e\in\{\mathbf e_1,\mathbf e_2\}$, and let $w=v+e$. If $e=\mathbf e_1$ then $(m_v)_{\mathrm E}=(m_w)_{\mathrm W}$, and if $e=\mathbf e_2$ then $(m_v)_{\mathrm N}=(m_w)_{\mathrm S}$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+(a) $U_v$ is nonempty by \cref{thr:lists}(a), and $U_v\subseteq C_M^4$ is finite. Every palette is closed under $\wedge$, as in the proof of \cref{ref:meet}(a), and $U_v\subseteq\operatorname{Pal}(\xi)$. So $m_v\in\operatorname{Pal}(\xi)$.
+
+(b) Let $e=\mathbf e_1$, and let $Q_{vw}$ be the set of pairs $(\operatorname{pay}(\operatorname{ctr}(s)),\operatorname{pay}(\operatorname{ctr}(s')))$ with $(v,s),(w,s')\in\mathcal X_{\mathbf p}$ and $s'$ compatible with $s$ at displacement $\mathbf e_1$. Its first projection is $U_v$: for $(v,s)\in\mathcal X_{\mathbf p}$, \cref{thr:lists}(a) gives $(w,s')\in\mathcal X_{\mathbf p}$ with $s'$ compatible with $s$ at displacement $\mathbf e_1$. Its second projection is $U_w$: for $(w,s')\in\mathcal X_{\mathbf p}$, \cref{thr:lists}(a) gives $(v,s)\in\mathcal X_{\mathbf p}$ with $s$ compatible with $s'$ at displacement $-\mathbf e_1$, and compatibility is symmetric (\cref{set:def-live}). For each pair, $\operatorname{ctr}(s)$ and $\operatorname{ctr}(s')$ match horizontally by \cref{thr:move}, so their payloads satisfy $\operatorname{pay}(\operatorname{ctr}(s))_{\mathrm E}=\operatorname{pay}(\operatorname{ctr}(s'))_{\mathrm W}$ by (Q3). List $Q_{vw}=\{(\mathbf c^1,\mathbf d^1),\dots,(\mathbf c^l,\mathbf d^l)\}$. Since $\wedge$ acts coordinatewise,
+\[
+(m_v)_{\mathrm E}=\textstyle\bigwedge_i\mathbf c^i_{\mathrm E}=\bigwedge_i\mathbf d^i_{\mathrm W}=(m_w)_{\mathrm W}.
+\]
+The case $e=\mathbf e_2$ is the same.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:three}]
+Let $M$ halt, with halting time $T=T(M)$, and suppose that $R_M$ is not $3$-token refutable. By \cref{thm:game}(i) there is a nonempty plane-safe set of $3$-token states for $R_M$. Let $\mathcal W$ be a nonempty set $\mathcal W_\gamma$ obtained from it by \cref{thr:phase}, and let $n$, $\mathbf p$, $W$, $o$ and the meets $m_v$ be as above. Define $\Xi$ on $[0,N)^2$ by $\Xi(i,i')=m_{o+(f_i,f_{i'})}$. By \cref{thr:meet}(a), $\Xi(i,i')\in T_M$ for all $i,i'$, and $\Xi(0,0)=s_M$.
+
+Fix $i'$ and $i<N-1$, and let $v_y=o+(y,f_{i'})$ for $f_i\le y\le f_{i+1}$. These sites lie in $o+Z$, and consecutive ones form channel edges. For $f_i<y<f_{i+1}$ the palette at $(y,f_{i'})$ is horizontal, so $(m_{v_y})_{\mathrm W}=(m_{v_y})_{\mathrm E}$. By \cref{thr:meet}(b), $(m_{v_y})_{\mathrm E}=(m_{v_{y+1}})_{\mathrm W}$ for $f_i\le y<f_{i+1}$. Chaining these equalities gives $\Xi(i,i')_{\mathrm E}=\Xi(i+1,i')_{\mathrm W}$. In the same way, along the column $f_i$ through vertical palettes, $\Xi(i,i')_{\mathrm N}=\Xi(i,i'+1)_{\mathrm S}$.
+
+So $\Xi$ is a legal $T_M$-pattern on $[0,2T+10)^2$ with the seed tile $s_M$ at its south-west corner $(0,0)$. By \cref{prop:horn}(c), applied with the halting time $T=T(M)$, no such pattern exists. This contradiction shows that no nonempty plane-safe set of $3$-token states exists, and by \cref{thm:game}(i) $R_M$ is $3$-token refutable.
+\end{proof}
+
+\subsection{The three tokens}\label{thr:sec-budget}
+
+Every state used above has three tokens, at the following sites.
+\begin{itemize}
+\item \Cref{thr:phase}: the three tokens of a given state; one of them walks onto another.
+\item \Cref{thr:lists}: tokens $1$ and $2$ at the pins $p_1,p_2$, and token $3$ at the site where a list is read. A step of the walker is one move of token $3$.
+\item \Cref{thr:start}: first all three tokens at $\iota(0)$. Then tokens $1,2$ at $\iota(0)$ and token $3$ at $\iota(y)$, after which token $3$ is cloned onto tokens $1$ and $2$. The same happens with $\iota(y_{\mathsf b})$. Finally tokens $1,2$ at $\iota(y_{\mathsf b})$ and token $3$ at $\iota(z')$, after which token $3$ is cloned onto token $2$.
+\item \Cref{thr:promote}: tokens $1,2$ at the old pins and token $3$ at $\iota(y')$; then token $3$ is cloned onto the token of the pin that is dropped.
+\item \Cref{thr:quarters,thr:roles,thr:meet}: tokens $1,2$ at the corner pair $\mathbf p$ of order $2n$, and token $3$ walking inside the board $o+[0,2\cdot4^n)^2$.
+\end{itemize}
+\Cref{thr:sec-ac}, \cref{thr:corner} and \cref{thr:corner-plane} concern list families and finite lists, and use no tokens.
+
+A fourth token is not needed, for two reasons. First, a step between neighbouring sites is a single move of the walker. The move rule compares the old and the new symbol of that one token, through the overlap of their blocks (\cref{thr:move}). This makes the lists arc consistent (\cref{thr:lists}(c)), and it supplies the pairs of $Q_{vw}$ in \cref{thr:meet}. In the pebble families of \cref{sec:refutation}, the same step keeps both endpoints together with the pins. Second, the scale is carried by the two pins alone. A corner pair of order $m$ is a property of two letters and of their displacement, so when \cref{thr:promote} drops a pin, nothing that the next step uses is lost.
+
+\subsection{Dimension eight}\label{thr:sec-eight}
+
+\begin{corollary}[Theorem A on $\Z^8$]\label{cor:eight}
+Put $j=3$, $k=\max(2,2j)=6$, $q=k+1=7$, $a=2q^2+1=99$, $D_0=50q=350$ and
+\[
+\eps_0=(4D_0^2)^{-a}=(490000)^{-99}.
+\]
+For every $\eps\in(0,\eps_0]$ and every Turing machine $M$, the noisy quorum rule $F^{[6]}_{R_M}$ on $\Z^{8}$, with uniform replacement at rate $\eps$, is a positive-rate probabilistic cellular automaton, and it is ergodic if and only if $M$ halts. The map $M\mapsto F^{[6]}_{R_M}$ is total computable.
+\end{corollary}
+
+\begin{proof}
+The arithmetic is $2\cdot7^2+1=99$, $50\cdot7=350$, $350^2=122500$ and $4\cdot122500=490000$; the dimension is $2+k=8$. The process is a positive-rate probabilistic cellular automaton by \cref{set:def-noise}, and $M\mapsto F^{[6]}_{R_M}$ is total computable as in the proof of \cref{thm:main}. Let $\eps\in(0,\eps_0]$. Then $0<\eps<1$ and, as in \cref{fgt:rem-constants}, $\beta=2D_0^2\eps^{1/a}\le2D_0^2(4D_0^2)^{-1}=\frac12$.
+
+Suppose that $M$ halts. By \cref{thm:three}, $R_M$ is $3$-token refutable with some time $\tau$. The hypotheses of \cref{thm:forgetting} hold with $j=3$: $k=6\ge\max(2,2j)$, the constants $q$, $a$ and $D_0$ of that theorem are the ones above, and $\beta<1$. So for every window $O$ and every $t\ge0$,
+\[
+\delta^M_O(t)\le2|O|\,\eps^{-\tau/99}\,\frac{\beta^t}{1-\beta}\le4|O|\,\eps^{-\tau/99}\,2^{-t},
+\]
+the process forgets, and it is ergodic by \cref{set:forget-ergodic}.
+
+Suppose that $M$ does not halt. By \cref{prop:tiles}, $R_M$ tiles. The hypotheses of \cref{thm:memory} hold: $k=6\ge2$, and $0<\eps\le(4D_0^2)^{-a}$ with the constants $q$, $a$ and $D_0$ of that theorem. As in the proof of \cref{thm:main}, the process has memory, with a cloned tiling configuration and the all-bottom configuration as the two starts, and it is not ergodic by \cref{set:memory-nonergodic}.
+\end{proof}
+
+\begin{remark}\label{thr:corollaries}
+The proof of \cref{pf:threshold} uses only $q\ge3$, $D_0\ge150$ and $a\ge19$, which hold for $q=7$, $D_0=350$ and $a=99$. So the proofs of \cref{cor:rates,cor:tiling,cor:laws,cor:mixing,cor:gibbs} apply with $k=6$ and $\eps_0=(490000)^{-99}$, with \cref{thm:three} in place of \cref{thm:halting} and \cref{cor:eight} in place of \cref{thm:main}. In \cref{cor:mixing}, $\tau(R_M)$ is then the refutation time for $3$ tokens, and in \cref{cor:gibbs} the space--time lattice is $\Z^9$.
+\end{remark}

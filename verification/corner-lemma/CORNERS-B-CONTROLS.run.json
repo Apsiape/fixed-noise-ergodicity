@@ -1,0 +1,10 @@
+{
+  "pid": 66536,
+  "script": "CORNERS-B-CONTROLS.py",
+  "free_bytes_before": 11873398784,
+  "process_cap_bytes": 1000000000,
+  "job_cap_bytes": 1000000000,
+  "peak_process_bytes": 14102528,
+  "peak_job_bytes": 14102528,
+  "wall_seconds": 1.283582
+}

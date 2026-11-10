@@ -1,0 +1,155 @@
+{
+ "engine": "C",
+ "guard": {
+  "pid": 65792,
+  "script": "ENGINE-C.py",
+  "free_bytes_before": 11847684096,
+  "process_cap_bytes": 1000000000,
+  "job_cap_bytes": 1000000000
+ },
+ "cases": [
+  {
+   "root_corner": "a",
+   "forbid00": false,
+   "side": 33,
+   "impose_phase": true,
+   "initial_entries": 77953,
+   "final_entries": 57290,
+   "empty_sites": 0,
+   "root_alive": true,
+   "revisions": 1418,
+   "control_word_cells_lost": 0
+  },
+  {
+   "root_corner": "a",
+   "forbid00": true,
+   "side": 33,
+   "impose_phase": true,
+   "initial_entries": 76801,
+   "final_entries": 0,
+   "empty_sites": 1089,
+   "root_alive": false,
+   "revisions": 3691
+  },
+  {
+   "root_corner": "b",
+   "forbid00": false,
+   "side": 33,
+   "impose_phase": true,
+   "initial_entries": 77953,
+   "final_entries": 57290,
+   "empty_sites": 0,
+   "root_alive": true,
+   "revisions": 1412,
+   "control_word_cells_lost": 0
+  },
+  {
+   "root_corner": "b",
+   "forbid00": true,
+   "side": 33,
+   "impose_phase": true,
+   "initial_entries": 76801,
+   "final_entries": 0,
+   "empty_sites": 1089,
+   "root_alive": false,
+   "revisions": 3575
+  },
+  {
+   "root_corner": "c",
+   "forbid00": false,
+   "side": 33,
+   "impose_phase": true,
+   "initial_entries": 77953,
+   "final_entries": 57290,
+   "empty_sites": 0,
+   "root_alive": true,
+   "revisions": 1418,
+   "control_word_cells_lost": 0
+  },
+  {
+   "root_corner": "c",
+   "forbid00": true,
+   "side": 33,
+   "impose_phase": true,
+   "initial_entries": 76801,
+   "final_entries": 0,
+   "empty_sites": 1089,
+   "root_alive": false,
+   "revisions": 3697
+  },
+  {
+   "root_corner": "d",
+   "forbid00": false,
+   "side": 33,
+   "impose_phase": true,
+   "initial_entries": 77953,
+   "final_entries": 57290,
+   "empty_sites": 0,
+   "root_alive": true,
+   "revisions": 1412,
+   "control_word_cells_lost": 0
+  },
+  {
+   "root_corner": "d",
+   "forbid00": true,
+   "side": 33,
+   "impose_phase": true,
+   "initial_entries": 76801,
+   "final_entries": 0,
+   "empty_sites": 1089,
+   "root_alive": false,
+   "revisions": 3686
+  },
+  {
+   "root_corner": "a",
+   "forbid00": true,
+   "side": 33,
+   "impose_phase": false,
+   "initial_entries": 295937,
+   "final_entries": 0,
+   "empty_sites": 1089,
+   "root_alive": false,
+   "revisions": 4071
+  },
+  {
+   "root_corner": "b",
+   "forbid00": true,
+   "side": 33,
+   "impose_phase": false,
+   "initial_entries": 295937,
+   "final_entries": 0,
+   "empty_sites": 1089,
+   "root_alive": false,
+   "revisions": 3985
+  },
+  {
+   "root_corner": "c",
+   "forbid00": true,
+   "side": 33,
+   "impose_phase": false,
+   "initial_entries": 295937,
+   "final_entries": 0,
+   "empty_sites": 1089,
+   "root_alive": false,
+   "revisions": 3993
+  },
+  {
+   "root_corner": "d",
+   "forbid00": true,
+   "side": 33,
+   "impose_phase": false,
+   "initial_entries": 295937,
+   "final_entries": 0,
+   "empty_sites": 1089,
+   "root_alive": false,
+   "revisions": 4098
+  }
+ ],
+ "minimal_emptying_side": {
+  "a": 13,
+  "b": 13,
+  "c": 13,
+  "d": 13
+ },
+ "elapsed": 1.9481277000013506
+}

@@ -10,11 +10,11 @@ For deterministic rules and for rules with forbidden transitions, the answer can
 
 The answer is that it does. Noise does not make forgetting decidable.
 
-\begin{mainA}[\cref{thm:main}]
-There are integers $j,k$, a rate $\eps_0>0$ and a total computable map $M\mapsto R_M$ from Turing machines to finite Wang sets with the following property. For every $\eps\in(0,\eps_0]$, the quorum rule of $R_M$ on $\Z^{2+k}$, followed by uniform random replacement at rate $\eps$, is a positive-rate probabilistic cellular automaton that is ergodic if and only if $M$ halts.
+\begin{mainA}[\cref{thm:main,cor:eight}]
+There is a total computable map $M\mapsto R_M$ from Turing machines to finite Wang sets with the following property. Put $\eps_0=490000^{-99}$. For every $\eps\in(0,\eps_0]$, the quorum rule of $R_M$ on $\Z^{8}$, followed by uniform random replacement at rate $\eps$, is a positive-rate probabilistic cellular automaton that is ergodic if and only if $M$ halts.
 \end{mainA}
 
-The rule, the noise and the rate are given by explicit formulas in $k$ (\cref{sec:setting,fgt:rem-constants}); the integer $k$ comes from the construction, which shows that it exists without computing it. Every member of the family has positive rates, and the noise is the same uniform replacement at the same rate for every member.
+The rule, the noise and the rate are explicit (\cref{sec:setting,fgt:rem-constants,cor:eight}). Every member of the family has positive rates, and the noise is the same uniform replacement at the same rate for every member.
 
 \subsection{How it works: a team of inspectors}
 
@@ -34,11 +34,11 @@ Part (i) is a Toom-type stability argument \cite{Toom80,SST26}. Part (ii) is the
 
 The two parts leave a gap: a tile set that does not tile but needs ever more inspectors to refute. If every undecidable family of tile sets fell into that gap, Theorem~B would decide nothing. The third theorem closes the gap.
 
-\begin{mainC}[\cref{thm:width}]
-There are a fixed integer $j$ and a total computable map $M\mapsto R_M$ to finite Wang sets such that $R_M$ tiles the plane if and only if $M$ does not halt, and $R_M$ is $j$-token refutable whenever $M$ halts.
+\begin{mainC}[\cref{thm:width,thm:three}]
+There is a total computable map $M\mapsto R_M$ to finite Wang sets such that $R_M$ tiles the plane if and only if $M$ does not halt, and $R_M$ is $3$-token refutable whenever $M$ halts.
 \end{mainC}
 
-So a fixed team of inspectors can always find the flaw, yet nobody can tell in advance whether there is one. The construction has two halves, and each is chosen so that bounded width suffices for it. The geometry is a fixed hierarchical tiling, Ollinger's $2\times2$ substitution \cite{Ollinger08}, in the transcription of \cite{LeanWang}, decorated with ruler bits. Recognizability lets a bounded number of inspectors read the type of a supertile of any size, through certificates of bounded treewidth \cite{Mosse92,Solomyak98,DKV02}. The computation runs in a layer of Horn clauses. Constraints closed under intersection are decided by local consistency alone \cite{JCG97,FederVardi98}, so once the geometry is pinned, the inspectors can reconstruct a whole computation square from pairwise checks. Theorem~A follows by applying Theorem~B to the family of Theorem~C with $k=\max(2,2j)$ (\cref{sec:proofs}).
+So a team of three inspectors can always find the flaw, yet nobody can tell in advance whether there is one. The construction has two halves, and each is chosen so that bounded width suffices for it. The geometry is a fixed hierarchical tiling, Ollinger's $2\times2$ substitution \cite{Ollinger08}, in the transcription of \cite{LeanWang}, decorated with ruler bits. Recognizability lets a bounded number of inspectors read the type of a supertile of any size, through certificates of bounded treewidth \cite{Mosse92,Solomyak98,DKV02}. The computation runs in a layer of Horn clauses. Constraints closed under intersection are decided by local consistency alone \cite{JCG97,FederVardi98}, so once the geometry is pinned, the inspectors can reconstruct a whole computation square from pairwise checks. \Cref{sec:scaffold,sec:family,sec:refutation} carry this out with a large fixed number of inspectors; \cref{sec:three} shows that three suffice for the same family, two holding the phase of the hierarchy while the third walks. Theorem~A follows by applying Theorem~B to the family of Theorem~C with $k=\max(2,2j)$, which is $6$ for $j=3$ (\cref{sec:proofs,cor:eight}).
 
 \subsection{Consequences}
 
@@ -52,7 +52,7 @@ Five corollaries come with the proof (\cref{sec:proofs}).
 
 \subsection{Objections answered}
 
-\paragraph{The dimension is enormous.} It is. The parser of the hierarchical tiling uses $\binom{276}{2}+1$ observation points, so $j$ and the dimension $2+k$ are fixed but very large. This construction gives at least $761{,}042$ dimensions. The size comes entirely from reading the scaffold; the computation layer adds only a handful of inspectors to those observation points, and part (ii) of Theorem~B is proved for every $j$. How small the dimension can be made is the first question of \cref{sec:discussion}.
+\paragraph{The dimension.} Theorem~A holds on $\Z^8$ (\cref{cor:eight}). One inspector never suffices (\cref{set:one-token-family}); two would place Theorem~A on $\Z^6$, where the forgetting theorem applies with $k=4$. Whether two suffice is the first question of \cref{sec:discussion}.
 
 \paragraph{The alphabet grows with the machine.} Each member of the family has its own finite alphabet, so the smallest transition probability, $\eps$ divided by the alphabet size, is not bounded below over the family. ``A fixed noise rate'' means the same replacement rate $\eps$, with uniform replacement, for every member. This is the setting of the question above and of \cite{MT26}.
 
@@ -60,7 +60,7 @@ Five corollaries come with the proof (\cref{sec:proofs}).
 
 \subsection{Reading guide}
 
-\Cref{sec:setting} defines the automaton, the noise and the token tables, and relates refutations by tokens to refutations in the existential pebble game. \Cref{sec:forgetting,sec:memory} prove the two halves of Theorem~B; a reader interested only in the noise can stop there. \Cref{sec:scaffold,sec:family,sec:refutation} prove Theorem~C: the hierarchical scaffold and its parser, the routing of a machine onto the scaffold, and the bounded-width refutation of every halting member. \Cref{sec:proofs} assembles Theorem~A and proves the corollaries, and \cref{sec:discussion} lists open problems. The explicit tile tables are in \cref{app:tables}.
+\Cref{sec:setting} defines the automaton, the noise and the token tables, and relates refutations by tokens to refutations in the existential pebble game. \Cref{sec:forgetting,sec:memory} prove the two halves of Theorem~B; a reader interested only in the noise can stop there. \Cref{sec:scaffold,sec:family,sec:refutation} prove Theorem~C: the hierarchical scaffold and its parser, the routing of a machine onto the scaffold, and the bounded-width refutation of every halting member. \Cref{sec:three} lowers the number of tokens to three, which gives Theorem~A on $\Z^8$; one finite lemma there is checked by computer. \Cref{sec:proofs} assembles Theorem~A and proves the corollaries, and \cref{sec:discussion} lists open problems. The explicit tile tables are in \cref{app:tables}.
 
 \begin{figure}[ht]
 \centering
@@ -68,7 +68,7 @@ Five corollaries come with the proof (\cref{sec:proofs}).
 \begin{tikzpicture}[box/.style={draw,rounded corners,align=center,font=\small,inner sep=4pt},>=stealth]
 \node[box] (M) at (0,0) {Turing machine $M$};
 \node[box] (R) at (3.6,0) {tile set $R_M$\\(\cref{sec:scaffold,sec:family})};
-\node[box] (H) at (8.0,0.9) {$M$ halts: a refutation\\with $j$ tokens (\cref{sec:refutation})};
+\node[box] (H) at (8.0,0.9) {$M$ halts: a refutation\\with $3$ tokens (\cref{sec:refutation,sec:three})};
 \node[box] (N) at (8.0,-0.9) {$M$ runs forever:\\$R_M$ tiles (\cref{sec:family})};
 \node[box] (E) at (12.4,0.9) {forgets:\\ergodic (\cref{sec:forgetting})};
 \node[box] (F) at (12.4,-0.9) {remembers:\\not ergodic (\cref{sec:memory})};

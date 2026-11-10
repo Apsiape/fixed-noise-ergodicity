@@ -2,10 +2,10 @@
 \section{Open problems}\label{sec:discussion}
 % =====================================================================
 
-\paragraph{The dimension.} Theorem~A holds on $\Z^{2+k}$ with $k=\max(2,2j)$, and the $j$ of Theorem~C is fixed but very large. Its size comes from the parser of \cref{sec:scaffold}, whose readout uses $\binom{276}{2}+1$ observation points; part~(ii) of Theorem~B needs far fewer, and the computation layer adds only a few to those observation points. Two routes to a small dimension are open. One is a family with small token width: width~$2$ would place Theorem~A on $\Z^6$. The other is a forgetting mechanism whose number of extra dimensions does not grow with~$j$.
+\paragraph{The dimension.} Theorem~A holds on $\Z^8$ (\cref{cor:eight}): three tokens suffice (\cref{thm:three}), and the forgetting theorem then needs $k=6$ extra dimensions. One token never suffices for a family with undecidable tiling (\cref{set:one-token-family}). Two routes to a smaller dimension are open. A family of token width~$2$ would place Theorem~A on $\Z^6$. A forgetting mechanism with fewer than $2j$ extra dimensions would lower it further.
 
 \begin{problem}\label{prob:dimension}
-What is the least dimension $d$ for which ergodicity of positive-rate cellular automata on $\Z^d$, at one fixed noise rate, is undecidable? What is the least token width of a computable family of Wang sets with undecidable tiling problem?
+What is the least dimension $d$ for which ergodicity of positive-rate cellular automata on $\Z^d$, at one fixed noise rate, is undecidable? What is the least token width of a computable family of Wang sets with undecidable tiling problem: $2$ or $3$?
 \end{problem}
 
 \paragraph{The exact degree.} For rational positive rates, ergodicity is a $\Pi^0_2$ property of the table \cite[Remark on the $\Pi^0_2$ placement]{DM26}. Theorem~A shows it is $\Sigma^0_1$-hard at one fixed rate.
