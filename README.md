@@ -1,6 +1,6 @@
 # Forgetting under noise is undecidable: ergodicity of positive-rate cellular automata at a fixed noise rate
 
-Seth Douglas and Nidhal Mghirbi. Version 1.2.0, November 2026. DOI: [10.5281/zenodo.24105227](https://doi.org/10.5281/zenodo.24105227). Version 1.1.0: [10.5281/zenodo.24104252](https://doi.org/10.5281/zenodo.24104252). Version 1.0.0: [10.5281/zenodo.24102672](https://doi.org/10.5281/zenodo.24102672). Concept DOI (all versions): [10.5281/zenodo.24102671](https://doi.org/10.5281/zenodo.24102671).
+Seth Douglas and Nidhal Mghirbi. Version 1.3.0, November 2026. The version 1.3.0 DOI is recorded in the commit that follows the release. Version 1.2.0: [10.5281/zenodo.24105227](https://doi.org/10.5281/zenodo.24105227). Version 1.1.0: [10.5281/zenodo.24104252](https://doi.org/10.5281/zenodo.24104252). Version 1.0.0: [10.5281/zenodo.24102672](https://doi.org/10.5281/zenodo.24102672). Concept DOI (all versions): [10.5281/zenodo.24102671](https://doi.org/10.5281/zenodo.24102671).
 
 **This is a preprint. It has not been peer reviewed.**
 
@@ -20,6 +20,7 @@ A probabilistic cellular automaton updates every site of a lattice at once. Each
   - if every contradiction of R can be cornered by j local tokens (k ≥ 2j), the rule forgets its start exponentially fast after a delay set by the refutation.
 - **Theorem C.** One computable family of tile sets: R_M tiles exactly when M does not halt, and every halting member is refuted by three tokens. A general argument with a large fixed number of tokens comes first; Section 9 lowers it to three.
 - **Robustness (version 1.2.0).** Every probabilistic cellular automaton whose transition table is within total-variation distance ε₀ of a member of the family has the same classification; the radius is the same for every member.
+- **Version 1.3.0.** Corrections from an independent review of the whole manuscript (an omitted case in a remark of Section 8.2 and a credit sentence), and finite tests of the forced-word lemma of Section 9.
 - **Corollaries.**
   - One family works at every rate in (0, ε₀], and for other replacement laws.
   - A computable map sends every Wang set to a noisy automaton that is ergodic exactly when the set does not tile.
@@ -41,10 +42,11 @@ The proofs build on prior work that the paper credits in detail:
 
 - `paper/main.pdf`: manuscript.
 - `verification/corner-lemma/`: the one computed lemma (an arc-consistency deletion on a 33 × 33 box, four roots and four positive controls), done by two independently written programs and a third written separately during review, with their outputs and run receipts. Start with `VERIFY.md`.
+- `verification/forced-word/`: finite tests of the forced-word lemma of Section 9 for n = 1 and 2 (all sixteen pairs of corner letters, with legal-pattern and ablation controls), by two independently written programs. The lemma is proved in the text; these tests are a check, not part of the proof. See `VERIFY.md` there.
 - `paper/`: LaTeX source (`main.tex`, `preamble-core.tex`, `sections/`), plain-text abstract and a strict build driver. Run `python -B build.py` there with pdflatex installed. The build disables shell escape, runs pdflatex three times and rejects warnings, unresolved references and box defects.
 - `SHA256SUMS`: SHA-256 hashes of every shipped file except this manifest. Check with `sha256sum -c SHA256SUMS` from the repository root.
 
-One finite lemma (Section 9) is a computation, carried out by two independently written programs and checked by a third; no other proof uses a computation.
+One finite lemma (Section 9) is a computation, carried out by two independently written programs and checked by a third; no other proof uses a computation. The forced-word tests are checks, not proofs.
 
 ## Citation and rights
 

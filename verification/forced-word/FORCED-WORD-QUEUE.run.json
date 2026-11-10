@@ -1,0 +1,10 @@
+{
+  "pid": 69928,
+  "script": "FORCED-WORD-QUEUE.py",
+  "free_bytes_before": 11725561856,
+  "process_cap_bytes": 1000000000,
+  "job_cap_bytes": 1000000000,
+  "peak_process_bytes": 364150784,
+  "peak_job_bytes": 364150784,
+  "wall_seconds": 4.159073
+}

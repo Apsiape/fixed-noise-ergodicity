@@ -1,0 +1,10 @@
+{
+  "pid": 71280,
+  "script": "FORCED-WORD-SWEEP.py",
+  "free_bytes_before": 11698167808,
+  "process_cap_bytes": 1000000000,
+  "job_cap_bytes": 1000000000,
+  "peak_process_bytes": 16252928,
+  "peak_job_bytes": 16252928,
+  "wall_seconds": 31.995595
+}

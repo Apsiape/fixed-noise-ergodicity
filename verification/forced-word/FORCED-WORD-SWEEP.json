@@ -1,0 +1,561 @@
+{
+  "encoding": "independent color groups, synchronous sweeps, open box",
+  "results": [
+    {
+      "kind": "nonvacuous_forced_word",
+      "n": 1,
+      "N": 4,
+      "box": [
+        -4,
+        7
+      ],
+      "pins": [
+        [
+          0,
+          0,
+          [
+            "a",
+            [
+              "corner",
+              "d"
+            ],
+            "A",
+            1,
+            1
+          ]
+        ],
+        [
+          4,
+          4,
+          [
+            "a",
+            [
+              "corner",
+              "d"
+            ],
+            "A",
+            0,
+            0
+          ]
+        ]
+      ],
+      "target_sites": 16,
+      "target_errors": 0,
+      "legal_control_sites": 144,
+      "rounds": 22,
+      "sites": 144,
+      "empty": 0,
+      "total_letters": 154,
+      "seconds": 0.005
+    },
+    {
+      "kind": "remove_zero_pin",
+      "n": 1,
+      "target_nonsingletons_or_wrong": 15,
+      "rounds": 19,
+      "sites": 144,
+      "empty": 0,
+      "total_letters": 4914,
+      "seconds": 0.003
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "a",
+      "minus_corner": "a",
+      "target_errors": 16,
+      "rounds": 22,
+      "sites": 144,
+      "empty": 144,
+      "total_letters": 0,
+      "seconds": 0.003
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "a",
+      "minus_corner": "b",
+      "target_errors": 0,
+      "rounds": 20,
+      "sites": 144,
+      "empty": 0,
+      "total_letters": 153,
+      "seconds": 0.005
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "a",
+      "minus_corner": "c",
+      "target_errors": 16,
+      "rounds": 26,
+      "sites": 144,
+      "empty": 144,
+      "total_letters": 0,
+      "seconds": 0.004
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "a",
+      "minus_corner": "d",
+      "target_errors": 0,
+      "rounds": 18,
+      "sites": 144,
+      "empty": 0,
+      "total_letters": 157,
+      "seconds": 0.004
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "b",
+      "minus_corner": "a",
+      "target_errors": 16,
+      "rounds": 26,
+      "sites": 144,
+      "empty": 144,
+      "total_letters": 0,
+      "seconds": 0.004
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "b",
+      "minus_corner": "b",
+      "target_errors": 0,
+      "rounds": 21,
+      "sites": 144,
+      "empty": 0,
+      "total_letters": 156,
+      "seconds": 0.005
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "b",
+      "minus_corner": "c",
+      "target_errors": 16,
+      "rounds": 26,
+      "sites": 144,
+      "empty": 144,
+      "total_letters": 0,
+      "seconds": 0.004
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "b",
+      "minus_corner": "d",
+      "target_errors": 0,
+      "rounds": 19,
+      "sites": 144,
+      "empty": 0,
+      "total_letters": 160,
+      "seconds": 0.004
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "c",
+      "minus_corner": "a",
+      "target_errors": 16,
+      "rounds": 26,
+      "sites": 144,
+      "empty": 144,
+      "total_letters": 0,
+      "seconds": 0.004
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "c",
+      "minus_corner": "b",
+      "target_errors": 0,
+      "rounds": 20,
+      "sites": 144,
+      "empty": 0,
+      "total_letters": 153,
+      "seconds": 0.005
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "c",
+      "minus_corner": "c",
+      "target_errors": 16,
+      "rounds": 22,
+      "sites": 144,
+      "empty": 144,
+      "total_letters": 0,
+      "seconds": 0.003
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "c",
+      "minus_corner": "d",
+      "target_errors": 0,
+      "rounds": 18,
+      "sites": 144,
+      "empty": 0,
+      "total_letters": 157,
+      "seconds": 0.004
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "d",
+      "minus_corner": "a",
+      "target_errors": 16,
+      "rounds": 24,
+      "sites": 144,
+      "empty": 144,
+      "total_letters": 0,
+      "seconds": 0.004
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "d",
+      "minus_corner": "b",
+      "target_errors": 0,
+      "rounds": 22,
+      "sites": 144,
+      "empty": 0,
+      "total_letters": 150,
+      "seconds": 0.005
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "d",
+      "minus_corner": "c",
+      "target_errors": 16,
+      "rounds": 24,
+      "sites": 144,
+      "empty": 144,
+      "total_letters": 0,
+      "seconds": 0.004
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 1,
+      "plus_corner": "d",
+      "minus_corner": "d",
+      "target_errors": 0,
+      "rounds": 22,
+      "sites": 144,
+      "empty": 0,
+      "total_letters": 154,
+      "seconds": 0.005
+    },
+    {
+      "kind": "nonvacuous_forced_word",
+      "n": 2,
+      "N": 16,
+      "box": [
+        -16,
+        31
+      ],
+      "pins": [
+        [
+          0,
+          0,
+          [
+            "a",
+            [
+              "corner",
+              "d"
+            ],
+            "A",
+            1,
+            1
+          ]
+        ],
+        [
+          16,
+          16,
+          [
+            "a",
+            [
+              "corner",
+              "d"
+            ],
+            "A",
+            0,
+            0
+          ]
+        ]
+      ],
+      "target_sites": 256,
+      "target_errors": 0,
+      "legal_control_sites": 2304,
+      "rounds": 104,
+      "sites": 2304,
+      "empty": 0,
+      "total_letters": 2350,
+      "seconds": 0.24
+    },
+    {
+      "kind": "remove_zero_pin",
+      "n": 2,
+      "target_nonsingletons_or_wrong": 255,
+      "rounds": 63,
+      "sites": 2304,
+      "empty": 0,
+      "total_letters": 121186,
+      "seconds": 0.12
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "a",
+      "minus_corner": "a",
+      "target_errors": 256,
+      "rounds": 108,
+      "sites": 2304,
+      "empty": 2304,
+      "total_letters": 0,
+      "seconds": 0.19
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "a",
+      "minus_corner": "b",
+      "target_errors": 0,
+      "rounds": 103,
+      "sites": 2304,
+      "empty": 0,
+      "total_letters": 2340,
+      "seconds": 0.251
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "a",
+      "minus_corner": "c",
+      "target_errors": 256,
+      "rounds": 122,
+      "sites": 2304,
+      "empty": 2304,
+      "total_letters": 0,
+      "seconds": 0.225
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "a",
+      "minus_corner": "d",
+      "target_errors": 0,
+      "rounds": 93,
+      "sites": 2304,
+      "empty": 0,
+      "total_letters": 2362,
+      "seconds": 0.228
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "b",
+      "minus_corner": "a",
+      "target_errors": 256,
+      "rounds": 120,
+      "sites": 2304,
+      "empty": 2304,
+      "total_letters": 0,
+      "seconds": 0.208
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "b",
+      "minus_corner": "b",
+      "target_errors": 0,
+      "rounds": 107,
+      "sites": 2304,
+      "empty": 0,
+      "total_letters": 2352,
+      "seconds": 0.248
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "b",
+      "minus_corner": "c",
+      "target_errors": 256,
+      "rounds": 120,
+      "sites": 2304,
+      "empty": 2304,
+      "total_letters": 0,
+      "seconds": 0.21
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "b",
+      "minus_corner": "d",
+      "target_errors": 0,
+      "rounds": 89,
+      "sites": 2304,
+      "empty": 0,
+      "total_letters": 2374,
+      "seconds": 0.208
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "c",
+      "minus_corner": "a",
+      "target_errors": 256,
+      "rounds": 122,
+      "sites": 2304,
+      "empty": 2304,
+      "total_letters": 0,
+      "seconds": 0.211
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "c",
+      "minus_corner": "b",
+      "target_errors": 0,
+      "rounds": 103,
+      "sites": 2304,
+      "empty": 0,
+      "total_letters": 2340,
+      "seconds": 0.234
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "c",
+      "minus_corner": "c",
+      "target_errors": 256,
+      "rounds": 108,
+      "sites": 2304,
+      "empty": 2304,
+      "total_letters": 0,
+      "seconds": 0.176
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "c",
+      "minus_corner": "d",
+      "target_errors": 0,
+      "rounds": 93,
+      "sites": 2304,
+      "empty": 0,
+      "total_letters": 2362,
+      "seconds": 0.278
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "d",
+      "minus_corner": "a",
+      "target_errors": 256,
+      "rounds": 119,
+      "sites": 2304,
+      "empty": 2304,
+      "total_letters": 0,
+      "seconds": 0.223
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "d",
+      "minus_corner": "b",
+      "target_errors": 0,
+      "rounds": 106,
+      "sites": 2304,
+      "empty": 0,
+      "total_letters": 2328,
+      "seconds": 0.265
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "d",
+      "minus_corner": "c",
+      "target_errors": 256,
+      "rounds": 119,
+      "sites": 2304,
+      "empty": 2304,
+      "total_letters": 0,
+      "seconds": 0.271
+    },
+    {
+      "kind": "orientation_pair",
+      "n": 2,
+      "plus_corner": "d",
+      "minus_corner": "d",
+      "target_errors": 0,
+      "rounds": 104,
+      "sites": 2304,
+      "empty": 0,
+      "total_letters": 2350,
+      "seconds": 0.305
+    },
+    {
+      "kind": "nonvacuous_forced_word",
+      "n": 3,
+      "N": 64,
+      "box": [
+        -64,
+        127
+      ],
+      "pins": [
+        [
+          0,
+          0,
+          [
+            "a",
+            [
+              "corner",
+              "d"
+            ],
+            "A",
+            1,
+            1
+          ]
+        ],
+        [
+          64,
+          64,
+          [
+            "a",
+            [
+              "corner",
+              "d"
+            ],
+            "A",
+            0,
+            0
+          ]
+        ]
+      ],
+      "target_sites": 4096,
+      "target_errors": 0,
+      "legal_control_sites": 36864,
+      "rounds": 476,
+      "sites": 36864,
+      "empty": 0,
+      "total_letters": 37054,
+      "seconds": 18.195
+    },
+    {
+      "kind": "remove_zero_pin",
+      "n": 3,
+      "target_nonsingletons_or_wrong": 4095,
+      "rounds": 255,
+      "sites": 36864,
+      "empty": 0,
+      "total_letters": 2078722,
+      "seconds": 9.278
+    }
+  ],
+  "scope": "Finite greatest arc-consistent subfamilies only. Nonempty fixed point does not prove global extension. Nonvacuous cases certified by retained legal substitution word. No full-token-game test and no all-n proof."
+}

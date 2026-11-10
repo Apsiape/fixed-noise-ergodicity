@@ -444,9 +444,10 @@ with probability $\gamma$, sets every site to $\bot$ at once, and otherwise upda
 the sites independently by $p_{M,\eps}$. Each one-site conditional law is within
 $\gamma$ of $p_{M,\eps}$. Couple the runs by sharing the reset coin and all
 replacement variables. Then the runs from any two starts agree after the first
-reset, so this process forgets and is ergodic for every $M$. It has no
-$\gamma'$-bounded common-map representation for any $\gamma'<1$: from $\xi$, a reset
-makes every site of any finite set wrong at once, with probability $\gamma$.
+reset, so this process forgets and is ergodic for every $M$. When $M$ does not halt,
+it has no $\gamma'$-bounded common-map representation for any $\gamma'<1$: from a
+cloned tiling configuration $\xi$, a reset makes every site of any finite set wrong
+at once, with probability $\gamma$.
 \item \emph{Site-dependent kernels.} The proof of (i) builds the map field site by
 site. So (i) holds verbatim when each site $v$ has its own kernel $Q_v$ satisfying
 the hypothesis with one $\gamma$.

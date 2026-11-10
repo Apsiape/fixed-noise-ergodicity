@@ -1,6 +1,6 @@
 Forgetting under noise is undecidable: ergodicity of positive-rate cellular automata at a fixed noise rate
 Seth Douglas and Nidhal Mghirbi
-Version 1.2.0, November 2026
+Version 1.3.0, November 2026
 
 Build: python -B build.py [--build-dir NEW_OR_EMPTY_DIRECTORY]
 Requires Python 3, pdflatex and the LaTeX packages named in preamble-core.tex. No BibTeX run is
