@@ -2,7 +2,7 @@
 
 This section proves \cref{thm:forgetting}. If $R$ is $j$-token refutable and $k\ge\max(2,2j)$, then the noisy rule $F^{[k]}_R$ forgets its initial configuration at every noise rate below a threshold that depends only on $k$. The refutation time enters the bound only through a constant factor.
 
-The proof has four steps. First, a violated tuple of tokens that carries no replacement has violated parent tuples in at least $k+1-j$ provider planes, all on one common set of at most $j$ planar sites (\cref{fgt:transport}). Second, a pigeonhole step turns this into a binary field $E$. The field is computed from the replacement indicators alone, and after the refutation time it covers every live site of every run (\cref{fgt:cover,fgt:live}). Third, Toom's contour argument bounds the size of an explanation of a marked point by the number of replacements in it (\cref{lem:contour}). Fourth, contours placed along a discrepancy path in disjoint time slabs force linearly many distinct replacements (\cref{fgt:packing}), and a Peierls count ends the proof (\cref{fgt:sec-proof}). The field $E$ (\cref{def:domination}) and the contour lemma (\cref{lem:contour}) are stated in the generality in which the proof of \cref{thm:memory} uses them again.
+The proof has four steps. First, a violated tuple of tokens that carries no replacement has violated parent tuples in at least $k+1-j$ provider planes, all on one common set of at most $j$ planar sites (\cref{fgt:transport}). Second, a pigeonhole step turns this into a binary field $E$. The field is computed from the replacement indicators alone, and after the refutation time it covers every live site of every run (\cref{fgt:cover,fgt:live}). Third, Toom's contour argument bounds the size of an explanation of a marked point by the number of replacements in it (\cref{lem:contour}). Fourth, contours placed along a discrepancy path in disjoint time slabs force linearly many distinct replacements (\cref{fgt:packing}), and a Peierls count ends the proof (\cref{fgt:sec-proof}). The field $E$ (\cref{def:domination}) and the contour lemma (\cref{lem:contour}) are stated in the generality in which the proof of \cref{thm:memory} uses them again. \Cref{fgt:sec-all} shows that the bound holds for all starts at once (\cref{fgt:coalesce}); \cref{cor:gibbs} uses this form.
 
 \subsection{Setting and statement}\label{fgt:sec-setting}
 
@@ -293,3 +293,40 @@ For a finite set $O$, the pair $(X_t|_O,Y_t|_O)$ is a coupling of $\mathrm{Law}_
 \]
 and \eqref{fgt:eq-main} gives \eqref{fgt:eq-tv}. Since $\beta<1$, the right side of \eqref{fgt:eq-tv} tends to $0$, so the rule forgets its initial configuration. \Cref{set:forget-ergodic} gives ergodicity.
 \end{proof}
+
+\subsection{All starts at once}\label{fgt:sec-all}
+
+The bound \eqref{fgt:eq-main} compares two given starts. Its proof gives more: one realisation of the noise makes the value at a space-time point the same for all starts, outside an event that depends on the replacement indicators alone.
+
+Run every configuration $x\in\Omega$ with the same variables $\eta_t(v)$ and $\zeta_t(v)$, and write $X^x$ for the run from $x$; this is the common-noise coupling of all starts. By \cref{sec:setting}, $X^x_t(v)$ depends on $x$ only through its restriction to the finite set $v+\mathcal N_t$. So the event in the next corollary is a finite union of events, and it is measurable.
+
+\begin{corollary}[Coalescence for all starts]\label{fgt:coalesce}
+Under the hypotheses of \cref{thm:forgetting}, for every site $v$ and every time $t\ge0$,
+\begin{equation}\label{fgt:eq-coalesce}
+\Prob\bigl(\text{the map }x\mapsto X^x_t(v)\text{ is not constant on }\Omega\bigr)\le 2\eps^{-\tau/a}\,\frac{\beta^t}{1-\beta}.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+If $L_R=\emptyset$, then $\Omega$ has one point and there is nothing to prove. Let $L_R\ne\emptyset$. As in the proof of \cref{thm:forgetting}, $\tau\ge1$, and we fix a box $V$ with $S_\tau(0,\dots,0)=\emptyset$. For $t<\tau$ the right side of \eqref{fgt:eq-coalesce} is at least $2$, as shown there. Let $t\ge\tau$.
+
+\emph{The witness event.} For $e\ge t$ let $\mathcal K_e$ be the set of pairs $(K,\Sigma)$ such that $K$ is a set of $e$ edges of $\mathcal G$ that forms a connected graph with $(v,t)$ among its vertices, and $\Sigma$ is a set of vertices of $K$, all of positive time, with $|\Sigma|\ge(e-\tau)/a$. The sets $\mathcal K_e$ depend on $v$, $t$, $e$, $\tau$ and $a$, and on nothing else; in particular they do not depend on a start. Put
+\[
+\mathcal B_t(v)=\bigcup_{e\ge t}\ \bigcup_{(K,\Sigma)\in\mathcal K_e}\bigl\{\eta=1\text{ on }\Sigma\bigr\}.
+\]
+It is a countable union of events, and it is a function of the indicators $\eta$ alone.
+
+\emph{Every discrepancy lies in the witness event.} Fix a realisation of the noise and a configuration $x$ with $X^x_t(v)\ne X^\bot_t(v)$. \Cref{fgt:packing}, applied to the runs $X=X^x$ and $Y=X^\bot$, gives an integer $e\ge t$, a set $K$ of $e$ edges of $\mathcal G$ that forms a connected graph with $(v,t)$ among its vertices, and a set $\Sigma$ of events, all vertices of $K$, with $|\Sigma|\ge(e-\tau)/a$. Events have positive time, so $(K,\Sigma)\in\mathcal K_e$, and $\eta=1$ on $\Sigma$. Hence the realisation lies in $\mathcal B_t(v)$. The pair $(K,\Sigma)$ depends on $x$, through the discrepancy path of \cref{fgt:path}; the contours along that path are contours of the marked set of the one field $E$, which is computed from $\eta$ alone and covers the live values of every run (\cref{fgt:live}). But the conclusion is membership in the one event $\mathcal B_t(v)$, which does not depend on $x$. Therefore
+\[
+\bigcup_{x\in\Omega}\bigl\{X^x_t(v)\ne X^\bot_t(v)\bigr\}\subseteq\mathcal B_t(v).
+\]
+If $x\mapsto X^x_t(v)$ is not constant, some start $x$ gives a value different from the value at the start $\bot$. So the event on the left of \eqref{fgt:eq-coalesce} is contained in $\mathcal B_t(v)$.
+
+\emph{Counting.} By \cref{fgt:count} there are at most $D_0^{2e}$ sets $K$ for each $e$. A connected graph with $e$ edges has at most $e+1$ vertices, so each $K$ has at most $2^{e+1}$ sets $\Sigma$. For a fixed set $\Sigma$ of points of positive time, $\Prob(\eta=1\text{ on }\Sigma)=\eps^{|\Sigma|}\le\eps^{(e-\tau)/a}$. The union bound gives
+\[
+\Prob\bigl(\mathcal B_t(v)\bigr)\le\sum_{e\ge t}D_0^{2e}\,2^{e+1}\,\eps^{(e-\tau)/a}=2\eps^{-\tau/a}\,\frac{\beta^t}{1-\beta},
+\]
+as in the proof of \cref{thm:forgetting}.
+\end{proof}
+
+In the language of random maps, uniform replacement applies at each space-time point one random map of the neighbourhood $\mathcal N(v)$: the local rule of $F$ if $\eta_t(v)=0$, and the constant map with value $\zeta_t(v)$ if $\eta_t(v)=1$. \Cref{fgt:coalesce} bounds the probability that the composite of these maps from time $0$ to time $t$, read at one site, is not constant. This is the \emph{common-map coefficient} of \cite[eq.~(4)]{DM26}, and \cref{cor:gibbs} uses it in that form.

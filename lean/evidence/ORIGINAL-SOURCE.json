@@ -1,0 +1,321 @@
+{
+  "commit": "925dbe361c09b66469c2ed14c95e14eba3eec76e",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "426bc07bc84e56b95d16c4daac05521bacf2e73221d3dbe9043e11a7561334e8"
+    },
+    {
+      "path": "BLUEPRINT.md",
+      "sha256": "9f0e669df6b8392ea14d1145e37b375473edfa641c4955738a2b885611360b1a"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Audit.lean",
+      "sha256": "a98a65159e6ae84819a7fd3a3b095f0864d8024d944084b40ed4552e5d2b6523"
+    },
+    {
+      "path": "FixedNoiseErgodicity/AuditCommand.lean",
+      "sha256": "4d606af76b1035da17bbe18c8fa88c92b1f17aaa59ab19764e6c04a4f3c02c45"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Basic.lean",
+      "sha256": "dd5d3b719911cd614b74db4b5e0feb04df03f7cd57887315b370a96b2e1ed475"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Bridge.lean",
+      "sha256": "cde2ffc7a7216f1062b26b94bd38bf1488a2cf2d77e463117eb92dad5f2b76b7"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Combinatorics/Contour.lean",
+      "sha256": "fd35c2712a7f5e8fb92f81176644ae87cc127355f7f3be1fce3c638bde080c10"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Combinatorics/EdgeCount.lean",
+      "sha256": "38425154f5f233777a0fc3bb51e9ac7e411d051a11a2a1c3a3c12205acea8f28"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Compiler/TM0.lean",
+      "sha256": "f756883ae2a3d3e0b7ef91345158968f5bc6f8f34f38db7ae3521838d880e443"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Compiler/Universal.lean",
+      "sha256": "86f1a2e981396763480fa9d488789d1660d64f96c54bd1aafd7dfa50c055760b"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Defs/Field.lean",
+      "sha256": "6472c1bcac569a8cf915f9bb48d9f65f94d04468caea518e3d3170fdd529180c"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Defs/TokenGame.lean",
+      "sha256": "c905e3030d42ef8a481634e2019b12be4364a2cdb0885566192d13f36270a2c0"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Family/Codes.lean",
+      "sha256": "2fc932d17715ac46d6b65b6d9d7baa15dd65b8549a6ff0e17260c2d1b5ac6271"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Family/Computable.lean",
+      "sha256": "eec2f1e17e7970c3a018eb33cbc94fa61af076dd32dd8f17fc2398215984b916"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Family/Decide.lean",
+      "sha256": "033c4bf41f7a30ddfb913765c9f5d13c816bde2907f47cf11cfc7199343a67b6"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Family/FamilyR.lean",
+      "sha256": "89bdd9421b0bbc55ea448ed75a5e22ab1b5dc5e100ec6ff362dd6d1c38533804"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Family/Frames.lean",
+      "sha256": "cd655e4d20723fc8ee4216d4fae4af2edae892afc3e28ff0bc2fa044e753be03"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Family/Free.lean",
+      "sha256": "c247f90b321b1e2858b24c6380f82a7941421f46acc7bf13bdd26de6970d5ae6"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Family/Horn.lean",
+      "sha256": "be088934293feaec22094be7d64b0bece584529a933d4cdd3e26b814f8418a80"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Family/HornHalt.lean",
+      "sha256": "eda259fb42a455e3a81dd3f1d707b4edb2af47d7bec3173644b7c3d78a654e1e"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Family/Machine.lean",
+      "sha256": "97ddbbbf7ee122cee7e533b7d8e62953d108533f64447205bf9a19a8551f9167"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Family/NonHalting.lean",
+      "sha256": "91e13b96a9da983b92a093502ddf220ae4488a7401e337292dc0828b3c645a8f"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Family/Positive.lean",
+      "sha256": "6cd793c8c5fe670d02001a26a710e946eebb2ec45eac2fce8f530a0adb6f84ac"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Family/Red.lean",
+      "sha256": "453588053956e3885d9713e6a35c4c709df9fa4c55b818d34ab1c20f3bce5d32"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Family/Routing.lean",
+      "sha256": "59187bc857e938c30c4dc6e434d705fbfb2916bb40b241fde598ed64dcf761b9"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Family/Tower.lean",
+      "sha256": "0ba40f809d6c7ea731319a545dd04314afa7c18bbd961a4205ba57cb419656d4"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Family/Walls.lean",
+      "sha256": "15a8e06235bcd1cdbd13396a1110e5eabeed4f8633b7adabb7785e3293d87da8"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Hypotheses.lean",
+      "sha256": "a54ed22bef15fa901f42954d31a1757848cc08c903b073bd969f30ec1034bfbe"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Main.lean",
+      "sha256": "7583e9760a68e63d22a81e661c7a4510dc04fe9d480386cdefc0a0a2914a79e7"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Scaffold/Facts.lean",
+      "sha256": "5c4c542f9cb9caf0eab9b6debd442cd45951dfe613f547bfc73a009dacd1631c"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Scaffold/Format.lean",
+      "sha256": "b77cd465b6d25f8fab8585d8d45e2273c077494ba605f91849691e2e00544aa5"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Scaffold/Substitution.lean",
+      "sha256": "56f21170dbbd96cb7a511ba4f1a10562d0053a0e1d06c2c798e183bc49879490"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Scaffold/Tables.lean",
+      "sha256": "520e5f4d1386f8f7439b2fd9f5a7768a0c991f988d0436c2fdde286e53d84436"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Scaffold/WangSet.lean",
+      "sha256": "b2ec6613fcc8bb2a0cd0ca82302ff4112dcbe2a4dfcb650922842b28bf36fce9"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section2/Compact.lean",
+      "sha256": "342ecf2cedc21bddc9e48aca91e8cc35cfe0d91c107a68f1d6fedb091bb48a4b"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section2/Ergodic.lean",
+      "sha256": "a044f701cc42b7ef28691ce34e6640bb4abc06ae18b053aa1158872a28bedbc7"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section2/Feller.lean",
+      "sha256": "18b09ec76d5e16bb638f78cfed9cd48a435e083c4f7f61b8f2fe09c8e02a1c67"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section2/ForgetErgodic.lean",
+      "sha256": "9d74d3b934ff6f8d409aea11f194e22e8f901ece428959e31852712ac9a620e7"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section2/Markov.lean",
+      "sha256": "257ec7f2d35ff91b09e1ad2544534124b2f5666c6213210b8be68b4d75f49d09"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section2/PCA.lean",
+      "sha256": "6be8eace23c5be7b67b71e4510d859bf8476af1d8d4bd2831a88ba249d7ed755"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section2/Process.lean",
+      "sha256": "4e2a65ddedd99746745abdface1e9a5498964a730dd74a984067ba5ae7f090a5"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section2/TokenGame.lean",
+      "sha256": "5cf1823eb1468bfcf5df9502daaebcd6ebee05606e4d7be2fa97e538491e2575"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section3/Constants.lean",
+      "sha256": "887ff440e35a0747032095407b243ccb2eb665c4b4196741eea43c7dfb744058"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section3/Contour.lean",
+      "sha256": "0aceec545b96ca4212115d1c999913eb4b347f7168317e43b972bf8099136ed7"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section3/Forgetting.lean",
+      "sha256": "4d953914f51f960fd5352f6d33d1adf00126fda4ef29a55dd5671aef4cabf4c5"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section3/Graph.lean",
+      "sha256": "24850c43e64aaa13d38eb1deae1826364e5268f6b9b01cd06bedfac505f92375"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section3/Peierls.lean",
+      "sha256": "44fbc659f18a544adaa3833e0cbcb6eb1c86a3c39226652cb17d55d4a7187e9a"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section3/Transport.lean",
+      "sha256": "8d04bc1d963707197b4863577e385eb06d366d8fdc6ba97af50685986f0ed830"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section4/Deterministic.lean",
+      "sha256": "08c7e2a3e6907ae9210342187b799fcb10798bef522201afb72320c2ec25e606"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Section4/Memory.lean",
+      "sha256": "d678251fba1c4ed98c894419f933f3a6c652ce63c8c7bd248e3392cf013ac95e"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Statements.lean",
+      "sha256": "351c3058f66fc99235677f99d04f8b35af1d365f80153d9644c6b13d207b4879"
+    },
+    {
+      "path": "FixedNoiseErgodicity/TheoremB.lean",
+      "sha256": "3de04ca5edf082b983280420076f48641fde5cfad7fe6c2f4eb275b5debd8a6e"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Three/Assembly.lean",
+      "sha256": "617f11d86fc51e64f88888e38370731458e741ec00747127b7e3259a08dfb8da"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Three/Board.lean",
+      "sha256": "a91f4decd26342f999e0feb5f91a77ac5d8ac9046400414eb5a98f9d1190cace"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Three/Coarse.lean",
+      "sha256": "7275849c5ff4898f6ff93ae5ec6ea3c150b1744f375bb6cf87a4612f01db4457"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Three/Corner.lean",
+      "sha256": "02b2bf6496e3c52f4bdaf84b09a38cf6d3747c2bad44e8d852cc89b9c0c1417f"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Three/CornerCheck.lean",
+      "sha256": "474861d08126bbab5b66f8fe1abdc29ff2b56f6619b21641beab476cb07b8819"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Three/CornerData.lean",
+      "sha256": "68b808053e2a1971009210d66f43bfd5f90068b2a91a98c44397aa38975c7223"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Three/CornerTables.lean",
+      "sha256": "680fd93f3996c501af7a759c47d328f8b4a156c8f9c2749182329793399043c2"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Three/Dyadic.lean",
+      "sha256": "07b3dffa361d3afaf9f75cdef94971aa9ab69f834b805b557984031308cc9ca2"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Three/Final.lean",
+      "sha256": "031dc3b053df32fc9d781dbc97a783e47f76b0ae6772c37be4d421a220dbc649"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Three/Interface.lean",
+      "sha256": "e762c646f39786d5682f310636ff1f1b5b3046723b5e136d71fcc708fe0e83d9"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Three/Lists.lean",
+      "sha256": "416f5fbc4d0b1fbaa6e7cb8b6257c800146f1b875c94dcf98ebf637623225bce"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Three/Pairs.lean",
+      "sha256": "7fc6eeada17c32cc7c3118ab1e42f7a1a09a14169b19eca1b385a8da6467664a"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Three/Promote.lean",
+      "sha256": "87316deb137d578f7c3f6a23aee9980fe6fe7382a83bf8f1ca0356a47a08a3ff"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Three/Walker.lean",
+      "sha256": "b6687a69f67d74a812e85c87c5b55ac0aea239c6ab02abb2a7526f5ce4f26022"
+    },
+    {
+      "path": "FixedNoiseErgodicity/Undecidable.lean",
+      "sha256": "d481cd8e71d82410898638daaad044af96a204c9db537abe45e1bebd4239a5bc"
+    },
+    {
+      "path": "FixedNoiseErgodicity.lean",
+      "sha256": "c0ff8d0ac101cb3d576163cdf0faedfe16ad711ee024e424f5c9a74931f8de8f"
+    },
+    {
+      "path": "HANDOFF.md",
+      "sha256": "6aa709753fae3f9700a8ed87fe5818cad96770029a25b96260b4dd7006f6bf1f"
+    },
+    {
+      "path": "lakefile.toml",
+      "sha256": "c312a2be2976c8693ac9dd55ae14f5e8b4a776c1d36fe39cfc8ba625372eb133"
+    },
+    {
+      "path": "lean-toolchain",
+      "sha256": "54727eec5cba149c18842e6deb5c41b369d66455c93ce135d7d5347c782b2325"
+    },
+    {
+      "path": "scripts/build.sh",
+      "sha256": "f105272959e5f8dbc6a6642c80ad18ea02c672c95a7c017c65bc8ef4e40f1365"
+    },
+    {
+      "path": "scripts/corner/analyze.py",
+      "sha256": "106613f0e57d0baad84250ac71510a39b12e6bbdffe8ae0faebc30740567ed13"
+    },
+    {
+      "path": "scripts/corner/Dump.lean",
+      "sha256": "5225214dae05eccf3b4a17e6a66e3e7ee33f4e9aef1addab82326c9de42fd195"
+    },
+    {
+      "path": "scripts/corner/gen.py",
+      "sha256": "74ca8fc7ed9271855743a380f654827f39bf75190c915dcdeb411972dc7c6ed5"
+    },
+    {
+      "path": "scripts/env.sh",
+      "sha256": "18d723d8f87c830854a99d16d81b9a344476936822bc09009e89412bafa97e6e"
+    },
+    {
+      "path": "scripts/lint.sh",
+      "sha256": "3d02eb901919ec39c67a8f027565823fa9a19a44b43554f628736c23da79e5fd"
+    },
+    {
+      "path": "STATUS.md",
+      "sha256": "95ece0fea43be509c585e8d17b11b894b4db2885eadabd855913d5ed0c364b7f"
+    }
+  ]
+}

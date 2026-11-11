@@ -1,0 +1,15 @@
+{
+  "forbidden_constructs": [],
+  "sorry_tokens": [
+    {
+      "file": "Challenge.lean",
+      "line": 370
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 378
+    }
+  ],
+  "modified_read_only_input_files": [],
+  "original_source_files_checked": 79
+}

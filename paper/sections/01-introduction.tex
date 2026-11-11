@@ -14,7 +14,7 @@ The answer is that it does. Noise does not make forgetting decidable.
 There is a total computable map $M\mapsto R_M$ from Turing machines to finite Wang sets with the following property. Put $\eps_0=490000^{-99}$. For every $\eps\in(0,\eps_0]$, the quorum rule of $R_M$ on $\Z^{8}$, followed by uniform random replacement at rate $\eps$, is a positive-rate probabilistic cellular automaton that is ergodic if and only if $M$ halts.
 \end{mainA}
 
-The rule, the noise and the rate are explicit (\cref{sec:setting,fgt:rem-constants,cor:eight}). Every member of the family has positive rates, and the noise is the same uniform replacement at the same rate for every member.
+The rule, the noise and the rate are explicit (\cref{sec:setting,fgt:rem-constants,cor:eight}). Every member of the family has positive rates, and the noise is the same uniform replacement at the same rate for every member. \Cref{cor:eight}, which is Theorem~A on $\Z^8$, and the statement that ergodicity in the family is undecidable are proved in the proof assistant Lean~4 with the Mathlib library (\cref{app:lean}).
 
 \subsection{How it works: a team of inspectors}
 
@@ -42,14 +42,34 @@ So a team of three inspectors can always find the flaw, yet nobody can tell in a
 
 \subsection{Consequences}
 
-Six corollaries come with the proof (\cref{sec:proofs}).
+The proof has further consequences (\cref{sec:forgetting,sec:proofs}).
 \begin{itemize}
 \item \emph{One family for every small rate.} The conditions on $\eps$ in Theorem~B are monotone, so the same family works at every rate in $(0,\eps_0]$ (\cref{cor:rates}). Other replacement laws work as well (\cref{cor:laws}).
 \item \emph{A whole neighbourhood of rules.} Every probabilistic cellular automaton whose transition table lies within total-variation distance $\eps_0$ of a member of the family has the same classification: it is ergodic exactly when $M$ halts (\cref{cor:robust}). The radius is the same for every member.
 \item \emph{Tiling reduces to forgetting.} A computable map sends every finite Wang set to a noisy automaton, in one fixed dimension and at every rate in $(0,\eps_0]$, that is ergodic exactly when the set does not tile the plane (\cref{cor:tiling}).
 \item \emph{Forgetting cannot be timed.} Every halting member forgets, but at every rational rate no computable function of $M$ bounds the time it takes (\cref{cor:mixing}). Otherwise a finite simulation would decide halting.
-\item \emph{Phase coexistence is undecidable.} A positive-rate automaton defines a translation-invariant, finite-range interaction one dimension up, whose Gibbs states contain the trajectories of the dynamics \cite{GKLM89,DM26}. For our family, this interaction has a unique translation-invariant Gibbs state exactly when $M$ halts (\cref{cor:gibbs}).
+\item \emph{All starts at once.} The forgetting bound of Theorem~B(ii) holds for all initial configurations at once. Under one realisation of the noise, the value at a site at time $t$ is the same for every start, outside an event that depends on the replacement indicators alone and has probability at most $2\eps^{-\tau/a}\beta^t/(1-\beta)$ (\cref{fgt:coalesce}).
+\item \emph{Phase coexistence is undecidable.} A positive-rate automaton defines a translation-invariant, finite-range interaction one dimension up, whose Gibbs measures include the trajectories of the dynamics \cite{GKLM89,DM26}. For our family this interaction has exactly one Gibbs measure, with no invariance assumed, if $M$ halts, and its specification then has exponential weak spatial mixing in arbitrary volumes; if $M$ does not halt, it has at least two translation-invariant Gibbs measures (\cref{cor:gibbs}). So uniqueness of the Gibbs measure, uniqueness of the translation-invariant Gibbs measure and exponential weak spatial mixing are each undecidable on this family. Uniqueness among all Gibbs measures and weak mixing come from the previous item, through a theorem of our paper \cite{DM26} on space-time Gibbs states.
+\item \emph{One phase or a continuum.} Running each member on parallel copies, each copy reading the next, gives automata on $\Z^9$ that have one invariant measure if $M$ halts and, if $M$ does not halt, a continuum of invariant measures, each extreme among all invariant measures and mixing in time (\cref{cor:stack}).
 \end{itemize}
+\Cref{tab:summary} lists the properties that coincide with halting on the family.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{3.3cm}>{\raggedright\arraybackslash}p{3.3cm}>{\raggedright\arraybackslash}p{2.2cm}@{}}
+\toprule
+Property of the member & $M$ halts & $M$ runs forever & Proved in\\
+\midrule
+Ergodic & yes; $\delta_O(t)\le4|O|\eps^{-\tau/a}2^{-t}$ & no; memory with amplitude $1-2.02\eps$ & Theorem~A\\
+Time to forget & finite, not computably bounded & infinite & \cref{cor:mixing}\\
+Gibbs measures of the space-time interaction & exactly one & at least two translation-invariant ones & \cref{cor:gibbs}\\
+Exponential weak spatial mixing & yes & no & \cref{cor:gibbs}\\
+Invariant measures of the stacked automaton & exactly one & an arc of extreme ones & \cref{cor:stack}\\
+\bottomrule
+\end{tabularx}
+\caption{What coincides with halting on the family, at every rate $\eps\in(0,\eps_0]$. Each property in the first column is therefore undecidable on the family. Here $\delta_O(t)$ measures how far the law at time $t$ on a window $O$ still depends on the start (\cref{set:def-forget}), and $\tau$ is the refutation time of $R_M$.}
+\label{tab:summary}
+\end{table}
 
 \subsection{Objections answered}
 
@@ -57,11 +77,13 @@ Six corollaries come with the proof (\cref{sec:proofs}).
 
 \paragraph{The alphabet grows with the machine.} Each member of the family has its own finite alphabet, so the smallest transition probability, $\eps$ divided by the alphabet size, is not bounded below over the family. ``A fixed noise rate'' means the same replacement rate $\eps$, with uniform replacement, for every member. This is the setting of the question above and of \cite{MT26}.
 
+\paragraph{Borderline members.} Is the undecidability caused by members close to a phase boundary? No. Every halting member forgets exponentially fast, with a decay factor $2^{-t}$ that does not depend on $M$, and every other member has memory with amplitude $1-2.02\eps$. No algorithm separates these two kinds, even when it is promised that the given member is of one of them (\cref{sec:proofs}).
+
 \paragraph{Is this the classical reduction with noise added?} No. The classical reductions \cite{Kurdyumov78,Toom00} keep a computation exact because some transitions never happen. Here every transition happens. The undecidability survives because the dichotomy of Theorem~B is itself stable under noise: memory from tilings, forgetting from bounded-width refutations, at one rate chosen before the tile set.
 
 \subsection{Reading guide}
 
-\Cref{sec:setting} defines the automaton, the noise and the token tables, and relates refutations by tokens to refutations in the existential pebble game. \Cref{sec:forgetting,sec:memory} prove the two halves of Theorem~B; a reader interested only in the noise can stop there. \Cref{sec:scaffold,sec:family,sec:refutation} prove Theorem~C: the hierarchical scaffold and its parser, the routing of a machine onto the scaffold, and the bounded-width refutation of every halting member. \Cref{sec:three} lowers the number of tokens to three, which gives Theorem~A on $\Z^8$; one finite lemma there is checked by computer. \Cref{sec:proofs} assembles Theorem~A and proves the corollaries, and \cref{sec:discussion} lists open problems. The explicit tile tables are in \cref{app:tables}.
+\Cref{sec:setting} defines the automaton, the noise and the token tables, and relates refutations by tokens to refutations in the existential pebble game. \Cref{sec:forgetting,sec:memory} prove the two halves of Theorem~B; a reader interested only in the noise can stop there. \Cref{sec:scaffold,sec:family,sec:refutation} prove Theorem~C: the hierarchical scaffold and its parser, the routing of a machine onto the scaffold, and the bounded-width refutation of every halting member. \Cref{sec:three} lowers the number of tokens to three, which gives Theorem~A on $\Z^8$; one finite lemma there is checked by computer. \Cref{sec:forgetting} ends with the form of the forgetting bound that holds for all starts at once (\cref{fgt:sec-all}). \Cref{sec:proofs} assembles Theorem~A and proves the corollaries, among them the equilibrium consequences (\cref{cor:gibbs}) and the stacked automata (\cref{pf:sec-stack}), and \cref{sec:discussion} lists open problems. The explicit tile tables are in \cref{app:tables}, the one-sided machine used by the construction is in \cref{app:machine}, and \cref{app:lean} describes the formal proof of Theorem~A on $\Z^8$.
 
 \begin{figure}[ht]
 \centering

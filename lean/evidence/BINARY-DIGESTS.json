@@ -1,0 +1,124 @@
+{
+  "records": [
+    {
+      "path": "Lean 4.35.0 Windows x86-64 toolchain: bin/lean.exe",
+      "bytes": 83456,
+      "sha256": "ec7a472d1c12a09b0c0c718f7427c2be527b3f5f07810fdbe076c2507c7a91ea",
+      "kind": "read-only supplied Windows binary"
+    },
+    {
+      "path": "Lean 4.35.0 Windows x86-64 toolchain: bin/lake.exe",
+      "bytes": 87040,
+      "sha256": "023feb24d3e7244fe671dba79f1cd1affc6c7a7cacfe497bf3675febb506578c",
+      "kind": "read-only supplied Windows binary"
+    },
+    {
+      "path": "Lean 4.35.0 Windows x86-64 toolchain: bin/leanexport.exe",
+      "bytes": 307712,
+      "sha256": "bda24bb3fafaf299ba472f944942d6293294b76559fafc9f166badd7c0f981b3",
+      "kind": "read-only supplied Windows binary"
+    },
+    {
+      "path": "Lean 4.35.0 Windows x86-64 toolchain: bin/leanchecker.exe",
+      "bytes": 120832,
+      "sha256": "9ef6baeb28d5e28897d5ed6dddd60ff81e511d97374013ece435dff38e9e0137",
+      "kind": "read-only supplied Windows binary"
+    },
+    {
+      "path": "Lean 4.35.0 Windows x86-64 toolchain: bin/libc++.dll",
+      "bytes": 1659392,
+      "sha256": "8a9deaac6d2f4d2de468a544d1f35cd0dd4bcde03cda3cfb76fb9674749828d4",
+      "kind": "read-only supplied Windows binary"
+    },
+    {
+      "path": "Lean 4.35.0 Windows x86-64 toolchain: bin/libclang-cpp.dll",
+      "bytes": 73929216,
+      "sha256": "5c775e6e1d3f9ebdf729ce9b6c896e4517209a48fb57b7711c52ee11c4c4421f",
+      "kind": "read-only supplied Windows binary"
+    },
+    {
+      "path": "Lean 4.35.0 Windows x86-64 toolchain: bin/libInit_shared.dll",
+      "bytes": 28150272,
+      "sha256": "da779e21c05a2dc4518eb03e62b7319cc03e813a5abe9aa56607b8f974f8c6b7",
+      "kind": "read-only supplied Windows binary"
+    },
+    {
+      "path": "Lean 4.35.0 Windows x86-64 toolchain: bin/libLake_shared.dll",
+      "bytes": 12519936,
+      "sha256": "4f4647a626bb75f117d98802b2539498843d6664a4f0ae14dedfd4005660bc18",
+      "kind": "read-only supplied Windows binary"
+    },
+    {
+      "path": "Lean 4.35.0 Windows x86-64 toolchain: bin/libleanshared.dll",
+      "bytes": 69481472,
+      "sha256": "1175ac09966d023c2584c3cf2692f25cbb62c9f59f4e0244eb6d61f66c4e07f5",
+      "kind": "read-only supplied Windows binary"
+    },
+    {
+      "path": "Lean 4.35.0 Windows x86-64 toolchain: bin/libleanshared_1.dll",
+      "bytes": 52057600,
+      "sha256": "67d53556c84cb01969704e704a5179867bc7763745d424eb8f8ad3d967c90564",
+      "kind": "read-only supplied Windows binary"
+    },
+    {
+      "path": "Lean 4.35.0 Windows x86-64 toolchain: bin/libleanshared_2.dll",
+      "bytes": 58718720,
+      "sha256": "60d88ed08f3f60eab5003f213c512873b8cb54f04f3fa27565ade6c97695e05b",
+      "kind": "read-only supplied Windows binary"
+    },
+    {
+      "path": "Lean 4.35.0 Windows x86-64 toolchain: bin/libLLVM-23.dll",
+      "bytes": 91667456,
+      "sha256": "55fec27e1f2808a2f8268aa589fc9cdac0065234edd21b0b384e43ae080f6340",
+      "kind": "read-only supplied Windows binary"
+    },
+    {
+      "path": "Lean 4.35.0 Windows x86-64 toolchain: bin/zlib1.dll",
+      "bytes": 131072,
+      "sha256": "94dd0a72d4da79e25294a91d1edf902d76eade7512d9218609a5fe43e3a7397a",
+      "kind": "read-only supplied Windows binary"
+    },
+    {
+      "path": "Lean 4.35.0 Windows x86-64 toolchain: bin/nanoda_bin.exe",
+      "bytes": 1141248,
+      "sha256": "de57d9dd7f647eb57398bc3dab4dcaa1d64f961f3f49964d5455fbddc73b35a8",
+      "kind": "read-only supplied Windows binary"
+    },
+    {
+      "path": "nanoda-stack128.exe (Windows x86-64)",
+      "bytes": 1141248,
+      "sha256": "82c9dcf4f8df8ef2b9849bfc8198d0edd01e910913bd221f0c960c3332ab5e51",
+      "kind": "read-only supplied Windows binary"
+    },
+    {
+      "path": "Lean 4.35.0 Linux x86-64 toolchain: bin/lean",
+      "bytes": 9024,
+      "sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+      "kind": "actual Linux run binary"
+    },
+    {
+      "path": "Lean 4.35.0 Linux x86-64 toolchain: bin/lake",
+      "bytes": 13416,
+      "sha256": "8ba83c98f76562d03b8dbc33f1057151ba6cbb121679dde76b2260ccc90495e1",
+      "kind": "actual Linux run binary"
+    },
+    {
+      "path": "Lean 4.35.0 Linux x86-64 toolchain: bin/leanexport",
+      "bytes": 700728,
+      "sha256": "f6a6483d518a11b323c28b9bac176d2220df0e9fc3230833815db9586669c074",
+      "kind": "actual Linux run binary"
+    },
+    {
+      "path": "Lean 4.35.0 Linux x86-64 toolchain: bin/leanchecker",
+      "bytes": 59656,
+      "sha256": "12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6",
+      "kind": "actual Linux run binary"
+    },
+    {
+      "path": "bubblewrap: usr/bin/bwrap",
+      "bytes": 72160,
+      "sha256": "e318903862396f96de3df57264e0158682b952fd3fb53ac23d876413e7b30f71",
+      "kind": "actual sandbox binary"
+    }
+  ]
+}

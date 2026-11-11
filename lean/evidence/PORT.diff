@@ -1,0 +1,308 @@
+--- original/FixedNoiseErgodicity/Combinatorics/Contour.lean
++++ ported/FixedNoiseErgodicity/Combinatorics/Contour.lean
+@@ -240,11 +240,14 @@
+ 
+ theorem reach_mono {K K' : Finset (Sym2 V)} (h : K ⊆ K') {a b : V} (hr : EdgeCount.Reach K a b) :
+     EdgeCount.Reach K' a b :=
+-  ReflTransGen.mono (fun _ _ hx => h hx) hr
++  ReflTransGen.mono (fun _ _ hx => h hx) _ _ hr
+ 
+ theorem reach_symm {K : Finset (Sym2 V)} {a b : V} (hr : EdgeCount.Reach K a b) :
+     EdgeCount.Reach K b a :=
+-  ReflTransGen.symmetric (fun x y (hxy : s(x, y) ∈ K) => (by rwa [Sym2.eq_swap] : s(y, x) ∈ K)) hr
++  by
++    letI : Std.Symm (fun x y : V => s(x, y) ∈ K) :=
++      ⟨fun x y hxy => by rwa [Sym2.eq_swap]⟩
++    exact (ReflTransGen.stdSymm (r := fun x y : V => s(x, y) ∈ K)).symm _ _ hr
+ 
+ /-- The greedy path is connected from its start, and reaches its end. -/
+ theorem gEdges_reach (c : C) : ∀ θ : V,
+@@ -410,7 +413,9 @@
+   insert (S.sup θ true) (insert (S.sup θ false) (W.erase θ))
+ 
+ theorem rel_symm {W : Finset V} {a b : V} (h : S.Rel W a b) : S.Rel W b a :=
+-  ReflTransGen.symmetric (fun _ _ ⟨θ, hθ, h1, h2⟩ => ⟨θ, hθ, h2, h1⟩) h
++  by
++    letI : Std.Symm (S.Ov W) := ⟨fun _ _ ⟨θ, hθ, h1, h2⟩ => ⟨θ, hθ, h2, h1⟩⟩
++    exact (ReflTransGen.stdSymm (r := S.Ov W)).symm _ _ h
+ 
+ theorem rel_of_term {W : Finset V} {θ a b : V} (hθ : θ ∈ W) (ha : S.Term θ a)
+     (hb : S.Term θ b) : S.Rel W a b :=
+@@ -424,7 +429,7 @@
+ 
+ theorem rel_front_mono {W : Finset V} {θ : V} (hθW : θ ∈ W) (hθ : S.NF θ) {a b : V}
+     (h : S.Rel (S.front W θ) a b) : S.Rel W a b := by
+-  refine ReflTransGen.mono (fun x y hxy => ?_) h
++  refine ReflTransGen.mono (fun x y hxy => ?_) _ _ h
+   obtain ⟨θ', hθ', h1, h2⟩ := hxy
+   rcases Finset.mem_insert.mp hθ' with rfl | hθ'
+   · exact ⟨θ, hθW, S.term_of_sup hθ h1, S.term_of_sup hθ h2⟩
+@@ -593,7 +598,6 @@
+   have h3 := Finset.add_sum_erase W (fun x => 3 ^ S.time x) hθW
+   have ht1 := S.time_sup θ true hθ
+   have ht2 := S.time_sup θ false hθ
+-  simp only at h1 h2 h3
+   rw [← ht1] at h3
+   have h4 : S.time (S.sup θ false) = S.time (S.sup θ true) := by omega
+   rw [h4] at h2
+--- original/FixedNoiseErgodicity/Combinatorics/EdgeCount.lean
++++ ported/FixedNoiseErgodicity/Combinatorics/EdgeCount.lean
+@@ -281,7 +281,7 @@
+     ∀ l : List ℕ, (∀ x ∈ l, x < Δ) → l ∈ boundedLists Δ l.length
+   | [], _ => by simp [boundedLists]
+   | x :: l, h => by
+-    simp only [boundedLists, Finset.mem_image, Finset.mem_product,
++    simp only [List.length_cons, boundedLists, Finset.mem_image, Finset.mem_product,
+       Finset.mem_range, Prod.exists]
+     exact ⟨x, l, ⟨h x (by simp), mem_boundedLists Δ l fun y hy => h y (by simp [hy])⟩, rfl⟩
+ 
+--- original/FixedNoiseErgodicity/Compiler/Universal.lean
++++ ported/FixedNoiseErgodicity/Compiler/Universal.lean
+@@ -196,7 +196,8 @@
+ 
+ /-- `M₀` halts on `input n` iff the universal function is defined at `n`. -/
+ theorem eval_dom (n : ℕ) : (TM0.eval M₀ (input n)).Dom ↔ (univFun n).Dom := by
+-  rw [M₀, TM1to0.tr_eval, input, M₁, TM2to1.tr_eval_dom]
++  rw [M₀, TM1to0.tr_eval, input, M₁]
++  erw [TM2to1.tr_eval_dom]
+   change (StateTransition.eval (TM2.step tr) (TM2.init K'.main (trList [n]))).Dom ↔ _
+   rw [init_eq, tr_eval, univCode_eval]
+   exact Iff.rfl
+@@ -222,6 +223,7 @@
+   simp only [input, TM2to1.trInit, trList, trNat_eq, List.reverse_append,
+     List.reverse_cons, List.reverse_nil, List.nil_append, List.cons_append, List.map_cons,
+     List.headI_cons, List.tail_cons, List.map_reverse, List.map_map]
++  erw [List.map_cons, List.headI_cons, List.tail_cons, List.map_reverse, List.map_map]
+   rfl
+ 
+ /-- The numbered input: a constant, then the binary digits of `n` (most significant first), each
+--- original/FixedNoiseErgodicity/Family/HornHalt.lean
++++ ported/FixedNoiseErgodicity/Family/HornHalt.lean
+@@ -177,7 +177,7 @@
+   have col : ∀ t : ℕ, t ≤ T → Fact.P .wall ∈ G (0, (t : ℤ)) := by
+     intro t ht
+     induction t with
+-    | zero => simpa using (row 0 (by omega)).1
++    | zero => simpa [CA_zero_right] using (row 0 (by omega)).1
+     | succ t ih =>
+       have hs : InSq N (0, (t : ℤ)) := by simpa using sq 0 t (by omega) (by omega)
+       have hs' : InSq N ((0, (t : ℤ)) + (0, 1)) := by
+--- original/FixedNoiseErgodicity/Family/Machine.lean
++++ ported/FixedNoiseErgodicity/Family/Machine.lean
+@@ -437,7 +437,8 @@
+       cases m <;> by_cases hp : p < 0 <;> by_cases hc : (p = 0 ∨ p = -1) <;>
+         simp only [Move.toInt] at e2 ⊢ <;>
+         simp [oMove, hp, hc] at hm <;> obtain ⟨rfl, rfl⟩ := hm <;>
+-        split_ifs at e1 e2 <;> simp <;> omega
++        split_ifs at e1 e2 <;> simp_all <;>
++        first | omega | exact decide_eq_false_iff_not.mpr (by omega)
+     rcases hmv : oMove (trk p) (τ (cellOf p)).mark m with ⟨l', _ | r⟩
+     · -- a bounce
+       obtain ⟨htl, hc0, -, -⟩ := hcase l' none hmv
+--- original/FixedNoiseErgodicity/Hypotheses.lean
++++ ported/FixedNoiseErgodicity/Hypotheses.lean
+@@ -10,6 +10,6 @@
+ tables), König's lemma and compactness of `A^{ℤ²}` are in Mathlib, and the corner lemma
+ (`thr:corner`) is a finite computation to be certified in the kernel.
+ -/
+-import Mathlib.Logic.Basic
++import Mathlib.Basic.Logic.Basic
+ 
+ set_option autoImplicit false
+--- original/FixedNoiseErgodicity/Section2/Ergodic.lean
++++ ported/FixedNoiseErgodicity/Section2/Ergodic.lean
+@@ -31,7 +31,7 @@
+ 
+ theorem measurableSet_cyl (O : Finset (Site k)) (E : Set (O → Sym R)) :
+     MeasurableSet (cyl O E) :=
+-  (measurable_pi_lambda _ (fun w => measurable_pi_apply w.1)) E.to_countable.measurableSet
++  (Measurable.of_eval (fun w => measurable_pi_apply w.1)) E.to_countable.measurableSet
+ 
+ /-- The indicator of a cylinder, a bounded continuous function (cylinders are clopen). -/
+ def cylIndicator (O : Finset (Site k)) (E : Set (O → Sym R)) :
+@@ -41,7 +41,8 @@
+       have : (cyl O E).indicator (1 : Config k R → ℝ) =
+           E.indicator 1 ∘ (fun y : Config k R => fun w : O => y w.1) := by
+         funext y
+-        simp [Set.indicator, cyl]
++        exact Set.indicator_comp_right (s := E) (g := (1 : (O → Sym R) → ℝ))
++          (fun y : Config k R => fun w : O => y w.1)
+       rw [this]
+       exact continuous_of_discreteTopology.comp (continuous_restrictWindow O)⟩
+     1 (by
+--- original/FixedNoiseErgodicity/Section2/Feller.lean
++++ ported/FixedNoiseErgodicity/Section2/Feller.lean
+@@ -224,7 +224,10 @@
+   refine h.congr' ?_
+   filter_upwards [(hn.comp hφ.tendsto_atTop).eventually_ge_atTop 1] with m hm
+   simp only [Function.comp_apply] at hm
+-  simp only [Function.comp_apply, ν, dif_pos hm, ProbabilityMeasure.coe_mk]
++  have hν : ν (φ m) = (⟨cesaro k R ε μ (n (φ m)),
++      isProbabilityMeasure_cesaro h0 h1 μ hm⟩ : ProbabilityMeasure (Config k R)) :=
++    dite_eq_left hm
++  simp only [Function.comp_apply, hν, ProbabilityMeasure.coe_mk]
+ 
+ /-- **`set:feller`**: an invariant probability measure exists. -/
+ theorem exists_invariant {ε : ℝ} (h0 : 0 ≤ ε) (h1 : ε ≤ 1) :
+@@ -285,7 +288,7 @@
+     ∫ y, F (fun w : W => y w.1) ∂ν = ∑ z : W → Sym R, (ν (cyl W {z})).toReal * F z := by
+   classical
+   have hr : Measurable (fun y : Config k R => fun w : W => y w.1) :=
+-    measurable_pi_lambda _ (fun w => measurable_pi_apply w.1)
++    Measurable.of_eval (fun w => measurable_pi_apply w.1)
+   rw [← integral_map hr.aemeasurable (measurable_of_countable F).aestronglyMeasurable,
+     integral_fintype Integrable.of_finite]
+   refine Finset.sum_congr rfl (fun z _ => ?_)
+--- original/FixedNoiseErgodicity/Section2/Markov.lean
++++ ported/FixedNoiseErgodicity/Section2/Markov.lean
+@@ -47,17 +47,17 @@
+     rfl
+ 
+ theorem measurable_slice0 : Measurable (slice0 (k := k) (R := R)) :=
+-  measurable_pi_lambda _ (fun _ => measurable_pi_apply _)
++  Measurable.of_eval (fun _ => measurable_pi_apply _)
+ 
+ theorem measurable_shiftN : Measurable (shiftN (k := k) (R := R)) :=
+-  measurable_pi_lambda _ (fun _ => measurable_pi_apply _)
++  Measurable.of_eval (fun _ => measurable_pi_apply _)
+ 
+ theorem measurable_splitN : Measurable (splitN (k := k) (R := R)) :=
+   measurable_slice0.prodMk measurable_shiftN
+ 
+ theorem measurable_step :
+     Measurable (fun q : Config k R × (Site k → Bool × Sym R) => step q.1 q.2) := by
+-  refine measurable_pi_lambda _ (fun v => ?_)
++  refine Measurable.of_eval (fun v => ?_)
+   have hflag : Measurable (fun q : Config k R × (Site k → Bool × Sym R) => (q.2 v).1) :=
+     measurable_fst.comp ((measurable_pi_apply v).comp measurable_snd)
+   have hval : Measurable (fun q : Config k R × (Site k → Bool × Sym R) => (q.2 v).2) :=
+@@ -100,7 +100,7 @@
+     conv_rhs => rw [← Finset.toLeft_disjSum_toRight (u := s)]
+     rw [Finset.prod_disjSum]
+   have hre : Measurable (fun (ω : Noise k R) (i : Site k ⊕ (ℕ × Site k)) => ω (splitIdx i)) :=
+-    measurable_pi_lambda _ (fun _ => measurable_pi_apply _)
++    Measurable.of_eval (fun _ => measurable_pi_apply _)
+   have h2 : (noiseLaw k R ε).map (fun ω i => ω (splitIdx i)) =
+       Measure.infinitePi (fun _ : Site k ⊕ (ℕ × Site k) => noiseSite R ε) :=
+     Measure.map_infinitePi_infinitePi_of_inj splitIdx_injective
+@@ -129,8 +129,8 @@
+   have hg : Measurable (fun b : Bool × Sym R => if b.1 then b.2 else a) :=
+     measurable_of_countable _
+   rw [noiseSite, flagLaw, Measure.add_prod, Measure.prod_smul_left, Measure.prod_smul_left,
+-    Measure.dirac_prod, Measure.dirac_prod, Measure.map_add _ _ hg, Measure.map_smul,
+-    Measure.map_smul, Measure.map_map hg measurable_prodMk_left,
++    Measure.dirac_prod, Measure.dirac_prod, Measure.map_add _ _ hg, (Measure.map_smul _ hg.aemeasurable),
++    (Measure.map_smul _ hg.aemeasurable), Measure.map_map hg measurable_prodMk_left,
+     Measure.map_map hg measurable_prodMk_left]
+   have e1 : ((fun b : Bool × Sym R => if b.1 then b.2 else a) ∘ Prod.mk true) = id := by
+     funext s
+@@ -153,7 +153,7 @@
+     (f := fun v (b : Bool × Sym R) => if b.1 then b.2 else quorumRule k R x v) hg
+   have hgm : Measurable (fun (ζ : Site k → Bool × Sym R) v =>
+       if (ζ v).1 then (ζ v).2 else quorumRule k R x v) :=
+-    measurable_pi_lambda _ (fun v => (hg v).comp (measurable_pi_apply v))
++    Measurable.of_eval (fun v => (hg v).comp (measurable_pi_apply v))
+   rw [law_dirac h0 h1]
+   have e : (fun ω : Noise k R => run x ω 1) = (fun (ζ : Site k → Bool × Sym R) v =>
+       if (ζ v).1 then (ζ v).2 else quorumRule k R x v) ∘ slice0 := by
+--- original/FixedNoiseErgodicity/Section2/Process.lean
++++ ported/FixedNoiseErgodicity/Section2/Process.lean
+@@ -117,7 +117,7 @@
+   classical
+   let ext : (W → Sym R) → Config k R := fun z w => if h : w ∈ W then z ⟨w, h⟩ else .bot
+   let r : Config k R → (W → Sym R) := fun y w => y w.1
+-  have hr : Measurable r := measurable_pi_lambda _ (fun w => measurable_pi_apply w.1)
++  have hr : Measurable r := Measurable.of_eval (fun w => measurable_pi_apply w.1)
+   have heq : f = (fun z => f (ext z)) ∘ r := by
+     funext y
+     exact hf _ _ (fun w hw => by simp [ext, r, hw])
+@@ -135,7 +135,7 @@
+     h _ (Finset.mem_image.mpr ⟨(d, i), Finset.mem_product.mpr ⟨hd, Finset.mem_univ _⟩, rfl⟩)
+ 
+ theorem measurable_quorumRule : Measurable (quorumRule k R) :=
+-  measurable_pi_lambda _ measurable_quorumRule_apply
++  Measurable.of_eval measurable_quorumRule_apply
+ 
+ /-- The process is a measurable function of the start and the noise. -/
+ theorem measurable_run (t : ℕ) :
+@@ -143,7 +143,7 @@
+   induction t with
+   | zero => exact measurable_fst
+   | succ t ih =>
+-    refine measurable_pi_lambda _ (fun v => ?_)
++    refine Measurable.of_eval (fun v => ?_)
+     have hflag : Measurable (fun p : Config k R × Noise k R => (p.2 (t, v)).1) :=
+       measurable_fst.comp ((measurable_pi_apply (t, v)).comp measurable_snd)
+     have hval : Measurable (fun p : Config k R × Noise k R => (p.2 (t, v)).2) :=
+@@ -157,7 +157,7 @@
+     (μ : Measure (Config k R)) [IsProbabilityMeasure μ] (t : ℕ) :
+     IsProbabilityMeasure (law k R ε μ t) := by
+   haveI := isProbabilityMeasure_noiseLaw (k := k) (R := R) h0 h1
+-  exact Measure.isProbabilityMeasure_map (measurable_run t).aemeasurable
++  exact (Measure.isProbabilityMeasure_map_iff (measurable_run t).aemeasurable).2 inferInstance
+ 
+ theorem law_zero {ε : ℝ} (h0 : 0 ≤ ε) (h1 : ε ≤ 1) (μ : Measure (Config k R))
+     [SFinite μ] : law k R ε μ 0 = μ := by
+--- original/FixedNoiseErgodicity/Section3/Forgetting.lean
++++ ported/FixedNoiseErgodicity/Section3/Forgetting.lean
+@@ -88,7 +88,7 @@
+ 
+ theorem reach_mono {K K' : Finset (Sym2 (STPoint k))} (h : K ⊆ K') {a b : STPoint k}
+     (hr : EdgeCount.Reach K a b) : EdgeCount.Reach K' a b :=
+-  Relation.ReflTransGen.mono (fun _ _ hxy => h hxy) hr
++  Relation.ReflTransGen.mono (fun _ _ hxy => h hxy) _ _ hr
+ 
+ /-- The slabs of `fgt:packing`. Let `p` be a path of marked non-events at the times `τ … t`.
+ Then for every `T ∈ [τ, t]` there are a set `K` of edges of `𝒢` and a set `Σ` of events at times
+--- original/FixedNoiseErgodicity/Section3/Transport.lean
++++ ported/FixedNoiseErgodicity/Section3/Transport.lean
+@@ -202,7 +202,7 @@
+         exact ⟨l'', hl''.symm⟩
+       · beta_reduce
+         rw [if_neg hz']
+-        refine ⟨by simpa using zero_mem_box_one, ?_⟩
++        refine ⟨by simpa [Prod.zero_eq_mk] using zero_mem_box_one, ?_⟩
+         have hl' : l' ≠ l := by
+           rintro rfl
+           exact hz' (by simp)
+@@ -227,7 +227,7 @@
+     · exact Finset.card_image_le.trans (by simp)
+     · intro z hz
+       obtain ⟨l', -, rfl⟩ := Finset.mem_image.mp hz
+-      refine ⟨by simpa using zero_mem_box_one, ?_⟩
++      refine ⟨by simpa [Prod.zero_eq_mk] using zero_mem_box_one, ?_⟩
+       obtain ⟨l'', hl''⟩ := hpos₀ l'
+       exact ⟨l'', hl''.symm⟩
+     · intro i hi
+--- original/FixedNoiseErgodicity/Three/Board.lean
++++ ported/FixedNoiseErgodicity/Three/Board.lean
+@@ -604,7 +604,7 @@
+     refine mem_boardF.2 ?_
+     have := cen_free frameOffsets_a0 (show 1 ≤ n - 1 by omega) 0
+     convert this using 1
+-    simp [cen, a0, bD]
++    simp [BFree, cen, a0, bD]
+   many := many_free hn
+   seed := word_seed hn hx
+   nowall ξ hξ := by
+--- original/FixedNoiseErgodicity/Three/Lists.lean
++++ ported/FixedNoiseErgodicity/Three/Lists.lean
+@@ -505,7 +505,6 @@
+     rwa [← eq_a_of_green θ (hW θ hθ) (hS θ hθ)]
+   refine angle_eq_of_rule hL hac hc (ρ := fun z => thinRule (z - z0)) h0 ?_ z
+   intro z d
+-  simp only
+   rw [show z + d.vec - z0 = z - z0 + d.vec by abel, thinRule_add, Dir.thin_thin]
+ 
+ end Zero
+--- original/FixedNoiseErgodicity/Three/Walker.lean
++++ ported/FixedNoiseErgodicity/Three/Walker.lean
+@@ -169,7 +169,7 @@
+   · subst hii; rfl
+   obtain ⟨s'', hP, hmem⟩ := walk_token hW
+     (fun y s => cls y (ctr s) = cls (st.1 i) (ctr (st.2 i)))
+-    (fun u s s' d hd hc hu => by simp only at hu ⊢; rw [(thr_move hd hc u).2, hu]) hst i rfl
++    (fun u s s' d hd hc hu => by rw [(thr_move hd hc u).2, hu]) hst i rfl
+     (st.1 i')
+   have hco := hW.coinc _ hmem i i' (by simp [Ne.symm hii])
+   simp only [Function.update_self, Function.update_of_ne (Ne.symm hii)] at hco

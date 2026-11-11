@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "source_theorems": 1084,
+  "original_lean_modules": 66,
+  "package_modules": 69,
+  "review_copies_match_built_package": true,
+  "challenge_and_statement_hashes_match": true,
+  "all_project_declarations_audited": 4609,
+  "explicit_print_axioms_roots": 437,
+  "actual_sandboxed_comparator_passed": true,
+  "both_kernels_passed": true,
+  "original_source_files_unchanged": true,
+  "windows_delivered_dependency_source_files_verified": 10268,
+  "read_only_original_source_files_rechecked": 79
+}

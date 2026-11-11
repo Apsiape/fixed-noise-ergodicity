@@ -1,0 +1,1258 @@
+{
+  "status": "PASS",
+  "lean_version": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "project_modules": 66,
+  "package_modules": 69,
+  "one_compiler_at_a_time": true,
+  "lean_heap_MiB": 6144,
+  "linux_process_tree_stop_rss_bytes": 9000000000,
+  "peak_observed_tree_rss_bytes": 5224099840,
+  "minimum_free_before_build_bytes": 11075657728,
+  "records_note": "Each peak is the cumulative process-tree peak of its serial replay invocation, and hence an upper bound for the individual module. final_by_module contains the last successful build of every module. Commands are shown relative to the toolchain bin directory and the project directory.",
+  "final_by_module": {
+    "FixedNoiseErgodicity.Statements": {
+      "module": "FixedNoiseErgodicity.Statements",
+      "exit": 0,
+      "seconds": 19.549,
+      "peak_tree_bytes": 3354796032,
+      "free_before_bytes": 15947173888,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Statements.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Statements.ilean",
+        "FixedNoiseErgodicity/Statements.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Hypotheses": {
+      "module": "FixedNoiseErgodicity.Hypotheses",
+      "exit": 0,
+      "seconds": 0.465,
+      "peak_tree_bytes": 3354796032,
+      "free_before_bytes": 12958941184,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Hypotheses.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Hypotheses.ilean",
+        "FixedNoiseErgodicity/Hypotheses.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Basic": {
+      "module": "FixedNoiseErgodicity.Basic",
+      "exit": 0,
+      "seconds": 1.919,
+      "peak_tree_bytes": 3399340032,
+      "free_before_bytes": 12958941184,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Basic.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Basic.ilean",
+        "FixedNoiseErgodicity/Basic.lean"
+      ],
+      "log_sha256": "eaa4fe810f15814d328cbff4944291a68db7e16ee754371790cb681bb2c967c2"
+    },
+    "FixedNoiseErgodicity.AuditCommand": {
+      "module": "FixedNoiseErgodicity.AuditCommand",
+      "exit": 0,
+      "seconds": 2.97,
+      "peak_tree_bytes": 3399340032,
+      "free_before_bytes": 12941811712,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/AuditCommand.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/AuditCommand.ilean",
+        "FixedNoiseErgodicity/AuditCommand.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Defs.TokenGame": {
+      "module": "FixedNoiseErgodicity.Defs.TokenGame",
+      "exit": 0,
+      "seconds": 1.668,
+      "peak_tree_bytes": 3399340032,
+      "free_before_bytes": 12762484736,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Defs/TokenGame.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Defs/TokenGame.ilean",
+        "FixedNoiseErgodicity/Defs/TokenGame.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Defs.Field": {
+      "module": "FixedNoiseErgodicity.Defs.Field",
+      "exit": 0,
+      "seconds": 1.618,
+      "peak_tree_bytes": 3399340032,
+      "free_before_bytes": 12471762944,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Defs/Field.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Defs/Field.ilean",
+        "FixedNoiseErgodicity/Defs/Field.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Section2.TokenGame": {
+      "module": "FixedNoiseErgodicity.Section2.TokenGame",
+      "exit": 0,
+      "seconds": 2.57,
+      "peak_tree_bytes": 3402604544,
+      "free_before_bytes": 12460326912,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/TokenGame.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/TokenGame.ilean",
+        "FixedNoiseErgodicity/Section2/TokenGame.lean"
+      ],
+      "log_sha256": "e64460eb6a8b2fccdb2e64d0dcf0918afb0484a60d85d56f3c3bf08bf1178575"
+    },
+    "FixedNoiseErgodicity.Section4.Deterministic": {
+      "module": "FixedNoiseErgodicity.Section4.Deterministic",
+      "exit": 0,
+      "seconds": 2.069,
+      "peak_tree_bytes": 3402604544,
+      "free_before_bytes": 12440010752,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section4/Deterministic.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section4/Deterministic.ilean",
+        "FixedNoiseErgodicity/Section4/Deterministic.lean"
+      ],
+      "log_sha256": "87b225821b1fb97e6c9986ef2ea1f91cf0b32dd0bd849fd9b67cc1809048d3ae"
+    },
+    "FixedNoiseErgodicity.Combinatorics.EdgeCount": {
+      "module": "FixedNoiseErgodicity.Combinatorics.EdgeCount",
+      "exit": 0,
+      "seconds": 10.787,
+      "peak_tree_bytes": 1779453952,
+      "free_before_bytes": 14907887616,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Combinatorics/EdgeCount.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Combinatorics/EdgeCount.ilean",
+        "FixedNoiseErgodicity/Combinatorics/EdgeCount.lean"
+      ],
+      "log_sha256": "fc5499d3854f82f94bbe5ebcd2719e05a2a9d84d6103bd61dbebe8ce97ebb900"
+    },
+    "FixedNoiseErgodicity.Section3.Transport": {
+      "module": "FixedNoiseErgodicity.Section3.Transport",
+      "exit": 0,
+      "seconds": 2.42,
+      "peak_tree_bytes": 3417427968,
+      "free_before_bytes": 13918547968,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section3/Transport.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section3/Transport.ilean",
+        "FixedNoiseErgodicity/Section3/Transport.lean"
+      ],
+      "log_sha256": "5df4e7c2eb6daf76d7f3dc2dc7f835295f2fd137e752d78d36fd6745131a8b65"
+    },
+    "FixedNoiseErgodicity.Section3.Graph": {
+      "module": "FixedNoiseErgodicity.Section3.Graph",
+      "exit": 0,
+      "seconds": 2.119,
+      "peak_tree_bytes": 3417427968,
+      "free_before_bytes": 13702676480,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section3/Graph.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section3/Graph.ilean",
+        "FixedNoiseErgodicity/Section3/Graph.lean"
+      ],
+      "log_sha256": "ff743bfa476877c8cabf082c4fa8d71c836bf5ebff2ce882bbf15e860a4fc000"
+    },
+    "FixedNoiseErgodicity.Combinatorics.Contour": {
+      "module": "FixedNoiseErgodicity.Combinatorics.Contour",
+      "exit": 0,
+      "seconds": 12.491,
+      "peak_tree_bytes": 1943478272,
+      "free_before_bytes": 15456923648,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Combinatorics/Contour.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Combinatorics/Contour.ilean",
+        "FixedNoiseErgodicity/Combinatorics/Contour.lean"
+      ],
+      "log_sha256": "3a74480582abfe520b25c00522d5896a96f21b90f107d9442b8a9c0271d58f81"
+    },
+    "FixedNoiseErgodicity.Section3.Contour": {
+      "module": "FixedNoiseErgodicity.Section3.Contour",
+      "exit": 0,
+      "seconds": 9.734,
+      "peak_tree_bytes": 3376672768,
+      "free_before_bytes": 15040143360,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section3/Contour.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section3/Contour.ilean",
+        "FixedNoiseErgodicity/Section3/Contour.lean"
+      ],
+      "log_sha256": "90a4a0dd334747f7bfe737d68a392de61417cc6c0ee3912e5f773604455973bb"
+    },
+    "FixedNoiseErgodicity.Section2.Process": {
+      "module": "FixedNoiseErgodicity.Section2.Process",
+      "exit": 0,
+      "seconds": 29.074,
+      "peak_tree_bytes": 3365154816,
+      "free_before_bytes": 15924592640,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/Process.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/Process.ilean",
+        "FixedNoiseErgodicity/Section2/Process.lean"
+      ],
+      "log_sha256": "9c8ff1bd22c08b71ec2d01986afe464a2911ce44e0b0dbead79b18d95b7c8c4b"
+    },
+    "FixedNoiseErgodicity.Section2.Markov": {
+      "module": "FixedNoiseErgodicity.Section2.Markov",
+      "exit": 0,
+      "seconds": 6.627,
+      "peak_tree_bytes": 3413450752,
+      "free_before_bytes": 13780176896,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/Markov.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/Markov.ilean",
+        "FixedNoiseErgodicity/Section2/Markov.lean"
+      ],
+      "log_sha256": "01c1c454d4bc126bd08eb13e76cc7c12e49456c75dfd34ebba521a1aabca2d8c"
+    },
+    "FixedNoiseErgodicity.Section2.Ergodic": {
+      "module": "FixedNoiseErgodicity.Section2.Ergodic",
+      "exit": 0,
+      "seconds": 18.502,
+      "peak_tree_bytes": 3354775552,
+      "free_before_bytes": 15926255616,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/Ergodic.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/Ergodic.ilean",
+        "FixedNoiseErgodicity/Section2/Ergodic.lean"
+      ],
+      "log_sha256": "06d543a7dfad0162a5dd4b257587682216c11f9ce4bdc1193aeafa0cf57105a9"
+    },
+    "FixedNoiseErgodicity.Section3.Constants": {
+      "module": "FixedNoiseErgodicity.Section3.Constants",
+      "exit": 0,
+      "seconds": 2.971,
+      "peak_tree_bytes": 3412185088,
+      "free_before_bytes": 13427548160,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section3/Constants.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section3/Constants.ilean",
+        "FixedNoiseErgodicity/Section3/Constants.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Section3.Peierls": {
+      "module": "FixedNoiseErgodicity.Section3.Peierls",
+      "exit": 0,
+      "seconds": 2.119,
+      "peak_tree_bytes": 3412185088,
+      "free_before_bytes": 13284773888,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section3/Peierls.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section3/Peierls.ilean",
+        "FixedNoiseErgodicity/Section3/Peierls.lean"
+      ],
+      "log_sha256": "64db88dd4351cee12a4c3a115aa5a54deca0720931ca264b286705911737ea0b"
+    },
+    "FixedNoiseErgodicity.Section4.Memory": {
+      "module": "FixedNoiseErgodicity.Section4.Memory",
+      "exit": 0,
+      "seconds": 2.519,
+      "peak_tree_bytes": 3416150016,
+      "free_before_bytes": 13282844672,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section4/Memory.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section4/Memory.ilean",
+        "FixedNoiseErgodicity/Section4/Memory.lean"
+      ],
+      "log_sha256": "d4ca7ae4695824269be8065e45c71c6c96e3b2d4bb52078fb379c2b645b7891e"
+    },
+    "FixedNoiseErgodicity.Section3.Forgetting": {
+      "module": "FixedNoiseErgodicity.Section3.Forgetting",
+      "exit": 0,
+      "seconds": 3.771,
+      "peak_tree_bytes": 3455188992,
+      "free_before_bytes": 13279604736,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section3/Forgetting.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section3/Forgetting.ilean",
+        "FixedNoiseErgodicity/Section3/Forgetting.lean"
+      ],
+      "log_sha256": "71dd88e079e2df7d7cdb75094ef955ce0b74921bccedd8ec15cb404573b55b61"
+    },
+    "FixedNoiseErgodicity.Section2.Feller": {
+      "module": "FixedNoiseErgodicity.Section2.Feller",
+      "exit": 0,
+      "seconds": 12.538,
+      "peak_tree_bytes": 3439333376,
+      "free_before_bytes": 13557952512,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/Feller.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/Feller.ilean",
+        "FixedNoiseErgodicity/Section2/Feller.lean"
+      ],
+      "log_sha256": "3f820b3ccb6b516ac7827552ed88f18ea02df2bb30fb06708c1921d09dea8d18"
+    },
+    "FixedNoiseErgodicity.Section2.ForgetErgodic": {
+      "module": "FixedNoiseErgodicity.Section2.ForgetErgodic",
+      "exit": 0,
+      "seconds": 2.118,
+      "peak_tree_bytes": 3439333376,
+      "free_before_bytes": 13289938944,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/ForgetErgodic.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/ForgetErgodic.ilean",
+        "FixedNoiseErgodicity/Section2/ForgetErgodic.lean"
+      ],
+      "log_sha256": "b0a6b93761af39917fcd3e02e8209c35ac6a82709eb372f876ea7faafb504f33"
+    },
+    "FixedNoiseErgodicity.Section2.PCA": {
+      "module": "FixedNoiseErgodicity.Section2.PCA",
+      "exit": 0,
+      "seconds": 1.517,
+      "peak_tree_bytes": 3439333376,
+      "free_before_bytes": 13265235968,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/PCA.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/PCA.ilean",
+        "FixedNoiseErgodicity/Section2/PCA.lean"
+      ],
+      "log_sha256": "68f0b21035e4dce4594dff91d81eeee946e732c059c8168ab8251c3c6d516a70"
+    },
+    "FixedNoiseErgodicity.TheoremB": {
+      "module": "FixedNoiseErgodicity.TheoremB",
+      "exit": 0,
+      "seconds": 1.667,
+      "peak_tree_bytes": 3439333376,
+      "free_before_bytes": 13283811328,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/TheoremB.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/TheoremB.ilean",
+        "FixedNoiseErgodicity/TheoremB.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Section2.Compact": {
+      "module": "FixedNoiseErgodicity.Section2.Compact",
+      "exit": 0,
+      "seconds": 2.219,
+      "peak_tree_bytes": 3439333376,
+      "free_before_bytes": 13283811328,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/Compact.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Section2/Compact.ilean",
+        "FixedNoiseErgodicity/Section2/Compact.lean"
+      ],
+      "log_sha256": "d72121c07903570d774f46f81b15559b2e3843723f12831d78b755805eaf96a4"
+    },
+    "FixedNoiseErgodicity.Scaffold.Tables": {
+      "module": "FixedNoiseErgodicity.Scaffold.Tables",
+      "exit": 0,
+      "seconds": 3.923,
+      "peak_tree_bytes": 3439333376,
+      "free_before_bytes": 13038039040,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Tables.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Tables.ilean",
+        "FixedNoiseErgodicity/Scaffold/Tables.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Scaffold.Substitution": {
+      "module": "FixedNoiseErgodicity.Scaffold.Substitution",
+      "exit": 0,
+      "seconds": 4.624,
+      "peak_tree_bytes": 3678248960,
+      "free_before_bytes": 12811988992,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Substitution.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Substitution.ilean",
+        "FixedNoiseErgodicity/Scaffold/Substitution.lean"
+      ],
+      "log_sha256": "f0c21a190799eb6d3604386fcadb6aed2437ac4f9ba4f4cce4abdf49da3212b3"
+    },
+    "FixedNoiseErgodicity.Scaffold.WangSet": {
+      "module": "FixedNoiseErgodicity.Scaffold.WangSet",
+      "exit": 0,
+      "seconds": 9.786,
+      "peak_tree_bytes": 5224099840,
+      "free_before_bytes": 12493230080,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/WangSet.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/WangSet.ilean",
+        "FixedNoiseErgodicity/Scaffold/WangSet.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Scaffold.Facts": {
+      "module": "FixedNoiseErgodicity.Scaffold.Facts",
+      "exit": 0,
+      "seconds": 3.622,
+      "peak_tree_bytes": 5224099840,
+      "free_before_bytes": 11075657728,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Facts.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Facts.ilean",
+        "FixedNoiseErgodicity/Scaffold/Facts.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Scaffold.Format": {
+      "module": "FixedNoiseErgodicity.Scaffold.Format",
+      "exit": 0,
+      "seconds": 2.169,
+      "peak_tree_bytes": 5224099840,
+      "free_before_bytes": 11406041088,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Format.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Format.ilean",
+        "FixedNoiseErgodicity/Scaffold/Format.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Family.Tower": {
+      "module": "FixedNoiseErgodicity.Family.Tower",
+      "exit": 0,
+      "seconds": 2.72,
+      "peak_tree_bytes": 5224099840,
+      "free_before_bytes": 11723927552,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Tower.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Tower.ilean",
+        "FixedNoiseErgodicity/Family/Tower.lean"
+      ],
+      "log_sha256": "38b26f1c2166991af4df464b2b8dba4a24b241611e5269b744667215e8b79252"
+    },
+    "FixedNoiseErgodicity.Family.Red": {
+      "module": "FixedNoiseErgodicity.Family.Red",
+      "exit": 0,
+      "seconds": 3.521,
+      "peak_tree_bytes": 5224099840,
+      "free_before_bytes": 13226713088,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Red.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Red.ilean",
+        "FixedNoiseErgodicity/Family/Red.lean"
+      ],
+      "log_sha256": "f692aa9c2cdaa0929ae5a8319b2771fa5ab6f3115fde55bb44d81bc12f672878"
+    },
+    "FixedNoiseErgodicity.Family.Walls": {
+      "module": "FixedNoiseErgodicity.Family.Walls",
+      "exit": 0,
+      "seconds": 6.026,
+      "peak_tree_bytes": 5224099840,
+      "free_before_bytes": 13205430272,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Walls.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Walls.ilean",
+        "FixedNoiseErgodicity/Family/Walls.lean"
+      ],
+      "log_sha256": "2fcd91f4cf1e5ddb89bb5708cfd839d2e30f17ff9c5f92b99b412b35716bebbe"
+    },
+    "FixedNoiseErgodicity.Family.Frames": {
+      "module": "FixedNoiseErgodicity.Family.Frames",
+      "exit": 0,
+      "seconds": 3.472,
+      "peak_tree_bytes": 5224099840,
+      "free_before_bytes": 13144846336,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Frames.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Frames.ilean",
+        "FixedNoiseErgodicity/Family/Frames.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Family.Routing": {
+      "module": "FixedNoiseErgodicity.Family.Routing",
+      "exit": 0,
+      "seconds": 3.823,
+      "peak_tree_bytes": 5224099840,
+      "free_before_bytes": 13013086208,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Routing.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Routing.ilean",
+        "FixedNoiseErgodicity/Family/Routing.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Family.Positive": {
+      "module": "FixedNoiseErgodicity.Family.Positive",
+      "exit": 0,
+      "seconds": 2.319,
+      "peak_tree_bytes": 5224099840,
+      "free_before_bytes": 12965097472,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Positive.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Positive.ilean",
+        "FixedNoiseErgodicity/Family/Positive.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Family.Machine": {
+      "module": "FixedNoiseErgodicity.Family.Machine",
+      "exit": 0,
+      "seconds": 6.478,
+      "peak_tree_bytes": 3453513728,
+      "free_before_bytes": 13512474624,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Machine.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Machine.ilean",
+        "FixedNoiseErgodicity/Family/Machine.lean"
+      ],
+      "log_sha256": "aece86adf1fee5a98682ac6e02bc682445e65ebb505e034120a79be8ae4b5685"
+    },
+    "FixedNoiseErgodicity.Family.Horn": {
+      "module": "FixedNoiseErgodicity.Family.Horn",
+      "exit": 0,
+      "seconds": 5.626,
+      "peak_tree_bytes": 3480387584,
+      "free_before_bytes": 13169602560,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Horn.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Horn.ilean",
+        "FixedNoiseErgodicity/Family/Horn.lean"
+      ],
+      "log_sha256": "28fc6dbf7b89b735863f14ebe130a1d1ac586be4325a8d7f0150b347d10a4d54"
+    },
+    "FixedNoiseErgodicity.Family.HornHalt": {
+      "module": "FixedNoiseErgodicity.Family.HornHalt",
+      "exit": 0,
+      "seconds": 2.82,
+      "peak_tree_bytes": 3434496000,
+      "free_before_bytes": 13371170816,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/HornHalt.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/HornHalt.ilean",
+        "FixedNoiseErgodicity/Family/HornHalt.lean"
+      ],
+      "log_sha256": "11c3ca531bab7f316f64072e4ac84fdafe99043f3c3fcb3fe3d2e3950e534132"
+    },
+    "FixedNoiseErgodicity.Family.Free": {
+      "module": "FixedNoiseErgodicity.Family.Free",
+      "exit": 0,
+      "seconds": 4.122,
+      "peak_tree_bytes": 3441270784,
+      "free_before_bytes": 13071613952,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Free.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Free.ilean",
+        "FixedNoiseErgodicity/Family/Free.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Family.Codes": {
+      "module": "FixedNoiseErgodicity.Family.Codes",
+      "exit": 0,
+      "seconds": 1.718,
+      "peak_tree_bytes": 3441270784,
+      "free_before_bytes": 12951941120,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Codes.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Codes.ilean",
+        "FixedNoiseErgodicity/Family/Codes.lean"
+      ],
+      "log_sha256": "2df7c5a33949f0c4f4efe2568156a2a92c1e566e2fa325072dd9f8a6d479407a"
+    },
+    "FixedNoiseErgodicity.Family.FamilyR": {
+      "module": "FixedNoiseErgodicity.Family.FamilyR",
+      "exit": 0,
+      "seconds": 5.876,
+      "peak_tree_bytes": 3474329600,
+      "free_before_bytes": 12896194560,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/FamilyR.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/FamilyR.ilean",
+        "FixedNoiseErgodicity/Family/FamilyR.lean"
+      ],
+      "log_sha256": "2e5c9d410fd628a578eb2b1ed939b9ef974ed51d8b1830f826282cc4d203d731"
+    },
+    "FixedNoiseErgodicity.Family.Decide": {
+      "module": "FixedNoiseErgodicity.Family.Decide",
+      "exit": 0,
+      "seconds": 2.619,
+      "peak_tree_bytes": 3474329600,
+      "free_before_bytes": 12785352704,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Decide.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Decide.ilean",
+        "FixedNoiseErgodicity/Family/Decide.lean"
+      ],
+      "log_sha256": "72a302df73301583e593b9fcc26defc4032c5b108bedcb123e5cabbcaa1684d1"
+    },
+    "FixedNoiseErgodicity.Family.NonHalting": {
+      "module": "FixedNoiseErgodicity.Family.NonHalting",
+      "exit": 0,
+      "seconds": 1.517,
+      "peak_tree_bytes": 3474329600,
+      "free_before_bytes": 13044142080,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/NonHalting.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/NonHalting.ilean",
+        "FixedNoiseErgodicity/Family/NonHalting.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Three.CornerData": {
+      "module": "FixedNoiseErgodicity.Three.CornerData",
+      "exit": 0,
+      "seconds": 2.318,
+      "peak_tree_bytes": 3474329600,
+      "free_before_bytes": 13025517568,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/CornerData.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/CornerData.ilean",
+        "FixedNoiseErgodicity/Three/CornerData.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Three.CornerTables": {
+      "module": "FixedNoiseErgodicity.Three.CornerTables",
+      "exit": 0,
+      "seconds": 9.184,
+      "peak_tree_bytes": 3774459904,
+      "free_before_bytes": 12980830208,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/CornerTables.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/CornerTables.ilean",
+        "FixedNoiseErgodicity/Three/CornerTables.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Three.CornerCheck": {
+      "module": "FixedNoiseErgodicity.Three.CornerCheck",
+      "exit": 0,
+      "seconds": 2.87,
+      "peak_tree_bytes": 3774459904,
+      "free_before_bytes": 12475166720,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/CornerCheck.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/CornerCheck.ilean",
+        "FixedNoiseErgodicity/Three/CornerCheck.lean"
+      ],
+      "log_sha256": "1b3cb9ec2d53f7f8bbddb4c3541f503aec7a689695e21b7ae5d26865d6961db9"
+    },
+    "FixedNoiseErgodicity.Three.Corner": {
+      "module": "FixedNoiseErgodicity.Three.Corner",
+      "exit": 0,
+      "seconds": 5.326,
+      "peak_tree_bytes": 3774459904,
+      "free_before_bytes": 12665147392,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Corner.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Corner.ilean",
+        "FixedNoiseErgodicity/Three/Corner.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Three.Lists": {
+      "module": "FixedNoiseErgodicity.Three.Lists",
+      "exit": 0,
+      "seconds": 3.973,
+      "peak_tree_bytes": 3453956096,
+      "free_before_bytes": 13325799424,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Lists.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Lists.ilean",
+        "FixedNoiseErgodicity/Three/Lists.lean"
+      ],
+      "log_sha256": "05fa3167c61c1037598240183243e72eafbda140b6a8c35e97ae01e62cc05faf"
+    },
+    "FixedNoiseErgodicity.Three.Coarse": {
+      "module": "FixedNoiseErgodicity.Three.Coarse",
+      "exit": 0,
+      "seconds": 2.97,
+      "peak_tree_bytes": 3453956096,
+      "free_before_bytes": 13074276352,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Coarse.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Coarse.ilean",
+        "FixedNoiseErgodicity/Three/Coarse.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Three.Dyadic": {
+      "module": "FixedNoiseErgodicity.Three.Dyadic",
+      "exit": 0,
+      "seconds": 2.77,
+      "peak_tree_bytes": 3453956096,
+      "free_before_bytes": 13047574528,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Dyadic.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Dyadic.ilean",
+        "FixedNoiseErgodicity/Three/Dyadic.lean"
+      ],
+      "log_sha256": "7aabfec20a0918fe20c34b6286ca1bc628f29e47d819eac51100cfd143aa2596"
+    },
+    "FixedNoiseErgodicity.Three.Pairs": {
+      "module": "FixedNoiseErgodicity.Three.Pairs",
+      "exit": 0,
+      "seconds": 1.768,
+      "peak_tree_bytes": 3453956096,
+      "free_before_bytes": 13059317760,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Pairs.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Pairs.ilean",
+        "FixedNoiseErgodicity/Three/Pairs.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Three.Interface": {
+      "module": "FixedNoiseErgodicity.Three.Interface",
+      "exit": 0,
+      "seconds": 2.018,
+      "peak_tree_bytes": 3453956096,
+      "free_before_bytes": 13047599104,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Interface.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Interface.ilean",
+        "FixedNoiseErgodicity/Three/Interface.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Three.Walker": {
+      "module": "FixedNoiseErgodicity.Three.Walker",
+      "exit": 0,
+      "seconds": 2.971,
+      "peak_tree_bytes": 3463585792,
+      "free_before_bytes": 13259563008,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Walker.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Walker.ilean",
+        "FixedNoiseErgodicity/Three/Walker.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Three.Promote": {
+      "module": "FixedNoiseErgodicity.Three.Promote",
+      "exit": 0,
+      "seconds": 2.319,
+      "peak_tree_bytes": 3463585792,
+      "free_before_bytes": 12980371456,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Promote.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Promote.ilean",
+        "FixedNoiseErgodicity/Three/Promote.lean"
+      ],
+      "log_sha256": "7d2ef1da841c2295c45838d53de5068c6ae9564d79e2f1fa93a65eb32495d9de"
+    },
+    "FixedNoiseErgodicity.Three.Final": {
+      "module": "FixedNoiseErgodicity.Three.Final",
+      "exit": 0,
+      "seconds": 4.623,
+      "peak_tree_bytes": 3498766336,
+      "free_before_bytes": 12967632896,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Final.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Final.ilean",
+        "FixedNoiseErgodicity/Three/Final.lean"
+      ],
+      "log_sha256": "68bafd44131dc926a2645d6b15e861d75c88431e2606a4939720a64c044ede04"
+    },
+    "FixedNoiseErgodicity.Three.Board": {
+      "module": "FixedNoiseErgodicity.Three.Board",
+      "exit": 0,
+      "seconds": 6.127,
+      "peak_tree_bytes": 3514654720,
+      "free_before_bytes": 13325967360,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Board.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Board.ilean",
+        "FixedNoiseErgodicity/Three/Board.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Three.Assembly": {
+      "module": "FixedNoiseErgodicity.Three.Assembly",
+      "exit": 0,
+      "seconds": 1.467,
+      "peak_tree_bytes": 3514654720,
+      "free_before_bytes": 13010198528,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Assembly.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Three/Assembly.ilean",
+        "FixedNoiseErgodicity/Three/Assembly.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Family.Computable": {
+      "module": "FixedNoiseErgodicity.Family.Computable",
+      "exit": 0,
+      "seconds": 5.625,
+      "peak_tree_bytes": 3514654720,
+      "free_before_bytes": 12962164736,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Computable.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Family/Computable.ilean",
+        "FixedNoiseErgodicity/Family/Computable.lean"
+      ],
+      "log_sha256": "d6dcd8941841c270324b9aaf5e2dbafdc9e77d8430a0bcbb269c853e29855066"
+    },
+    "FixedNoiseErgodicity.Main": {
+      "module": "FixedNoiseErgodicity.Main",
+      "exit": 0,
+      "seconds": 1.467,
+      "peak_tree_bytes": 3514654720,
+      "free_before_bytes": 12871897088,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Main.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Main.ilean",
+        "FixedNoiseErgodicity/Main.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Bridge": {
+      "module": "FixedNoiseErgodicity.Bridge",
+      "exit": 0,
+      "seconds": 1.567,
+      "peak_tree_bytes": 3514654720,
+      "free_before_bytes": 12863000576,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Bridge.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Bridge.ilean",
+        "FixedNoiseErgodicity/Bridge.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Compiler.TM0": {
+      "module": "FixedNoiseErgodicity.Compiler.TM0",
+      "exit": 0,
+      "seconds": 2.87,
+      "peak_tree_bytes": 3514654720,
+      "free_before_bytes": 12883628032,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Compiler/TM0.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Compiler/TM0.ilean",
+        "FixedNoiseErgodicity/Compiler/TM0.lean"
+      ],
+      "log_sha256": "bc53ac8e97717779042ea289fb0be2c7363b8418519a413d0e22d9df1189d294"
+    },
+    "FixedNoiseErgodicity.Compiler.Universal": {
+      "module": "FixedNoiseErgodicity.Compiler.Universal",
+      "exit": 0,
+      "seconds": 1.918,
+      "peak_tree_bytes": 3405971456,
+      "free_before_bytes": 13290524672,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Compiler/Universal.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Compiler/Universal.ilean",
+        "FixedNoiseErgodicity/Compiler/Universal.lean"
+      ],
+      "log_sha256": "852cd6846beb1933717b2eebab374cf39e60f00ff2f20d10bafce42db1687a15"
+    },
+    "FixedNoiseErgodicity.Undecidable": {
+      "module": "FixedNoiseErgodicity.Undecidable",
+      "exit": 0,
+      "seconds": 1.567,
+      "peak_tree_bytes": 3405971456,
+      "free_before_bytes": 13040123904,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Undecidable.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Undecidable.ilean",
+        "FixedNoiseErgodicity/Undecidable.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "FixedNoiseErgodicity.Audit": {
+      "module": "FixedNoiseErgodicity.Audit",
+      "exit": 0,
+      "seconds": 4.373,
+      "peak_tree_bytes": 3823300608,
+      "free_before_bytes": 12935614464,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Audit.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity/Audit.ilean",
+        "FixedNoiseErgodicity/Audit.lean"
+      ],
+      "log_sha256": "afff90445b96f47d8a22a31a14c3c4188695befd05924e471af06a0ca4fde096"
+    },
+    "FixedNoiseErgodicity": {
+      "module": "FixedNoiseErgodicity",
+      "exit": 0,
+      "seconds": 1.718,
+      "peak_tree_bytes": 3823300608,
+      "free_before_bytes": 12398194688,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/FixedNoiseErgodicity.olean",
+        "-i",
+        ".lake/build/lib/lean/FixedNoiseErgodicity.ilean",
+        "FixedNoiseErgodicity.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Challenge": {
+      "module": "Challenge",
+      "exit": 0,
+      "seconds": 2.018,
+      "peak_tree_bytes": 3823300608,
+      "free_before_bytes": 12234874880,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/Challenge.olean",
+        "-i",
+        ".lake/build/lib/lean/Challenge.ilean",
+        "Challenge.lean"
+      ],
+      "log_sha256": "75769cfcab10ae20e36fce57806aaac60ecc97e8549eec23f9010f96ff1ba755"
+    },
+    "Solution": {
+      "module": "Solution",
+      "exit": 0,
+      "seconds": 1.468,
+      "peak_tree_bytes": 3823300608,
+      "free_before_bytes": 12221005824,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/Solution.olean",
+        "-i",
+        ".lake/build/lib/lean/Solution.ilean",
+        "Solution.lean"
+      ],
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Audit": {
+      "module": "Audit",
+      "exit": 0,
+      "seconds": 64.191,
+      "peak_tree_bytes": 3882078208,
+      "free_before_bytes": 12598824960,
+      "command": [
+        "lean",
+        "-j1",
+        "-M6144",
+        "-o",
+        ".lake/build/lib/lean/Audit.olean",
+        "-i",
+        ".lake/build/lib/lean/Audit.ilean",
+        "Audit.lean"
+      ],
+      "log_sha256": "8a0b6bca84eeffe2deda1011d4faf9df5fa444d3402d95ec85a780e50a54de25"
+    }
+  },
+  "nonfatal_warning_count": 314
+}

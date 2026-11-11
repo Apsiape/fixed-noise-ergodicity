@@ -1,0 +1,51 @@
+\section{The one-sided machine}\label{app:machine}
+
+This appendix constructs the one-sided machine $M^\circ$ of \cref{fam:sub-horn} and proves the properties used there and in \cref{prop:horn}: $M^\circ$ moves its head at every step, never moves left from cell $1$, starts in a state that is not halting, leaves cell $1$ at its first step, and halts if and only if $M$ halts. The construction and these properties are part of the Lean formalization of \cref{app:lean}.
+
+\paragraph{The machine $M$.} Let $M$ have the finite state set $Q$, the initial state $q_{\mathrm{in}}$, the set $Q_{\mathrm h}\subseteq Q$ of halting states, the finite tape alphabet $\Sigma$ with blank $\sqcup$, and the transition function $\delta\colon Q\times\Sigma\to Q\times\Sigma\times\{-1,0,1\}$. A configuration is a triple $(q,p,y)$ of a state $q$, a head position $p\in\Z$ and a tape $y\colon\Z\to\Sigma$. If $\delta(q,y(p))=(q',a',d)$, the next configuration is $(q',p+d,y')$, where $y'$ equals $y$ except that $y'(p)=a'$. The run starts from $C_0=(q_{\mathrm{in}},0,\sqcup)$, the blank tape, and $C_n=(q_n,p_n,y_n)$ is its configuration after $n$ steps. $M$ halts if $q_n\in Q_{\mathrm h}$ for some $n$. If $\delta$ is only partially defined, a pair $(q,a)$ without a value is treated as $\delta(q,a)=(q,a,0)$, a step that changes nothing; the construction below does not change.
+
+\paragraph{Tracks.} Write $\mathrm U$ and $\mathrm L$ for the upper and the lower track. For a cell $x\ge1$ put $\operatorname{pos}(\mathrm U,x)=x-1$ and $\operatorname{pos}(\mathrm L,x)=-x$. The map $(\ell,x)\mapsto\operatorname{pos}(\ell,x)$ is a bijection from $\{\mathrm U,\mathrm L\}\times\{1,2,\dots\}$ onto $\Z$. Its inverse sends a position $p$ to $(\ell(p),c(p))$, with $\ell(p)=\mathrm U$ and $c(p)=p+1$ if $p\ge0$, and $\ell(p)=\mathrm L$ and $c(p)=-p$ if $p<0$. Thus the upper track of cell $x$ holds the position $x-1$ of $M$, and the lower track holds the position $-x$.
+
+\paragraph{The machine $M^\circ$.} Its tape alphabet is $\Gamma=\{0,1\}\times\Sigma\times\Sigma$. A symbol $\gamma=(b,a_{\mathrm U},a_{\mathrm L})$ has a \emph{marker} $b$ and the entries $a_{\mathrm U}$ and $a_{\mathrm L}$ on the two tracks; the blank of $M^\circ$ is $(0,\sqcup,\sqcup)$, which \cref{fam:sub-horn} also writes $\sqcup$. For $\ell\in\{\mathrm U,\mathrm L\}$ and $a\in\Sigma$ let $\gamma[\ell\leftarrow a]$ be $\gamma$ with the entry on track $\ell$ replaced by $a$. The states are the initial state $\mathsf q_0$ and the states $\mathsf{sim}(q,\ell)$ and $\mathsf{back}(q,\ell)$ for $q\in Q$ and $\ell\in\{\mathrm U,\mathrm L\}$. The halting states are the states $\mathsf{sim}(q,\ell)$ with $q\in Q_{\mathrm h}$; in particular $\mathsf q_0$ is not halting. The transition function $\mathrm{tr}$ gives, for a state and a scanned symbol, the new state, the symbol written and the move, $+1$ to the right and $-1$ to the left:
+\begin{itemize}
+\item[(T1)] $\mathrm{tr}(\mathsf q_0,(b,a_{\mathrm U},a_{\mathrm L}))=(\mathsf{back}(q_{\mathrm{in}},\mathrm U),(1,a_{\mathrm U},a_{\mathrm L}),+1)$: mark the cell, and step right.
+\item[(T2)] $\mathrm{tr}(\mathsf{back}(q,\ell),\gamma)=(\mathsf{sim}(q,\ell),\gamma,-1)$: step left, writing nothing new.
+\item[(T3)] $\mathrm{tr}(\mathsf{sim}(q,\ell),\gamma)$, where $\gamma$ has marker $b$, $a$ is its entry on track $\ell$, $\delta(q,a)=(q',a',d)$ and $\gamma'=\gamma[\ell\leftarrow a']$, is
+\[
+\begin{array}{ll}
+(\mathsf{back}(q',\ell),\gamma',+1) & \text{if } d=0,\\
+(\mathsf{sim}(q',\ell),\gamma',+1) & \text{if } (\ell,d)=(\mathrm U,+1)\text{ or }(\ell,d)=(\mathrm L,-1),\\
+(\mathsf{back}(q',\mathrm L),\gamma',+1) & \text{if } (\ell,d)=(\mathrm U,-1)\text{ and } b=1,\\
+(\mathsf{sim}(q',\mathrm U),\gamma',-1) & \text{if } (\ell,d)=(\mathrm U,-1)\text{ and } b=0,\\
+(\mathsf{back}(q',\mathrm U),\gamma',+1) & \text{if } (\ell,d)=(\mathrm L,+1)\text{ and } b=1,\\
+(\mathsf{sim}(q',\mathrm L),\gamma',-1) & \text{if } (\ell,d)=(\mathrm L,+1)\text{ and } b=0.
+\end{array}
+\]
+\end{itemize}
+$M^\circ$ has $1+4|Q|$ states and $2|\Sigma|^2$ symbols, and it is computed from $M$. It starts in $\mathsf q_0$ with its head on cell $1$ of a blank tape on the cells $1,2,\dots$. Every transition moves the head. A nonzero move of $M$ that does not change tracks is simulated by one step of $M^\circ$. A stay, and a move between the positions $0$ and $-1$, which changes the track at cell $1$, are \emph{bounces}: a step right into a state $\mathsf{back}(q',\cdot)$ and a step back.
+
+\paragraph{Simulation.} The machine $M^\circ$ \emph{simulates} the configuration $(q,p,y)$ of $M$ if it is in the state $\mathsf{sim}(q,\ell(p))$ with its head on cell $c(p)$, cell $1$ carries the marker $1$ and every other cell the marker $0$, and for every cell $x\ge1$ the entries on the tracks $\mathrm U$ and $\mathrm L$ are $y(x-1)$ and $y(-x)$.
+
+\begin{lemma}[The one-sided machine]\label{app:oneside}
+\begin{itemize}
+\item[(a)] At time $2$, $M^\circ$ simulates $C_0$. At time $1$ it is in the state $\mathsf{back}(q_{\mathrm{in}},\mathrm U)$ on cell $2$.
+\item[(b)] If $M^\circ$ simulates $C_n$ at time $t$, then it simulates $C_{n+1}$ at time $t+1$, or it simulates $C_{n+1}$ at time $t+2$ and is in a state $\mathsf{back}(\cdot,\cdot)$ on a cell $x\ge2$ at time $t+1$.
+\item[(c)] There are times $2=t_0<t_1<\dots$ with $t_{n+1}-t_n\in\{1,2\}$ such that $M^\circ$ simulates $C_n$ at time $t_n$. At every time $t\ge1$ that is not one of the $t_n$, $M^\circ$ is in a state $\mathsf{back}(\cdot,\cdot)$ on a cell $x\ge2$.
+\item[(d)] $M^\circ$ enters a halting state if and only if $M$ halts. If $q_n\in Q_{\mathrm h}$, the halting time satisfies $T(M)\le t_n\le2n+2$.
+\item[(e)] At every time the head of $M^\circ$ is on a cell $x\ge1$, and whenever it is on cell $1$ it moves right. Its initial state is not halting, and its head is on cell $2$ after the first step.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+(a) By (T1), at time $1$ the cell $1$ is marked and the head is on cell $2$ in the state $\mathsf{back}(q_{\mathrm{in}},\mathrm U)$. By (T2), at time $2$ the head is on cell $1$ in the state $\mathsf{sim}(q_{\mathrm{in}},\mathrm U)$. All entries are blank, only cell $1$ is marked, and $\ell(0)=\mathrm U$, $c(0)=1$. So $M^\circ$ simulates $C_0$.
+
+(b) Let $C_n=(q,p,y)$, $\ell=\ell(p)$ and $x=c(p)$. The scanned symbol $\gamma$ has on track $\ell$ the entry $y(\operatorname{pos}(\ell,x))=y(p)$, and its marker $b$ is $1$ exactly when $x=1$. Let $\delta(q,y(p))=(q',a',d)$. In every case of (T3), $M^\circ$ writes $a'$ on track $\ell$ of cell $x$. Since $(\ell,x)\mapsto\operatorname{pos}(\ell,x)$ is injective, this changes the entry for the position $p$ and no other, as the step of $M$ does; the markers do not change. It remains to check the state and the head. If $d=0$, the head moves to cell $x+1\ge2$ in the state $\mathsf{back}(q',\ell)$, and by (T2) returns to cell $x$ in the state $\mathsf{sim}(q',\ell)$; the position $p$ is unchanged. If $(\ell,d)=(\mathrm U,+1)$, then $p\ge0$, the new position $p+1$ is on track $\mathrm U$ at cell $x+1$, and the head moves there in $\mathsf{sim}(q',\mathrm U)$. If $(\ell,d)=(\mathrm L,-1)$, then $p<0$, the new position $p-1$ is on track $\mathrm L$ at cell $-(p-1)=x+1$, and the head moves there. If $(\ell,d)=(\mathrm U,-1)$ and $b=0$, then $x\ge2$, the new position $p-1\ge0$ is on track $\mathrm U$ at cell $x-1$, and the head moves there. If $b=1$, then $p=0$ and the new position $-1$ is on track $\mathrm L$ at cell $1$: the head moves to cell $2$ in $\mathsf{back}(q',\mathrm L)$ and returns to cell $1$ in $\mathsf{sim}(q',\mathrm L)$. The case $(\ell,d)=(\mathrm L,+1)$ is symmetric: if $b=0$, then $p\le-2$, the new position $p+1<0$ is at cell $x-1$ on track $\mathrm L$; if $b=1$, then $p=-1$ and the new position $0$ is on track $\mathrm U$ at cell $1$, reached by a bounce through $\mathsf{back}(q',\mathrm U)$ on cell $2$. A bounce passes through a state $\mathsf{back}(\cdot,\cdot)$ on the cell $x+1\ge2$, and (T2) writes nothing new.
+
+(c) This follows from (a) and (b) by induction on $n$.
+
+(d) If $q_n\in Q_{\mathrm h}$, then at time $t_n\le2+2n$ the machine $M^\circ$ is in the state $\mathsf{sim}(q_n,\cdot)$, which is halting; so $T(M)\le t_n$. Conversely, suppose $M^\circ$ is in a halting state $\mathsf{sim}(q,\ell)$ at time $t$. Then $t\ge1$, because $\mathsf q_0$ is not halting, and $t$ is one of the $t_n$ by (c), because the state is not a state $\mathsf{back}(\cdot,\cdot)$. So $q=q_n\in Q_{\mathrm h}$, and $M$ halts.
+
+(e) At time $0$ the head is on cell $1$ in $\mathsf q_0$, and (T1) moves it right, to cell $2$. At a time $t_n$ the head is on the cell $c(p_n)\ge1$ in a state $\mathsf{sim}(\cdot,\cdot)$; if that cell is cell $1$, its marker is $1$, and every case of (T3) with $b=1$ moves right. At any other time $t\ge1$ the head is on a cell $x\ge2$ in a state $\mathsf{back}(\cdot,\cdot)$, by (c), and (T2) moves it to the cell $x-1\ge1$. The initial state $\mathsf q_0$ is not halting by definition.
+\end{proof}
+
+By (e), the head of $M^\circ$ never reaches the wall at cell $0$, so the cellular automaton $\mathcal C_t$ of \cref{fam:sub-horn} describes $M^\circ$ up to time $T(M)$, and $\mathcal C_1(1)\in\Gamma$, as used in the proof of \cref{prop:horn}(a). By (d), $T(M)<\infty$ exactly when $M$ halts, as used in \cref{prop:horn}(b),(c) and \cref{prop:tiles}.

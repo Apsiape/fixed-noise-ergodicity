@@ -1,5 +1,6 @@
 Forgetting under noise is undecidable: ergodicity of positive-rate cellular automata at a fixed noise rate
 Copyright 2026 Seth Douglas and Nidhal Mghirbi
 
-Text, documentation and recorded outputs: CC BY 4.0. Scripts and programs: MIT or Apache 2.0, at your option.
+Text, documentation and recorded outputs: CC BY 4.0. Scripts, programs and Lean sources: MIT or Apache 2.0, at your option.
+lean/cache-tool/Requests.lean is a modified file of Mathlib's cache tool, under the Apache License 2.0 (lean/cache-tool/LICENSE).
 Cited third-party papers are not redistributed. Rights in cited work remain with their owners.

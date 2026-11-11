@@ -2,7 +2,7 @@
   "title": "Forgetting under noise is undecidable: ergodicity of positive-rate cellular automata at a fixed noise rate",
   "upload_type": "publication",
   "publication_type": "preprint",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "publication_date": "2026-11-10",
   "creators": [
     {
@@ -14,7 +14,7 @@
       "orcid": "0009-0005-6534-1118"
     }
   ],
-  "description": "Can noise make the long-run behaviour of a cellular automaton predictable? A probabilistic cellular automaton with positive rates, in which every site can take every value with positive probability at every step, is ergodic when it forgets its initial configuration. Deciding ergodicity is known to be impossible when some transitions may have probability zero. We show that positive noise does not restore decidability. There are an explicit rate ε₀ > 0 and a computable family of positive-rate cellular automata on ℤ⁸, each a deterministic local rule followed by uniform random replacement, such that for every noise rate ε in (0, ε₀] the automaton built from a Turing machine M is ergodic if and only if M halts.<br><br>The proof links a logical quantity to a physical one. A tile set that tiles the plane makes a noisy quorum rule remember. A tile set whose contradictions can always be cornered by a fixed number of local tokens, a refutation of bounded width in the sense of existential pebble games, makes the same rule forget. We build a computable family of tile sets in which every contradiction that exists can be cornered by three tokens: two hold the phase of a recognizable substitution while the third walks, and the machine runs in a layer closed under intersection. The classification holds on a ball of one fixed total-variation radius around every member. Two further consequences: no computable function bounds how long the ergodic members take to forget, and uniqueness of the translation-invariant Gibbs state of the associated space–time interactions is undecidable.",
+  "description": "Can noise make the long-run behaviour of a cellular automaton predictable? A probabilistic cellular automaton with positive rates, in which every site can take every value with positive probability at every step, is ergodic when it forgets its initial configuration. Deciding ergodicity is known to be impossible when some transitions may have probability zero. We show that positive noise does not restore decidability. There are an explicit rate ε₀ > 0 and a computable family of positive-rate cellular automata on ℤ⁸, each a deterministic local rule followed by uniform random replacement, such that for every noise rate ε in (0, ε₀] the automaton built from a Turing machine M is ergodic if and only if M halts.<br><br>The proof links a logical quantity to a physical one. A tile set that tiles the plane makes a noisy quorum rule remember. A tile set whose contradictions can always be cornered by a fixed number of local tokens, a refutation of bounded width in the sense of existential pebble games, makes the same rule forget. We build a computable family of tile sets in which every contradiction that exists can be cornered by three tokens: two hold the phase of a recognizable substitution while the third walks, and the machine runs in a layer closed under intersection. The classification holds on a ball of one fixed total-variation radius around every member, and the theorem on ℤ⁸ is proved in Lean. Further consequences: no computable function bounds how long the ergodic members take to forget; since the forgetting bound holds for all starts at once, uniqueness of the space–time Gibbs measure, with no invariance assumed, and exponential weak spatial mixing are undecidable; and stacking copies of each member gives automata that, undecidably, have either exactly one invariant measure or a continuum of extreme invariant measures.",
   "keywords": [
     "probabilistic cellular automata",
     "ergodicity",
@@ -25,10 +25,20 @@
     "existential pebble games",
     "local consistency",
     "space-time Gibbs measures",
-    "noise"
+    "noise",
+    "Gibbs measures",
+    "weak spatial mixing",
+    "Lean"
   ],
   "access_right": "open",
   "license": "cc-by-4.0",
   "language": "eng",
-  "notes": "Preprint. It has not been peer reviewed. Version 1.3.0 makes the corrections of an independent review of the whole manuscript (an omitted case in Remark 8.13(c) and a credit sentence) and adds finite tests of the forced-word lemma (verification/forced-word). Version 1.2.0 added Section 8.2: the classification holds for every probabilistic cellular automaton within a fixed total-variation radius of a member, uniformly over the family. Version 1.1.0 added Section 9 (three tokens, Z^8). Text: CC BY 4.0. Scripts: MIT or Apache 2.0."
+  "notes": "Preprint. It has not been peer reviewed. Version 1.4.0 adds Corollary 3.12 (the forgetting bound holds for all starts at once); through it, the extension of Corollary 8.8 to uniqueness among all space-time Gibbs measures with exponential weak spatial mixing, so that these properties are undecidable on the family; stacked automata with either one invariant measure or a continuum of extreme ones (Section 8.3); a remark that the corner lemma is needed only at the centre, which holds on a box of side 13; an explicit construction of the one-sided machine (Appendix B); and the Lean 4 formalization of Corollary 9.21 and its undecidability (Appendix C), with its sources, a comparator check against a challenge file that imports only Mathlib, two kernel replays and the axiom audit in lean/. Version 1.3.0 makes the corrections of an independent review of the whole manuscript (an omitted case in Remark 8.13(c) and a credit sentence) and adds finite tests of the forced-word lemma (verification/forced-word). Version 1.2.0 added Section 8.2: the classification holds for every probabilistic cellular automaton within a fixed total-variation radius of a member, uniformly over the family. Version 1.1.0 added Section 9 (three tokens, Z^8). Text: CC BY 4.0. Scripts and Lean sources: MIT or Apache 2.0.",
+  "related_identifiers": [
+    {
+      "identifier": "https://finite.works/papers/fixed-noise-ergodicity/",
+      "relation": "isDescribedBy",
+      "scheme": "url"
+    }
+  ]
 }

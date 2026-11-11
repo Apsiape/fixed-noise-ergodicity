@@ -1,0 +1,55 @@
+\section{A formal proof of Theorem A on \texorpdfstring{$\Z^8$}{Z8}}\label{app:lean}
+
+\Cref{cor:eight}, Theorem~A on $\Z^8$, is proved in the proof assistant Lean~4 \cite{Lean4} with its mathematical library Mathlib \cite{Mathlib20}, together with the statement that ergodicity in the family is undecidable. This appendix says what is stated, which choices a reader must know to compare the formal statement with the printed one, and what is proved.
+
+\paragraph{The statement.} A statement file defines, with no proofs of substance, every object that occurs in \cref{cor:eight}: Wang tiles and Wang sets, legal $3\times3$ blocks, live symbols and compatibility (\cref{set:def-live}), the checker (\cref{set:def-checker}), the quorum rule (\cref{set:def-quorum}), the replacement noise and the process (\cref{set:def-noise}), invariant measures, weak convergence and ergodicity (\cref{set:def-ergodic}), Turing machines and halting (\cref{fam:sub-horn}), and the rate $\eps_0=490000^{-99}$. Each definition carries a comment that names the definition of this paper it mirrors. The file then states \cref{cor:eight} as one proposition: there is a computable map $M\mapsto R_M$ from Turing machines to finite Wang sets such that, for every real $\eps$ with $0<\eps\le\eps_0$ and every machine $M$, the noisy quorum rule $F^{[6]}_{R_M}$ on $\Z^2\times\Z^6$ with uniform replacement at rate $\eps$ is a positive-rate probabilistic cellular automaton, and it is ergodic if and only if $M$ halts. The statement file was written before the proof. Its only later change that is not a comment turned the stated theorem into the definition of this proposition, with the text of the statement unchanged; the proof is a theorem about the proposition, in a file that imports the whole development.
+
+\paragraph{Choices in the statement.} The formal statement renders the printed one with the following choices.
+\begin{itemize}
+\item The family is quantified existentially, as in the statement of Theorem~A in the introduction. The development also proves the classification, and the undecidability below, for an encoded realization of the construction of \cref{def:family}, for machines encoded as in the third item.
+\item A Wang set is computed as a finite list of tiles whose colours are natural numbers. Computability of $M\mapsto F^{[6]}_{R_M}$ is rendered as computability of $M\mapsto R_M$; the local rule is then an explicit finite construction from $R_M$.
+\item A Turing machine is encoded finitely: its states and tape symbols are natural numbers, the initial state and the blank are $0$, the transition function is a finite list, and a pair without an entry is a step that changes nothing. A machine halts if, started on a blank two-sided tape, it enters a halting state. For a machine encoded in this way, the finite state set and the finite tape alphabet from which \cref{fam:sub-horn} and \cref{app:machine} build $M^\circ$, and with it the payload of \cref{def:family}, are both the set of labels below one plus the largest target-state or written-symbol label in the transition table, the maximum being $0$ for an empty table. Labels outside this bound, which the run from the blank tape never reaches, are omitted, and unused labels below it are included. This convention preserves the run from the blank tape and its halting.
+\item ``Positive-rate probabilistic cellular automaton'' is rendered by four clauses: the rule commutes with the translations of $\Z^8$; it is local, with neighbourhood $\Lambda\times\{c_0,\dots,c_6\}$; given $X_0=x$, the values $X_1(v)$ are independent with the laws $(1-\eps)\delta_{F(x)(v)}+\eps\cdot\text{uniform}$; and every symbol has positive probability under each of these laws.
+\item The process is defined through a realisation of the noise, as in \cref{set:def-noise}: the law of $X_t$ is the image of the product of the initial law and the law of the noise under the map that runs the process for $t$ steps. Ergodicity is: there is exactly one invariant probability measure $\pi$, and for every initial probability measure $\mu$ the law of $X_t$ converges to $\pi$ against every bounded continuous function.
+\item ``Undecidable'' is Mathlib's notion: for each fixed $\eps\in(0,\eps_0]$, the property ``$F^{[6]}_{R_M}$ is ergodic'' is not a computable predicate of $M$, with machines coded as above. The development proves, in addition, that the machines for which the rule is not ergodic do not form a recursively enumerable set.
+\item Smaller encodings are recorded in the statement file: $\Z^8$ is written $\Z^2\times\Z^6$, the provider indices are $\{0,\dots,6\}$ written as an option type, the checker bit is a Boolean, and the noise of time $t+1$ has index $t$.
+\end{itemize}
+
+\paragraph{What is proved.} The proof follows the paper. It formalizes every step that \cref{cor:eight} uses: \cref{sec:setting}, the forgetting and memory theorems of \cref{sec:forgetting,sec:memory} (Theorem~B in the generality of the introduction), the scaffold of \cref{sec:scaffold} with the tables of \cref{app:tables}, the family of \cref{sec:family}, for machines encoded as above, with the machine $M^\circ$ of \cref{app:machine}, the items of \cref{sec:refutation} used in \cref{sec:three}, \cref{sec:three}, and the computability of $M\mapsto R_M$. The corner lemma enters in the form of the remark after \cref{thr:corner-plane}, $\mathcal K(0)=\emptyset$ on $V_6$, proved by a certificate that the Lean kernel checks by evaluation, without compiled code; the form on $V_{16}$ follows. The undecidability is derived from Mathlib's theorem that the halting problem for its partial recursive codes is undecidable, through a compiler from those codes to the machines above. The compiler is built from Mathlib's simulation of partial recursive functions by Turing machines, and its computability is proved. The proof contains no unproved step (\texttt{sorry}). An audit of the axioms of the final theorems shows that they use only the three standard axioms of Lean and Mathlib, \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}, and no external theorem enters as a hypothesis. The $104$ base tiles of \cref{scf:tab-alphabet} were also compared once with the transcription \cite{LeanWang}, and they agree.
+
+The formalization found one place where the paper was less detailed than a formal proof needs: the ``standard simulation'' $M^\circ$ of \cref{fam:sub-horn}, now given in \cref{app:machine}. It found no false step. Theorem~C in the general form of \cref{thm:width}, \cref{thm:main}, the other corollaries of \cref{sec:proofs} and \cref{fgt:coalesce} are proved in the text only.
+
+\paragraph{Toolchain and release.} The proof was developed with Lean v4.30.0 and a Mathlib snapshot of May 2026. For release it was ported to Lean~4.35.0 and Mathlib, with the commits
+\begin{flushleft}\small\leftskip1.5em
+Lean: \nolinkurl{eb6cafb7290e8bd5f2937522d8d804f58f02bafc},\\
+Mathlib: \nolinkurl{56a005855ea17e0b0958f73ec801ae140b0a1679}.
+\end{flushleft}
+The port changed proof text in $28$ of the $1084$ theorem and lemma blocks of the source, spread over $14$ files, and one import, as the newer Mathlib required. It changed no statement and no definition, and the statement file is byte for byte that of the development. The sources, the pins of every dependency and the records of the checks below are in the directory \texttt{lean/} of release v1.4.0 of the repository,
+\begin{flushleft}\small\leftskip1.5em
+\url{https://github.com/Apsiape/fixed-noise-ergodicity/tree/v1.4.0/lean},
+\end{flushleft}
+whose \texttt{README.md} says how to reproduce them.
+\begin{itemize}
+\item \emph{The comparator.} A challenge file imports only Mathlib. It contains the statement file verbatim, with one more Mathlib import and two commands that set the module name under which its definitions are recorded, so that their internal names agree with those of the development, which it does not import. It then states two theorems and leaves their proofs open: \cref{cor:eight}, as the proposition of the statement file, and \cref{cor:eight} together with its undecidability, in the vocabulary of the statement file and of Mathlib: for every $\eps\in(0,\eps_0]$, ergodicity of the automata of the family is not a computable predicate of $M$, and non-ergodicity is not recursively enumerable. The comparator was run on Linux inside a bubblewrap sandbox, with the command
+\begin{flushleft}\small\leftskip1.5em
+\texttt{lake comparator -{}-config comparator.json}.
+\end{flushleft}
+It made its own exports of the challenge and of a solution file that imports the proofs, checked that the two proved theorems have exactly the statements of the challenge, with the same definitions, checked that their proofs use no axiom other than \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}, and replayed the proofs in Lean's kernel. It accepted both theorems.
+\item \emph{Two kernel checkers.} An export of the solution, of $298{,}405{,}463$ bytes with SHA-256
+\begin{flushleft}\small\leftskip1.5em
+\nolinkurl{5354f2678439dd21dfd1ab9fe7f74993ed0fc449a2d1e0993c9f5cba973df5c1},
+\end{flushleft}
+contains the two theorems of the challenge, the theorems that for the encoded family $R_M$ of the development ergodicity is not a computable predicate and non-ergodicity is not recursively enumerable, the theorem that halting of encoded machines is not a computable predicate, and every declaration on which they depend, those of Mathlib included. Two kernel checkers re-checked every declaration of this export and accepted it: \texttt{leanchecker} of Lean~4.35.0, which runs Lean's own kernel on its own, and \texttt{nanoda}, a separate implementation of Lean's type checker, set to reject any axiom other than the three above.
+\item \emph{Axioms and admissions.} The axiom audit of the build prints the axioms of $437$ named theorems, among them every final one, and checks the axioms of all $4609$ declarations of the development, private and generated ones included. Only \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound} occur. For the final theorems it prints
+\begingroup\scriptsize
+\begin{verbatim}
+'FNE.cor_eight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FNE.cor_eight_undecidable_statement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FNE.cor_eight_undecidable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FNE.nonergodic_not_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FNE.halts_not_computable' depends on axioms: [propext, Classical.choice, Quot.sound]
+\end{verbatim}
+\endgroup
+\noindent Apart from the two open proofs of the challenge, no proof uses \texttt{sorry}, and no file declares an axiom or uses \texttt{native\_decide}, \texttt{implemented\_by} or \texttt{extern}.
+\item \emph{Dependencies.} The $8624$ Lean sources of Mathlib's library agree byte for byte with the official commit above. The build reused prebuilt Mathlib objects; the two kernel checkers re-check every declaration of Mathlib that the proofs use.
+\end{itemize}

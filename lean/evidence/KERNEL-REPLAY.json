@@ -1,0 +1,132 @@
+{
+  "export_sha256": "5354f2678439dd21dfd1ab9fe7f74993ed0fc449a2d1e0993c9f5cba973df5c1",
+  "export_bytes": 298405463,
+  "roots": [
+    "FNE.cor_eight",
+    "FNE.cor_eight_undecidable_statement",
+    "FNE.cor_eight_undecidable",
+    "FNE.nonergodic_not_re",
+    "FNE.halts_not_computable"
+  ],
+  "kernel_replays": {
+    "leanchecker": {
+      "command": [
+        "leanchecker.exe",
+        "--silent",
+        "--from-export",
+        "Solution.ndjson"
+      ],
+      "binary_sha256": "9ef6baeb28d5e28897d5ed6dddd60ff81e511d97374013ece435dff38e9e0137",
+      "exit": 0,
+      "seconds": 61.244,
+      "peak_job_commit_bytes": 608305152,
+      "job_cap_bytes": 9900000000,
+      "free_before_bytes": 11863760896,
+      "threads": 1,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binary": "leanchecker.exe of the Lean 4.35.0 Windows x86-64 toolchain"
+    },
+    "nanoda": {
+      "command": [
+        "nanoda-stack128.exe",
+        "nanoda.json"
+      ],
+      "binary_sha256": "82c9dcf4f8df8ef2b9849bfc8198d0edd01e910913bd221f0c960c3332ab5e51",
+      "exit": 0,
+      "seconds": 40.83,
+      "peak_job_commit_bytes": 678367232,
+      "job_cap_bytes": 9900000000,
+      "free_before_bytes": 12112953344,
+      "threads": 1,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binary": "nanoda-stack128.exe: nanoda for Windows x86-64 with a 128 MiB stack reserve"
+    }
+  },
+  "nanoda_policy": {
+    "num_threads": 1,
+    "nat_extension": true,
+    "string_extension": true,
+    "permitted_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "unpermitted_axiom_hard_error": true,
+    "stack_reserve_bytes": 134217728
+  },
+  "export": {
+    "exit": 0,
+    "seconds": 12.097,
+    "peak_tree_rss_bytes": 3608752128,
+    "peak_tree_vms_bytes": 8565641216,
+    "stop_rss_bytes": 9000000000,
+    "memory_stop": false,
+    "command": [
+      "leanexport",
+      "Solution",
+      "--",
+      "Quot",
+      "Quot.mk",
+      "Quot.lift",
+      "Quot.ind",
+      "FNE.cor_eight",
+      "FNE.cor_eight_undecidable_statement",
+      "FNE.cor_eight_undecidable",
+      "FNE.nonergodic_not_re",
+      "FNE.halts_not_computable",
+      "propext",
+      "Quot.sound",
+      "Classical.choice",
+      "Nat.add",
+      "Nat.sub",
+      "Nat.mul",
+      "Nat.pow",
+      "Nat.gcd",
+      "Nat.div",
+      "Nat.mod",
+      "Nat.beq",
+      "Nat.ble",
+      "Nat.land",
+      "Nat.lor",
+      "Nat.xor",
+      "Nat.shiftLeft",
+      "Nat.shiftRight",
+      "String.ofList",
+      "Char.ofNat",
+      "List",
+      "eagerReduce",
+      "Nat",
+      "String",
+      "String.mk",
+      "Char",
+      "optParam",
+      "autoParam",
+      "semiOutParam",
+      "outParam"
+    ],
+    "roots": [
+      "FNE.cor_eight",
+      "FNE.cor_eight_undecidable_statement",
+      "FNE.cor_eight_undecidable",
+      "FNE.nonergodic_not_re",
+      "FNE.halts_not_computable"
+    ],
+    "sha256": "5354f2678439dd21dfd1ab9fe7f74993ed0fc449a2d1e0993c9f5cba973df5c1",
+    "bytes": 298405463,
+    "binary_sha256": "f6a6483d518a11b323c28b9bac176d2220df0e9fc3230833815db9586669c074",
+    "platform": "Linux x86-64, Lean 4.35.0 toolchain"
+  },
+  "nanoda_config": {
+    "use_stdin": false,
+    "export_file_path": "Solution.ndjson",
+    "num_threads": 1,
+    "nat_extension": true,
+    "string_extension": true,
+    "permitted_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "unpermitted_axiom_hard_error": true
+  }
+}
