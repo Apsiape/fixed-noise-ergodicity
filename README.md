@@ -1,6 +1,6 @@
 # Forgetting under noise is undecidable: ergodicity of positive-rate cellular automata at a fixed noise rate
 
-Seth Douglas and Nidhal Mghirbi. Version 1.4.0, November 2026. The version 1.4.0 DOI is recorded in the commit that follows the release. Version 1.3.0: [10.5281/zenodo.24115709](https://doi.org/10.5281/zenodo.24115709). Version 1.2.0: [10.5281/zenodo.24105227](https://doi.org/10.5281/zenodo.24105227). Version 1.1.0: [10.5281/zenodo.24104252](https://doi.org/10.5281/zenodo.24104252). Version 1.0.0: [10.5281/zenodo.24102672](https://doi.org/10.5281/zenodo.24102672). Concept DOI (all versions): [10.5281/zenodo.24102671](https://doi.org/10.5281/zenodo.24102671).
+Seth Douglas and Nidhal Mghirbi. Version 1.4.0, November 2026. DOI: [10.5281/zenodo.24126025](https://doi.org/10.5281/zenodo.24126025). Version 1.3.0: [10.5281/zenodo.24115709](https://doi.org/10.5281/zenodo.24115709). Version 1.2.0: [10.5281/zenodo.24105227](https://doi.org/10.5281/zenodo.24105227). Version 1.1.0: [10.5281/zenodo.24104252](https://doi.org/10.5281/zenodo.24104252). Version 1.0.0: [10.5281/zenodo.24102672](https://doi.org/10.5281/zenodo.24102672). Concept DOI (all versions): [10.5281/zenodo.24102671](https://doi.org/10.5281/zenodo.24102671).
 
 **This is a preprint. It has not been peer reviewed.**
 
