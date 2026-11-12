@@ -8,7 +8,7 @@ Let $B$ be the constant of \cref{thm:parser}, let $\ell=\binom{276}{2}+1=37951$,
 
 The proof is by contradiction. Fix a machine $M$ that halts, and let $T$ be its halting time as in \cref{prop:horn}. Suppose that $R_M$ is not $j$-token refutable. By \cref{thm:game}(iii) there is an $E_j$ family $H$ for $R_M$. From $H$ we build, in order: a family with one common quarter phase (\cref{ref:sec-phase}); a family on the index grid with the same $j$ (\cref{ref:sec-index}); a pin map $p$ on at most $\ell+3$ sites under which one whole substitution word is forced site by site (\cref{ref:sec-pins}); the exact roles on one initialized carrier grid (\cref{ref:sec-roles}); and, by a meet argument, a payload assignment on that grid that compresses to a legal $T_M$-pattern which \cref{prop:horn} forbids (\cref{ref:sec-meet,ref:sec-compress}). \Cref{ref:sec-budget} checks that $j$ sites suffice at every step. The constants $B$, $\ell$ and $j$ do not depend on $M$, on the depth $n$ chosen below, or on $T$.
 
-\subsection{What we use from Sections 2, 5 and 6}\label{ref:sec-inputs}
+\subsection{Inputs from the setting, scaffold and family}\label{ref:sec-inputs}
 
 Write $\mathbf e_1=(1,0)$ and $\mathbf e_2=(0,1)$ in $\Z^2$. Tiles $\vartheta,\vartheta'$ of a Wang set \emph{match horizontally} if $\vartheta_{\mathrm E}=\vartheta'_{\mathrm W}$, and \emph{match vertically} if $\vartheta_{\mathrm N}=\vartheta'_{\mathrm S}$. Integer intervals are written $[a,b]=\{a,a+1,\dots,b\}$ and $[0,m)=\{0,\dots,m-1\}$.
 
@@ -195,3 +195,5 @@ Let $j=10(B+\ell+100)$ be the integer of \cref{thm:halting}. The map $M\mapsto R
 \begin{proof}[Proof of \cref{thm:width}]
 The map $M\mapsto R_M$ is total computable (\cref{def:family}). If $M$ does not halt, $R_M$ tiles (\cref{prop:tiles}). If $M$ halts, $R_M$ is $j$-token refutable by \cref{thm:halting}, so it does not tile by \cref{thm:game}(iv). Hence $R_M$ tiles if and only if $M$ does not halt, and every halting member is $j$-token refutable for the one integer $j=10(B+\ell+100)$.
 \end{proof}
+
+

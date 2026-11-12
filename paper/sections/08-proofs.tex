@@ -1,4 +1,4 @@
-\section{Proof of the main theorem and corollaries}\label{sec:proofs}
+\section{The machine-family theorem and its corollaries}\label{sec:proofs}
 
 Throughout this section $j=10(B+\ell+100)$ is the integer of \cref{thm:halting}, with $\ell=\binom{276}{2}+1=37951$, and
 \[
@@ -14,7 +14,7 @@ Let $0<\eps\le\eps_0$. Then $\beta=2D_0^2\eps^{1/a}\le\frac12$, the hypothesis o
 The map $\eps\mapsto\beta$ is increasing, and at $\eps_0$ it equals $2D_0^2(4D_0^2)^{-1}=\frac12$. \Cref{thm:memory} asks for $0<\eps\le(4D_0^2)^{-a}=\eps_0$. Since $q\ge3$, $D_0\ge150$ and $a\ge19$, we get $\eps_0\le(90000)^{-19}<10^{-9}$.
 \end{proof}
 
-\begin{theorem}[Theorem A]\label{thm:main}
+\begin{theorem}[Machine-family theorem]\label{thm:main}
 For every $\eps\in(0,\eps_0]$ and every Turing machine $M$, the noisy quorum rule $F^{[k]}_{R_M}$ on $\Z^{2+k}$ with uniform replacement at rate $\eps$ is a positive-rate probabilistic cellular automaton, and it is ergodic if and only if $M$ halts. The map $M\mapsto F^{[k]}_{R_M}$ is total computable.
 \end{theorem}
 
@@ -59,14 +59,14 @@ By \cref{pf:threshold} the hypotheses of \cref{thm:forgetting,thm:memory} used i
 The two cases are far apart, so the undecidability does not come from members near a boundary. At each $\eps\in(0,\eps_0]$, every halting member forgets exponentially fast, $\delta^M_O(t)\le4|O|\eps^{-\tau/a}2^{-t}$ by \eqref{pf:eq-forget}, and every other member has memory with amplitude $1-2.02\eps$ by \eqref{pf:eq-memory}; so no algorithm separates the members that forget exponentially fast from those that have memory with amplitude $1-2.02\eps$, even when it is promised that the given member is of one of these two kinds.
 
 \begin{corollary}[Every Wang set at once]\label{cor:tiling}
-There is a total computable map $R\mapsto G_R$ from finite Wang sets to positive-rate probabilistic cellular automata on $\Z^{2+k}$, each with uniform replacement noise, such that for every $\eps\in(0,\eps_0]$ and every finite Wang set $R$, the automaton $G_R$ at rate $\eps$ is ergodic if and only if $R$ does not tile the plane.
+There is a total computable map $R\mapsto H_R$ from finite Wang sets to positive-rate probabilistic cellular automata on $\Z^{2+k}$, each with uniform replacement noise, such that for every $\eps\in(0,\eps_0]$ and every finite Wang set $R$, the automaton $H_R$ at rate $\eps$ is ergodic if and only if $R$ does not tile the plane.
 \end{corollary}
 
 \begin{proof}
-Let $M_R$ be the machine that, for $n=1,2,\dots$ in turn, checks whether $R$ has a legal pattern on the $n\times n$ square, and halts at the first $n$ for which it has none. The map $R\mapsto M_R$ is computable, and each check is finite. If $R$ tiles, restrictions of a tiling give legal squares of every size, so $M_R$ does not halt. If $M_R$ does not halt, $R$ has legal squares of every size; by compactness of $R^{\Z^2}$ (König's lemma on the finitely branching tree of legal centred squares) it tiles. So $M_R$ halts if and only if $R$ does not tile. Put $G_R=F^{[k]}_{R_{M_R}}$ with uniform replacement noise, and apply \cref{thm:main} to $M_R$.
+Let $M_R$ be the machine that, for $n=1,2,\dots$ in turn, checks whether $R$ has a legal pattern on the $n\times n$ square, and halts at the first $n$ for which it has none. The map $R\mapsto M_R$ is computable, and each check is finite. If $R$ tiles, restrictions of a tiling give legal squares of every size, so $M_R$ does not halt. If $M_R$ does not halt, $R$ has legal squares of every size; by compactness of $R^{\Z^2}$ (König's lemma on the finitely branching tree of legal centred squares) it tiles. So $M_R$ halts if and only if $R$ does not tile. Put $H_R=F^{[k]}_{R_{M_R}}$ with uniform replacement noise, and apply \cref{thm:main} to $M_R$.
 \end{proof}
 
-The automaton $G_R$ is built from the recoded set $R_{M_R}$, not from $R$ itself. So \cref{cor:tiling} gives one fixed dimension for every Wang set, whatever its token width, through the family of \cref{thm:width}; it says nothing new about the quorum rule of $R$ itself.
+The automaton $H_R$ is built from the recoded set $R_{M_R}$, not from $R$ itself. So \cref{cor:tiling} gives one fixed dimension for every Wang set, whatever its token width, through the family of \cref{thm:width}; this recoded construction by itself does not classify the thin-provider quorum rule of $R$. In contrast, \cref{nw:classification} now classifies the raw clustered rule $G_R$ directly, without this recoding.
 
 The next corollary concerns other noise. For a probability law $\nu$ on $\A_R$, \emph{$\nu$-replacement noise} at rate $\eps$ is defined as in \cref{set:def-noise}, with the values $\zeta_t(v)$ independent with law $\nu$ in place of the uniform law. Uniform replacement is the case where $\nu$ is uniform. \Cref{set:feller,set:forget-ergodic,set:memory-nonergodic} and their proofs hold verbatim for $\nu$-replacement noise: they use only the mixture formula and the fact that $X_1|_O$ depends on finitely many coordinates of $X_0$ and on independent noise.
 
@@ -168,7 +168,7 @@ For a PCA with a strictly positive rational table, ergodicity is a $\Pi^0_2$ pro
 
 \subsection{Perturbed kernels}\label{pf:sec-robust}
 
-Theorem~A fixes one noise, uniform replacement at rate $\eps$. The dichotomy does
+The machine-family theorem fixes one noise, uniform replacement at rate $\eps$. The dichotomy does
 not depend on that choice. It holds for every probabilistic cellular automaton whose
 table lies within a fixed total-variation distance of the noiseless rule, with a
 radius that depends on $k$ only. The proof reuses the proofs of
@@ -453,7 +453,7 @@ other, so they share a label, and a finite table decides the labels.
 \item \emph{Positive rates.} The ball in (ii) contains kernels with zero entries,
 among them the noiseless rule $\delta_{f_M}$. Its positive-rate members, among them
 $p_{M,\eps}$, are positive-rate probabilistic cellular automata in the sense of
-Theorem~A. As in \cref{pf:scope}, their least transition probability is not bounded
+the machine-family theorem. As in \cref{pf:scope}, their least transition probability is not bounded
 below over the family.
 \item \emph{The joint bound is used.} What the proof of (i) uses is a
 $\gamma$-bounded common-map representation. For a kernel whose sites update
@@ -502,7 +502,7 @@ In both settings, if $M$ halts, \cite[Corollary~13.7]{DM26} gives exactly one Gi
 
 \subsection{Stacked automata: one phase or a continuum}\label{pf:sec-stack}
 
-Theorem~A separates automata with one invariant measure from automata with at least two. Running the members on parallel copies, each copy reading the next, widens the gap: the nonhalting members then have a continuum of extreme invariant measures. Throughout this subsection $k=6$, $a=99$ and $\eps_0=490000^{-99}$, as in \cref{cor:eight}, and $\eps\in(0,\eps_0]$. For a machine $M$ we write $\A=\A_{R_M}$, $K_M$ for the automaton $F^{[6]}_{R_M}$ on $\Z^8$ with uniform replacement at rate $\eps$, $f_M$ for its local rule on $\mathcal N=\Lambda\times\{c_0,\dots,c_6\}$, and $p_M$ for its table.
+The machine-family theorem separates automata with one invariant measure from automata with at least two. Running the members on parallel copies, each copy reading the next, widens the gap: the nonhalting members then have a continuum of extreme invariant measures. Throughout this subsection $k=6$, $a=99$ and $\eps_0=490000^{-99}$, as in \cref{cor:eight}, and $\eps\in(0,\eps_0]$. For a machine $M$ we write $\A=\A_{R_M}$, $K_M$ for the automaton $F^{[6]}_{R_M}$ on $\Z^8$ with uniform replacement at rate $\eps$, $f_M$ for its local rule on $\mathcal N=\Lambda\times\{c_0,\dots,c_6\}$, and $p_M$ for its table.
 
 \begin{definition}[The stack]\label{pf:def-stack}
 The \emph{stack} $G_M$ is the probabilistic cellular automaton on $\Z^8\times\Z=\Z^9$, with alphabet $\A$, in which slice $h\in\Z$ at time $t+1$ is computed from slice $h+1$ at time $t$ by the rule of $K_M$. For $x\in\A^{\Z^9}$ and $(v,h)\in\Z^9$ let $x_{(v,h)}\in\A^{\mathcal N}$ be the map $w\mapsto x(v+w,h+1)$. With independent variables $\eta_t(v,h)$ and $\zeta_t(v,h)$ as in \cref{set:def-noise}, the run from $x$ is $X_0=x$ and, for $t\ge1$,
@@ -591,3 +591,5 @@ where $\mathsf A$ and $\mathsf B$ are the measures of the previous paragraph wit
 \end{proof}
 
 So a nonhalting member, stacked, has an arc of invariant measures, each extreme among all invariant measures and mixing in time, while a halting member, stacked, has one invariant measure, reached exponentially fast. By (ii)(e), the mixing in (d) does not extend to the translations inside the slices. The construction is a standard device: along each set $h+t=j$ the stack runs an independent copy of $K_M$, so mixing in time comes from independence, and products of a two-point mixture give the arc. The Gibbs measures $\bar\mu_p$, $0<p<1$, are extreme among the translation-invariant Gibbs measures but not among all Gibbs measures, because the interaction is a sum of decoupled layers. That an equilibrium state can be ergodic, and even mixing, without being extreme among all Gibbs measures is classical; Slawny \cite{Sla81} constructs Gibbs states that are mixing but not extreme (we have read only the abstract of \cite{Sla81}).
+
+

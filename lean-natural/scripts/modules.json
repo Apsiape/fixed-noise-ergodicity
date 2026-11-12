@@ -1,0 +1,18 @@
+[
+  "ForgettingNaturalRule",
+  "ForgettingNaturalRule.Audit",
+  "ForgettingNaturalRule.Coherence.Rel",
+  "ForgettingNaturalRule.Coherence.Tiling",
+  "ForgettingNaturalRule.Constants",
+  "ForgettingNaturalRule.Forget.Paths",
+  "ForgettingNaturalRule.Forget.Unique",
+  "ForgettingNaturalRule.Main",
+  "ForgettingNaturalRule.Memory.Branch",
+  "ForgettingNaturalRule.Memory.Cover",
+  "ForgettingNaturalRule.Memory.Invariant",
+  "ForgettingNaturalRule.PCA.Average",
+  "ForgettingNaturalRule.Reduction",
+  "ForgettingNaturalRule.Rule.Bridge",
+  "ForgettingNaturalRule.Rule.Local",
+  "ForgettingNaturalRule.Statements"
+]

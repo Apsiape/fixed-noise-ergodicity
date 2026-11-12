@@ -2,7 +2,7 @@
 \section{Three tokens and dimension eight}\label{sec:three}
 % =====================================================================
 
-This section proves that three tokens refute every halting member of the family of \cref{def:family}. Theorem~A then holds on $\Z^8$, with an explicit rate (\cref{cor:eight}).
+This section proves that three tokens refute every halting member of the family of \cref{def:family}. The machine-family theorem then holds on $\Z^8$, with an explicit rate (\cref{cor:eight}).
 
 \begin{theorem}[Three tokens]\label{thm:three}
 Let $M\mapsto R_M$ be the family of \cref{def:family}. If the machine $M$ halts, then $R_M$ is $3$-token refutable.
@@ -358,15 +358,17 @@ Every state used above has three tokens, at the following sites.
 
 A fourth token is not needed, for two reasons. First, a step between neighbouring sites is a single move of the walker. The move rule compares the old and the new symbol of that one token, through the overlap of their blocks (\cref{thr:move}). This makes the lists arc consistent (\cref{thr:lists}(c)), and it supplies the pairs of $Q_{vw}$ in \cref{thr:meet}. In the pebble families of \cref{sec:refutation}, the same step keeps both endpoints together with the pins. Second, the scale is carried by the two pins alone. A corner pair of order $m$ is a property of two letters and of their displacement, so when \cref{thr:promote} drops a pin, nothing that the next step uses is lost.
 
+\begin{samepage}
 \subsection{Dimension eight}\label{thr:sec-eight}
 
-\begin{corollary}[Theorem A on $\Z^8$]\label{cor:eight}
+\begin{corollary}[The machine-family theorem on $\Z^8$]\label{cor:eight}
 Put $j=3$, $k=\max(2,2j)=6$, $q=k+1=7$, $a=2q^2+1=99$, $D_0=50q=350$ and
 \[
 \eps_0=(4D_0^2)^{-a}=(490000)^{-99}.
 \]
 For every $\eps\in(0,\eps_0]$ and every Turing machine $M$, the noisy quorum rule $F^{[6]}_{R_M}$ on $\Z^{8}$, with uniform replacement at rate $\eps$, is a positive-rate probabilistic cellular automaton, and it is ergodic if and only if $M$ halts. The map $M\mapsto F^{[6]}_{R_M}$ is total computable.
 \end{corollary}
+\end{samepage}
 
 \begin{proof}
 The arithmetic is $2\cdot7^2+1=99$, $50\cdot7=350$, $350^2=122500$ and $4\cdot122500=490000$; the dimension is $2+k=8$. The process is a positive-rate probabilistic cellular automaton by \cref{set:def-noise}, and $M\mapsto F^{[6]}_{R_M}$ is total computable as in the proof of \cref{thm:main}. Let $\eps\in(0,\eps_0]$. Then $0<\eps<1$ and, as in \cref{fgt:rem-constants}, $\beta=2D_0^2\eps^{1/a}\le2D_0^2(4D_0^2)^{-1}=\frac12$.
@@ -383,3 +385,6 @@ Suppose that $M$ does not halt. By \cref{prop:tiles}, $R_M$ tiles. The hypothese
 \begin{remark}\label{thr:corollaries}
 The proof of \cref{pf:threshold} uses only $q\ge3$, $D_0\ge150$ and $a\ge19$, which hold for $q=7$, $D_0=350$ and $a=99$. So the proofs of \cref{cor:rates,cor:tiling,cor:laws,cor:mixing,cor:gibbs} apply with $k=6$ and $\eps_0=(490000)^{-99}$, with \cref{thm:three} in place of \cref{thm:halting} and \cref{cor:eight} in place of \cref{thm:main}. In \cref{cor:mixing}, $\tau(R_M)$ is then the refutation time for $3$ tokens, and in \cref{cor:gibbs} the space--time lattice is $\Z^9$.
 \end{remark}
+
+
+

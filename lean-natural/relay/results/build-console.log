@@ -1,0 +1,210 @@
+BUILD FixedNoiseErgodicity.Statements core free_GiB 12.37
+RESULT FixedNoiseErgodicity.Statements 0 19.097 s; warnings 0 ; peak 3.145 GiB
+BUILD UndecidablePhaseDiagram.Statements core free_GiB 11.27
+RESULT UndecidablePhaseDiagram.Statements 0 4.722 s; warnings 0 ; peak 3.145 GiB
+BUILD UncomputableNoiseDiagram.Statements core free_GiB 12.47
+RESULT UncomputableNoiseDiagram.Statements 0 1.716 s; warnings 0 ; peak 3.147 GiB
+BUILD ForgettingNaturalRule.Statements pkg free_GiB 12.91
+RESULT ForgettingNaturalRule.Statements 0 1.867 s; warnings 0 ; peak 3.154 GiB
+BUILD UncomputableNoiseDiagram.Parameters.Geometry core free_GiB 13.55
+RESULT UncomputableNoiseDiagram.Parameters.Geometry 0 2.369 s; warnings 0 ; peak 3.154 GiB
+BUILD ForgettingNaturalRule.Constants pkg free_GiB 13.44
+RESULT ForgettingNaturalRule.Constants 0 1.867 s; warnings 0 ; peak 3.162 GiB
+BUILD UncomputableNoiseDiagram.Rule.Checker core free_GiB 13.43
+RESULT UncomputableNoiseDiagram.Rule.Checker 0 2.268 s; warnings 0 ; peak 3.192 GiB
+BUILD UncomputableNoiseDiagram.Rule.Proposal core free_GiB 13.28
+RESULT UncomputableNoiseDiagram.Rule.Proposal 0 7.376 s; warnings 0 ; peak 3.195 GiB
+BUILD UncomputableNoiseDiagram.Rule.CA core free_GiB 13.18
+RESULT UncomputableNoiseDiagram.Rule.CA 0 1.767 s; warnings 0 ; peak 3.195 GiB
+BUILD FixedNoiseErgodicity.Basic core free_GiB 13.16
+RESULT FixedNoiseErgodicity.Basic 0 1.717 s; warnings 3 ; peak 3.195 GiB
+BUILD FixedNoiseErgodicity.Section2.Process core free_GiB 13.18
+RESULT FixedNoiseErgodicity.Section2.Process 0 12.333 s; warnings 11 ; peak 3.195 GiB
+BUILD UncomputableNoiseDiagram.PCA.Process core free_GiB 13.72
+RESULT UncomputableNoiseDiagram.PCA.Process 0 2.067 s; warnings 0 ; peak 3.195 GiB
+BUILD UncomputableNoiseDiagram.Rule.Noise core free_GiB 13.71
+RESULT UncomputableNoiseDiagram.Rule.Noise 0 1.716 s; warnings 0 ; peak 3.195 GiB
+BUILD UncomputableNoiseDiagram.PCA.Markov core free_GiB 13.71
+RESULT UncomputableNoiseDiagram.PCA.Markov 0 2.367 s; warnings 0 ; peak 3.195 GiB
+BUILD UncomputableNoiseDiagram.PCA.Cylinder core free_GiB 13.72
+RESULT UncomputableNoiseDiagram.PCA.Cylinder 0 2.067 s; warnings 0 ; peak 3.195 GiB
+BUILD UncomputableNoiseDiagram.PCA.Feller core free_GiB 13.51
+RESULT UncomputableNoiseDiagram.PCA.Feller 0 3.219 s; warnings 0 ; peak 3.212 GiB
+BUILD UncomputableNoiseDiagram.PCA.Translation core free_GiB 13.41
+RESULT UncomputableNoiseDiagram.PCA.Translation 0 1.968 s; warnings 0 ; peak 3.212 GiB
+BUILD UncomputableNoiseDiagram.PCA.ForgetErgodic core free_GiB 13.29
+RESULT UncomputableNoiseDiagram.PCA.ForgetErgodic 0 2.318 s; warnings 0 ; peak 3.212 GiB
+BUILD UncomputableNoiseDiagram.PCA.Pullback core free_GiB 13.31
+RESULT UncomputableNoiseDiagram.PCA.Pullback 0 2.118 s; warnings 0 ; peak 3.212 GiB
+BUILD UncomputableNoiseDiagram.Contour.Coherence core free_GiB 13.2
+RESULT UncomputableNoiseDiagram.Contour.Coherence 0 3.971 s; warnings 0 ; peak 3.252 GiB
+BUILD ForgettingNaturalRule.Rule.Local pkg free_GiB 13.06
+RESULT ForgettingNaturalRule.Rule.Local 0 2.418 s; warnings 0 ; peak 3.252 GiB
+BUILD UncomputableNoiseDiagram.PCA.Attraction core free_GiB 13.03
+RESULT UncomputableNoiseDiagram.PCA.Attraction 0 1.817 s; warnings 0 ; peak 3.252 GiB
+BUILD ForgettingNaturalRule.Rule.Bridge pkg free_GiB 13.03
+RESULT ForgettingNaturalRule.Rule.Bridge 0 2.618 s; warnings 0 ; peak 3.252 GiB
+BUILD ForgettingNaturalRule.Coherence.Rel pkg free_GiB 13.63
+RESULT ForgettingNaturalRule.Coherence.Rel 0 2.318 s; warnings 0 ; peak 3.252 GiB
+BUILD ForgettingNaturalRule.Coherence.Tiling pkg free_GiB 13.61
+RESULT ForgettingNaturalRule.Coherence.Tiling 0 1.867 s; warnings 0 ; peak 3.252 GiB
+BUILD FixedNoiseErgodicity.Combinatorics.EdgeCount core free_GiB 13.6
+RESULT FixedNoiseErgodicity.Combinatorics.EdgeCount 0 2.167 s; warnings 3 ; peak 3.252 GiB
+BUILD UncomputableNoiseDiagram.Contour.Grouped core free_GiB 13.6
+RESULT UncomputableNoiseDiagram.Contour.Grouped 0 3.72 s; warnings 0 ; peak 3.252 GiB
+BUILD UncomputableNoiseDiagram.Parameters.Search core free_GiB 13.5
+RESULT UncomputableNoiseDiagram.Parameters.Search 0 2.568 s; warnings 3 ; peak 3.252 GiB
+BUILD UncomputableNoiseDiagram.Windows core free_GiB 13.49
+RESULT UncomputableNoiseDiagram.Windows 0 2.268 s; warnings 0 ; peak 3.252 GiB
+BUILD UncomputableNoiseDiagram.Parameters.Threshold core free_GiB 13.47
+RESULT UncomputableNoiseDiagram.Parameters.Threshold 0 4.021 s; warnings 0 ; peak 3.252 GiB
+BUILD UncomputableNoiseDiagram.Contour.Counting core free_GiB 13.36
+RESULT UncomputableNoiseDiagram.Contour.Counting 0 2.618 s; warnings 0 ; peak 3.252 GiB
+BUILD UncomputableNoiseDiagram.Parameters.Bases core free_GiB 13.37
+RESULT UncomputableNoiseDiagram.Parameters.Bases 0 2.718 s; warnings 0 ; peak 3.252 GiB
+BUILD UncomputableNoiseDiagram.Contour.RawPaths core free_GiB 13.36
+RESULT UncomputableNoiseDiagram.Contour.RawPaths 0 4.121 s; warnings 0 ; peak 3.262 GiB
+BUILD ForgettingNaturalRule.Forget.Paths pkg free_GiB 13.31
+RESULT ForgettingNaturalRule.Forget.Paths 0 1.867 s; warnings 0 ; peak 3.262 GiB
+BUILD ForgettingNaturalRule.Forget.Unique pkg free_GiB 13.5
+RESULT ForgettingNaturalRule.Forget.Unique 0 1.667 s; warnings 0 ; peak 3.262 GiB
+BUILD ForgettingNaturalRule.Memory.Cover pkg free_GiB 13.54
+RESULT ForgettingNaturalRule.Memory.Cover 0 1.766 s; warnings 0 ; peak 3.262 GiB
+BUILD ForgettingNaturalRule.Memory.Branch pkg free_GiB 13.45
+RESULT ForgettingNaturalRule.Memory.Branch 0 2.017 s; warnings 0 ; peak 3.262 GiB
+BUILD ForgettingNaturalRule.PCA.Average pkg free_GiB 13.37
+RESULT ForgettingNaturalRule.PCA.Average 0 2.819 s; warnings 0 ; peak 3.262 GiB
+BUILD ForgettingNaturalRule.Memory.Invariant pkg free_GiB 13.29
+RESULT ForgettingNaturalRule.Memory.Invariant 0 1.969 s; warnings 0 ; peak 3.262 GiB
+BUILD ForgettingNaturalRule.Main pkg free_GiB 12.61
+RESULT ForgettingNaturalRule.Main 0 1.619 s; warnings 0 ; peak 3.262 GiB
+BUILD FixedNoiseErgodicity.Scaffold.Tables core free_GiB 12.23
+RESULT FixedNoiseErgodicity.Scaffold.Tables 0 4.422 s; warnings 0 ; peak 3.262 GiB
+BUILD FixedNoiseErgodicity.Defs.TokenGame core free_GiB 11.64
+RESULT FixedNoiseErgodicity.Defs.TokenGame 0 1.617 s; warnings 0 ; peak 3.262 GiB
+BUILD FixedNoiseErgodicity.Section2.TokenGame core free_GiB 11.64
+RESULT FixedNoiseErgodicity.Section2.TokenGame 0 2.468 s; warnings 4 ; peak 3.262 GiB
+BUILD FixedNoiseErgodicity.Section2.Compact core free_GiB 11.71
+RESULT FixedNoiseErgodicity.Section2.Compact 0 2.217 s; warnings 6 ; peak 3.262 GiB
+BUILD FixedNoiseErgodicity.Scaffold.Substitution core free_GiB 11.71
+RESULT FixedNoiseErgodicity.Scaffold.Substitution 0 4.771 s; warnings 3 ; peak 3.426 GiB
+BUILD FixedNoiseErgodicity.Scaffold.WangSet core free_GiB 11.6
+RESULT FixedNoiseErgodicity.Scaffold.WangSet 0 9.88 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Family.Tower core free_GiB 10.43
+RESULT FixedNoiseErgodicity.Family.Tower 0 2.769 s; warnings 7 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Family.Red core free_GiB 10.92
+RESULT FixedNoiseErgodicity.Family.Red 0 3.72 s; warnings 25 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Family.Walls core free_GiB 11.18
+RESULT FixedNoiseErgodicity.Family.Walls 0 6.225 s; warnings 8 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Family.Frames core free_GiB 11.1
+RESULT FixedNoiseErgodicity.Family.Frames 0 3.568 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Family.Routing core free_GiB 11.34
+RESULT FixedNoiseErgodicity.Family.Routing 0 4.019 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Family.Positive core free_GiB 12.62
+RESULT FixedNoiseErgodicity.Family.Positive 0 2.317 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Family.Free core free_GiB 12.55
+RESULT FixedNoiseErgodicity.Family.Free 0 4.221 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Family.Machine core free_GiB 12.44
+RESULT FixedNoiseErgodicity.Family.Machine 0 6.675 s; warnings 24 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Family.Horn core free_GiB 12.35
+RESULT FixedNoiseErgodicity.Family.Horn 0 5.673 s; warnings 1 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Family.Codes core free_GiB 12.46
+RESULT FixedNoiseErgodicity.Family.Codes 0 1.767 s; warnings 2 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Family.FamilyR core free_GiB 12.41
+RESULT FixedNoiseErgodicity.Family.FamilyR 0 5.823 s; warnings 49 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Three.Interface core free_GiB 12.43
+RESULT FixedNoiseErgodicity.Three.Interface 0 1.917 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Scaffold.Format core free_GiB 12.38
+RESULT FixedNoiseErgodicity.Scaffold.Format 0 2.018 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Scaffold.Facts core free_GiB 12.81
+RESULT FixedNoiseErgodicity.Scaffold.Facts 0 3.872 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Three.CornerData core free_GiB 12.35
+RESULT FixedNoiseErgodicity.Three.CornerData 0 2.518 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Three.CornerTables core free_GiB 12.34
+RESULT FixedNoiseErgodicity.Three.CornerTables 0 9.577 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Three.CornerCheck core free_GiB 11.93
+RESULT FixedNoiseErgodicity.Three.CornerCheck 0 2.867 s; warnings 4 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Three.Corner core free_GiB 11.9
+RESULT FixedNoiseErgodicity.Three.Corner 0 5.725 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Three.Lists core free_GiB 11.75
+RESULT FixedNoiseErgodicity.Three.Lists 0 4.121 s; warnings 24 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Three.Coarse core free_GiB 12.31
+RESULT FixedNoiseErgodicity.Three.Coarse 0 2.969 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Three.Dyadic core free_GiB 12.32
+RESULT FixedNoiseErgodicity.Three.Dyadic 0 2.819 s; warnings 6 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Three.Pairs core free_GiB 12.34
+RESULT FixedNoiseErgodicity.Three.Pairs 0 1.767 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Three.Walker core free_GiB 12.35
+RESULT FixedNoiseErgodicity.Three.Walker 0 3.019 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Three.Promote core free_GiB 12.31
+RESULT FixedNoiseErgodicity.Three.Promote 0 2.368 s; warnings 1 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Family.HornHalt core free_GiB 12.24
+RESULT FixedNoiseErgodicity.Family.HornHalt 0 2.868 s; warnings 1 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Three.Final core free_GiB 12.22
+RESULT FixedNoiseErgodicity.Three.Final 0 4.772 s; warnings 24 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Three.Board core free_GiB 12.19
+RESULT FixedNoiseErgodicity.Three.Board 0 6.074 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Defs.Field core free_GiB 12.14
+RESULT FixedNoiseErgodicity.Defs.Field 0 1.466 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Section4.Deterministic core free_GiB 12.11
+RESULT FixedNoiseErgodicity.Section4.Deterministic 0 1.967 s; warnings 3 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Section3.Transport core free_GiB 12.47
+RESULT FixedNoiseErgodicity.Section3.Transport 0 2.268 s; warnings 5 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Section3.Graph core free_GiB 12.43
+RESULT FixedNoiseErgodicity.Section3.Graph 0 1.967 s; warnings 1 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Combinatorics.Contour core free_GiB 12.38
+RESULT FixedNoiseErgodicity.Combinatorics.Contour 0 3.169 s; warnings 11 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Section3.Contour core free_GiB 12.28
+RESULT FixedNoiseErgodicity.Section3.Contour 0 2.217 s; warnings 4 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Section3.Peierls core free_GiB 12.23
+RESULT FixedNoiseErgodicity.Section3.Peierls 0 2.168 s; warnings 2 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Section3.Constants core free_GiB 12.14
+RESULT FixedNoiseErgodicity.Section3.Constants 0 2.919 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Section2.Ergodic core free_GiB 11.96
+RESULT FixedNoiseErgodicity.Section2.Ergodic 0 1.867 s; warnings 2 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Section4.Memory core free_GiB 11.96
+RESULT FixedNoiseErgodicity.Section4.Memory 0 2.619 s; warnings 6 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Section3.Forgetting core free_GiB 11.86
+RESULT FixedNoiseErgodicity.Section3.Forgetting 0 3.87 s; warnings 14 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Section2.Markov core free_GiB 12.05
+RESULT FixedNoiseErgodicity.Section2.Markov 0 6.876 s; warnings 8 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Section2.Feller core free_GiB 12.32
+RESULT FixedNoiseErgodicity.Section2.Feller 0 12.935 s; warnings 9 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Section2.ForgetErgodic core free_GiB 12.31
+RESULT FixedNoiseErgodicity.Section2.ForgetErgodic 0 2.268 s; warnings 4 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Section2.PCA core free_GiB 12.1
+RESULT FixedNoiseErgodicity.Section2.PCA 0 1.667 s; warnings 4 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.TheoremB core free_GiB 11.96
+RESULT FixedNoiseErgodicity.TheoremB 0 1.867 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Three.Assembly core free_GiB 11.93
+RESULT FixedNoiseErgodicity.Three.Assembly 0 1.566 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Family.Decide core free_GiB 11.89
+RESULT FixedNoiseErgodicity.Family.Decide 0 2.819 s; warnings 6 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Family.Computable core free_GiB 11.84
+RESULT FixedNoiseErgodicity.Family.Computable 0 5.574 s; warnings 4 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Main core free_GiB 12.01
+RESULT FixedNoiseErgodicity.Main 0 1.516 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Bridge core free_GiB 12.02
+RESULT FixedNoiseErgodicity.Bridge 0 1.566 s; warnings 0 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Compiler.TM0 core free_GiB 12.02
+RESULT FixedNoiseErgodicity.Compiler.TM0 0 2.919 s; warnings 17 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Compiler.Universal core free_GiB 11.98
+RESULT FixedNoiseErgodicity.Compiler.Universal 0 1.967 s; warnings 6 ; peak 4.863 GiB
+BUILD FixedNoiseErgodicity.Undecidable core free_GiB 11.98
+RESULT FixedNoiseErgodicity.Undecidable 0 1.667 s; warnings 0 ; peak 4.863 GiB
+BUILD ForgettingNaturalRule.Reduction pkg free_GiB 11.86
+RESULT ForgettingNaturalRule.Reduction 0 1.667 s; warnings 0 ; peak 4.863 GiB
+BUILD ForgettingNaturalRule pkg free_GiB 11.82
+RESULT ForgettingNaturalRule 0 1.516 s; warnings 0 ; peak 4.863 GiB
+BUILD UncomputableNoiseDiagram.AuditCommand core free_GiB 11.82
+RESULT UncomputableNoiseDiagram.AuditCommand 0 2.868 s; warnings 0 ; peak 4.863 GiB
+BUILD ForgettingNaturalRule.Audit pkg free_GiB 11.5
+RESULT ForgettingNaturalRule.Audit 0 2.167 s; warnings 0 ; peak 4.863 GiB
+BUILD Challenge pkg free_GiB 11.29
+RESULT Challenge 0 2.768 s; warnings 5 ; peak 4.863 GiB
+BUILD Solution pkg free_GiB 11.23
+RESULT Solution 0 1.617 s; warnings 0 ; peak 4.863 GiB
+BUILD Audit pkg free_GiB 11.32
+RESULT Audit 0 66.471 s; warnings 0 ; peak 4.863 GiB
+REPLAY PASS 104 reachable modules compiled here; peak 5221326848
+REPLAY_EXIT 

@@ -1,64 +1,53 @@
-# Forgetting under noise is undecidable: ergodicity of positive-rate cellular automata at a fixed noise rate
+# Forgetting under noise is undecidable
 
-Seth Douglas and Nidhal Mghirbi. Version 1.4.0, November 2026. DOI: [10.5281/zenodo.24126025](https://doi.org/10.5281/zenodo.24126025). Version 1.3.0: [10.5281/zenodo.24115709](https://doi.org/10.5281/zenodo.24115709). Version 1.2.0: [10.5281/zenodo.24105227](https://doi.org/10.5281/zenodo.24105227). Version 1.1.0: [10.5281/zenodo.24104252](https://doi.org/10.5281/zenodo.24104252). Version 1.0.0: [10.5281/zenodo.24102672](https://doi.org/10.5281/zenodo.24102672). Concept DOI (all versions): [10.5281/zenodo.24102671](https://doi.org/10.5281/zenodo.24102671).
+Seth Douglas and Nidhal Mghirbi. Version 2.0.0, November 2026. Concept DOI (all versions): [10.5281/zenodo.24102671](https://doi.org/10.5281/zenodo.24102671). Version 1.4.0: [10.5281/zenodo.24126025](https://doi.org/10.5281/zenodo.24126025). Version 1.3.0: [10.5281/zenodo.24115709](https://doi.org/10.5281/zenodo.24115709). Version 1.2.0: [10.5281/zenodo.24105227](https://doi.org/10.5281/zenodo.24105227). Version 1.1.0: [10.5281/zenodo.24104252](https://doi.org/10.5281/zenodo.24104252). Version 1.0.0: [10.5281/zenodo.24102672](https://doi.org/10.5281/zenodo.24102672).
 
 **This is a preprint. It has not been peer reviewed.**
 
 ## Abstract
 
-Can noise make the long-run behaviour of a cellular automaton predictable? A probabilistic cellular automaton with positive rates, in which every site can take every value with positive probability at every step, is ergodic when it forgets its initial configuration. Deciding ergodicity is known to be impossible when some transitions may have probability zero. We show that positive noise does not restore decidability. There are an explicit rate ε₀ > 0 and a computable family of positive-rate cellular automata on ℤ⁸, each a deterministic local rule followed by uniform random replacement, such that for every noise rate ε in (0, ε₀] the automaton built from a Turing machine M is ergodic if and only if M halts.
-
-The proof links a logical quantity to a physical one. A tile set that tiles the plane makes a noisy quorum rule remember. A tile set whose contradictions can always be cornered by a fixed number of local tokens, a refutation of bounded width in the sense of existential pebble games, makes the same rule forget. We build a computable family of tile sets in which every contradiction that exists can be cornered by three tokens: two hold the phase of a recognizable substitution while the third walks, and the machine runs in a layer closed under intersection. The classification holds on a ball of one fixed total-variation radius around every member, and the theorem on ℤ⁸ is proved in Lean. Further consequences: no computable function bounds how long the ergodic members take to forget; since the forgetting bound holds for all starts at once, uniqueness of the space–time Gibbs measure, with no invariance assumed, and exponential weak spatial mixing are undecidable; and stacking copies of each member gives automata that, undecidably, have either exactly one invariant measure or a continuum of extreme invariant measures.
+A natural noisy Wang rule on Z^4 is ergodic exactly when its finite raw tile set does not tile the plane. A cardinal checker and a fixed 512-of-768 quorum use the tiles themselves and one blank. A transverse-quorum lift of Kari's nilpotency reduction gives the same equivalence on Z^3 for north/east deterministic tile sets. One explicit positive rational replacement rate, independent of the input, makes ergodicity undecidable in both families. For non-tiling inputs, amortized coherence and an all-path density lemma prove finite-window coupling from the past for all starts; tiling gives two invariant laws. A saturation theorem explains why the earlier budget-only estimate needs six dimensions. The retained Z^6 natural rule has exponential all-input coalescence with a universal computable slope and uncomputable delay, all-Gibbs uniqueness and robustness. Its Theorems D and A are verified in Lean; the Z^4 and Z^3 results are not formalized. The inspector theory and Z^8 machine-family Lean core are retained.
 
 ## What the paper proves
 
 A probabilistic cellular automaton updates every site of a lattice at once. Each site reads a few neighbours and picks its next value at random, from one fixed table. When every entry of that table is positive, nothing is ever forbidden. The automaton is ergodic if it forgets where it started: one invariant measure, reached from every starting law.
 
-- **Theorem A.** There is a total computable map M ↦ R_M from Turing machines to finite Wang tile sets. For every ε in (0, ε₀], with ε₀ = 490000^(−99), the quorum rule of R_M on ℤ⁸, followed by uniform random replacement at rate ε, is a positive-rate automaton that is ergodic if and only if M halts.
-- **Theorem B.** For every finite Wang set R, at one rate ε₀ fixed before R:
-  - if R tiles the plane, the noisy quorum rule remembers a bit forever;
-  - if every contradiction of R can be cornered by j local tokens (k ≥ 2j), the rule forgets its start exponentially fast after a delay set by the refutation.
-- **Theorem C.** One computable family of tile sets: R_M tiles exactly when M does not halt, and every halting member is refuted by three tokens. A general argument with a large fixed number of tokens comes first; Section 9 lowers it to three.
-- **Robustness (version 1.2.0).** Every probabilistic cellular automaton whose transition table is within total-variation distance ε₀ of a member of the family has the same classification; the radius is the same for every member.
-- **Version 1.3.0.** Corrections from an independent review of the whole manuscript (an omitted case in a remark of Section 8.2 and a credit sentence), and finite tests of the forced-word lemma of Section 9.
-- **Version 1.4.0.**
-  - The forgetting bound holds for all starts at once: one realisation of the noise makes the value at a site the same for every start, outside an event whose probability is exponentially small in the time and which depends on the replacement indicators alone (Corollary 3.12).
-  - Through a theorem of our paper on space–time Gibbs states (DOI [10.5281/zenodo.24122307](https://doi.org/10.5281/zenodo.24122307)), the space–time interaction of a halting member has exactly one Gibbs measure, with no invariance assumed, and exponential weak spatial mixing in arbitrary volumes; a nonhalting member has at least two translation-invariant ones (Corollary 8.8).
-  - Stacked automata: running each member on parallel copies, each copy reading the next, gives automata on ℤ⁹ with one invariant measure if M halts and a continuum of extreme invariant measures, mixing in time, if M does not (Corollary 8.17).
-  - An explicit construction of the one-sided machine M° (Appendix B), and a remark that the corner lemma is needed only at the centre of the box, which already holds on a box of side 13.
-  - Corollary 9.21 (Theorem A on ℤ⁸) and its undecidability are proved in Lean 4 with Mathlib (Appendix C); the sources and the records of the comparator check and of two kernel replays are in `lean/`.
-- **Corollaries.**
-  - One family works at every rate in (0, ε₀], and for other replacement laws.
-  - A computable map sends every Wang set to a noisy automaton that is ergodic exactly when the set does not tile.
-  - No computable function bounds how long the halting members take to forget.
-  - The undecidability has no borderline cases: every halting member forgets exponentially fast, and every other member has memory with amplitude 1 − 2.02ε.
-  - On the space–time interactions of the members, uniqueness of the Gibbs measure, uniqueness of the translation-invariant Gibbs measure and exponential weak spatial mixing each hold exactly when M halts, so each is undecidable.
-  - Stacked copies of each member have either one invariant measure or a continuum of extreme ones, and no algorithm tells which.
+The paper's rules read a Wang tile set directly. A finite Wang set R is a set of square tiles with coloured edges; it tiles the plane if copies can cover ℤ² with matching edges. Its alphabet is R plus one blank. Each site checks that its tile matches its four planar neighbours, then a quorum of transverse copies votes, and the output is replaced by a uniformly random letter at a fixed rate ε.
 
-The dimension is 8 and the rate ε₀ = 490000^(−99) is explicit (version 1.1.0; version 1.0.0 had a fixed but uncomputed, very large dimension). One token never suffices; whether two do, which would give ℤ⁶, is the first open problem in the paper.
+- **Theorem D (ℤ⁶).** For every finite Wang set R and every 0 < ε ≤ ε_*, with ε_* = (2(18q)²)^(−200) and q = 5·16⁴, the natural rule G_R on ℤ⁶ is ergodic if and only if R does not tile the plane. If R tiles, there are two distinct translation-invariant stationary laws. Non-tiling sets are forgotten exponentially fast, from all starts at once, with a universal computable slope.
+- **Theorem A (ℤ⁶).** There is a total computable map M ↦ W_M from Turing machines to Wang sets such that, at every rate in (0, ε_*], G_{W_M} is ergodic if and only if M halts. Ergodicity at one fixed rate is therefore undecidable.
+- **Theorem E (ℤ⁴).** The same equivalence for a natural rule on ℤ⁴, applied to every finite raw Wang set, with three transverse quorum boxes and a 512-of-768 vote, at every 0 < ε ≤ 382205952^(−33720).
+- **Theorem F (ℤ³).** For north/east-deterministic Wang sets, a transverse-quorum lift of Kari's 1992 nilpotency reduction gives the same equivalence on ℤ³ at the same rate. With Kari's theorem, ergodicity at one fixed rate is undecidable on ℤ³.
+- **Why the dimension came down.** A saturation theorem shows that the coherence estimate used on ℤ⁶ cannot work below six dimensions. Theorems E and F replace it with an amortized coherence argument and an all-path density lemma. Their conclusions are qualitative (coupling from the past on non-tiling inputs, two invariant laws on tiling inputs); the rate, all-Gibbs uniqueness and robustness are proved for the ℤ⁶ rule.
+- **Consequences of Theorem D.** Nilpotency of G_R exactly when R does not tile; exactly one Gibbs measure and exponential weak spatial mixing on the space–time interaction for non-tiling R; robustness of radius ε_* on the same neighbourhood; ergodicity Σ⁰₁-complete and non-ergodicity Π⁰₁-complete at a fixed rational rate; no computable forgetting time; a stacked rule on ℤ⁷ with one invariant measure or a continuum of extreme ones.
+- **Kept from version 1.4.0.** The inspector theory (Theorem B, token refutability), the machine family on ℤ⁸ (Theorem C and the machine-family theorem), and every other proved statement of version 1.4.0.
 
-The proofs build on prior work that the paper credits in detail:
-- Toom's contours and the Peierls bounds of Swart, Szabó and Toninelli;
-- the checker reduction of Čulik, Pachl and Yu, and of Kari;
-- Ollinger's two-by-two substitution;
-- local rules for substitutions (Mozes) and recognizability (Mossé, Solomyak);
-- pebble games and treewidth (Kolaitis, Vardi, Dalmau);
-- closure properties of constraints (Jeavons, Cohen, Gyssens; Feder, Vardi);
-- the space–time Gibbs correspondence (Goldstein, Kuik, Lebowitz, Maes);
-- the proof assistant Lean 4 and its library Mathlib, for the formal proof.
+**Formal verification.** Theorem D (both sentences, without its coalescence bound), Theorem A on ℤ⁶, Corollary 3.1, the domino reduction and the undecidability of the domino problem are proved in Lean 4 with Mathlib in `lean-natural/`, with no named hypotheses. The domino reduction is proved from the paper's own machine family, so Berger's and Robinson's theorem is not assumed. The ℤ⁸ machine-family core of version 1.4.0 is in `lean/`. Theorems E and F are not formalized.
+
+The proofs build on prior work that the paper credits in detail: Toom's contours and their charge-arm form (Berman and Simon; Gács); the checker reduction of Čulik, Pachl and Yu, and of Kari; Kari's undecidability of the domino problem for deterministic tile sets; Berger's and Robinson's domino problem; Toom's eroder criterion; Ollinger's substitution; local rules and recognizability (Mozes; Mossé, Solomyak); pebble games (Kolaitis, Vardi, Dalmau); the space–time Gibbs correspondence (Goldstein, Kuik, Lebowitz, Maes); and the proof assistant Lean 4 with Mathlib.
+
+## Changes in 2.0.0
+
+- The natural rule (Theorem D) and its complete proof now lead, followed by its consequences. The inspector theory and the machine family follow; every proved statement of version 1.4.0 is kept with its content. The old Theorem A on ℤ⁸ is now called the machine-family theorem.
+- New: Theorems D and A on ℤ⁶ and their consequences; Theorems E and F on ℤ⁴ and ℤ³ (Section 12); the saturation theorem. Problem 10.3 of version 1.4.0 is answered; the dimension problem is restated (fixed-rate undecidability now holds on ℤ³; ℤ² and ℤ¹ are open).
+- New Lean core in `lean-natural/` (Appendix C).
 
 ## Contents and reproduction
 
-- `paper/main.pdf`: manuscript.
-- `verification/corner-lemma/`: the one computed lemma (an arc-consistency deletion on a 33 × 33 box, four roots and four positive controls), done by two independently written programs and a third written separately during review, with their outputs and run receipts. Start with `VERIFY.md`.
-- `verification/forced-word/`: finite tests of the forced-word lemma of Section 9 for n = 1 and 2 (all sixteen pairs of corner letters, with legal-pattern and ablation controls), by two independently written programs. The lemma is proved in the text; these tests are a check, not part of the proof. See `VERIFY.md` there.
-- `lean/`: the formal proof in Lean 4 with Mathlib of Corollary 9.21 (Theorem A on ℤ⁸) and of its undecidability, described in Appendix C of the paper ([release v1.4.0](https://github.com/Apsiape/fixed-noise-ergodicity/tree/v1.4.0/lean)). It holds the sources, the pins of every dependency, the comparator challenge (`Challenge.lean`, which imports only Mathlib), and the records of the sandboxed comparator run, of the replays of the proof by the kernel checkers leanchecker and nanoda, and of the axiom audit. Start with `lean/README.md`.
-- `paper/`: LaTeX source (`main.tex`, `preamble-core.tex`, `sections/`), plain-text abstract and a strict build driver. Run `python -B build.py` there with pdflatex installed. The build disables shell escape, runs pdflatex three times and rejects warnings, unresolved references and box defects.
+- `paper/main.pdf`: the manuscript (148 pages).
+- `paper/`: the LaTeX source (`main.tex`, `preamble-core.tex`, `sections/`), the plain-text abstract and a strict build driver. Run `python -B build.py` there with pdflatex installed. The build disables shell escape, runs pdflatex three times and rejects warnings, unresolved references and box defects.
+- `lean-natural/`: the Lean 4 core of the natural rule on ℤ⁶ (sources, frozen statement file, comparator challenge, axiom audit, evidence and report). See `lean-natural/README.md`.
+- `lean/`: the Lean 4 core of the machine family on ℤ⁸ (version 1.4.0, unchanged). See `lean/README.md`.
+- `verification/corner-lemma/`: the one computed lemma of the machine route, by two independently written programs and a third written during review. Start with `VERIFY.md`.
+- `verification/forced-word/`: finite tests of the forced-word lemma of the machine route, by two independently written programs; they are checks, not part of the proof.
+- `notes/`: review notes of earlier versions.
 - `SHA256SUMS`: SHA-256 hashes of every shipped file except this manifest. Check with `sha256sum -c SHA256SUMS` from the repository root.
 
-One finite lemma (Section 9) is a computation, carried out by two independently written programs and checked by a third; no other proof uses a computation. The forced-word tests are checks, not proofs. In the Lean formalization, the corner lemma, in the form that the paper uses, is checked by the Lean kernel.
+## How it was checked
+
+The paper's AI note and its "Verification status" section give the full account. In short: the natural rule on ℤ⁶ was found in research runs by GPT-6.1 Sol, checked refutation-first by Claude Opus 5.5, and proved again by an independent blind GPT-6.1 Sol replication. Theorems E and F were found in a GPT-6.1 Sol research run, checked refutation-first by Claude Opus 5.5 (with an independent blind reconstruction of the key lemmas), and proved again by an independent blind GPT-6.1 Sol replication. The Lean core of the natural rule was written by Claude Opus 5.5 agents; its statement file was read blind against the paper before it was frozen. The authors chose the questions, directed the work and are responsible for the claims.
 
 ## Citation and rights
 
 See `CITATION.cff` for citation metadata.
-Paper and documentation: CC BY 4.0. Scripts and Lean sources (the build script, the programs in `verification/` and the authors' files in `lean/`): MIT or Apache 2.0, at your option. `lean/cache-tool/Requests.lean` is a modified Mathlib file under the Apache License 2.0. See `RIGHTS.md`, the license files and `NOTICE`.
+Paper and documentation: CC BY 4.0. Scripts and Lean sources (the build script, the programs in `verification/` and the authors' files in `lean/` and `lean-natural/`): MIT or Apache 2.0, at your option. `lean/cache-tool/Requests.lean` is a modified Mathlib file under the Apache License 2.0. See `RIGHTS.md`, the license files and `NOTICE`.

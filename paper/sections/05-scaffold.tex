@@ -1,5 +1,8 @@
 \section{A hierarchical scaffold read by a fixed number of tokens}\label{sec:scaffold}
 
+We now retain the machine family as a second route. Together with the inspector theory it gives \cref{cor:eight} on $\Z^8$, the form covered by the unchanged Lean core. The raw-input route on $\Z^6$ in \cref{nw:machine} does not use this construction.
+
+
 This section builds one fixed Wang set, the scaffold, and shows that a fixed number of tokens can read its hierarchy at every depth. Hierarchical tilings go back to Berger \cite{Berger66} and Robinson \cite{Robinson71}. Mozes showed that substitution tilings with unique derivation are enforced by local rules \cite{Mozes89}; recognizability of primitive aperiodic word substitutions was proved by Moss\'e \cite{Mosse92}, and unique composition of nonperiodic self-similar translationally finite tilings by Solomyak \cite{Solomyak98}. We use Ollinger's $104$-tile substitution \cite{Ollinger08}, in the transcription of \cite{LeanWang}, and prove the facts we need from its tables, which are printed in \cref{app:tables}.
 
 The plan is as follows. \Cref{scf:sub-base} recalls the $104$ tiles and proves that every tiling has one parent tiling. \Cref{scf:sub-ruler} adds two bits to every tile, one constant on columns and one constant on rows. The result is a Wang set $\mathbb A$ of $276$ letters with a substitution $\sigma$ of expansion $4$ (\cref{prop:scaffold}). The bits record the depth of each column and row modulo $2$, like a ruler. \Cref{scf:sub-ports} reads the full letter of a depth-$n$ block from $\ell=\binom{276}{2}+1$ fixed sites. \Cref{scf:sub-parser} defines anchors and builds the type, edge and point certificates, graphs of bounded tree width that force the readout (\cref{thm:parser}). \Cref{scf:sub-transfer} carries their conclusions to every existential pebble family (\cref{lem:transfer}) and shows that every such family contains anchors of every depth (\cref{prop:anchors}).
@@ -373,3 +376,5 @@ By \cref{scf:ports}(c), $g(u+4^nx)=\sigma^n(\mathfrak c(x))(0,0)$ has the bits o
 \end{proof}
 
 The old anchor is dropped as soon as the new one is found, so no pins accumulate over the depths: each step uses one member of $H$ on at most $B$ sites. The anchor of depth $n$ may sit anywhere, and different families may place it differently. Together, \cref{prop:anchors} and \cref{scf:readout} give, in every $E_K$ family with $K\ge B$ and at every depth $n$, a member on $\operatorname{Anc}_n(u)\cup\operatorname{Port}_n(u)$, at most $\ell+3$ sites, that reads one root letter $\mathfrak a$; and every member that agrees with it there and is defined at a site of the block $u+[0,4^n)^2$ takes the value prescribed by the word $\sigma^n(\mathfrak a)$.
+
+

@@ -1,0 +1,64 @@
+{
+  "lean_files_checked": [
+    "Audit.lean",
+    "Challenge.lean",
+    "ForgettingNaturalRule/Audit.lean",
+    "ForgettingNaturalRule/Coherence/Rel.lean",
+    "ForgettingNaturalRule/Coherence/Tiling.lean",
+    "ForgettingNaturalRule/Constants.lean",
+    "ForgettingNaturalRule/Forget/Paths.lean",
+    "ForgettingNaturalRule/Forget/Unique.lean",
+    "ForgettingNaturalRule/Main.lean",
+    "ForgettingNaturalRule/Memory/Branch.lean",
+    "ForgettingNaturalRule/Memory/Cover.lean",
+    "ForgettingNaturalRule/Memory/Invariant.lean",
+    "ForgettingNaturalRule/PCA/Average.lean",
+    "ForgettingNaturalRule/Reduction.lean",
+    "ForgettingNaturalRule/Rule/Bridge.lean",
+    "ForgettingNaturalRule/Rule/Local.lean",
+    "ForgettingNaturalRule/Statements.lean",
+    "ForgettingNaturalRule.lean",
+    "Solution.lean"
+  ],
+  "method": "comments and string literals blanked out first (as scripts/sorry_census.py); lakefile.lean excluded",
+  "forbidden_constructs": [],
+  "sorry_tokens": [
+    {
+      "file": "Challenge.lean",
+      "line": 1103
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 1105
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 1107
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 1109
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 1111
+    }
+  ],
+  "sorry_mentions_in_comments": [],
+  "sorry_only_in_challenge_holes": true,
+  "files_without_autoImplicit_false": [],
+  "lint_sh_output": "lint ok",
+  "lint_sh_exit": 0,
+  "sorry_census_output": "sorry census: 0 sorry token(s) in 16 files\nforbidden constructs: none",
+  "read_only_inputs_modified_after_session_start": {
+    "/opt/forgetting-arxiv-2026-11-10": [],
+    "/opt/forgetting-arxiv-2026-11-10-runtime.tar.zst": [],
+    "/opt/forgetting-arxiv-2026-11-10-runtime.tar.json": [],
+    "/opt/package-forgetting-arxiv.py": [],
+    "/opt/undecidable-phase-diagram-arxiv-2026-11-11": [],
+    "/opt/uncomputable-noise-diagram-arxiv-2026-11-12": [],
+    "/opt/uncomputable-noise-diagram-lean": [],
+    "/opt/forgetting-natural-rule-arxiv-2026-11-12": []
+  },
+  "read_only_inputs_note": "find -newermt \"2026-11-12 11:36:00\" (WSL clock; session 3b began after the session-3 commit at 11:36:00) over the forgetting relay, its runtime archive and receipt, its packaging script, the hard-model relay, the noise-diagram relay, the noise-diagram development folder and the session-3 workspace of this package: empty lists mean no file there was created or modified during this session. This core's own development folder /opt/forgetting-natural-rule-lean is written by this session (scratch inputs) and is not listed. The public release folders on Windows were read with git rev-parse/ls-tree/cat-file/show only."
+}

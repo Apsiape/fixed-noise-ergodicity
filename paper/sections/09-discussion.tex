@@ -1,21 +1,36 @@
-% =====================================================================
 \section{Open problems}\label{sec:discussion}
-% =====================================================================
 
-\paragraph{The dimension.} Theorem~A holds on $\Z^8$ (\cref{cor:eight}): three tokens suffice (\cref{thm:three}), and the forgetting theorem then needs $k=6$ extra dimensions. One token never suffices for a family with undecidable tiling (\cref{set:one-token-family}). Two routes to a smaller dimension are open. A family of token width~$2$ would place Theorem~A on $\Z^6$. A forgetting mechanism with fewer than $2j$ extra dimensions would lower it further. The equilibrium statements of \cref{cor:gibbs} live one dimension higher, on $\Z^9$, and would move down with Theorem~A.
+\paragraph{Dimension and the old token question.}
+Fixed-rate positive-noise undecidability now holds on $\Z^3$ by \cref{ld:z3}, and the natural rule on every raw Wang set is classified on $\Z^4$ by \cref{ld:z4}. The old three-token family and its $\Z^8$ realization remain formally checked. One token never suffices for an undecidable tiling family (\cref{set:one-token-family}); the existence of a two-token family is still open. Such a family would give another $\Z^6$ route at the thin-provider rate. A forgetting mechanism using fewer than $2j$ transverse coordinates would improve the inspector route. The $\Z^6$ natural rule's equilibrium statements and its stack live on $\Z^7$; the retained machine route's corresponding dimensions are nine and nine. No lower-dimensional equilibrium transfer is asserted here.
 
 \begin{problem}\label{prob:dimension}
-What is the least dimension $d$ for which ergodicity of positive-rate cellular automata on $\Z^d$, at one fixed noise rate, is undecidable? What is the least token width of a computable family of Wang sets with undecidable tiling problem: $2$ or $3$?
+What is the least dimension $d\le3$ for which ergodicity of positive-rate cellular automata on $\Z^d$ at one fixed replacement rate is undecidable? In particular, can this be done on $\Z^2$ or $\Z$? What is the least token width of a computable family with undecidable tiling problem: two or three?
 \end{problem}
 
-\paragraph{The exact degree.} For rational positive rates, ergodicity is a $\Pi^0_2$ property of the table \cite[Remark~10.9]{DM26}. Theorem~A shows it is $\Sigma^0_1$-hard at one fixed rate. By \cref{cor:gibbs}, uniqueness of the Gibbs measure of the space-time interaction, and exponential weak spatial mixing of its specification, are $\Sigma^0_1$-hard as well, as properties of a rational table at one fixed rate.
+\paragraph{The exact degree.}
+On the $\Z^6$ natural family ergodicity, Gibbs uniqueness and exponential weak spatial mixing have exact degree $\Sigma^0_1$, with $\Pi^0_1$ complements (\cref{nw:complexity}). This settles the restricted-family question, not the full-table question. For rational positive tables, ergodicity has the $\Pi^0_2$ upper bound of \cite[Remark~10.9]{DM26}; the old hardness conclusions of \cref{pf:arith,cor:gibbs} remain valid.
 
 \begin{problem}\label{prob:degree}
-Is ergodicity of positive-rate cellular automata at one fixed noise rate $\Pi^0_2$-complete? What are the exact degrees of uniqueness of the Gibbs measure, and of exponential weak spatial mixing, for the space-time interactions of these automata?
+Is ergodicity of positive-rate cellular automata at one fixed noise rate $\Pi^0_2$-complete on the full class of tables? What are the exact degrees there of all-DLR uniqueness and exponential weak spatial mixing for the normalized space--time interactions?
 \end{problem}
 
-\paragraph{Natural rules.} The rules of Theorem~A are built to order. The quorum rule with $k=2$ on $\Z^4$ is the smallest member of its kind, and part~(i) of Theorem~B holds for it.
+\paragraph{Natural rules below four dimensions.}
+The raw-Wang classification on $\Z^4$ answers the dimension-four existence instance of the earlier natural-rule question. It uses thick boxes and amortized coherence, rather than the thin-provider $F_R^{[2]}$. The saturation theorem \cref{ld:saturation,ld:budget-obstruction} explains why the specified budget-only certificate stops at six; it does not exclude a different mechanism. The $\Z^3$ construction here assumes north/east determinism.
 
 \begin{problem}\label{prob:natural}
-Is there a fixed rule shape in low dimension, applied to arbitrary Wang sets, whose ergodicity at a fixed noise rate is undecidable?
+Is there a natural fixed rule shape on $\Z^3$, applied directly to every finite raw Wang set, whose fixed-rate ergodicity is equivalent to non-tileability? What can be done on $\Z^2$ or $\Z$? Separately, is the original $k=2$ thin-provider quorum $F_R^{[2]}$ on $\Z^4$ ergodic exactly for non-tiling $R$ throughout one common positive noise interval?
+\end{problem}
+
+\paragraph{The unstacked continuum gap.}
+\Cref{nw:continuum} needs uncountably many tilings. \Cref{nw:stack} gives an unconditional arc after one extra coordinate, but does not answer the question for the base rule.
+
+\begin{problem}\label{prob:countable}
+If $R$ tiles but has only countably many tilings, does the noisy $G_R$ itself have continuum many extreme stationary laws or continuum many extremal Gibbs measures? This is open here even for one tile whose opposite edges match.
+\end{problem}
+
+\paragraph{Quantitative lower-dimensional results.}
+The all-path density lemma has an explicit finite-path tail, but the present coherence proof uses a random $N_0(v)$ and an initial-span condition $N\ge2d_0$. It does not supply the $\Z^6$ all-input coefficient estimate.
+
+\begin{problem}\label{prob:lower-stronger}
+For the rules of \cref{ld:z4,ld:z3}, can one prove quantitative forgetting rates and stronger forms of mixing, transfer uniqueness to all space--time Gibbs measures, or establish robustness under perturbation of the local table? Can their common sufficient noise interval be improved?
 \end{problem}

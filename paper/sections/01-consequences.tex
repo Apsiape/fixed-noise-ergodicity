@@ -1,0 +1,293 @@
+\section{Consequences for the natural rule}\label{sec:natural-consequences}
+
+Throughout this section $G_R$, $\overline N$, $B$, $\eps_*$, $\kappa$ and $c$ have the meanings of \cref{sec:natural}. Unless otherwise stated $0<\eps\le\eps_*$ and replacement is uniform. The old machine-family corollaries remain separately in \cref{sec:proofs}; this section applies directly to the raw input $R$.
+
+\subsection{The domino reduction and nilpotency}
+
+\begin{corollary}[Theorem A on $\Z^6$]\label{nw:machine}
+There is a total computable map $M\mapsto W_M$ to finite Wang sets such that $W_M$ tiles if and only if $M$ does not halt. For every $\eps\in(0,\eps_*]$, $G_{W_M}$ with uniform replacement is a positive-rate PCA on $\Z^6$ that is ergodic if and only if $M$ halts. In particular ergodicity is undecidable at each one of these fixed rates.
+\end{corollary}
+\begin{proof}
+Use the classical effective unseeded domino reduction of Berger and Robinson \cite{Berger66,Robinson71}, with translations of edge-coloured squares and no distinguished origin tile. Its output tiles precisely on the nonhalting branch. Apply \cref{nw:classification} to that same output. The rule table is an explicit finite construction from its raw tiles. A decision procedure for ergodicity would decide halting.
+\end{proof}
+
+\paragraph{The reduction through our machine family.}
+The printed proof uses the classical Berger--Robinson reduction \cite{Berger66,Robinson71}. Our total computable family $R_M$ (\cref{def:family}) also supplies it: $R_M$ tiles if and only if $M$ does not halt. The nonhalting direction is \cref{prop:tiles}. If $M$ halts, \cref{thm:three} makes $R_M$ $3$-token refutable, so Theorem~B (\cref{thm:forgetting}) makes its quorum rule on $\Z^8$ ergodic at $0<\eps\le490000^{-99}$. A tiling set would instead give memory by Theorem~B (\cref{thm:memory}), hence nonergodicity by \cref{set:memory-nonergodic}, a contradiction. This is the route taken by the Lean development: \nolinkurl{FNR.domino_reduction} and \nolinkurl{FNR.domino_undecidable} prove the reduction and the undecidability of the domino problem, and \nolinkurl{FNR.theorem_A} and \nolinkurl{FNR.machine_corollary} verify Theorem~A on $\Z^6$ and all of \cref{nw:machine}, without a named hypothesis (\cref{app:lean}). Berger and Robinson are the classical sources of the domino reduction and its undecidability consequence.
+
+The classical proof above uses no theorem about bounded token width. The detailed machine family gives the larger interval $0<\eps\le490000^{-99}$ for its own quorum rule on $\Z^8$. The natural-rule rate is approximately $10^{-2768.5}$, versus approximately $10^{-563.3}$ for that route.
+
+\begin{corollary}[Nilpotency]\label{nw:nilpotent}
+At zero noise $G_R$ is nilpotent if and only if $R$ does not tile. More precisely, if no legal $n\times n$ pattern exists, then
+\[
+ G_R^{762n+1}(x)\equiv\bot\quad\text{for every }x\in\Omega_R.
+\]
+\end{corollary}
+\begin{proof}
+With no flags the least marked field is empty. The deterministic mortality lemma therefore makes every output blank after the stated time. Conversely a tiling clone is a nonblank fixed point, while blank is also fixed, so no iterate can be constant on all inputs.
+\end{proof}
+
+This is the thick-quorum form of the tiling-to-nilpotency construction of \v{C}ulik--Pachl--Yu \cite{CPY89}, with Kari's one-dimensional nilpotency theorem \cite{Kari92} as the classical undecidability counterpart. Generic stability of a particular nilpotent rule under sufficiently small noise \cite{MST19} does not by itself provide a threshold independent of its extinction time. Here the marked-path estimate provides that uniform threshold.
+
+\subsection{All space--time Gibbs measures}
+
+For $z=(v,t)\in\Z^6\times\Z$, let
+\[
+ P_z=\{(v,t)\}\cup\{(v+a,t-1):a\in\overline N\}.
+\]
+Define the normalized finite-range interaction
+\begin{equation}\label{nw:interaction}
+ \Psi_{R,\eps,z}(\sigma)
+ =-\log p_{R,\eps}(\sigma(v,t)\mid
+                 (\sigma(v+a,t-1))_{a\in\overline N}).
+\end{equation}
+Its finite-volume specification $\gamma_V^\tau$ multiplies all factors with $P_z\cap V\ne\varnothing$, including factors of exterior children, and normalizes with exterior configuration $\tau$. A Gibbs measure means a DLR state for this specification, with no invariance imposed. This is the space--time convention of \cite[Section~2]{DM26} and \cite{GKLM89}.
+
+\begin{corollary}[Gibbs uniqueness and weak spatial mixing]\label{nw:gibbs}
+If $R$ does not tile, \eqref{nw:interaction} on $\Z^7$ has exactly one Gibbs measure $\bar\pi_R$, with no invariance assumed. There are $C_*,c_*>0$ such that for every finite $V\subset\Z^7$, every $E\subset V$ and all exteriors $\tau,\tau'$,
+\begin{align}
+ \dtv((\gamma_V^\tau)_E,(\bar\pi_R)_E)
+ &\le C_*\sum_{z\in E}e^{-c_*\operatorname{dist}_\infty(z,V^c)},\label{nw:gibbs-conv}\\
+ \dtv((\gamma_V^\tau)_E,(\gamma_V^{\tau'})_E)
+ &\le2C_*\sum_{z\in E}e^{-c_*\operatorname{dist}_\infty(z,V^c)}.\label{nw:wsm}
+\end{align}
+If $R$ tiles, there are at least two fully space--time translation-invariant Gibbs measures. Thus uniqueness, uniqueness among fully translation-invariant Gibbs measures, and exponential weak spatial mixing each hold exactly on non-tiling inputs.
+\end{corollary}
+\begin{proof}
+For $R\ne\varnothing$, the alphabet is finite with at least two symbols, the fixed finite neighbourhood $\overline N$ contains zero, and the table is bounded below by $\eps/|A_R|>0$. Equation~\eqref{nw:update} is an independent local-map representation. Its common-map coefficient is exactly \eqref{nw:qt}; \cref{nw:allinput} gives $a_t\le C_Re^{-ct}$ for every $t\ge0$. These check every hypothesis of \cite[Corollary~13.7]{DM26}, in spatial dimension six. That corollary, through its prefix-cap Theorem~13.3, gives all-DLR uniqueness and \eqref{nw:gibbs-conv}--\eqref{nw:wsm}. Pairwise convergence would not have supplied its all-input hypothesis. The one-symbol case $R=\varnothing$ has a single space--time configuration and is immediate.
+
+For tiling $R$, take the two spatially translation-invariant stationary laws constructed in \cref{sec:natural}. Their two-sided stationary Markov trajectories are DLR states by \cite[Lemma~2.4]{DM26}, which does not assume spatial invariance. They are fully translation invariant by spatial invariance and stationarity. Their time-zero live densities differ, so the Gibbs measures are distinct. Finally weak spatial mixing implies uniqueness: condition any DLR state outside a volume containing $E$ at distance tending to infinity and integrate \eqref{nw:wsm}; the right side tends to zero. Thus weak mixing is impossible on the tiling branch.
+\end{proof}
+
+Distance in these estimates is the sup norm, as in \cite[Definition~2.3]{DM26}. Volumes can have holes and need not be connected. The boundary distance is to the entire complement, not just the set on which two exteriors disagree; strong spatial mixing is not claimed. The constants may depend on $R$ and $\eps$. In particular no uniformity of the Gibbs constants as $\eps\downarrow0$ follows from the universal dynamical slope. The correspondence has its classical source in Goldstein--Kuik--Lebowitz--Maes \cite{GKLM89}; the transfer template is the retained \cref{cor:gibbs}, and the translation-invariant converse used for stacking is \cite[Corollary~10.4]{DM26}.
+
+\begin{remark}[Binary energies and their temperature]\label{nw:temperature}
+Let $m=|A_R|$, $a=1-\eps+\eps/m$ and $b=\eps/m$. Then
+\[
+ p_{R,\eps}(s\mid y)=a\exp\{-\beta(R,\eps)
+          \mathbf1_{\{s\ne G_R(y)\}}\},\qquad
+ \beta(R,\eps)=\log\left(1+\frac{m(1-\eps)}\eps\right).
+\]
+The constant $a$ cancels from each finite-volume normalization. Thus the same specification is given by the $\{0,1\}$ energies $\mathbf1_{\{\sigma_z\ne G_R(\sigma_{\rm parents})\}}$ at this inverse temperature, which depends on $R$ through $m$. This is the conversion of \cite[Corollary~B]{DMdiagram}, with inverse $\eps(\beta)=m/(e^\beta+m-1)$.
+
+No common finite $\beta$ gives the tiling classification for this direct binary-energy family. At fixed $\beta$, the depth-$t$ basic composite can be nonconstant only along a backward path of nonreplacement updates, so
+\[
+ a_t\le[|\overline N|(1-\eps(\beta))]^t,\qquad
+ 1-\eps(\beta)=\frac{e^\beta-1}{e^\beta+m-1}\longrightarrow0.
+\]
+For all large $m$ this gives exponential coalescence and hence all-DLR uniqueness, even though arbitrarily large tiling sets exist (take many isolated self-matching tiles). This high-noise mechanism is consistent with the Dobrushin and Dobrushin--Shlosman regimes \cite{Dob68,DS85}; see \cite[Remark~13.9]{DM26}. At each fixed $\beta$, uniqueness for this direct family is decidable nonuniformly by a finite table of the remaining bounded-size colour-equality patterns. We use the normalized fixed-$\eps$ convention throughout.
+\end{remark}
+
+\subsection{Robustness on the same neighbourhood}
+
+For tables on a specified alphabet and neighbourhood write
+\[
+ d(P,Q)=\max_y\dtv(P(\cdot\mid y),Q(\cdot\mid y)).
+\]
+The independence of the stochastic updates at distinct space--time sites is part of the definition of a PCA table; table distance does not allow correlated update randomness.
+
+\begin{corollary}[A uniform radius]\label{nw:robust}
+For every finite $R$, every $0<\eps\le\eps_*$, and every local PCA kernel $Q$ on $A_R$ with neighbourhood $\overline N$ satisfying
+\[
+ d(Q,p_{R,\eps})\le\eps_*,
+\]
+$Q$ is ergodic if and only if $R$ does not tile. The radius is the same for every $R$ and every permitted $\eps$. The dynamical assertion allows zero entries in $Q$.
+\end{corollary}
+\begin{proof}
+Put $e_0=2\eps_*$. At every parent word,
+\[
+ Q(G_R(y)\mid y)\ge1-\eps-\eps_*\ge1-e_0.
+\]
+Entrywise subtraction therefore gives a stochastic table $Q'$ with
+\[
+ Q=(1-e_0)\delta_{G_R}+e_0Q'.
+\]
+At each exceptional flag sample a local map by drawing one $Q'(\cdot\mid y)$ output for each parent word $y$; samples at different update sites are independent. This finite random-map representation evaluates identical parent words identically. It is the exceptional-map device of \cref{cor:robust,pf:robust-scope} and \cite[Theorem~B.1]{DMdiagram}, which in turn cites \cite[Proposition~4.5]{DM26}.
+
+Use the same marked closure with source density $e_0$. Away from marks the update is still $G_R$, so the exclusion budget, coherence and forbidden-square mortality are unchanged. At an exceptional flag two different output values need not coincide. They still require a discrepant parent in $\overline N$, because the shared sampled map is a function. At every late discrepant vertex a live symbol marks it by mortality. Thus the whole backward discrepancy path is marked, even when it passes through exceptional flags. The tail base is now
+\[
+ \kappa_1=4B^{101}e_0=8B^{-99}<1.
+\]
+The all-input estimate now has slope $\log(1/\kappa_1)/50$ and the same delay $T_R$. It gives exponential coalescence on every non-tiler. Feller compactness and coupling give ergodicity.
+
+On a tiler, charge every exceptional flag as a source. Off flags the two-cluster memory cover is unchanged. The sparse-root estimate at density $e_0$ bounds both errors by $2e_0$, leaving a live-density gap $1-4e_0>0$. Planar tiling averaging and temporal Ces\`aro limits give two fully translation-invariant stationary laws.
+\end{proof}
+
+If a Gibbs statement for \emph{every} nearby table is desired, also impose $d(Q,p_{R,\eps})\le\eps/(2|A_R|)$. Then every entry of $Q$ is at least $\eps/(2|A_R|)>0$; the same all-input proof and \cite[Corollary~13.7]{DM26} give the corresponding normalized Gibbs dichotomy. This smaller positivity radius depends on the alphabet size. The dynamical radius $\eps_*$ does not. Both statements fix the alphabet and the neighbourhood, as do \cref{cor:robust,pf:robust-scope} and \cite[Theorem~B.1]{DMdiagram}.
+
+\begin{remark}[Why a neighbourhood restriction is essential]\label{nw:unrestricted}
+Take $R$ consisting of a single tile with different north and south colours. Its checker, and hence $G_R$, is identically blank. Nevertheless every total-variation ball about $p_{R,\eps}$ contains a strictly positive finite-range kernel on the same binary alphabet with two translation-invariant stationary laws, if its neighbourhood may grow. Here is the construction and its finite estimate.
+
+Code the tile by one and blank by zero, so the base kernel writes one with probability $p=\eps/2$. Given a target radius choose $0<a<\min\{\text{radius},1-p\}$ and $\vartheta=p+a/2$. Use three coordinates $(z_1,z_2,w)$ of $\Z^6$. For $A=\{0,e_1,e_2\}$ set
+\[
+ T_i(x;z,w)=\mathbf1\left\{\frac1L\sum_{k=0}^{L-1}x(z+i,w+k)\ge\vartheta\right\},
+ \qquad F_L=\operatorname{majority}(T_0,T_{e_1},T_{e_2}),
+\]
+and $Q_L(1\mid x)=p+aF_L(x)$. It is strictly positive and $d(P,Q_L)=a$. Write $B_t=F_L(X_t)$ and realize $X_{t+1}=\mathbf1_{\{U_{t+1}\le p+aB_t\}}$ with independent uniforms.
+
+Partition the $w$-axis into blocks $Lj+\{0,\ldots,L-1\}$. A source at $(z,j,t+1)$ is any failure of the $L$ possible tests in that block, at any of the three offsets and either hypothetical Bernoulli level $p$ or $p+a$. Hoeffding's inequality \cite{Hoeffding63} gives source probability at most $s_L=6Le^{-La^2/2}$. Its uniform footprint is $(z+A)\times[Lj,Lj+2L-2]$ at one time. Colour $(z_1,z_2,j)$ by coordinate residues modulo two. The eight colours have disjoint same-colour footprints, and different times are independent. Hence a fixed set of $f$ sources has probability at most $s_L^{f/8}=e_L^f$.
+
+Off a source a wrong majority requires wrong tests at two different offsets. Each wrong test must contain a wrong old $B$ value, since otherwise all its bits equal the hypothetical correct Bernoulli level. The coarse parents lie in $A\times\{0,1\}$, with two distinct planar-offset clusters. This is Toom's north-east-centre majority mechanism \cite{Toom80}. The balanced potentials
+\[
+ 3(z_1+z_2)+2t,\quad-3z_1-t,\quad-3z_2-t
+\]
+have good gains at least one and arbitrary gains at least $-2$. The finite-arm argument with three charges gives at most $9(f-1)$ edges. The undirected degree is at most $12$. Repeating the rooted encoding with $B_0=288$ and the fixed-source bound gives error probability
+\[
+ \rho\le e_L\left(1+\frac{2\lambda_L}{1-\lambda_L}\right),
+ \qquad\lambda_L=288e_L^{1/9}.
+\]
+Choose a finite $L$ so that $e_L<1/8$ and $\lambda_L<1/3$. Then $\rho<1/4$ in both homogeneous phases, uniformly in time. Their next-row one-site densities are at most $p+a\rho$ and at least $p+a(1-\rho)$, respectively. The gap exceeds $a/2$. The homogeneous starts and kernel are translation invariant, so temporal Ces\`aro limits give two distinct translation-invariant stationary laws. This disproves unrestricted-neighbourhood robustness without changing the alphabet. The construction uses eight footprint colours; twenty-seven would also suffice.
+\end{remark}
+
+\subsection{Exact complexity on this family}
+
+\begin{corollary}[Completeness at a fixed rational rate]\label{nw:complexity}
+At each fixed rational $0<\eps\le\eps_*$, the following sets of raw finite Wang inputs coincide and are $\Sigma^0_1$-complete:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item the non-tiling inputs;
+\item the inputs for which the noisy $G_R$ is ergodic;
+\item the inputs for which \eqref{nw:interaction} has exactly one Gibbs measure;
+\item the inputs whose specification has arbitrary-volume exponential weak spatial mixing.
+\end{enumerate}
+Their complements are $\Pi^0_1$-complete. Existence of two distinct fully translation-invariant stationary laws, and existence of two distinct fully translation-invariant space--time Gibbs measures, are also $\Pi^0_1$-complete on this family.
+\end{corollary}
+\begin{proof}
+Non-tiling is computably enumerable by the forbidden-square search. The Berger--Robinson reduction sends halting to non-tiling and nonhalting to tiling, so non-tiling is many-one complete among c.e.\ sets. \Cref{nw:classification,nw:gibbs} identify all four predicates with it. The memory construction gives two fully translation-invariant stationary laws and two fully translation-invariant Gibbs measures on every tiler; uniqueness on non-tilers gives the converses. Taking complements proves the $\Pi^0_1$ statements.
+\end{proof}
+
+The directions matter: nonergodicity is $\Pi^0_1$-complete here, not $\Sigma^0_1$-complete. These are exact degrees on the specified natural family, not a claim about the class of all positive-rate tables. The latter still has the $\Pi^0_2$ upper bound recalled in \cref{pf:arith} from \cite[Remark~10.9]{DM26}. The precursors for the restricted-family placement are \cref{cor:tiling,pf:arith} and \cite[Corollary~9.12]{DMdiagram}.
+
+\subsection{Other replacement laws and the forgetting time}
+
+\begin{corollary}[Replacement values]\label{nw:laws}
+For every fixed configuration-independent law $\nu_R$ on $A_R$, use independent replacements with law $\nu_R$ at independent Bernoulli flags of rate $\eps$. The dynamical classification, two-translation-invariant-law conclusion and exponential all-input estimate of \cref{nw:classification} still hold, with the same constants. No support assumption is needed dynamically. If $\nu_R$ has full support, the normalized positive table also has the Gibbs dichotomy and weak mixing of \cref{nw:gibbs}. The memory bounds \eqref{nw:memorybounds} hold even when the values written at the flags are arbitrary and adaptive.
+\end{corollary}
+\begin{proof}
+All contour estimates concern only the flags. Coherence and mortality use only updates outside them. At a flag the shared configuration-independent value makes the local map constant, whatever its law, so all-input discrepancy tracing is unchanged. The two-cluster memory cover is deterministic for every choice of the values and already proves its adaptive form. With full support the table is bounded below by $\eps\min_a\nu_R(a)>0$, and \cite[Corollary~13.7]{DM26} applies. Without full support positivity can fail, so that Gibbs import is unavailable.
+\end{proof}
+
+In particular $\nu_R=\delta_\bot$ is allowed dynamically: the blank configuration then absorbs, but a distinct tiling phase still persists. This is the raw-rule analogue of \cref{cor:laws,pf:gibbs-other}(a). The adaptive statement is an error bound; a general adaptive choice need not define a time-homogeneous PCA or a stationary process.
+
+For the timing statement write
+\[
+ \delta_R(t)=\max_{x,x'}\dtv\bigl(
+   \operatorname{Law}_xX_t(0),\operatorname{Law}_{x'}X_t(0)\bigr).
+\]
+The maximum is over finitely many words on the depth-$t$ initial cone, so it exists.
+
+\begin{corollary}[No total forgetting-time bound]\label{nw:times}
+Fix rational $0<\eps\le\eps_*$. No total computable function of $R$ bounds, on every non-tiling input, the first time $a_t<1/2$. The same is true for the first time $\delta_R(t)<1/2$. There is a partial algorithm terminating on every non-tiling input that produces a valid delay and prefactor for \eqref{nw:coalescence}, hence a forgetting modulus for every prescribed accuracy.
+\end{corollary}
+\begin{proof}
+At rational rate, finite-cone enumeration computes both $a_t$ and $\delta_R(t)$ exactly as rationals. Enumerate all initial words on the finite cone and all flags and replacement letters in it; the weights are rational. For $a_t$ test constancy for each fixed realization, and for $\delta_R(t)$ compute the finite family of output distributions and its largest total-variation distance.
+
+Both sequences are nonincreasing. For $a_t$, use nested pullback images under common maps and time stationarity. For $\delta_R(t)$, any time-$(t+1)$ output law is a mixture of time-$t$ output laws, and taking their convex hull cannot increase total-variation diameter. On non-tilers they tend to zero. On tilers the fixed clone-versus-blank cylinder gap gives $\delta_R(t)\ge1-4\eps>1/2$ at every $t$, and $a_t\ge\delta_R(t)$.
+
+If a total computable bound $b(R)$ worked on all non-tilers, evaluate the corresponding rational coefficient at $b(R)$. Monotonicity would make it less than $1/2$ on every non-tiler and greater than $1/2$ on every tiler. This would decide tiling, a contradiction. For the partial algorithm search for a forbidden square, compute $T_R=762n_R+1$, then use the explicit geometric bound for the requested accuracy.
+\end{proof}
+
+This specializes the timing argument of \cref{cor:mixing}; compare \cite[Corollaries~9.10--9.11]{DMdiagram}. The slope $c$ is universal and computable. The impossible object is a \emph{total} bound on the delay, prefactor or forgetting modulus over all finite inputs, even though it is required to be valid only on non-tilers. A partial computation of these quantities on the non-tiling domain is fully consistent with undecidability.
+
+\subsection{Canonical phases and the conditional continuum}
+
+\begin{theorem}[An extreme phase for each tiling]\label{nw:continuum}
+For $\xi=\bot$ and for each clone $\xi=\xi_\theta$, $\theta\in\nwT(R)$, there is a canonical stationary law $\mu_\xi$, extreme among \emph{all} stationary laws, whose stationary trajectory is mixing under time translations. The map $\theta\mapsto\mu_\theta$ is continuous and injective. If $\nwT(R)$ is uncountable, the noisy $G_R$ has exactly continuum many extreme stationary laws and \eqref{nw:interaction} has exactly continuum many extremal Gibbs measures. No spatial invariance is asserted for the individual tiling-labelled extremes.
+\end{theorem}
+\begin{proof}
+Use the two-sided innovations and start the reference $\xi$ at times $-s$ and $-t$, where $s>t$. By \cref{nw:memorycover}, errors of both runs relative to the same reference lie in the single global $\nwM$. A discrepancy at time zero traces a backward discrepant path through the shared time interval of length $t$. Every vertex of this path is an error in at least one of the two runs and is therefore marked. This inclusion holds for existence of \emph{any} $s>t$, without a union over $s$. Hence at a fixed root
+\begin{equation}\label{nw:reference-tail}
+ \Prob\{\exists s>t:
+ X_0^{(-s,\xi)}(v)\ne X_0^{(-t,\xi)}(v)\}
+ \le\frac{e^{-ct}}{1-\kappa}.
+\end{equation}
+These events decrease: once all longer pullbacks agree with the depth-$t$ value, they agree with one another. Their probabilities tend to zero. Thus the reference pullbacks eventually stabilize almost surely at each root. Countability gives simultaneous limits $H_\xi(v,t)$ at all space--time roots. Finite parent sets stabilize together, so the limiting field satisfies the update equations. It depends only on past innovations, and fresh innovations retain the required conditional kernel. Time translation just reindexes the constant-in-time reference starts. The history is therefore a time-equivariant measurable factor of independent whole-noise rows, so is stationary and mixing in time.
+
+The stationary-history map from stationary row laws is affine and injective, with inverse the time-zero marginal. If $\mu_\xi$ admitted a nontrivial stationary decomposition, its stationary Markov history would admit the corresponding nontrivial decomposition into time-invariant histories. This contradicts its time ergodicity. Thus $\mu_\xi$ is extreme among all stationary laws.
+
+The error bounds pass to the limits:
+\[
+ \mu_\theta\{x(u,P)=\theta(u)\}\ge1-2\eps,
+ \qquad \mu_\bot\{x(u,P)\ne\bot\}\le2\eps.
+\]
+Distinct tilings differ at some planar site; their laws are separated there by at least $1-4\eps$. In particular the map is injective. For continuity, approximate any finite marginal uniformly in $\theta$ by a finite-depth reference pullback using \eqref{nw:reference-tail}. At fixed depth it reads only a finite planar part of $\theta$ and is locally constant as a function of that tiling. Uniform approximation proves continuity. Compactness of $\nwT(R)$ makes this a homeomorphism onto its image.
+
+An uncountable compact metrizable tiling space has cardinal continuum. The embedding gives that many stationary extremes, and the space of all probability laws on a countable finite-alphabet product has cardinal at most continuum. For Gibbs extremes, pass the tiling-labelled row laws to their stationary trajectories, which are DLR by \cite[Lemma~2.4]{DM26}. Their time-zero cylinders give an uncountable family uniformly separated in total variation.
+
+Apply the cardinality argument of \cite[Theorem~9.6]{DMdiagram}. The DLR set is compact, convex and metrizable. If it had only countably many extreme points, the metrizable Choquet theorem \cite{Choquet} would represent every state as a countable mixture of them. Truncating the mixture and rationalizing its weights would give a countable total-variation-dense subset, contradicting the separated family. Its extreme set is $G_\delta$: the nonextreme points form the union, over $j\ge1$, of compact sets of midpoints of pairs at weak distance at least $1/j$. Every nonextreme point is such a midpoint after shortening a segment through it. The perfect-set theorem \cite{Kechris} then gives continuum many Gibbs extremes. This argument does not identify each stationary extreme with a Gibbs extreme; that implication is not used.
+\end{proof}
+
+The reference-pullback construction is related to coupling from the past \cite{PW96,vdBS99}; eventual agreement of these particular reference runs does not certify constancy against arbitrary older starts. No finitary driving-map claim on tiling inputs follows from it. The conditional continuum is already applicable to strongly aperiodic sets: a nonempty minimal tiling subsystem with an isolated point would be finite, whereas aperiodicity excludes a finite orbit. Such a subsystem is therefore perfect and uncountable. Berger and Robinson supply the classical aperiodic context \cite{Berger66,Robinson71}.
+
+For arbitrary tiling $R$ the countable case remains genuinely open here. A single self-matching tile has one tiling, and a countably infinite example can be made from a single interface position. Tileability alone does not give the uncountable hypothesis. The next construction supplies the unconditional continuum after adding one coordinate, without asserting that the gap for the original rule has been closed.
+
+\subsection{The stack on \texorpdfstring{$\Z^7$}{Z7}}
+
+Define $\widehat G_R$ on $\Z^6\times\Z$ by updating slice $h$ from slice $h+1$ with $G_R$, using independent replacement innovations at every site of every slice. Thus its parent offsets are $(a,1)$, $a\in\overline N$. Along each characteristic $h+t=j$ the process is an independent copy of the original PCA. This is exactly the stacking device of \cref{pf:def-stack,pf:characteristics,cor:stack}, now with the natural rule as its base.
+
+\begin{corollary}[One invariant measure or an arc]\label{nw:stack}
+For every $0<\eps\le\eps_*$:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item If $R$ does not tile, $\widehat G_R$ has exactly one invariant measure, attracts every initial law exponentially on every finite window, and has the same one-site all-input coefficient and one-site forgetting diameter as its base rule.
+\item If $R$ tiles, $\widehat G_R$ has an arc $\{\mu_p:0\le p\le1\}$ of distinct invariant measures, each fully spatially translation invariant, extreme among all invariant measures, and mixing in time. The parameterization is a homeomorphism onto its image. For $0<p<1$ these measures need not be ergodic under translations within a slice; in this construction they are not.
+\item Its normalized space--time interaction on $\Z^8$ has exactly one Gibbs measure on the non-tiling branch. On the tiling branch the stationary trajectories of the arc are fully translation-invariant Gibbs measures, extreme in the translation-invariant Gibbs class. For $0<p<1$ they are not extreme among all Gibbs measures.
+\item At each fixed rational permitted rate, no algorithm decides which branch holds. The one-site forgetting time on non-tilers has no total computable bound.
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+For each $j$ set $Z_s^j(v)=X_s(v,j-s)$. Substituting the update equation shows that $Z^j$ follows the base rule from initial slice $j$. The innovation families for different $j$ are disjoint. As the entire stack start varies, its slice $h+t$ ranges over all base starts. Thus the one-site common-map coefficient and the supremum one-site output-law diameter equal their base counterparts. This proves the exponential and timing claims in (i) and (iv), by \cref{nw:allinput,nw:ergodic,nw:times}.
+
+On a tiler choose the two fully translation-invariant stationary base laws $\nu^-,\nu^+$ with live densities $a_-\le2\eps$ and $a_+\ge1-2\eps$. Put $\rho_p=(1-p)\nu^-+p\nu^+$ and let $\mu_p$ have independent slices, each of law $\rho_p$. Updating from slice $h+1$ preserves this product, since $\rho_p$ is stationary and characteristic noises are independent. The product is fully spatially invariant. Finite cylinder probabilities are polynomials in $p$, and the one-site live probability $(1-p)a_-+pa_+$ is strictly increasing. Hence the parameterization is continuous and injective, and compactness gives the homeomorphism claim.
+
+For extremality, suppose a stationary law $\alpha$ satisfies $\lambda\alpha\le\mu_p$ for some $\lambda>0$. Its bounded density can be approximated in $L^1(\mu_p)$ by a function $f$ of finitely many slices. For a cylinder observable $g$, the function $P^tg$ depends only on its original slice indices translated by $t$. At large $t$ those slices are disjoint from the ones read by $f$, and product independence gives
+\[
+ \alpha(g)=\alpha(P^tg)
+ \approx\mu_p(f)\mu_p(P^tg)=\mu_p(f)\mu_p(g).
+\]
+The error is at most $\|g\|_\infty$ times the $L^1$ approximation error, while $\mu_p(f)$ tends to one. Thus $\alpha(g)=\mu_p(g)$ for every cylinder, so $\alpha=\mu_p$. This proves extremality in the full stationary set. Functions of two finite time windows read disjoint finite sets of characteristic indices at a sufficiently large time separation, giving exact independence and hence time mixing. For $0<p<1$, the single-slice law $\rho_p$ is a proper mixture of distinct slice-translation-invariant laws, so it has a nontrivial slice-translation-invariant event. Its lift to slice zero proves the last assertion of (ii).
+
+For (iii), add the ignored origin parent if necessary; factors introduced only through that unused parent cancel from finite-volume normalizations. On a non-tiler the unchanged all-input coefficient checks \cite[Corollary~13.7]{DM26} in spatial dimension seven. On a tiler, \cite[Lemma~2.4 and Corollary~10.4]{DM26} identify the fully translation-invariant Gibbs class affinely with fully translation-invariant stationary trajectories. Taking time-zero marginals and using (ii) proves extremality in that class and continuity of the arc.
+
+Finally every interaction factor lies within one characteristic hyperplane $h+t=j$. The specification factors over these hyperplanes. Under the trajectory of $\mu_p$, their restrictions are independent, each with law $(1-p)\bar\nu^-+p\bar\nu^+$. For $0<p<1$, decomposing just the hyperplane $j=0$ into its two Gibbs laws, while leaving the others unchanged, gives a proper convex decomposition into distinct Gibbs states. Thus the trajectory is not extreme in the full DLR set. This is precisely the distinction in \cref{cor:stack}(iii); no stronger Gibbs extremality is inferred.
+\end{proof}
+
+\subsection{Why this mechanism uses four transverse dimensions}
+
+\begin{remark}[The counting certificate and Toom's criterion]\label{nw:mechanism}
+Consider $c_0$ disjoint equal boxes of side $m_0$, each with $K_0$ providers, and quorum $h_0$ among $q_0=c_0K_0$ providers. Suppose the proof uses the same two-cluster mark rule and the same independent two-root exclusion budget. Unit-shift pairing supplies $c_0(1-1/m_0)K_0$ pairs. Each root can discard $(q_0-h_0)+K_0$ offsets. Strict guaranteed surplus requires
+\[
+ 2h_0>(c_0+2+c_0/m_0)K_0.
+\]
+The two-cluster false-erasure cover requires $q_0-h_0\ge K_0$, hence $h_0\le(c_0-1)K_0$. Together these imply
+\[
+ c_0>4+c_0/m_0,\qquad c_0\ge5.
+\]
+This is necessity for the \emph{pair-overlap counting certificate}, not for every possible coherence argument. The five-cluster count was first isolated in the cross-family check of the natural-rule proof (see ``How this work was done'').
+
+Now suppose $d_\perp\le3$ and choose five cluster representatives $a_1,\ldots,a_5\in\R^{d_\perp}$. The vectors $(a_i,1)$ are linearly dependent. Splitting a nonzero affine dependence into its positive and negative parts and normalizing gives a Radon point $z$ in the convex hulls of two disjoint nonempty groups \cite{Radon21}. At least one group avoids any given index, so
+\begin{equation}\label{nw:deletionhulls}
+ z\in\bigcap_j\operatorname{conv}\{a_i:i\ne j\}.
+\end{equation}
+A balanced strict affine-charge certificate asks every charge to have a positive-gain step on one parent of every distinct-cluster support pair. Choose planar displacement zero. Each charge then has an affine gain function on the representatives and at most one nonpositive representative gain. Evaluate it at the deletion hull omitting that representative; it is positive at $z$. Every charge is therefore positive at $z$, contradicting the identically zero balanced sum. Such a certificate needs at least four transverse dimensions.
+
+This is Toom's eroder criterion, not a new general obstruction to low-dimensional memory. For the two-cluster binary mark rule the minimal zero-sets are $Z_j=\Lambda\times(S\setminus S_j)$. Its erosion criterion is $\bigcap_j\operatorname{conv}(Z_j)=\varnothing$ \cite{Toom80}; see the precise formulation of the criterion in \cite[Proposition~3]{SST26}. The representatives in \eqref{nw:deletionhulls}, with zero planar coordinate, lie in every corresponding deletion hull and make that intersection nonempty. Thus this particular mark rule fails the eroder criterion in $d_\perp\le3$. Nothing here excludes a different natural rule, a different support restriction, or another proof on $\Z^5$ or $\Z^4$.
+
+Helly's theorem \cite{Helly23} explains why the same certificate obstruction persists for positive weighted quorums and higher mark thresholds. If marks require $k_0\ge2$ clusters, let $W$ be the sum of the largest $k_0-1$ cluster masses. The same budgets require total mass $q_0>4W$, hence $c_0>4(k_0-1)$. In transverse dimension at most three, any four hulls formed by deleting $k_0-1$ representatives share a surviving representative. Finite Helly gives a point common to all such hulls. Each charge has at most $k_0-1$ nonpositive representatives; deleting those makes its value positive at the common point, again contradicting balance. This remains an obstruction to this architecture and its certificate inequalities only.
+\end{remark}
+
+\begin{table}[ht]
+\centering\small
+\begin{tabularx}{\textwidth}{@{}Xcc@{}}
+\toprule
+Property at $0<\eps\le\eps_*$ & $R$ does not tile & $R$ tiles\\
+\midrule
+$G_R$ nilpotent at zero noise & yes & no\\
+Noisy $G_R$ ergodic & yes & no\\
+Exponential all-input coalescence & universal slope & no\\
+Normalized space--time Gibbs measures & exactly one & at least two TI\\
+Arbitrary-volume exponential weak mixing & yes & no\\
+Invariant measures of the stack & exactly one & an arc of TI extremes\\
+\bottomrule
+\end{tabularx}
+\caption{The raw Wang equivalence and its consequences. The coalescence delay is input dependent; the continuum for the unstacked rule requires uncountably many tilings. TI means fully translation invariant in the relevant lattice.}\label{tab:summary}
+\end{table}
+
+

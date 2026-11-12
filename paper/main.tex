@@ -1,44 +1,47 @@
-% =====================================================================
-%  Forgetting under noise is undecidable:
-%  ergodicity of positive-rate cellular automata at a fixed noise rate
-%  Seth Douglas and Nidhal Mghirbi
-%  Version 1.4.0, November 2026
-%
-%  Build: python -B build.py (three pdflatex passes)
-% =====================================================================
+% Forgetting under noise is undecidable -- Version 2.0.0, November 2026.
+% Build: python -I -B build.py [--build-dir NEW_OR_EMPTY_DIRECTORY]
 \documentclass[11pt]{article}
 \input{preamble-core.tex}
 \newcommand{\bott}{\bot}
 \newcommand{\OPENAIMODEL}{GPT-6.1~Sol}
-
+\newcommand{\nwM}{\mathcal M}
+\newcommand{\nwT}{\mathcal T}
 \hypersetup{pdftitle={Forgetting under noise is undecidable},pdfauthor={Seth Douglas and Nidhal Mghirbi}}
-\title{\vspace{-1.2cm}\LARGE Forgetting under noise is undecidable:\\ ergodicity of positive-rate cellular automata at a fixed noise rate}
+\title{\vspace{-1.2cm}\LARGE Forgetting under noise is undecidable}
 \author{Seth Douglas \and Nidhal Mghirbi}
-\date{\small Version 1.4.0, November 2026}
-
+\date{\small Version 2.0.0, November 2026}
 \begin{document}
 \maketitle
-
 \input{sections/00-abstract.tex}
-
 \tableofcontents
-
 \input{sections/01-introduction.tex}
+\clearpage
+\input{sections/01-natural.tex}
+\clearpage
+\input{sections/01-consequences.tex}
+\clearpage
 \input{sections/02-setting.tex}
 \input{sections/04-forgetting.tex}
 \input{sections/03-memory.tex}
+\clearpage
 \input{sections/05-scaffold.tex}
 \input{sections/06-family.tex}
 \input{sections/07-refutation.tex}
 \input{sections/08-proofs.tex}
 \input{sections/09-width-three.tex}
+\clearpage
+\input{sections/12-lower-dimensions.tex}
+\clearpage
 \input{sections/09-discussion.tex}
 \input{sections/10-how.tex}
-
 \appendix
 \input{sections/appendix-tables.tex}
+\clearpage
 \input{sections/appendix-machine.tex}
+\clearpage
 \input{sections/appendix-lean.tex}
-
 \input{sections/references.tex}
 \end{document}
+
+
+

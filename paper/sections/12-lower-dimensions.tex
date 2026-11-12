@@ -1,0 +1,303 @@
+\section{Lower dimensions}\label{sec:lower}
+
+The natural raw-Wang rule can be realized on $\Z^4$, and a transverse-quorum lift of Kari's nilpotency reduction gives fixed-rate undecidability on $\Z^3$. Both results below are qualitative. The exponential coalescence estimate, all-Gibbs uniqueness, robustness and Lean core of the $\Z^6$ route remain separate results. The change is to pair provider offsets only when neither of the two vertices has a marked parent, and to control all backward paths at once at the other steps.
+
+\subsection{Why the budget-only estimate stops at six}
+
+The obstruction concerns a specified auxiliary cover and exclusion certificate, not every cellular automaton in a given dimension. The convex geometry underlying it is the classical erosion geometry of Toom's method; compare \cite{Toom80,SST26}. We prove the needed form here.
+
+\begin{theorem}[Saturation of weighted covers]\label{ld:saturation}
+Let $k\ge0$, let $a_1,\ldots,a_c$ be distinct points of $\Z^k$, where $c\ge1$, and give them real weights $w_i>0$. Put $q=\sum_iw_i$. Let $W\ge0$ and let $F:2^{\{1,\ldots,c\}}\to\{0,1\}$ be monotone, with
+\[
+ F(A)=0\ \Longrightarrow\ \sum_{i\in A}w_i\le W.
+\]
+If $q>(k+1)W$ and $F(\varnothing)=0$, there are nonempty finite sets $E_t\subset\Z^k$ for all $t\in\Z$, an integer $L\ge1$ and $d\in\Z^k$ such that
+\[
+ E_{t+L}=E_t-d,\qquad
+ F(\{i:x+a_i\in E_{t-1}\})=1\quad(x\in E_t).
+\]
+There is thus a finite periodically translating immortal nucleus. Set $J=|E_0|\ge1$. For every $0<e\le1$, start $M_0=\varnothing$ and, for integers $t\ge1$, set
+\[
+ x\in M_t\ \Longleftrightarrow\
+ \eta(x,t)=1\ \text{ or }\ F(\{i:x+a_i\in M_{t-1}\})=1,
+\]
+where the $\eta$ are independent Bernoulli($e$) variables. For every $x$ and $T\ge1$,
+\begin{equation}\label{ld:satbound}
+ \Prob(x\notin M_T)\le(1-e^J)^T.
+\end{equation}
+The least two-sided closure is full almost surely. If $F(\varnothing)=1$, fullness is immediate. The strict inequality on $q$ is sharp for the universal finite-nucleus conclusion.
+\end{theorem}
+\begin{proof}
+Call $Z\subset\{1,\ldots,c\}$ zero-forcing if $F(Z^c)=0$. There is at least one such set, the full set, and none is empty because $q>W$. For any $r\le k+1$ zero-forcing sets, the union of their complements has weight at most $rW<q$. Hence those $r$ sets share an index. The convex hulls
+\[
+ C_Z=\operatorname{conv}\{a_i:i\in Z\}
+\]
+therefore intersect in every subfamily of at most $k+1$ members.
+
+Here is the finite Helly argument needed to conclude that all $C_Z$ intersect. If a finite convex family has empty intersection, choose a minimal empty subfamily $C_1,\ldots,C_n$. If every at most $k+1$ members intersect, then $n\ge k+2$. Choose $x_i\in\bigcap_{j\ne i}C_j$. Among $k+2$ of the vectors $(x_i,1)$ in $\R^{k+1}$ there is a nonzero linear dependence. Its coefficients sum to zero, so its positive and negative parts, normalized, give a point in the convex hulls of two disjoint nonempty groups of the $x_i$. Each $C_j$ contains at least one whole group, and hence that point, a contradiction. In dimension zero the assertion is immediate.
+
+Choose a common point $z$ of the $C_Z$ with rational barycentric coefficients. Such a choice exists: the equations specifying a common point and the nonnegative barycentric coefficients form a feasible rational linear system. At a real feasible point retain the inequalities that are equalities there. Gaussian elimination parametrizes their rational affine solution space over the rationals; rational parameters sufficiently close to the given ones preserve all remaining strict inequalities. This supplies a rational feasible point, even though the weights themselves need not be rational.
+
+List the zero-forcing sets as $Z_1,\ldots,Z_m$. Choose a common denominator $L\ge1$ for coefficients $\lambda_{j,i}\ge0$, supported in $Z_j$, with
+\[
+ \sum_i\lambda_{j,i}=1,\qquad \sum_i\lambda_{j,i}a_i=z.
+\]
+For each $j$, form a periodic list $(b^j_r)_{r\in\Z}$ of period $L$ using $a_i$ exactly $L\lambda_{j,i}$ times per period. All period sums equal $d=Lz\in\Z^k$. Define $A^j_0=0$ and $A^j_{r+1}-A^j_r=b^j_r$ for every integer $r$. Thus $A^j_{r+L}=A^j_r+d$. Set
+\[
+ E_t=\left\{\sum_{j=1}^m A^j_{r_j}:\
+       \sum_jr_j=-t,\quad 0\le r_j<L\ (j<m)\right\}.
+\]
+The last index is determined by the others, so $1\le|E_t|\le L^{m-1}$, including $m=1$. Also $E_{t+L}=E_t-d$.
+
+Fix a representation of $x\in E_t$. Incrementing any $r_j$ supplies the parent $x+b^j_{r_j}\in E_{t-1}$. If $j<m$ wraps from $L-1$ to $L$, subtract $L$ from that index and add $L$ to the last one; the spatial sum is unchanged. The active provider indices at $x$ therefore meet every $Z_j$. If their set $A$ had $F(A)=0$, then $A^c$ would be a zero-forcing set disjoint from $A$, a contradiction. This proves the nucleus property. Colliding representations only reduce the physical set size.
+
+Fix $x,T$. Choose $u_n\in E_n$ for $n\ge0$. At each source time $s=1,\ldots,T$, require flags on every site of $x-u_{T-s}+E_0$. This event has probability $e^J$ and, by the nucleus property and monotonicity, forces $x\in M_T$. These events use disjoint time slices and are independent. Their simultaneous failure bounds the omission probability by \eqref{ld:satbound}. Sending the starting time to $-\infty$ gives zero omission probability for any fixed space--time vertex; countability gives simultaneous fullness. If $F(\varnothing)=1$, monotonicity makes $F$ identically one.
+
+For sharpness, for every $k\ge1$ and $W>0$ use providers $0,e_1,\ldots,e_k$, each of weight $W$, and activate on two or more providers. Then $q=(k+1)W$ and every finite deterministic island erodes. To see this, put $\ell_0(x)=\sum_i x_i$, $\ell_i(x)=-x_i$, and
+\[
+ \phi_0(x,t)=\ell_0(x)+\frac{k}{k+1}t,\qquad
+ \phi_i(x,t)=\ell_i(x)-\frac{1}{k+1}t\quad(1\le i\le k).
+\]
+They sum to zero. From any two supporting providers, charge zero can choose a nonzero one and charge $i$ can choose one other than $e_i$, gaining at least $1/(k+1)$ per backward step. If a marked site survives to time $t$ from a finite nonempty initial set $A$, follow such a path for each charge to time zero and sum the gains. Then
+\[
+ t\le\sum_{i=0}^k\max_{x\in A}\ell_i(x)<\infty.
+\]
+No marked site survives beyond this bound. Empty $A$ is trivial. For $k=0$, one provider with weight $W>0$ and $F$ identically zero gives an equality example that erodes immediately. Thus equality cannot be substituted in the universal assertion.
+\end{proof}
+
+\begin{corollary}[Scope of the budget obstruction]\label{ld:budget-obstruction}
+Consider a planar checker and pairwise disjoint transverse provider clusters in $\Z^k$, with positive cluster masses summing to $q$. Let its unflagged cluster rule be a monotone Boolean $F$ satisfying $F(A)=0\Rightarrow\sum_{i\in A}w_i\le W$ for every cluster subset $A$. Suppose its quorum-coherence certificate requires
+\begin{equation}\label{ld:oldbudgets}
+ q-h\ge W,\qquad q>2[(q-h)+W].
+\end{equation}
+If $k\le3$, that marked field saturates at every positive independent flag rate. Thus this certificate cannot supply a sparse cover in total spatial dimension $2+k\le5$.
+\end{corollary}
+\begin{proof}
+The two inequalities imply $q>4W\ge(k+1)W$. Choose an integer representative from each cluster and the zero planar offset of the checker. The induced monotone rule on these parents has $F(A)=0$ only when the contaminated mass is at most $W$; otherwise the asserted unmarked guarantee fails. Apply \cref{ld:saturation}. Its finite nucleus is also supported by the full marked rule, so fullness transfers to that cover.
+\end{proof}
+This says nothing about the actual noisy automaton's ergodicity. Correlations, other pairings, realizable-error restrictions or another cover can evade \eqref{ld:oldbudgets}. The following construction does so at the equality $q=3W$ in transverse dimension two.
+
+\subsection{Three boxes and an all-path density lemma}
+
+All constants in the rest of this section are local to the lower-dimensional constructions; they do not replace the constants of \cref{sec:natural}. Put
+\begin{gather}
+ K=16^2=256,\quad q=3K=768,\quad h=2K=512,\nonumber\\
+ S_0=\{0,\ldots,15\}^2,\quad
+ S_1=160e_1+S_0,\quad S_2=160e_2+S_0,\quad S=S_0\cup S_1\cup S_2,\\
+ \Delta=18q=13824,\quad B=2\Delta^2=382205952,\quad D=350,\nonumber\\
+ \delta=\frac1{4(D+1)}=\frac1{1404},\quad
+ C_\delta=12/\delta+12=16860,\quad
+ e_0=B^{-2C_\delta}=B^{-33720}.\label{ld:constants}
+\end{gather}
+Here $D=\operatorname{diam}_{\ell^1}(S)$: the coordinate bounds give at most $350$, attained between $(175,0)$ and $(0,175)$.
+
+For the common noise argument take a logical coordinate $u\in\Z^r$ and a finite nonempty logical parent set $J\subset\Z^r$ with $|J|\le9$. An ordinary parent of $(u,P,t)$ is
+\[
+ (u+j,P+a,t-1),\qquad j\in J,\ a\in S.
+\]
+The undirected ordinary graph has degree at most $2|J|q\le\Delta$. We will use $r=2$, $J=\{-1,0,1\}^2$ for the planar checker and $r=1$, $J=\{0,1\}$ for the generator. Fix any $0<e\le e_0$ and independent Bernoulli($e$) flags $\eta$ at every integer time. Let $M$ be the least set containing the flags and closed whenever a vertex has two marked ordinary parents in distinct clusters $S_i,S_j$. Let
+\[
+ H(v)\quad\Longleftrightarrow\quad
+ \text{$v$ has some ordinary parent in $M$}.
+\]
+The recurrence for $M$ still requires two distinct clusters; $H$ is only an auxiliary event.
+
+\begin{lemma}[Finite contours and sparse roots]\label{ld:contours}
+Every mark has a finite derivation DAG ending at flags. An unmarked vertex is unflagged and has marked parents in at most one cluster, so at most $K$ provider offsets have a marked input. Every marked root has a connected physical witness with $f\ge1$ distinct flagged terminals and at most $12(f-1)$ edges. All its vertices lie between its earliest terminal time and its root time, and its time span is at most $12(f-1)$. A flagged root can use $f=1$ and no edges. Moreover, for every vertex $v$,
+\begin{equation}\label{ld:sparse}
+ \Prob(v\in M)\le e\left(1+\frac{2\lambda}{1-\lambda}\right)<2e,
+ \qquad \lambda=Be^{1/12}\le B^{-2809}<1/8.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Iterate the finitary two-parent closure starting from all flags. A supporting pair in the union belongs to some common finite rank, so the union is closed and least. Each finite-rank mark has a finite derivation; choosing smaller-rank supports gives a finite acyclic graph. This is also the union of closures started empty at arbitrarily early times, by the finite earliest time of each derivation. The exclusion budget is exactly the argument of \cref{nw:budget}, with one-cluster size $K$.
+
+The charge-arm construction of \cref{nw:arms} transfers with three balanced potentials
+\[
+ \psi_0(P,t)=3(P_1+P_2)+350t,\qquad
+ \psi_i(P,t)=-3P_i-175t\quad(i=1,2).
+\]
+For charge zero a backward step in $S_1$ or $S_2$ gains between $130$ and $220$; for charge $i$ a step outside $S_i$ gains between $130$ and $175$. Every possible gain is at least $-350$. Each distinct-cluster support pair offers a gain of at least $130$ to each charge.
+
+For clarity, the merged-support accounting is as follows. Give frontier vertices their descendant physical terminal-name sets and join them when those sets overlap. Exposing a vertex replaces its set by the union of its two support sets; it cannot join an outside component and can split its component into at most two, since each remaining overlap branch attaches to one support. Begin one good arm of each charge at the root, track its eventual terminal name, and maintain one endpoint name of each charge per overlap component. At a split add a source copy at the exposed vertex; for each charge send an arm to the daughter missing its old endpoint, then follow good supports to a terminal. Only the initial edge of such a new arm may be bad. At the terminal frontier each physical terminal name has one endpoint of each charge. Copy arm interiors, identify each source's three starts and each terminal name's endpoints, and retain the component of the original root source. Each charge gives a bijection of sources and terminals there. If there are $f$ terminals, there are $f$ sources, of which $f-1$ are new. Balance at every source and terminal yields, for the edge count $E$ with arm multiplicity,
+\[
+ 0\ge130E-480\cdot3(f-1),\qquad
+ E\le\frac{144}{13}(f-1)<12(f-1)\quad(f>1).
+\]
+Projection only reduces the edge count. As in the span paragraph of \cref{nw:arms}, all sources and arms are at or below the root time, and a minimum-time vertex of the abstract arm graph must be a terminal. Thus \emph{every} contour vertex lies in the closed interval from the earliest terminal time to the root time; connectedness bounds the span by $E$. This time bracket is needed below.
+
+The encoding \eqref{nw:encoding} also transfers unchanged: a rooted connected $n$-edge set has at most $\Delta^{2n}$ canonical doubled-edge walks and at most $2^{n+1}$ terminal subsets, hence at most $2B^n$ encodings. For a nonflagged root, $n\ge1$ and $f\ge1+n/12$. A fixed $f$-element terminal set is flagged with probability $e^f$. Summing deterministic witnesses gives
+\[
+ \Prob(v\in M)\le e+\sum_{n\ge1}2B^n e^{1+n/12},
+\]
+which is \eqref{ld:sparse}. This counts distinct physical flags even when arms or support branches merge; no conditional independence of selected paths is used.
+\end{proof}
+
+\begin{lemma}[All-path marked-parent density]\label{ld:density}
+For each root $v$ and integer $N\ge1$, let $A_N(v)$ be the event that some ordinary backward path of $N$ edges from $v$ has $H$ at at least $\delta N$ of its initial $N$ vertices. With $a=B^{C_\delta}e$, one has
+\begin{equation}\label{ld:densitybound}
+ \Prob(A_N(v))\le4\sum_{f\ge\lceil\delta N/12\rceil}a^f,
+ \qquad a\le B^{-16860}<1/4.
+\end{equation}
+Almost surely, simultaneously at every root $v$, there is a finite $N_0(v)$ such that for every $N\ge N_0(v)$ and every ordinary backward $N$-edge path from $v$, fewer than $\delta N$ of those vertices have $H$. In particular there is no infinite all-$M$ ordinary backward path.
+\end{lemma}
+\begin{proof}
+Given a path in $A_N(v)$, select its latest remaining $H$ occurrence. Attach a spur to one marked parent and a full contour of \cref{ld:contours} at that parent. If the contour's earliest terminal time is $\tau$, skip all remaining occurrences whose parent time is at least $\tau$, then repeat. Retain the entire final contour even if it extends below the path endpoint. By the contour time bracket, successive closed terminal slabs are disjoint. Their selected flags are therefore distinct.
+
+A selected contour with $f_j$ terminals has span at most $12(f_j-1)$ and accounts for at most $12(f_j-1)+1\le12f_j$ path time positions. Thus $f=\sum_jf_j\ge\lceil\delta N/12\rceil$. The union of the \emph{whole} original $N$-edge path, all parent spurs and all full contours is rooted and connected, with edge count
+\[
+ n\le N+\sum_j[1+12(f_j-1)]\le N+12f\le C_\delta f.
+\]
+For fixed $f$ the union and terminal subset have at most
+\[
+ \sum_{n=0}^{C_\delta f}2B^n\le4B^{C_\delta f}
+\]
+encodings. Keep only subsets of size $f$ and charge probability $e^f$ to each. This proves \eqref{ld:densitybound}, including the entropy of the entire path. The bound is summable in $N$, because $a<1$ and $\lceil\delta N/12\rceil$ grows linearly. Borel--Cantelli and countably many roots give the asserted event. It quantifies over all paths, even paths chosen using all innovations and noncausally selected symbol histories. On an infinite all-$M$ path each vertex has its next marked vertex as a parent and thus has $H$, contradicting that event.
+\end{proof}
+
+The integer $12$ rounds up the arm coefficient $144/13$; $\delta=1/[4(D+1)]$ leaves a factor-two margin for two paths; $C_\delta$ pays for the path and contours. The factor two in $e_0=B^{-2C_\delta}$ is slack. For these estimates, the weaker requirements $B^{C_\delta}e<1/4$ and $Be^{1/12}<1/3$ would suffice (in particular $B^{-16861}$ suffices). We keep the stated $B^{-33720}$ throughout.
+
+\subsection{The natural rule on four spatial dimensions}
+
+For every finite raw Wang set $R$, let $A_R=R\sqcup\{\bot\}$, let $u\in\Z^2$, $P\in\Z^2$, and put $\Gamma=\{0,\pm e_1,\pm e_2\}$ and $\Lambda=\{-1,0,1\}^2$. The cardinal checker $C_R$ keeps its central tile precisely when all five tiles of its cardinal star are live and their four shared edges match; otherwise it returns $\bot$. For each $a\in S$, the provider at $(u,P)$ is $C_R(x(\cdot,P+a))(u)$. Define $G_R^{(4)}$ to output the live tile occurring at least $h$ times among these $q$ providers, or $\bot$ if no tile qualifies. Since $2h>q$, this is unambiguous. Its actual neighbourhood is $\Gamma\times S$, independent of $R$.
+
+\begin{theorem}[Natural raw-Wang classification on $\Z^4$]\label{ld:z4}
+For every finite Wang set $R$ and every $0<e\le e_0$, independent uniform whole-symbol replacement with probability $e$ after $G_R^{(4)}$ is ergodic if and only if $R$ does not tile $\Z^2$. If $R$ tiles, there are two distinct invariant probability laws. If $R$ does not tile, almost surely every finite observation window couples from the past in finite time, simultaneously over all initial configurations; every initial law converges weakly to the unique invariant law. All constants and the neighbourhood are common to every $R$.
+\end{theorem}
+
+Use the common marked field with logical parents $J=\Lambda$. At every flagged vertex use the same replacement value in $A_R$ for all starts. A complete history means a configuration at every integer time satisfying every prescribed noisy update. Fix the probability-one flag event of \cref{ld:density}; all following deterministic assertions hold for every choice of replacement values and every complete history on it. Call a provider clean if all its $\Lambda$ inputs are unmarked. An unmarked live output is unflagged, has at least $h$ successful providers, and loses at most $K$ to contamination, leaving at least $h-K=K$ clean successful providers.
+
+\begin{lemma}[Amortized same-site coherence]\label{ld:z4coherence}
+In every complete history, at every $u,t$, all unmarked live readings over all $P\in\Z^2$ carry the same tile.
+\end{lemma}
+\begin{proof}
+Suppose two such readings at $P,Q$ carry different tiles $s,s'$. Their distance $d=\|Q-P\|_1$ is positive. If neither current vertex has $H$, all provider inputs are unmarked. Choose a coordinate and sign $\sigma$ with which to reduce $Q-P$. Pair offsets $a,a'=a-\sigma e_j$ inside each box. Both projections are injective, and there are $3\cdot15\cdot16=720$ pairs. Each root excludes at most $q-h=K$ failed providers. Since $720>2K=512$, a pair of successful providers remains. Their clean central parents carry $s,s'$ at the same $u$, one time earlier, with distance exactly $d-1$.
+
+If at least one current vertex has $H$, choose any clean successful provider at each root. Their central parents again carry the respective different tiles, and the distance grows by at most $D$. These two paths are ordinary and remain live and unmarked. If a chosen parent distance were zero, the different readings would already contradict equality at one vertex. Otherwise continue indefinitely.
+
+After $N$ steps let $b_N$ count steps with at least one $H$ root. The positive distances satisfy
+\begin{equation}\label{ld:drift}
+ 1\le d_N\le d_0-N+(D+1)b_N.
+\end{equation}
+For $N$ at least both roots' $N_0$, \cref{ld:density} bounds each path's $H$ count by $\delta N$, so $b_N<2\delta N$. Hence $d_N<d_0-N/2$, impossible for $N\ge2d_0$. This proves the assertion simultaneously for every complete history on the same flag event.
+\end{proof}
+
+\begin{lemma}[Planar edge matching]\label{ld:z4edges}
+In any complete history, two unmarked live readings at cardinal-neighbour planar sites $u,v$ at the same time, with arbitrary transverse positions, match on their shared edge.
+\end{lemma}
+\begin{proof}
+A clean successful provider for the root at $u$ supplies one time earlier an unmarked live checker star, whose central tile is the root's tile and whose neighbour at $v$ matches it. A clean successful provider for the root at $v$ supplies an unmarked live central tile at $v$ one time earlier equal to that root's tile. Apply \cref{ld:z4coherence} at $v$ and that earlier time to identify the two $v$ readings. This is a separate edge assertion; same-site coherence alone does not assert it.
+\end{proof}
+
+\begin{lemma}[Planar extraction]\label{ld:z4extract}
+If $R$ does not tile, every live symbol of every complete history belongs to $M$.
+\end{lemma}
+\begin{proof}
+Let $V_t$ be the planar sites admitting an unmarked live reading at time $t$. Give each its common tile from \cref{ld:z4coherence}. These labels are locally compatible by \cref{ld:z4edges}. A clean successful checker supplies the whole cardinal star one time earlier, so $V_t+\Gamma\subset V_{t-1}$. If $u\in V_t$, iteration gives a legal patch on $u+\{z:\|z\|_1\le n\}$ at time $t-n$ for every $n\ge0$. Such patches contain squares of unbounded side. Recenter them and use compactness of the product of the finite tile alphabet to obtain a legal full-plane tiling. Temporal consistency of the patches is unnecessary. This contradicts non-tiling, so every $V_t$ is empty.
+\end{proof}
+
+We give the full compactness passage once, to reuse it for the three-dimensional rule.
+\begin{lemma}[Complete histories and all-start forgetting]\label{ld:cftp}
+For either finite-alphabet rule in this section, with its ordinary graph containing every actual dependency, complete histories exist for every fixed two-sided innovation field. If, on the event of \cref{ld:density}, every live reading of every complete history lies in $M$, the noisy rule is ergodic and has almost-sure finite-window coupling from the past uniformly over all starts.
+\end{lemma}
+\begin{proof}
+The space of all symbol histories is a product of finite discrete spaces and is compact. Each local update constraint is closed. Any finite set of constraints can be satisfied by starting before its earliest time and evolving the global rule. The finite intersection property gives a complete history.
+
+If two complete histories for the same innovations disagree at a vertex, at least one reading is live, so that vertex lies in $M$. A flagged vertex receives the same replacement value and cannot be discrepant. At an unflagged discrepancy at least one actual parent is discrepant, because the deterministic rule is a function. Repeating gives an infinite ordinary discrepancy path, all in $M$, prohibited by \cref{ld:density}. Thus the complete history is unique.
+
+Fix a time $t$. The image $E_n$ at time $t$ of all row configurations at time $t-n$ is nonempty and compact, since each fixed finite-range noisy map is continuous. These images are nested. Every row in $\bigcap_n E_n$ extends to a complete past by compactness of compatible finite histories, and its future is determined. Their intersection is therefore the singleton row of the unique complete history. For any finite window $F$, projection commutes with this nested compact intersection: if a projected value occurs in every $E_n$, intersect each $E_n$ with its closed cylinder and apply compactness. The finite nested sets $\pi_F(E_n)$ thus have singleton intersection and eventually are singletons. This is the asserted uniform all-start coupling from the past.
+
+The ordered length-$n$ past maps have the same law as the ordered length-$n$ future maps, by the iid innovations in time. The probability $p_n(F)$ of a nonconstant future image on $F$ consequently tends to zero. The finite-range noisy kernel is Feller on compact configuration space. Ces\`aro averages of any initial law have an invariant subsequential limit: on each continuous test the difference between its average after one transition and before it telescopes and tends to zero. Couple any initial law with one such invariant law using the same future innovations. Their $F$-marginal total variation distance is at most $p_n(F)$. It tends to zero for every finite $F$, proving weak convergence from every initial law and uniqueness of the invariant law.
+\end{proof}
+
+\begin{proof}[Proof of \cref{ld:z4}]
+Non-tiling gives the hypothesis of \cref{ld:cftp} by \cref{ld:z4extract}. For the converse, let $\theta$ be a tiling and clone it transversely. It and the all-$\bot$ configuration are fixed by the noiseless rule. Start the noisy processes $X$ from the clone and $Y$ from all $\bot$. Let $M^{[0]}$ be the finite-past marked closure started empty at time zero; it is contained in $M$. Induction covers all errors of $X$ relative to $\theta$ and all live sites of $Y$ by $M^{[0]}$. Indeed, flags are covered. At an unflagged wrong $X$ output there must be at least $q-h+1=K+1$ providers with erroneous checker inputs, occupying two distinct clusters and supplying two marked ordinary parents. At an unflagged live $Y$ output at least $h=2K>K$ providers are live, again in two clusters, each supplying a marked live central parent. The closure therefore covers both kinds of error.
+
+At a fixed spatial site with planar coordinate $u$, \cref{ld:sparse} gives, for every time $n\ge0$,
+\[
+ \Prob(X_n=\theta(u))\ge1-2e,\qquad
+ \Prob(Y_n=\theta(u))\le2e.
+\]
+Temporal Ces\`aro subsequential limits of the two sequences of laws are invariant by the Feller telescoping argument in \cref{ld:cftp}. The fixed cylinder event $\{x(u,P)=\theta(u)\}$ is clopen, so the gap at least $1-4e>0$ persists in those limits. They are distinct invariant laws. If $R=\varnothing$, the alphabet is a singleton and ergodicity is immediate. Finally $R\mapsto G_R^{(4)}$ is a finite algorithm with one common neighbourhood, so the raw domino undecidability theorem \cite{Berger66,Robinson71} implies fixed-rate undecidability at $e=e_0$ on this family.
+\end{proof}
+
+\subsection{Three dimensions via Kari's two-input generator}
+
+Call a finite Wang set $T$ north/east deterministic if, for all $s,t\in T$,
+\begin{equation}\label{ld:NE}
+ s_N=t_N\ \text{ and }\ s_E=t_E\quad\Longrightarrow\quad s=t.
+\end{equation}
+The imported classical theorem is undecidability of unseeded full-plane tiling for finite north/west deterministic sets, with no rotations of individual copies: \cite{Kari92}, as explicitly stated in \cite[Section~2.8, Theorem~5]{Kari05}. The global design reflection
+\[
+ \rho(N,E,S,W)=(N,W,S,E),\qquad
+ \tau'(x,y)=\rho(\tau(-x,y))
+\]
+turns north/west determinism into \eqref{ld:NE} and bijects the legal tilings in both directions. Thus the same decision problem is undecidable on north/east deterministic sets. This is an imported classical undecidability result, not a new tiling reduction.
+
+For $A_T=T\sqcup\{\bot\}$ define $f_T(a,b)=c$ if $a,b\in T$ and there is a tile $c\in T$ with
+\[
+ c_N=a_S,\qquad c_E=b_W;
+\]
+otherwise define $f_T(a,b)=\bot$. Condition \eqref{ld:NE} makes $c$ unique. In particular either $\bot$ input forces $\bot$, and missing colour pairs are allowed. Put
+\begin{equation}\label{ld:DT}
+ D_T(x)(i)=f_T(x(i),x(i+1)).
+\end{equation}
+Up to reflection and the corresponding orientation of the diagonal, this is exactly Kari's 1992 nilpotency cellular automaton; see \cite[discussion after Theorem~15, p.~24]{Kari05}. The rule below is a noise-robust transverse-quorum lift of Kari's nilpotency reduction. The dynamical argument added here is amortized coherence and all-start forgetting under uniform noise.
+
+\begin{lemma}[Space--time geometry]\label{ld:geometry}
+The map $z(i,t)=(i,-t-i)$ is a bijection from logical space--time to the Wang plane, with
+\[
+ z(i,t-1)=z(i,t)+(0,1),\qquad
+ z(i+1,t-1)=z(i,t)+(1,0).
+\]
+A live depth-$n$ backward cone of \eqref{ld:DT} gives a legal triangle
+$\{(x,y)\in\Z^2:x,y\ge0,\ x+y\le n\}$ after translation, containing a square of side $\lfloor n/2\rfloor+1$. Conversely, every legal tiling $\tau$ gives a complete all-live orbit
+\begin{equation}\label{ld:orbit}
+ \theta_t(i)=\tau(i,-t-i),\qquad t\in\Z.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The displayed identities follow by substitution; the inverse is $i=x$, $t=-x-y$. A live output forces both inputs live. Iterating this fact gives every vertex of the cone. The two matching equations for $f_T$ check every internal north/east adjacency, whose lower-left endpoint is at a level strictly before the cone boundary. At depth $r$ the logical sites are $i,\ldots,i+r$, which map to the triangle's diagonal $x+y=r$. The indicated square is contained because $2\lfloor n/2\rfloor\le n$. Substitution of a legal tiling in the matching equations proves \eqref{ld:orbit}; the orbit need not be fixed in time.
+\end{proof}
+
+On spatial coordinates $(i,P)\in\Z\times\Z^2$, compute at each provider $a\in S$
+\[
+ y_a=f_T(x(i,P+a),x(i+1,P+a)).
+\]
+Define $G_T^{(3)}$ to output a live tile occurring at least $h$ times among the $y_a$, and $\bot$ otherwise. This is a total computable rule because $2h>q$. Its common neighbourhood is $\{0,1\}\times S$, contained in the radius-$175$ cube. After each update replace the whole $A_T$ symbol uniformly with probability $e$, independently in space and time. Every output letter has probability at least $e/(|T|+1)>0$.
+
+\begin{theorem}[Fixed-rate undecidability on $\Z^3$]\label{ld:z3}
+For every finite north/east deterministic Wang set $T$ and every $0<e\le e_0$, this perturbation of $G_T^{(3)}$ is ergodic if and only if $T$ does not tile the plane. Non-tiling gives finite-window all-start coupling from the past and attraction from every initial law. Tiling gives two distinct invariant laws. The family is total computable with one common finite neighbourhood. In particular ergodicity is undecidable across it at the single rational rate
+\[
+ e_0=382205952^{-33720}.
+\]
+\end{theorem}
+\begin{proof}
+Use the common marked construction with logical parents $J=\{0,1\}$. Its actual undirected degree is at most $4q$, so the enlarged bound $\Delta=18q$ is valid. The potentials ignore the logical coordinate; hence \cref{ld:contours,ld:density} apply with precisely the constants \eqref{ld:constants}. At an unmarked live output at least $K$ successful providers are clean, meaning both inputs are unmarked.
+
+We prove same-site coherence in every complete history on the probability-one density event. Suppose two unmarked live readings at one logical $i,t$, at transverse $P,Q$, have different tiles. At a step where neither vertex has $H$, use the same $720$ injective pairs as in \cref{ld:z4coherence}; at most $2K=512$ are killed by unsuccessful providers. The surviving providers have different live outputs under the \emph{same function} $f_T$. Their input pairs are live, since a $\bot$ input would force $\bot$ output. Different outputs force a common index $j\in\{0,1\}$ at which the two input tiles differ. Follow that same $j$ on both sides. These are unmarked live readings at the same logical site $i+j$ and time $t-1$, at transverse distance $d-1$. At a step with at least one $H$ vertex, take arbitrary clean successful providers on both sides and again follow a common differing input index. The distance is at most $d+D$.
+
+Difference is preserved although the tile identities and logical coordinate may change. Both ancestries are ordinary paths and are aligned at each logical site and time. A zero-distance pair is impossible. If they continue forever, \eqref{ld:drift} holds and the two all-path density bounds contradict it for $N$ at least both $N_0$ values and $2d_0$. Thus all unmarked live readings at a logical site and time agree, for every complete history and every replacement-value field.
+
+Let $V_t$ be the logical sites with an unmarked live reading, labelled by this common tile $a_t(i)$. A clean successful provider at $i\in V_t$ supplies both unmarked live inputs, so
+\[
+ i,i+1\in V_{t-1},\qquad
+ a_t(i)=f_T(a_{t-1}(i),a_{t-1}(i+1)).
+\]
+If any $V_t$ is nonempty, iteration gives live legal cones of every finite depth. By \cref{ld:geometry} these contain legal squares of unbounded side. Recenter and use finite-alphabet compactness to get a full-plane tiling. Therefore for non-tiling $T$ every live reading of every complete history lies in $M$, and \cref{ld:cftp} proves all asserted forgetting and ergodicity conclusions.
+
+For tiling $T$, choose $\tau$ and clone the time-dependent orbit \eqref{ld:orbit} transversely. Every provider computes $\theta_t(i)$ from time $t-1$, so this is an exact orbit of the noiseless quorum rule. Start $X$ at its time-zero row and $Y$ at all $\bot$. The finite-past error-cover induction in the proof of \cref{ld:z4} applies with two-input providers: a wrong unflagged $X$ output needs at least $K+1$ erroneous providers in two clusters, each with an erroneous input; a live unflagged $Y$ output needs at least $h>K$ live providers in two clusters, each with live inputs. Thus both error sets are covered by $M^{[0]}\subset M$.
+
+At any fixed spatial root and every $n\ge0$,
+\[
+ \Prob(X_n\text{ is live})\ge1-2e,\qquad
+ \Prob(Y_n\text{ is live})\le2e.
+\]
+Use the fixed clopen event LIVE, not agreement with the moving tile $\theta_n(i)$. The Feller Ces\`aro argument of \cref{ld:cftp} gives invariant subsequential limits of both sequences, and their LIVE probabilities retain a gap at least $1-4e>0$. They are distinct. For empty $T$ the singleton alphabet is trivially ergodic.
+
+Finally enumerate finite sets of colour quadruples and retain those passing the decidable pairwise test \eqref{ld:NE}. This gives an effective enumeration; canonical finite colour renamings are computable, so every input has a searchable finite code. The map from such a code to the alphabet, $f_T$ table and quorum rule is finite and total. A decision algorithm for ergodicity of these indexed rules at $e_0$ would decide their restricted tiling problem, contradicting Kari's theorem and the reflection above. The rate is independent of the instance and its alphabet size.
+\end{proof}
+
+The two lower-dimensional results assert qualitative ergodicity and two invariant laws on the respective sides. They do not transfer the explicit exponential all-input coefficient bound of \cref{sec:natural}, the all-DLR and space--time Gibbs consequences, the robustness theorem, or the Lean proofs. No rule on every raw Wang set on $\Z^3$, no result on $\Z^2$ or $\Z$, and no token-width-two theorem is proved here.
+
+

@@ -1,0 +1,30 @@
+{
+  "source": "\\\\wsl.localhost\\lean-comparator\\opt\\uncomputable-noise-diagram-arxiv-2026-11-12\\release-cores.json",
+  "source_sha256": "dcfd915059212a0b54ad37ae66dfed69e93d19709fbc1e1cb1d6853883382be9",
+  "cores": {
+    "FixedNoiseErgodicity": {
+      "release_repo": "C:\\Infanox\\fixed-noise-ergodicity-release",
+      "recorded_head": "bdfca9b804e9dbd95dc2e1940d8b9974fe77bed2",
+      "head_now": "bdfca9b804e9dbd95dc2e1940d8b9974fe77bed2",
+      "head_unchanged": true,
+      "lean_dir_clean_now": true,
+      "recorded_files": 104,
+      "digest_mismatches": [],
+      "missing": [],
+      "unrecorded_files": [],
+      "all_recorded_digests_match": true
+    },
+    "UndecidablePhaseDiagram": {
+      "release_repo": "C:\\Infanox\\undecidable-phase-diagram-release",
+      "recorded_head": "d57af60115fd028058340296458e4de001f491b4",
+      "head_now": "d57af60115fd028058340296458e4de001f491b4",
+      "head_unchanged": true,
+      "lean_dir_clean_now": true,
+      "recorded_files": 135,
+      "digest_mismatches": [],
+      "missing": [],
+      "unrecorded_files": [],
+      "all_recorded_digests_match": true
+    }
+  }
+}

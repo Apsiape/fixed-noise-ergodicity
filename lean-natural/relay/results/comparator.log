@@ -1,0 +1,16 @@
+Resolving dependencies
+Building Challenge
+ℹ [1/1] Ran ForgettingNaturalRule/Challenge
+info: stdout:
+REPLAY PASS 104 reachable modules compiled here; peak 18882560
+Build completed successfully (1 job).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, FNR.natural_classification, FNR.theorem_A, FNR.machine_corollary, FNR.domino_reduction, FNR.domino_undecidable, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Challenge
+Building Solution
+ℹ [1/1] Ran ForgettingNaturalRule/Solution
+info: stdout:
+REPLAY PASS 104 reachable modules compiled here; peak 20975616
+Build completed successfully (1 job).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, FNR.natural_classification, FNR.theorem_A, FNR.machine_corollary, FNR.domino_reduction, FNR.domino_undecidable, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Solution
+Running Lean default kernel on solution
+Lean default kernel accepts the solution
+Your solution is okay!

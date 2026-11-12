@@ -1,0 +1,69 @@
+{
+  "commit": "386de0d7d5bd52df03bd02bd2f578866668fd44c",
+  "source_tar_sha256": "a5f985a9980848af21053ea1bda9cb1bd61e3e831def35f8cb7270aee3241ff3",
+  "source_tar_bytes": 317440,
+  "package_tar_sha256": "71b3db8c0e78aeb4a3797bd4221a8deca36efd15b5f37d8dce237fd759ccd0a1",
+  "package_files": {
+    "project/Solution.lean": {
+      "from": "Solution.lean",
+      "sha256": "b0fe69674de651200746706e8ac2abc87302ff493a80a1ba5b339685ad5be392",
+      "bytes": 73
+    },
+    "project/comparator.json": {
+      "from": "comparator.json",
+      "sha256": "3f76deb1d8ff061d59d5c927f7e49c6731824a1281acc06840ad375f5cc3adbe",
+      "bytes": 323
+    },
+    "project/lakefile.lean": {
+      "from": "lakefile.lean",
+      "sha256": "fca8d1c3b99dcbf5c4635ea00b5f1f7d207395ed00055d2b7515290006a266a9",
+      "bytes": 2372
+    },
+    "project/scripts/replay.py": {
+      "from": "scripts/replay.py",
+      "sha256": "7290c18d45c032e6409c5a4825513a993c6fc4103e8aedb94c9e4cd7b4f9f5d1",
+      "bytes": 9136
+    },
+    "run-linux.py": {
+      "from": "relay/run-linux.py",
+      "sha256": "d4803141ac243e7fc772a6cd57dd571291f6ad0f9e18e9f90fd4a8e8928c4acd",
+      "bytes": 7306
+    },
+    "make_audit.py": {
+      "from": "relay/make_audit.py",
+      "sha256": "10ad1768a8f3278ad632da806bf27f2694b61bc0702673706c88e51557d1697e",
+      "bytes": 5081
+    },
+    "make_evidence.py": {
+      "from": "relay/make_evidence.py",
+      "sha256": "1cfb60f40f3c5ace6f8e6935ceed9b2e5c754e28f118a24b90b0ad92a391a9d0",
+      "bytes": 30518
+    },
+    "host-memory-monitor.py": {
+      "from": "relay/host-memory-monitor.py",
+      "sha256": "d06fc7af37dae9c72ac12174ddf3c0211dbfcf03641717e343c57b6d39290be9",
+      "bytes": 2384
+    },
+    "stage.sh": {
+      "from": "relay/stage.sh",
+      "sha256": "8ee161e54b110c74445ae946e459b13588a2289e5a7483f584ead0dea5a0d90f",
+      "bytes": 4038
+    },
+    "install.sh": {
+      "from": "relay/install.sh",
+      "sha256": "30907861df9a3c05edf0fd61479239b3997c6218950d25637ebe71e3e4fc2fdc",
+      "bytes": 1741
+    },
+    "pack.py": {
+      "from": "relay/pack.py",
+      "sha256": "89812eeac6aa664b22792d9b7c5bfeb6838bd4333d8f51fce201a25f2c72ab45",
+      "bytes": 2967
+    },
+    "pack_public_cores.py": {
+      "from": "relay/pack_public_cores.py",
+      "sha256": "22af422b644249560df3942f3c21b24c748e92f8bfc28445f48f6047ad04afd2",
+      "bytes": 6942
+    }
+  },
+  "utc_epoch": 1794512731.3425853
+}

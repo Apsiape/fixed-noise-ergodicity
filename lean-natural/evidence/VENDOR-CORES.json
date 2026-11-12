@@ -1,0 +1,649 @@
+{
+  "FixedNoiseErgodicity": {
+    "vendored_from": {
+      "paper": "Forgetting under noise is undecidable",
+      "version": "1.4.0",
+      "doi": "10.5281/zenodo.24126025",
+      "public_url": "https://github.com/Apsiape/fixed-noise-ergodicity/tree/v1.4.0/lean",
+      "release_repo": "C:\\Infanox\\fixed-noise-ergodicity-release",
+      "commit": "bdfca9b804e9dbd95dc2e1940d8b9974fe77bed2",
+      "version_commit": "eda83c15235f9434fa98bcd58b27705648e2e12f",
+      "tag": "v1.4.0",
+      "lean_tree": "30bc26607692b888eb81b40c008fe5e68870593d",
+      "origin_main": "bdfca9b804e9dbd95dc2e1940d8b9974fe77bed2"
+    },
+    "copy": "the lean/ folder of the release commit, from its git blobs (relay/pack_public_cores.py, public-FixedNoiseErgodicity.tar, sha256 8159ca69e5256ab5665a71d9dd6ed6f0f15b8cd2326f836f3440a7c379bb39c3), extracted whole",
+    "files": 104,
+    "public_release_files": 104,
+    "byte_identical_to_public_release_tree": true,
+    "files_differing_from_public_release": [],
+    "public_release_files_absent": [],
+    "files_not_in_public_release": [],
+    "release_cross_checks": {
+      "lean_tree_same_at_version_commit": true,
+      "commit_is_origin_main": true,
+      "local_tag_present": false,
+      "citation_version_and_doi_match": true,
+      "working_tree_mismatches": [],
+      "release_SHA256SUMS_mismatches": [],
+      "release_SHA256SUMS_lean_entries": 104,
+      "release_cores_json_mismatches": [],
+      "release_cores_json_files": 104
+    },
+    "compiled_modules_from_vendored_sources": [
+      "FixedNoiseErgodicity.Basic",
+      "FixedNoiseErgodicity.Bridge",
+      "FixedNoiseErgodicity.Combinatorics.Contour",
+      "FixedNoiseErgodicity.Combinatorics.EdgeCount",
+      "FixedNoiseErgodicity.Compiler.TM0",
+      "FixedNoiseErgodicity.Compiler.Universal",
+      "FixedNoiseErgodicity.Defs.Field",
+      "FixedNoiseErgodicity.Defs.TokenGame",
+      "FixedNoiseErgodicity.Family.Codes",
+      "FixedNoiseErgodicity.Family.Computable",
+      "FixedNoiseErgodicity.Family.Decide",
+      "FixedNoiseErgodicity.Family.FamilyR",
+      "FixedNoiseErgodicity.Family.Frames",
+      "FixedNoiseErgodicity.Family.Free",
+      "FixedNoiseErgodicity.Family.Horn",
+      "FixedNoiseErgodicity.Family.HornHalt",
+      "FixedNoiseErgodicity.Family.Machine",
+      "FixedNoiseErgodicity.Family.Positive",
+      "FixedNoiseErgodicity.Family.Red",
+      "FixedNoiseErgodicity.Family.Routing",
+      "FixedNoiseErgodicity.Family.Tower",
+      "FixedNoiseErgodicity.Family.Walls",
+      "FixedNoiseErgodicity.Main",
+      "FixedNoiseErgodicity.Scaffold.Facts",
+      "FixedNoiseErgodicity.Scaffold.Format",
+      "FixedNoiseErgodicity.Scaffold.Substitution",
+      "FixedNoiseErgodicity.Scaffold.Tables",
+      "FixedNoiseErgodicity.Scaffold.WangSet",
+      "FixedNoiseErgodicity.Section2.Compact",
+      "FixedNoiseErgodicity.Section2.Ergodic",
+      "FixedNoiseErgodicity.Section2.Feller",
+      "FixedNoiseErgodicity.Section2.ForgetErgodic",
+      "FixedNoiseErgodicity.Section2.Markov",
+      "FixedNoiseErgodicity.Section2.PCA",
+      "FixedNoiseErgodicity.Section2.Process",
+      "FixedNoiseErgodicity.Section2.TokenGame",
+      "FixedNoiseErgodicity.Section3.Constants",
+      "FixedNoiseErgodicity.Section3.Contour",
+      "FixedNoiseErgodicity.Section3.Forgetting",
+      "FixedNoiseErgodicity.Section3.Graph",
+      "FixedNoiseErgodicity.Section3.Peierls",
+      "FixedNoiseErgodicity.Section3.Transport",
+      "FixedNoiseErgodicity.Section4.Deterministic",
+      "FixedNoiseErgodicity.Section4.Memory",
+      "FixedNoiseErgodicity.Statements",
+      "FixedNoiseErgodicity.TheoremB",
+      "FixedNoiseErgodicity.Three.Assembly",
+      "FixedNoiseErgodicity.Three.Board",
+      "FixedNoiseErgodicity.Three.Coarse",
+      "FixedNoiseErgodicity.Three.Corner",
+      "FixedNoiseErgodicity.Three.CornerCheck",
+      "FixedNoiseErgodicity.Three.CornerData",
+      "FixedNoiseErgodicity.Three.CornerTables",
+      "FixedNoiseErgodicity.Three.Dyadic",
+      "FixedNoiseErgodicity.Three.Final",
+      "FixedNoiseErgodicity.Three.Interface",
+      "FixedNoiseErgodicity.Three.Lists",
+      "FixedNoiseErgodicity.Three.Pairs",
+      "FixedNoiseErgodicity.Three.Promote",
+      "FixedNoiseErgodicity.Three.Walker",
+      "FixedNoiseErgodicity.Undecidable"
+    ],
+    "compiled_module_sources_identical_to_public_release": true,
+    "precedent_relay_workspace": "/opt/forgetting-arxiv-2026-11-10/project (not vendored; the development build linked its objects)",
+    "compiled_module_sources_differing_from_precedent_workspace": [
+      "FixedNoiseErgodicity/Main.lean",
+      "FixedNoiseErgodicity/Section2/Ergodic.lean",
+      "FixedNoiseErgodicity/Three/Corner.lean",
+      "FixedNoiseErgodicity/Three/CornerCheck.lean"
+    ],
+    "lean_files_differing_from_precedent_workspace": [
+      "FixedNoiseErgodicity/Hypotheses.lean",
+      "FixedNoiseErgodicity/Main.lean",
+      "FixedNoiseErgodicity/Section2/Ergodic.lean",
+      "FixedNoiseErgodicity/Three/Corner.lean",
+      "FixedNoiseErgodicity/Three/CornerCheck.lean"
+    ],
+    "compiled_oleans_byte_identical_to_precedent_oleans": [
+      [
+        "FixedNoiseErgodicity.Basic",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Bridge",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Combinatorics.Contour",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Combinatorics.EdgeCount",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Compiler.TM0",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Compiler.Universal",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Defs.Field",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Defs.TokenGame",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Family.Codes",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Family.Computable",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Family.Decide",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Family.FamilyR",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Family.Frames",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Family.Free",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Family.Horn",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Family.HornHalt",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Family.Machine",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Family.Positive",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Family.Red",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Family.Routing",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Family.Tower",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Family.Walls",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Main",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Scaffold.Facts",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Scaffold.Format",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Scaffold.Substitution",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Scaffold.Tables",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Scaffold.WangSet",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section2.Compact",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section2.Ergodic",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section2.Feller",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section2.ForgetErgodic",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section2.Markov",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section2.PCA",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section2.Process",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section2.TokenGame",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section3.Constants",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section3.Contour",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section3.Forgetting",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section3.Graph",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section3.Peierls",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section3.Transport",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section4.Deterministic",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Section4.Memory",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Statements",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.TheoremB",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Three.Assembly",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Three.Board",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Three.Coarse",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Three.Corner",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Three.CornerCheck",
+        false
+      ],
+      [
+        "FixedNoiseErgodicity.Three.CornerData",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Three.CornerTables",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Three.Dyadic",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Three.Final",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Three.Interface",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Three.Lists",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Three.Pairs",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Three.Promote",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Three.Walker",
+        true
+      ],
+      [
+        "FixedNoiseErgodicity.Undecidable",
+        true
+      ]
+    ],
+    "all_compiled_oleans_byte_identical_to_precedent_oleans": false,
+    "compiled_oleans_differing_from_precedent_oleans": [
+      "FixedNoiseErgodicity.Three.CornerCheck"
+    ],
+    "precedent_difference_note": "The forgetting relay workspace (vendored in session 3, and linked by the development build) differs from the public v1.4.0 lean/ folder in five Lean files, in comments and docstrings only (the release removed internal reviewer references): Hypotheses.lean, Main.lean, Section2/Ergodic.lean, Three/Corner.lean, Three/CornerCheck.lean (evidence/VENDOR-FNE-vs-release-v1.4.0.diff); four of them are compiled here. compiled_oleans_differing_from_precedent_oleans lists the objects that differ from the relay's as a result (docstrings are stored in .olean files; plain comments are not). The release v1.4.0 has no git tag in the local release repository (the public link names tree/v1.4.0); its commit is origin/main, and its lean/ tree equals that of the commit \"Version 1.4.0\"."
+  },
+  "UndecidablePhaseDiagram": {
+    "vendored_from": {
+      "paper": "An uncomputable phase diagram at positive temperature for one classical lattice model",
+      "version": "1.2.0",
+      "doi": "10.5281/zenodo.24144192",
+      "public_url": "https://github.com/Apsiape/undecidable-phase-diagram/tree/v1.2.0/lean",
+      "release_repo": "C:\\Infanox\\undecidable-phase-diagram-release",
+      "commit": "d57af60115fd028058340296458e4de001f491b4",
+      "version_commit": "007fbc270ce5769847d70e25733f608e3a82822a",
+      "tag": "v1.2.0",
+      "lean_tree": "7da72621a364167d71bbca4205e25bf377dce94e",
+      "origin_main": "d57af60115fd028058340296458e4de001f491b4"
+    },
+    "copy": "the lean/ folder of the release commit, from its git blobs (relay/pack_public_cores.py, public-UndecidablePhaseDiagram.tar, sha256 efa0735123f7f197408f4163b2dd6d81daba65bed20faf0ce3c1a6d5aa225b82), extracted whole",
+    "files": 135,
+    "public_release_files": 135,
+    "byte_identical_to_public_release_tree": true,
+    "files_differing_from_public_release": [],
+    "public_release_files_absent": [],
+    "files_not_in_public_release": [],
+    "release_cross_checks": {
+      "lean_tree_same_at_version_commit": true,
+      "commit_is_origin_main": true,
+      "local_tag_present": true,
+      "citation_version_and_doi_match": true,
+      "working_tree_mismatches": [],
+      "release_SHA256SUMS_mismatches": [],
+      "release_SHA256SUMS_lean_entries": 135,
+      "release_cores_json_mismatches": [],
+      "release_cores_json_files": 135
+    },
+    "compiled_modules_from_vendored_sources": [
+      "UndecidablePhaseDiagram.Statements"
+    ],
+    "compiled_module_sources_identical_to_public_release": true,
+    "precedent_relay_workspace": "/opt/undecidable-phase-diagram-arxiv-2026-11-11/project (not vendored; the development build linked its objects)",
+    "compiled_module_sources_differing_from_precedent_workspace": [],
+    "lean_files_differing_from_precedent_workspace": [],
+    "compiled_oleans_byte_identical_to_precedent_oleans": [
+      [
+        "UndecidablePhaseDiagram.Statements",
+        true
+      ]
+    ],
+    "all_compiled_oleans_byte_identical_to_precedent_oleans": true,
+    "compiled_oleans_differing_from_precedent_oleans": [],
+    "precedent_difference_note": "Every Lean file of the hard-model relay workspace is byte-identical to the public v1.2.0 lean/ folder; the folder adds the relay records (evidence/, relay/, README.md, REPORT.md), the workspace had development notes instead."
+  },
+  "UncomputableNoiseDiagram": {
+    "vendored_from": "/opt/uncomputable-noise-diagram-arxiv-2026-11-12/project",
+    "copy": "rsync -a (cp -a semantics) excluding vendor/, .lake/ and the relay heartbeat files",
+    "files": 97,
+    "files_differing_from_source_workspace": [],
+    "source_files_absent": [],
+    "public_release": null,
+    "public_release_note": "no public Lean release: the public release v1.1.0 (DOI 10.5281/zenodo.24152233, commit a0b903e of uncomputable-noise-diagram-release) has no lean/ folder",
+    "reference": "/opt/uncomputable-noise-diagram-arxiv-2026-11-12/original (git archive of commit ec67163 of the noise-diagram repository; its release package, REPORT.md commit 5bdaeaa)",
+    "reference_lean_files": 74,
+    "reference_lean_files_identical": 74,
+    "reference_lean_files_different_or_absent": [],
+    "compiled_modules_from_vendored_sources": [
+      "UncomputableNoiseDiagram.AuditCommand",
+      "UncomputableNoiseDiagram.Contour.Coherence",
+      "UncomputableNoiseDiagram.Contour.Counting",
+      "UncomputableNoiseDiagram.Contour.Grouped",
+      "UncomputableNoiseDiagram.Contour.RawPaths",
+      "UncomputableNoiseDiagram.PCA.Attraction",
+      "UncomputableNoiseDiagram.PCA.Cylinder",
+      "UncomputableNoiseDiagram.PCA.Feller",
+      "UncomputableNoiseDiagram.PCA.ForgetErgodic",
+      "UncomputableNoiseDiagram.PCA.Markov",
+      "UncomputableNoiseDiagram.PCA.Process",
+      "UncomputableNoiseDiagram.PCA.Pullback",
+      "UncomputableNoiseDiagram.PCA.Translation",
+      "UncomputableNoiseDiagram.Parameters.Bases",
+      "UncomputableNoiseDiagram.Parameters.Geometry",
+      "UncomputableNoiseDiagram.Parameters.Search",
+      "UncomputableNoiseDiagram.Parameters.Threshold",
+      "UncomputableNoiseDiagram.Rule.CA",
+      "UncomputableNoiseDiagram.Rule.Checker",
+      "UncomputableNoiseDiagram.Rule.Noise",
+      "UncomputableNoiseDiagram.Rule.Proposal",
+      "UncomputableNoiseDiagram.Statements",
+      "UncomputableNoiseDiagram.Windows"
+    ],
+    "compiled_module_sources_identical_to_reference": true,
+    "compiled_oleans_byte_identical_to_precedent_oleans": [
+      [
+        "UncomputableNoiseDiagram.AuditCommand",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Contour.Coherence",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Contour.Counting",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Contour.Grouped",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Contour.RawPaths",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.Attraction",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.Cylinder",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.Feller",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.ForgetErgodic",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.Markov",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.Process",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.Pullback",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.Translation",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Parameters.Bases",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Parameters.Geometry",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Parameters.Search",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Parameters.Threshold",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Rule.CA",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Rule.Checker",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Rule.Noise",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Rule.Proposal",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Statements",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Windows",
+        true
+      ]
+    ],
+    "all_compiled_oleans_byte_identical_to_precedent_oleans": true,
+    "compiled_oleans_differing_from_precedent_oleans": [],
+    "compiled_oleans_byte_identical_to_dev_build_oleans": [
+      [
+        "UncomputableNoiseDiagram.AuditCommand",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Contour.Coherence",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Contour.Counting",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Contour.Grouped",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Contour.RawPaths",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.Attraction",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.Cylinder",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.Feller",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.ForgetErgodic",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.Markov",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.Process",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.Pullback",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.PCA.Translation",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Parameters.Bases",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Parameters.Geometry",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Parameters.Search",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Parameters.Threshold",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Rule.CA",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Rule.Checker",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Rule.Noise",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Rule.Proposal",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Statements",
+        true
+      ],
+      [
+        "UncomputableNoiseDiagram.Windows",
+        true
+      ]
+    ],
+    "dev_build": "/opt/uncomputable-noise-diagram-lean/project (the objects the development build of this core linked against)"
+  },
+  "comparison_with_session_3_package": {
+    "workspace": "/opt/forgetting-natural-rule-arxiv-2026-11-12 (session 3: the forgetting and hard-model cores vendored from their relay workspaces)",
+    "objects_compared": 104,
+    "objects_identical": 103,
+    "objects_differing": [
+      "FixedNoiseErgodicity.Three.CornerCheck"
+    ]
+  }
+}

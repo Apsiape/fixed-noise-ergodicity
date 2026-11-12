@@ -1,5 +1,8 @@
 \section{The model and the token game}\label{sec:setting}
 
+The next three sections retain the inspector theory of version~1.4.0. Their rule $F_R^{[k]}$ uses thin provider planes and a block alphabet; it is distinct from the raw clustered rule $G_R$ of \cref{sec:natural}. All definitions and proved statements of this theory are retained.
+
+
 This section fixes the cellular automaton, its noise, and the notions of ergodicity, forgetting and memory used in the paper. It then defines token tables, a finite procedure that may refute a Wang set. \Cref{thm:game} shows two things. The procedure never refutes a Wang set that tiles. When it fails to refute a set, it leaves behind an existential pebble family, and the proof of \cref{thm:width} works with that family.
 
 For $r\ge0$ write $V_r=\{-r,\dots,r\}^2\subseteq\Z^2$, and put $\Lambda=V_1=\{-1,0,1\}^2$. For $u\in\Z^2$, $|u|_\infty$ is the largest absolute value of a coordinate of $u$. A \emph{window} is a finite set of sites.
@@ -345,3 +348,5 @@ Suppose that no legal pattern exists on the square $U=\{0,\dots,m-1\}^2$, and th
 
 If $R$ does not tile, \cref{set:compact} gives such a square, so the token width is finite. If $R$ tiles, \cref{thm:game}(iv) shows that it is not $j$-token refutable for any $j$. The last claim follows from the first.
 \end{proof}
+
+

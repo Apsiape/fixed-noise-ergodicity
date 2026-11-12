@@ -1,0 +1,231 @@
+{
+  "scope": "Every [choice] occurrence in the development's Lean source (commit 386de0d; Challenge.lean repeats the statement file's). Rows S1-S20, F1-F9 and D1-D18 are in STATUS.md; the release adds no fidelity choice.",
+  "count": 45,
+  "choices": [
+    {
+      "file": "Challenge.lean",
+      "line": 56,
+      "text": "Fidelity choices are marked **[choice]** and are collected in `BLUEPRINT.md`, Part D."
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 77,
+      "text": "**[choice]** Colours are natural numbers; any countable colour set can be relabelled so. -/"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 122,
+      "text": "**[choice]** The checker bit `b ∈ {0,1}` is a `Bool` (`false` is `0`). -/"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 183,
+      "text": "**[choice]** `ℤ^{2+k}` is written `ℤ² × ℤᵏ`, as in the paper's coordinates `(u, P)`. -/"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 190,
+      "text": "**[choice]** The index set `{0, …, k}` is `Option (Fin k)`: `none` is `0` and `some i` is"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 208,
+      "text": "**[choice]** The live symbol is picked with `Classical.choose`; for `k ≥ 2` it is unique"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 225,
+      "text": "**[choice]** Time `t + 1 ≥ 1` of the paper is index `t` here. -/"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 260,
+      "text": "**[choice]** The paper's phrase \"positive-rate probabilistic cellular automaton\" is rendered by"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 307,
+      "text": "**[choice]** Finite encoding: states and tape symbols are natural numbers, the initial state is"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 386,
+      "text": "**[choice]** The family is quantified existentially (the paper's family `R_M` of `def:family`"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 433,
+      "text": "**[choice]** Finite encoding: the states are `Fin (numStates + 1)` with initial state `0`; the"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 470,
+      "text": "**[choice]** A move left from cell `0` ends the run without halting (`none`); the paper's"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 498,
+      "text": "decidable. **[choice]** The paper fixes `U` with `ℋ_U` `Σ⁰₁`-complete, \"in particular"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 531,
+      "text": "Fidelity choices are marked **[choice]**; each is explained in `STATUS.md` (\"Statement fidelity\")"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 575,
+      "text": "**[choice]** `ℤ⁶` is `Fin 6 → ℤ`; the paper's coordinates `(u, P) ∈ ℤ² × ℤ⁴` are an"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 581,
+      "text": "**[choice]** The finite alphabet is `Fin numSymbols` with `numSymbols > 0` (every finite alphabet"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 616,
+      "text": "**[choice]** As in the forgetting core, the process starts at time `0`; the paper's time"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 699,
+      "text": "**[choice]** As in the hard-model core (`UPD.CorollaryB`): rational endpoints \"computable from"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 709,
+      "text": "**[choice]** \"Rates\" is made explicit as `0 < lo n` and `hi n < 1` (true of the paper's"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 735,
+      "text": "**[choice]** Stated for every machine `U` (the construction does not use universality; as in"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 743,
+      "text": "**[choice]** A rate is presented by a pair `p` of natural numbers (`p.1 / p.2`, `p.2 > 0`, as in"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 796,
+      "text": "citing the paper passage it mirrors. Fidelity choices are marked **[choice]** and are collected in"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 857,
+      "text": "**[choice]** `θ` is a map to tiles with values in `R`. -/"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 867,
+      "text": "**[choice]** The planar coordinates are the first two. -/"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 874,
+      "text": "**[choice]** The index set `{0, …, 4}` is `Option (Fin 4)`: `none` is `0`, `some i` is `i + 1`. -/"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 922,
+      "text": "**[choice]** The live letter is picked with `Classical.choose`; it is unique because"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 937,
+      "text": "**[choice]** Any bijection would do (uniform replacement and ergodicity are invariant under"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 945,
+      "text": "**[choice]** Outside the neighbourhood the pattern is extended by `⊥`; `natMap R x 0` reads `x`"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 993,
+      "text": "**[choice]** The phrase \"positive-rate automaton\" is rendered by these four clauses, as for"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 1015,
+      "text": "**[choice]** Machines, the blank-tape start and halting are the forgetting core's"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 1028,
+      "text": "**[choice]** As in `FNE.CorEight`: a Wang set is computed as a list of tiles; computability of"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 1054,
+      "text": "**[choice]** An algorithm is a computable function in Mathlib's sense; a finite Wang set is given"
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 1081,
+      "text": "**[choice]** As in `ErgodicityReduction`; \"undecidable\" for this family: no computable"
+    },
+    {
+      "file": "ForgettingNaturalRule/Statements.lean",
+      "line": 21,
+      "text": "citing the paper passage it mirrors. Fidelity choices are marked **[choice]** and are collected in"
+    },
+    {
+      "file": "ForgettingNaturalRule/Statements.lean",
+      "line": 83,
+      "text": "**[choice]** `θ` is a map to tiles with values in `R`. -/"
+    },
+    {
+      "file": "ForgettingNaturalRule/Statements.lean",
+      "line": 93,
+      "text": "**[choice]** The planar coordinates are the first two. -/"
+    },
+    {
+      "file": "ForgettingNaturalRule/Statements.lean",
+      "line": 100,
+      "text": "**[choice]** The index set `{0, …, 4}` is `Option (Fin 4)`: `none` is `0`, `some i` is `i + 1`. -/"
+    },
+    {
+      "file": "ForgettingNaturalRule/Statements.lean",
+      "line": 148,
+      "text": "**[choice]** The live letter is picked with `Classical.choose`; it is unique because"
+    },
+    {
+      "file": "ForgettingNaturalRule/Statements.lean",
+      "line": 163,
+      "text": "**[choice]** Any bijection would do (uniform replacement and ergodicity are invariant under"
+    },
+    {
+      "file": "ForgettingNaturalRule/Statements.lean",
+      "line": 171,
+      "text": "**[choice]** Outside the neighbourhood the pattern is extended by `⊥`; `natMap R x 0` reads `x`"
+    },
+    {
+      "file": "ForgettingNaturalRule/Statements.lean",
+      "line": 219,
+      "text": "**[choice]** The phrase \"positive-rate automaton\" is rendered by these four clauses, as for"
+    },
+    {
+      "file": "ForgettingNaturalRule/Statements.lean",
+      "line": 241,
+      "text": "**[choice]** Machines, the blank-tape start and halting are the forgetting core's"
+    },
+    {
+      "file": "ForgettingNaturalRule/Statements.lean",
+      "line": 254,
+      "text": "**[choice]** As in `FNE.CorEight`: a Wang set is computed as a list of tiles; computability of"
+    },
+    {
+      "file": "ForgettingNaturalRule/Statements.lean",
+      "line": 280,
+      "text": "**[choice]** An algorithm is a computable function in Mathlib's sense; a finite Wang set is given"
+    },
+    {
+      "file": "ForgettingNaturalRule/Statements.lean",
+      "line": 307,
+      "text": "**[choice]** As in `ErgodicityReduction`; \"undecidable\" for this family: no computable"
+    }
+  ]
+}

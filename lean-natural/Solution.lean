@@ -1,0 +1,2 @@
+import ForgettingNaturalRule.Main
+import ForgettingNaturalRule.Reduction

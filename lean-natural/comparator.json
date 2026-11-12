@@ -1,0 +1,16 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "FNR.natural_classification",
+    "FNR.theorem_A",
+    "FNR.machine_corollary",
+    "FNR.domino_reduction",
+    "FNR.domino_undecidable"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
