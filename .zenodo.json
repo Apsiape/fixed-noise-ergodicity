@@ -2,7 +2,7 @@
   "title": "Forgetting under noise is undecidable",
   "upload_type": "publication",
   "publication_type": "preprint",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "publication_date": "2026-11-12",
   "creators": [
     {
@@ -14,7 +14,7 @@
       "orcid": "0009-0005-6534-1118"
     }
   ],
-  "description": "A natural noisy Wang rule on Z^4 is ergodic exactly when its finite raw tile set does not tile the plane. A cardinal checker and a fixed 512-of-768 quorum use the tiles themselves and one blank. A transverse-quorum lift of Kari's nilpotency reduction gives the same equivalence on Z^3 for north/east deterministic tile sets. One explicit positive rational replacement rate, independent of the input, makes ergodicity undecidable in both families. For non-tiling inputs, amortized coherence and an all-path density lemma prove finite-window coupling from the past for all starts; tiling gives two invariant laws. A saturation theorem explains why the earlier budget-only estimate needs six dimensions. The retained Z^6 natural rule has exponential all-input coalescence with a universal computable slope and uncomputable delay, all-Gibbs uniqueness and robustness. Its Theorems D and A are verified in Lean; the Z^4 and Z^3 results are not formalized. The inspector theory and Z^8 machine-family Lean core are retained.",
+  "description": "A natural noisy Wang rule on Z^4 is ergodic exactly when its finite raw tile set does not tile the plane. A cardinal checker and a fixed 512-of-768 quorum use the tiles themselves and one blank. A transverse-quorum lift of Kari's nilpotency reduction gives the same equivalence on Z^3 for north/east deterministic tile sets. At every 0 < epsilon <= 382205952^(-33720), non-tiling inputs in either family have all-input nonconstancy probability on a finite window F at most |F| C_R exp(-t/4), with universal exponent and an effectively findable input-dependent prefactor uniform in epsilon. Tiling gives two invariant laws; a one-tile example shows why the rate requires non-tiling. Ergodicity is undecidable at one fixed rational rate in both families. A saturation theorem explains the earlier budget-only dimension obstruction. The retained Z^6 natural rule also has all-Gibbs uniqueness and robustness. Its Theorems D and A are verified in Lean; the Z^4 and Z^3 results, including the new rate, are not formalized. The inspector theory and Z^8 machine-family Lean core are retained.",
   "keywords": [
     "probabilistic cellular automata",
     "ergodicity",
@@ -34,7 +34,7 @@
   "access_right": "open",
   "license": "cc-by-4.0",
   "language": "eng",
-  "notes": "Preprint. It has not been peer reviewed. Version 2.0.0 restructures the paper around a natural rule applied directly to raw Wang sets: on Z^6 it is ergodic at every rate up to (2(18q)^2)^(-200), q = 5*16^4, exactly when the tile set does not tile the plane (Theorem D), which gives fixed-rate undecidability on Z^6 (Theorem A). New in this version: Theorem E, the natural rule on Z^4 for every raw Wang set, and Theorem F, fixed-rate undecidability on Z^3 for north/east-deterministic tile sets (a transverse-quorum lift of Kari's 1992 nilpotency reduction), both at every rate up to 382205952^(-33720); a saturation theorem explaining why the earlier coherence estimate needs six dimensions; and the consequences of Theorem D. Theorem D, Theorem A on Z^6, the domino reduction and the undecidability of the domino problem are proved in Lean 4 with no named hypotheses (lean-natural/); the Z^8 machine-family core of version 1.4.0 is kept in lean/. Every proved statement of version 1.4.0 is kept; the old Theorem A on Z^8 is now the machine-family theorem. Updates version 1.4.0 (10.5281/zenodo.24126025). Text: CC BY 4.0. Scripts and Lean sources: MIT or Apache 2.0.",
+  "notes": "Preprint. It has not been peer reviewed. Version 2.1.0 updates version 2.0.0 (10.5281/zenodo.24176024). New: Theorem 12.12, an exponential rate |F| C_R exp(-t/4) for every non-tiling input of the Z^4 natural rule and of the Z^3 family, at every rate up to 382205952^(-33720), with an effectively findable prefactor independent of the rate; Example 12.13 shows the non-tiling restriction is needed. No existing statement or number changes; the Lean cores (lean-natural/ and lean/) are unchanged, and the new rate is not formalized. Text: CC BY 4.0. Scripts and Lean sources: MIT or Apache 2.0.",
   "related_identifiers": [
     {
       "identifier": "https://finite.works/papers/fixed-noise-ergodicity/",

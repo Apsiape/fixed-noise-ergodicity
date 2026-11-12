@@ -1,6 +1,6 @@
 \section{Lower dimensions}\label{sec:lower}
 
-The natural raw-Wang rule can be realized on $\Z^4$, and a transverse-quorum lift of Kari's nilpotency reduction gives fixed-rate undecidability on $\Z^3$. Both results below are qualitative. The exponential coalescence estimate, all-Gibbs uniqueness, robustness and Lean core of the $\Z^6$ route remain separate results. The change is to pair provider offsets only when neither of the two vertices has a marked parent, and to control all backward paths at once at the other steps.
+The natural raw-Wang rule can be realized on $\Z^4$, and a transverse-quorum lift of Kari's nilpotency reduction gives fixed-rate undecidability on $\Z^3$. The original classification statements below are supplemented by the exponential all-input estimate of \cref{ld:rate} at the end of this section. The all-Gibbs uniqueness, robustness and Lean core of the $\Z^6$ route remain separate results. The change is to pair provider offsets only when neither of the two vertices has a marked parent, and to control all backward paths at once at the other steps.
 
 \subsection{Why the budget-only estimate stops at six}
 
@@ -298,6 +298,121 @@ Use the fixed clopen event LIVE, not agreement with the moving tile $\theta_n(i)
 Finally enumerate finite sets of colour quadruples and retain those passing the decidable pairwise test \eqref{ld:NE}. This gives an effective enumeration; canonical finite colour renamings are computable, so every input has a searchable finite code. The map from such a code to the alphabet, $f_T$ table and quorum rule is finite and total. A decision algorithm for ergodicity of these indexed rules at $e_0$ would decide their restricted tiling problem, contradicting Kari's theorem and the reflection above. The rate is independent of the instance and its alphabet size.
 \end{proof}
 
-The two lower-dimensional results assert qualitative ergodicity and two invariant laws on the respective sides. They do not transfer the explicit exponential all-input coefficient bound of \cref{sec:natural}, the all-DLR and space--time Gibbs consequences, the robustness theorem, or the Lean proofs. No rule on every raw Wang set on $\Z^3$, no result on $\Z^2$ or $\Z$, and no token-width-two theorem is proved here.
+The two classifications above assert ergodicity and two invariant laws on the respective sides. The following quantitative supplement gives their own exponential all-input bound on the non-tiling side. The all-DLR and space--time Gibbs consequences, the robustness theorem and the Lean proofs of the $\Z^6$ route are not transferred here. No rule on every raw Wang set on $\Z^3$, no result on $\Z^2$ or $\Z$, and no token-width-two theorem is proved here.
 
 
+
+
+\subsection{Exponential all-input coalescence for non-tiling inputs}
+
+This supplement uses the constants in \eqref{ld:constants}. The noise threshold, provider geometry and both local rules are unchanged.
+
+\begin{theorem}[Uniform exponential rate on $\Z^4$ and $\Z^3$]\label{ld:rate}
+Let $\mathcal R$ be either a finite raw Wang set for $G_{\mathcal R}^{(4)}$ of \cref{ld:z4}, or a finite north/east deterministic Wang set for $G_{\mathcal R}^{(3)}$ of \cref{ld:z3}. Suppose $\mathcal R$ does not tile the plane. There is an effectively findable integer $C_{\mathcal R}\ge1$, depending only on this input, such that for every $0<\eps\le e_0=382205952^{-33720}$, every integer $t\ge0$ and every finite spatial observation set $F$,
+\[
+ \Prob\{\text{the $t$-step shared random map from all starts is
+ nonconstant on $F$}\}
+ \le |F|C_{\mathcal R}\exp(-t/4).
+\]
+The exponent and noise interval are common to both families; $C_{\mathcal R}$ is independent of $\eps$. The prefactor search is required to terminate only on non-tiling inputs.
+\end{theorem}
+\begin{proof}
+We give finite-history versions of the coherence and extraction arguments, then control full discrepancies. All initial rows are arbitrary. Use one common flag and replacement letter at every update, and extend the flags independently to all integer times to define the noise-only $M,H,A_N$ of \cref{ld:contours,ld:density}. This auxiliary extension does not change any finite-time random map. No time-zero symbol is marked for free.
+
+\emph{The quantitative density bound.}
+With $a=B^{16860}\eps$, Lemma~12.4 and \eqref{ld:densitybound} give
+\[
+ \Prob(A_N(v))\le4\sum_{f\ge\lceil N/16848\rceil}a^f
+ \le\frac{16}{3}\exp(-N),\qquad N\ge1.
+\]
+Indeed $a\le B^{-16860}<1/4$, $B>\exp(1)$ and $16860>16848$. Consequently,
+\[
+ a^{\lceil N/16848\rceil}\le\exp(-16860N/16848)\le\exp(-N).
+\]
+The distinct-terminal contour and complete-path counting have already been paid for in Lemmas~12.3--12.4; the bound includes every ordinary path, even one selected using all innovations and initial symbols.
+
+\emph{Finite-time coherence.}
+Consider one history begun at time zero. Suppose two unmarked live readings at the same logical site and time $s$ differ, at transverse distance $d_0>0$. Follow their paired ancestry for any $N\le s$ steps. When neither root has $H$, use the $720$ injectively paired offsets of \cref{ld:z4coherence}; at most $2(q-h)=512$ pairs are lost, so successful providers reduce the distance by one. For the checker follow their central inputs, preserving their different tile labels. For the generator, distinct successful outputs of the same function $f_{\mathcal R}$ force a common index $j\in\{0,1\}$ at which the inputs differ. Follow that same index on both sides. These inputs are live and unmarked. Their labels may change, but inequality and alignment of the logical sites persist, exactly as in the proof of \cref{ld:z3}.
+
+When either root has $H$, at least $h-K=K$ clean successful providers remain at each root by Lemma~12.3. Choose any such providers and again follow central checker inputs or a common differing generator input index. Distance grows by at most $D=350$. All selected vertices lie in the \emph{same} symbol history. Their distance cannot become zero, including at time zero, because one physical vertex has one symbol. If $b_N$ counts paired steps with at least one $H$ root, the finite version of \eqref{ld:drift} is
+\[
+ 1\le d_N\le d_0-N+351b_N.
+\]
+For $N\ge2d_0$, this forces $b_N\ge N/702=2\delta N$. At least one of the two ordinary paths then has $\delta N$ occurrences of $H$, so $A_N$ occurs at one of its starting roots. Consequently two such readings agree whenever their distance is at most $L$, their common time satisfies $s\ge N\ge2L$, and neither starting root belongs to $A_N$. This deterministic implication holds simultaneously over every initial row; it stops at time zero and uses no initial-row assumption.
+
+\emph{An effective finite obstruction.}
+If the input is empty, its alphabet is the singleton $\{\bot\}$ and the theorem is immediate, with $C_{\mathcal R}=1$. Otherwise find $r\ge1$ as follows. For the checker, search for a planar diamond
+\[
+ D_r=\{u\in\Z^2:\|u\|_1\le r\}
+\]
+with no legal $\mathcal R$-labeling. For the generator, search for a triangle
+\[
+ T_r=\{(x,y)\in\Z^2:x,y\ge0,\ x+y\le r\}
+\]
+with no legal labeling. Each search tests finitely many assignments at each stage. It terminates on a non-tiling input: if every centered diamond were legal, the finitely branching tree of legal diamond assignments, with restriction as parent, would have an infinite branch and hence a full-plane tiling. To construct the branch, repeatedly choose a child having descendants at arbitrarily large levels; one exists because there are finitely many children. For triangles, depth $2m$ contains a square of side $m+1$, by \cref{ld:geometry}. If all triangles were legal, recentering and restricting these squares would give legal centered diamonds of every radius, and the same tree argument would give a tiling. No bound on the running time of this search is needed.
+
+Put $b=r+1$ and define the effective integers
+\[
+ J_b=(b+1)(2b+1)^2(175b+1)^2,\qquad
+ U_{\mathcal R}=6J_b\,3^{701b}.
+\]
+Let $L_t(v)$ be the event that $v$ at time $t$ is unmarked and live in at least one history begun at time zero. The existential quantifier is over \emph{all} initial rows, including a row chosen after seeing the noise.
+
+\emph{Uniform unmarked-liveness tail.}
+For $t\ge701b$ set $N=t-b\ge700b$. From an unmarked live root recursively choose clean successful providers through $b$ levels. The candidate points at depth $j\le b$ have transverse positions in $P+[0,175j]^2$ and logical positions in a coordinate box of radius $j$. For both families the deterministic union of these possible points contains at most $J_b$ physical space--time vertices. At a common depth its transverse $\ell^1$ span is at most $350b$; every candidate time is at least $t-b=N$. If $A_N$ is absent at all candidates, finite-time coherence identifies every pair of unmarked live readings needed at the same logical site and time, since $N\ge2\cdot350b$.
+
+For the checker, expansion to depth $r$ gives a live reading at each site of $D_r$ at time $t-r$. Give it its coherent label. For adjacent sites, a clean successful provider of the first reading supplies a matching neighbor one time earlier; a clean successful provider of the second reading supplies its own central tile one time earlier. As in \cref{ld:z4edges}, coherence at that earlier level identifies the two readings at the second site. Their central labels are preserved by the checker. Thus every internal edge of $D_r$ matches. The extra level $b=r+1$ includes every reading used for this edge check, contradicting the choice of $r$.
+
+For the generator, at depth $k\le r$ identify the labels at logical positions $i,\ldots,i+k$. Each selected clean successful provider gives
+\[
+ a_k(j)=f_{\mathcal R}(a_{k+1}(j),a_{k+1}(j+1))
+ \qquad(0\le j\le k<r),
+\]
+because coherence identifies its inputs with the chosen next-level labels. Lemma~12.10 maps $(i+j,t-k)$ to the translated triangle position $(j,k-j)$; these relations check all internal north/east edges of $T_r$. This also contradicts the chosen obstruction. The argument uses inequality, rather than preservation of tile identities, in generator ancestry.
+
+Therefore $L_t(v)$ implies $A_N$ at one of at most $J_b$ fixed candidate points. A finite union bound gives
+\[
+ \Prob(L_t(v))\le\frac{16}{3}J_b\exp[-(t-b)]
+ \le U_{\mathcal R}\exp(-t)\qquad(t\ge701b).
+\]
+For smaller $t$ the same bound follows from probability at most one and $U_{\mathcal R}\ge\exp(701b)$. Here $3>\exp(1)$ and $6>16/3$ justify the chosen integer. This is a uniform existential event bound; there is no union over initial configurations.
+
+\emph{Full all-input coupling.}
+Let $D_t(v)$ mean that the shared $t$-step map is nonconstant at $v$. Fix any two witnessing starts. At each discrepancy the common replacement flag is absent, since a replacement writes the same letter. A differing deterministic output has a differing actual parent. Trace such parents for $k=\lfloor t/2\rfloor$ edges, where $t\ge2$. Each of the first $k$ vertices is discrepant and has a live reading in at least one of the two histories, since $\bot$ is the only non-live symbol.
+
+If all first $k$ vertices are marked, they are \emph{nonflagged} marks and hence each has marked parents by the closure defining $M$. Thus each has $H$, and this path witnesses $A_k(v)$. This does not require its selected discrepant parent itself to be marked. Otherwise a first-$k$ vertex $w$ at depth $j<k$ is unmarked and live in one witnessing history, so $L_{t-j}(w)$ occurs. All candidates lie in the ordinary backward cone, whose vertices through depth $k$ number at most
+\[
+ Q_k=(k+1)(2k+1)^2(175k+1)^2\le30625(t+1)^5.
+\]
+Indeed $k+1\le t+1$, $2k+1\le t+1$ and $175k+1\le175(t+1)$; the generator cone is smaller. Since $t-j\ge t-k\ge t/2$, the preceding bounds imply
+\[
+ \Prob(D_t(v))\le\frac{16}{3}\exp(-k)
+       +30625U_{\mathcal R}(t+1)^5\exp(-t/2).
+\]
+Use $\exp(-\lfloor t/2\rfloor)\le\exp(1)\exp(-t/2)$, $\exp(1)<3$ and
+\[
+ (t+1)^5\exp(-t/4)\le20^5\qquad(t\ge0).
+\]
+For the latter inequality the logarithmic derivative is $5/(t+1)-1/4$, with maximum at $t=19$. The explicitly effective integer
+\[
+ C_{\mathcal R}=16+30625\cdot20^5U_{\mathcal R}
+\]
+therefore gives $\Prob(D_t(v))\le C_{\mathcal R}\exp(-t/4)$ for $t\ge2$, and trivially for $t=0,1$. All witness implications hold simultaneously for every pair of starts. Integrating out the auxiliary nonpositive-time flags leaves the same bound for the actual finite-time maps. Finally, nonconstancy on $F$ entails nonconstancy at one of its coordinates, so a union bound supplies $|F|$. Past and future blocks have the same law under iid innovations. This proves the claimed all-input rate throughout the common noise interval.
+\end{proof}
+
+\begin{example}[Why non-tiling is necessary]\label{ld:rate-necessity}
+Let $T=\{a\}$, with all four edge colors of $a$ equal to zero. This is north/east deterministic and tiles constantly. Its generator has $f_T(a,a)=a$ and returns $\bot$ on every other input pair. For every $0<\eps\le e_0$, the all-input coefficient at a single site stays at least $1-4\eps>0$ for all time, so no finite prefactor can give an exponentially decaying all-input bound on this tileable input.
+\end{example}
+\begin{proof}
+Use the same flags and replacement letters to start $X$ from all $a$ and $Y$ from all $\bot$. Let $M^{[0]}$ be the marked closure begun empty at time zero. The error-cover induction from \cref{ld:z3} gives
+\[
+ \{X_t\ne a\}\subset M^{[0]},\qquad
+ \{Y_t=a\}\subset M^{[0]}.
+\]
+For completeness, outside $M^{[0]}$ the output is unflagged and at most $K=256$ providers have marked inputs. The other $512$ providers in $X$ have both inputs $a$ and reach the quorum; in $Y$ they have $\bot$ inputs, leaving at most $256$ possible live providers, below quorum. The initial error sets are empty, proving both inclusions by induction. Since $M^{[0]}\subset M$, Lemma~12.3 and \eqref{ld:sparse} give at any fixed site $v$
+\[
+ \Prob(X_t(v)=a)\ge1-2\eps,\qquad
+ \Prob(Y_t(v)=a)\le2\eps.
+\]
+Thus $\Prob(X_t(v)\ne Y_t(v))\ge1-4\eps$, and this discrepancy is contained in all-input nonconstancy. Any finite $C_T\exp(-t/4)$ tends to zero, contradicting this uniform positive lower bound. The non-tiling hypothesis in \cref{ld:rate} is therefore essential even within the one-tile NE family.
+\end{proof}
