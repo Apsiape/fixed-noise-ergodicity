@@ -1,5 +1,7 @@
 # Lean formalization: Theorem A on ℤ⁸
 
+> **Version note.** This directory is unchanged since version 1.4.0, and the printed numbers below are those of version 1.4.0. In version 2.0.0 the natural rule leads, the old Theorem A on ℤ⁸ is called the machine-family theorem, and the numbers shift: Corollary 9.21 → 11.21; Theorems 3.1 and 4.2 → 5.1 and 6.2; Corollary 3.12 → 5.12; Definition 6.17 → 8.17; Proposition 6.18 → 8.18; Theorem 7.8 → 9.8; Theorem 8.2 → 10.2; Section 8 → Section 10 (Corollaries 8.8, 8.12, 8.17 → 10.8, 10.12, 10.17); Theorem 9.1 → 11.1; Lemma 9.12 → 11.12; Corollary 9.13 → 11.13. Appendices B and C keep their letters. The Lean core of the natural rule on ℤ⁶ is in `../lean-natural/`.
+
 This directory proves Corollary 9.21 of the paper, Theorem A on ℤ⁸, and the undecidability of ergodicity in the family, in Lean 4 with Mathlib. The proof has no unproved step and no hypotheses, and it uses no axioms beyond Lean's three standard axioms `propext`, `Classical.choice` and `Quot.sound`. Appendix C of the paper describes the formalization.
 
 ## What is proved
