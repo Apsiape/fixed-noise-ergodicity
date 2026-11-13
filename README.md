@@ -42,7 +42,8 @@ The proofs build on prior work that the paper credits in detail: Toom's contours
 - `paper/main.pdf`: the manuscript (152 pages).
 - `paper/`: the LaTeX source (`main.tex`, `preamble-core.tex`, `sections/`), the plain-text abstract and a strict build driver. Run `python -B build.py` there with pdflatex installed. The build disables shell escape, runs pdflatex three times and rejects warnings, unresolved references and box defects.
 - `lean-natural/`: the Lean 4 core of the natural rule on ℤ⁶ (sources, frozen statement file, comparator challenge, axiom audit, evidence and report). See `lean-natural/README.md`.
-- `lean/`: the Lean 4 core of the machine family on ℤ⁸ (version 1.4.0, unchanged). See `lean/README.md`.
+- `lean/`: the Lean 4 core of the machine family on ℤ⁸ (version 1.4.0, proofs unchanged). See `lean/README.md`.
+- Both Lean folders build from a fresh clone with `lake exe cache get` then `lake build`. Mathlib is a pinned Git requirement; the proof cores that `lean-natural/` reuses are shipped as local packages in `lean-natural/deps/`.
 - `verification/corner-lemma/`: the one computed lemma of the machine route, by two independently written programs and a third written during review. Start with `VERIFY.md`.
 - `verification/forced-word/`: finite tests of the forced-word lemma of the machine route, by two independently written programs; they are checks, not part of the proof.
 - `notes/`: review notes of earlier versions.

@@ -4,6 +4,27 @@
 
 This directory proves Corollary 9.21 of the paper, Theorem A on ℤ⁸, and the undecidability of ergodicity in the family, in Lean 4 with Mathlib. The proof has no unproved step and no hypotheses, and it uses no axioms beyond Lean's three standard axioms `propext`, `Classical.choice` and `Quot.sound`. Appendix C of the paper describes the formalization.
 
+## Reproduce
+
+Install the toolchain specified by `lean-toolchain` (Lean 4.35.0), and have Git and Mathlib's cache prerequisites available. From this directory run:
+
+```sh
+export LEAN_NUM_THREADS=1
+lake exe cache get
+lake build
+lake env lean -j1 -M6144 Audit.lean
+```
+
+The cache command fetches the pinned Git dependencies and Mathlib's standard build cache. Plain `lake build` compiles the entire `FixedNoiseErgodicity` library from the shipped sources. Compare the audit's axiom lines with `AXIOMS.txt`; this paper's recorded hypothesis policy in the evidence and statement files remains authoritative. Named hypotheses are preserved. The standard build does not run the comparator, the custom Python replay, or independent kernel replays, and does not rewrite `AXIOMS.txt`.
+
+Allow at least 8 GiB of available physical memory and run one Lean compiler process on the machine at a time. The package passes `-j1 -M6144`. On PowerShell set `$env:LEAN_NUM_THREADS = '1'`. Compiler thread limits do not provide a machine-wide process lock: serialize launches externally and check memory before building. This toolchain's Lake has no `lake build -j1` option.
+
+Mathlib is required by Git at `56a005855ea17e0b0958f73ec801ae140b0a1679`; the Lake-generated manifest pins its eight inherited dependencies to the recorded revisions. Use the shipped manifest; ordinary reproduction does not require `lake update`. The stock Mathlib cache tool is used without the historical override.
+
+`Challenge.lean`, `Solution.lean`, and `Audit.lean` are ordinary files checked with `lake env lean -j1 -M6144 FILE.lean`. Challenge retains its intentional comparator holes and is excluded from the library. Library and final audit output must have no `declaration uses sorry` warnings.
+
+The Python replay, evidence, and previous reproduction instructions below are retained as optional historical tools. They assume the old `vendor/` layout, prebuilt objects, and in some cases a host-memory heartbeat; plain `lake build` does not invoke them. Run any historical preparation in a separate copy and retain the standard manifest in this one. Historical checks describe the original release, not new comparator or kernel replays by the standard build.
+
 ## What is proved
 
 `FixedNoiseErgodicity/Statements.lean` defines, transparently and with no proofs of substance, every object that occurs in Corollary 9.21, and states the corollary as one proposition:
@@ -76,8 +97,7 @@ All 46 `[choice]` comments are listed, with file, line and text, in `evidence/CH
 - **Port.** The proofs were developed with Lean 4.30.0 and a Mathlib snapshot of May 2026, and ported to the pins above. The port changed proof text in 28 of the 1,084 theorem and lemma blocks, in 14 files, and one import in `Hypotheses.lean`; no statement of a theorem or lemma and no definition changed, and `Statements.lean` is byte for byte that of the development. Records: `evidence/PROOF-PRESERVATION.json`, `evidence/PORT.diff`, `evidence/FROZEN-STATEMENT.json`, `evidence/ORIGINAL-SOURCE.json`.
 - **Dependencies.** All 10,268 dependency source files match `pins/DEPENDENCY-SOURCES.json`. Mathlib's 8,624 library sources agree byte for byte with the official commit; the only file of the official archive that differs is the cache tool's `Cache/Requests.lean`, outside the import closure of the proofs (`evidence/DEPENDENCY-CHECK.json`, `evidence/UPSTREAM-MATHLIB-SOURCE-CHECK.json`). The recorded build compiled all 66 modules of the development serially from source, with prebuilt Mathlib objects (`evidence/BUILD.json`); Mathlib was not rebuilt from source, and the two kernel checkers re-check every Mathlib declaration that the proofs use.
 
-## Reproduce
-
+## Historical reproduction workflow (optional)
 You need the Lean 4.35.0 toolchain (`lean` and `lake`) first on `PATH`, Python 3.11 or later, Git, and at least 8 GiB of available memory: the build runner refuses to start a compiler below 8 GiB, and each Lean process runs with `-j1 -M6144`. The build runs on Windows x86-64 and Linux x86-64.
 
 1. Get the dependency sources. Clone each package listed in `pins/DEPENDENCIES.json` from its `url` into a directory named by its `name`, and check out its `rev` with Git line-ending conversion disabled, for example
