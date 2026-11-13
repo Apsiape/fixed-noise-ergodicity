@@ -1,0 +1,109 @@
+{
+  "commit": "321e81225e73db9311a6c871057b513bfa020a9f",
+  "source_tar_sha256": "0ffbf00360a3b1cfc1debddd38a8e72ed6c6bfe8951aea15624942af4c478636",
+  "source_tar_bytes": 409600,
+  "package_tar_sha256": "28ab51fc79c984c3575ec790e1529fd77333c0c8171114c88cf9486f0337c5b7",
+  "package_files": {
+    "project/Solution.lean": {
+      "from": "Solution.lean",
+      "sha256": "ee95114ee85bf97b4d2542768b50736ffb9d67230bd94a664ad71733948a2be4",
+      "bytes": 92
+    },
+    "project/comparator.json": {
+      "from": "comparator.json",
+      "sha256": "aa0a02a219468a5a046dc9710d25fe924425b875c0d414b3376c71bb4e9e35c7",
+      "bytes": 272
+    },
+    "project/lakefile.lean": {
+      "from": "lakefile.lean",
+      "sha256": "d5f2ec8922554eb142f5b7c8770fcaf482c0269becb18d9dcc3dc3c0d7816c7f",
+      "bytes": 2353
+    },
+    "project/STATEMENT-READ.md": {
+      "from": "STATEMENT-READ.md",
+      "sha256": "956d5cc260e9bdd1057798cea09b0a5a2fe3eb635954c50ee338266784e13379",
+      "bytes": 8790
+    },
+    "project/scripts/replay.py": {
+      "from": "scripts/replay.py",
+      "sha256": "9b40021c02089907e1f1fd45a8176d6196f9c20b14ca97600c4bcea256e39287",
+      "bytes": 8810
+    },
+    "project/scripts/make_challenge.py": {
+      "from": "scripts/make_challenge.py",
+      "sha256": "16f2ffddae59ccfeaa12dda27be90f2a5869508a75f449cbdfd454429260ace7",
+      "bytes": 11283
+    },
+    "project/scripts/dump_reach.lean.txt": {
+      "from": "scripts/dump_reach.lean.txt",
+      "sha256": "4dd13f1df95d6c1d74f71fe6c0e4295435a8b8b5f38ffc0e807aa9aaf20ecb70",
+      "bytes": 1855
+    },
+    "project/scripts/challenge_precheck.ps1": {
+      "from": "scripts/challenge_precheck.ps1",
+      "sha256": "d523e379186629d89d74ac8dfe3b1084054072aa1f1b00b632102b9d81933170",
+      "bytes": 664
+    },
+    "project/scripts/resource_guard.py": {
+      "from": "scripts/resource_guard.py",
+      "sha256": "0494f0fad70d064efb9f4e5170eef3645894c665a6ceae5810c7bb498c3dc600",
+      "bytes": 4762
+    },
+    "run-linux.py": {
+      "from": "relay/run-linux.py",
+      "sha256": "54c4e2d3f9c6b14e7da67a71e289ba5943532d3dd96a2873da94c59a09dce18c",
+      "bytes": 7298
+    },
+    "make_audit.py": {
+      "from": "relay/make_audit.py",
+      "sha256": "d2751a1b34edb759f462a75cd7c76a53cefa99115876ddc3daae93f2ad533227",
+      "bytes": 4617
+    },
+    "make_evidence.py": {
+      "from": "relay/make_evidence.py",
+      "sha256": "fbb0ee0db9d8f116f1f58d9bc1413c969cba9b04da6a3432f19ccf150c1b4b96",
+      "bytes": 11150
+    },
+    "host-memory-monitor.py": {
+      "from": "relay/host-memory-monitor.py",
+      "sha256": "ea30359eb1b645a5bd567af6b2d83e9e2cea5470938adcca0a09328be7d08c81",
+      "bytes": 2370
+    },
+    "stage.sh": {
+      "from": "relay/stage.sh",
+      "sha256": "5b4361a2f1d67cf9ce04be1571cca8f3957277e555f1d69f27f6674a2e646048",
+      "bytes": 1823
+    },
+    "install.sh": {
+      "from": "relay/install.sh",
+      "sha256": "6c0535b1a8201c2e092d68621de675267bc00da06a6bbb0bcf0cf528cac05f14",
+      "bytes": 939
+    },
+    "pack.py": {
+      "from": "relay/pack.py",
+      "sha256": "add0a2ad97ae1cb954571d68fb8d2cf5b3eed458ac52f53474be7be555ba2988",
+      "bytes": 2261
+    },
+    "pack_public_cores.py": {
+      "from": "relay/pack_public_cores.py",
+      "sha256": "ac5915a05c9be9bb6944089c16723715fe353fe2b8bd865e8b0e03a664d9a1a2",
+      "bytes": 4450
+    },
+    "linux_guard.py": {
+      "from": "relay/linux_guard.py",
+      "sha256": "88eca68b7f03d2f91159366f7cda6342700eaf8437595992c109db9584a0f67d",
+      "bytes": 1207
+    },
+    "bwrap-record": {
+      "from": "relay/bwrap-record",
+      "sha256": "b6d766fac75ad1889c7761044f075c4fb07f9229b76f5438f0f5b5adeefc79c7",
+      "bytes": 402
+    },
+    "precheck.py": {
+      "from": "relay/precheck.py",
+      "sha256": "1ddf5ade2814decfe7776fdf0ecdd133341ec0e6167028dcf576e8f3d768d6f4",
+      "bytes": 1393
+    }
+  },
+  "utc_epoch": 1794524942.834432
+}

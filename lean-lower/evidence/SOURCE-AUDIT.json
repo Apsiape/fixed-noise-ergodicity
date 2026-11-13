@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "development_files": 31,
+  "lean_files_checked": [
+    "ForgettingLower.lean",
+    "ForgettingLower/Audit.lean",
+    "ForgettingLower/Coherence/Edges.lean",
+    "ForgettingLower/Coherence/Pairing.lean",
+    "ForgettingLower/Coherence/Providers.lean",
+    "ForgettingLower/Coherence/Same.lean",
+    "ForgettingLower/Coherence/Tiling.lean",
+    "ForgettingLower/Constants.lean",
+    "ForgettingLower/Contour/Bracket.lean",
+    "ForgettingLower/Contour/Finite.lean",
+    "ForgettingLower/Density/Entropy.lean",
+    "ForgettingLower/Density/Eventual.lean",
+    "ForgettingLower/Density/Probability.lean",
+    "ForgettingLower/Density/Rates.lean",
+    "ForgettingLower/Density/Slabs.lean",
+    "ForgettingLower/Density/Witness.lean",
+    "ForgettingLower/Forget/CFTP.lean",
+    "ForgettingLower/Forget/Roots.lean",
+    "ForgettingLower/Forget/Unique.lean",
+    "ForgettingLower/Geometry/Marked.lean",
+    "ForgettingLower/Geometry/Noise.lean",
+    "ForgettingLower/Geometry/Potentials.lean",
+    "ForgettingLower/Main.lean",
+    "ForgettingLower/Memory/Branch.lean",
+    "ForgettingLower/Memory/Cover.lean",
+    "ForgettingLower/Memory/Invariant.lean",
+    "ForgettingLower/Reduction.lean",
+    "ForgettingLower/Rule/Bridge.lean",
+    "ForgettingLower/Rule/Coordinates.lean",
+    "ForgettingLower/Rule/Local.lean",
+    "ForgettingLower/Statements.lean",
+    "Challenge.lean",
+    "Solution.lean",
+    "Audit.lean"
+  ],
+  "forbidden_constructs": [],
+  "sorry_tokens": [
+    {
+      "file": "Challenge.lean",
+      "line": 1298
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 1300
+    },
+    {
+      "file": "Challenge.lean",
+      "line": 1302
+    }
+  ],
+  "files_without_autoImplicit_false": [],
+  "lint_exit": 0,
+  "lint_output": "lint ok\n",
+  "development_sorry_count": 0
+}

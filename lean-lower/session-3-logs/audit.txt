@@ -1,0 +1,8 @@
+BUILD OK
+LEAN ForgettingLower.Audit (avail 14.8 GiB)
+  exit 0, 5.4 s, 0 warnings
+BUILD OK
+---- axiom audit summary ----
+single-constant audits: 100
+audit_prefix FLD: 279 declarations checked, 0 with disallowed axioms, 0 depending on sorryAx
+AUDIT OK (errors: none)

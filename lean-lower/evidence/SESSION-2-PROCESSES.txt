@@ -1,0 +1,3 @@
+Windows: no lean or lake process.
+WSL lean-comparator: no lean or lake process.
+No owned background helper was started; no process was killed.

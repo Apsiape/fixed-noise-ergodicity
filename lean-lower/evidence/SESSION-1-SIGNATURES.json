@@ -1,0 +1,50 @@
+{
+ "ForgettingLower.Statements": {
+  "source": "a0e5c8e394570302950559108aa6d4159b1fbe2e5d6c03cc67b05dc7012f68ef",
+  "imports": {}
+ },
+ "ForgettingLower.Constants": {
+  "source": "0170a4d656f49b5c7bf1da52903eba0fbec5f18d09d729cfc1b2b2a0315d4fcd",
+  "imports": {
+   "ForgettingLower.Statements": "6aef3e23d3de6d58f5828de48156c80f2e1aae9b149618870e261147e1ae67ec"
+  }
+ },
+ "ForgettingLower": {
+  "source": "ee95114ee85bf97b4d2542768b50736ffb9d67230bd94a664ad71733948a2be4",
+  "imports": {
+   "ForgettingLower.Main": "281e2d3721f187ef7134ce0a98e56baeba18e8540588b34654ff76e72fa27447",
+   "ForgettingLower.Reduction": "a0bae5d84fb403e250c48813ae031dfb321cf8c3eb80383c7eba14dadfde48e3"
+  }
+ },
+ "ForgettingLower.Density.Slabs": {
+  "source": "11111864691c9083e03833231d80524d3841bd7c2b5d01429eaa7a38bdd73e7d",
+  "imports": {
+   "ForgettingLower.Statements": "6aef3e23d3de6d58f5828de48156c80f2e1aae9b149618870e261147e1ae67ec"
+  }
+ },
+ "ForgettingLower.Density.Entropy": {
+  "source": "345f0b36dbe81ada75abfb5c3d4833c15585b47aa4cee3bd7ca9b7b66a96dbf4",
+  "imports": {
+   "ForgettingLower.Density.Slabs": "1364f7ef837967eb59d111197b0ddbf11ca8ea22e4df3388bde19239141c3a02"
+  }
+ },
+ "ForgettingLower.Main": {
+  "source": "62adaab4e5f2d5799e5c4660b02a1cdcaeeb4b35fafbf534c571327522cc415d",
+  "imports": {
+   "ForgettingLower.Constants": "bdd7eaa95c2ed0924abb7b1f2f90317e42e661cdea61ffe9365484968831115a",
+   "ForgettingLower.Density.Entropy": "297010ebcc343d8902a44f9ee5cab341441cf735c4546fa33523d4db6b7188fd"
+  }
+ },
+ "ForgettingLower.Audit": {
+  "source": "f32ebe2822517d2d6d92e9d808bef776a52b8ee041c1b7ada6640b7e4036e1e2",
+  "imports": {
+   "ForgettingLower": "8fbb1d3e345d468bd5b6866c5acae9c3d007cfa6a4de99d7c727f80c31967e74"
+  }
+ },
+ "ForgettingLower.Reduction": {
+  "source": "be35c8d084058d7f2c8b09cc7fac3cdae324f9efedb04204a74b5d0aedde751c",
+  "imports": {
+   "ForgettingLower.Statements": "6aef3e23d3de6d58f5828de48156c80f2e1aae9b149618870e261147e1ae67ec"
+  }
+ }
+}

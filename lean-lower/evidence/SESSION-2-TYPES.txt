@@ -1,0 +1,31 @@
+@FLD.Geometry.marked_le : ∀ {E M : ℤ → FLD.Geometry.ISite → Prop},
+  FLD.Geometry.MClosed E M → ∀ {t : ℤ} {w : FLD.Geometry.ISite}, FLD.Geometry.marked E t w → M t w
+@FLD.Geometry.card_marked_le : ∀ {E : ℤ → FLD.Geometry.ISite → Prop} {t : ℤ} {w : FLD.Geometry.ISite},
+  ¬FLD.Geometry.marked E t w → {π | FLD.Geometry.MarkedAt (FLD.Geometry.marked E (t - 1)) w π}.card ≤ FLD.K
+@FLD.Geometry.isPotential_psi : ∀ {E : ℤ → FLD.Geometry.ISite → Prop} {t0 : ℤ},
+  (FLD.Geometry.sys E t0).IsPotential FLD.Geometry.psi 130 350
+@FLD.Contour.witness_terminal_bracket : ∀ {V : Type u_1} {C : Type u_2} {Γ : Type u_3}
+  (S : UND.Contour.GroupedSystem V C Γ) [inst : DecidableEq V] [inst_1 : Fintype C] (time : V → ℤ),
+  (∀ (θ : V) (b : Bool), S.NF θ → time (S.sup θ b) + 1 = time θ) →
+    (∀ (θ : V), S.UN θ → time (S.un θ) = time θ) →
+      (∀ (φ φ' : V), S.IsTerm φ → S.IsTerm φ' → S.grp φ = S.grp φ' → time φ = time φ') →
+        ∀ {ρ : V} {P : Finset (UND.Contour.GroupedSystem.Pole V C)} (c0 : C),
+          (∀ σ ∈ P, S.Valid ρ σ) →
+            (∀ σ ∈ P, ∀ (c c' : C), ∃ σ' ∈ P, S.pGrp σ' c' = S.pGrp σ c) →
+              ∀ e ∈ S.witness P, ∀ v ∈ e, ∃ σ ∈ P, time (S.pEnd σ c0) ≤ time v ∧ time v ≤ time ρ
+@FLD.Geometry.exists_contour : ∀ {E : ℤ → FLD.Geometry.ISite → Prop} {x : FLD.Geometry.Pt},
+  FLD.Geometry.marked E x.2 x.1 → ∃ e Fl K, FLD.Geometry.IsContour E x e Fl K
+@FLD.Geometry.IsContour.exists_earliest : ∀ {E : ℤ → FLD.Geometry.ISite → Prop} {x : FLD.Geometry.Pt} {e : ℕ}
+  {Fl : Finset FLD.Geometry.Pt} {K : Finset (Sym2 FLD.Geometry.Pt)},
+  FLD.Geometry.IsContour E x e Fl K →
+    ∃ z ∈ Fl,
+      (∀ y ∈ Fl, z.2 ≤ y.2 ∧ y.2 ≤ x.2) ∧ (∀ d ∈ K, ∀ v ∈ d, z.2 ≤ v.2 ∧ v.2 ≤ x.2) ∧ x.2 - z.2 ≤ 12 * (↑Fl.card - 1)
+@FLD.Density.exists_density_encoding : ∀ {E : ℤ → FLD.Geometry.ISite → Prop} {Q : ℕ → FLD.Geometry.Pt} {N : ℕ},
+  (∀ k < N, ∃ π, ∃ μ ∈ FNE.box 1, Q (k + 1) = FLD.Geometry.par (Q k) π μ) →
+    ↑N / 1404 ≤ ↑{i ∈ Finset.range N | FLD.Geometry.H E (Q i)}.card →
+      ∃ Fl K,
+        ↑N / 1404 ≤ 12 * ↑Fl.card ∧
+          UND.Counting.IsEncoding FLD.Geometry.nbr (Q 0) (FLD.densityCost * Fl.card) K Fl ∧
+            FLD.Density.pathEdges Q N ⊆ K ∧ ∀ y ∈ Fl, E y.2 y.1
+FLD.Z4Classification : Prop
+FLD.Z4MachineCorollary : Prop

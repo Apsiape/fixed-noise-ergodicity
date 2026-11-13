@@ -1,0 +1,14 @@
+{
+  "BUILD.json": "PASS",
+  "COMPARATOR.json": "PASS",
+  "KERNEL-REPLAY.json": "PASS",
+  "AXIOM-AUDIT.json": "PASS",
+  "SOURCE-AUDIT.json": "PASS",
+  "ORIGINAL-SOURCE.json": "PASS",
+  "DEPENDENCY-CHECK.json": "PASS",
+  "CHALLENGE-PRECHECK.json": "PASS",
+  "ForgettingNaturalRule": "PASS",
+  "FixedNoiseErgodicity": "PASS",
+  "UncomputableNoiseDiagram": "PASS",
+  "UndecidablePhaseDiagram": "PASS"
+}

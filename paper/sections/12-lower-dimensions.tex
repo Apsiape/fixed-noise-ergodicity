@@ -1,6 +1,6 @@
 \section{Lower dimensions}\label{sec:lower}
 
-The natural raw-Wang rule can be realized on $\Z^4$, and a transverse-quorum lift of Kari's nilpotency reduction gives fixed-rate undecidability on $\Z^3$. The original classification statements below are supplemented by the exponential all-input estimate of \cref{ld:rate} at the end of this section. The all-Gibbs uniqueness, robustness and Lean core of the $\Z^6$ route remain separate results. The change is to pair provider offsets only when neither of the two vertices has a marked parent, and to control all backward paths at once at the other steps.
+The natural raw-Wang rule can be realized on $\Z^4$, and a transverse-quorum lift of Kari's nilpotency reduction gives fixed-rate undecidability on $\Z^3$. The original classification statements below are supplemented by the exponential all-input estimate of \cref{ld:rate} at the end of this section. \Cref{ld:gibbs} then gives all-Gibbs uniqueness and exponential weak spatial mixing for the normalized space--time interactions on $\Z^5$ and $\Z^4$. The qualitative $\Z^4$ classification now has its own Lean core (\cref{app:lean-lower}); the $\Z^3$ classification, the rates and the Gibbs corollary are not formalized. The robustness theorem and the scope of the $\Z^6$ Lean core remain separate. The change is to pair provider offsets only when neither of the two vertices has a marked parent, and to control all backward paths at once at the other steps.
 
 \subsection{Why the budget-only estimate stops at six}
 
@@ -298,7 +298,7 @@ Use the fixed clopen event LIVE, not agreement with the moving tile $\theta_n(i)
 Finally enumerate finite sets of colour quadruples and retain those passing the decidable pairwise test \eqref{ld:NE}. This gives an effective enumeration; canonical finite colour renamings are computable, so every input has a searchable finite code. The map from such a code to the alphabet, $f_T$ table and quorum rule is finite and total. A decision algorithm for ergodicity of these indexed rules at $e_0$ would decide their restricted tiling problem, contradicting Kari's theorem and the reflection above. The rate is independent of the instance and its alphabet size.
 \end{proof}
 
-The two classifications above assert ergodicity and two invariant laws on the respective sides. The following quantitative supplement gives their own exponential all-input bound on the non-tiling side. The all-DLR and space--time Gibbs consequences, the robustness theorem and the Lean proofs of the $\Z^6$ route are not transferred here. No rule on every raw Wang set on $\Z^3$, no result on $\Z^2$ or $\Z$, and no token-width-two theorem is proved here.
+The two classifications above assert ergodicity and two invariant laws on the respective sides. The following quantitative supplement gives their own exponential all-input bound on the non-tiling side. \Cref{ld:gibbs} transfers all-DLR uniqueness and exponential weak spatial mixing to the associated space--time interactions. The robustness theorem and the scope of the $\Z^6$ Lean proofs are not transferred; \cref{app:lean-lower} describes the separate qualitative $\Z^4$ core. No rule on every raw Wang set on $\Z^3$, no result on $\Z^2$ or $\Z$, and no token-width-two theorem is proved here.
 
 
 
@@ -416,3 +416,59 @@ For completeness, outside $M^{[0]}$ the output is unflagged and at most $K=256$ 
 \]
 Thus $\Prob(X_t(v)\ne Y_t(v))\ge1-4\eps$, and this discrepancy is contained in all-input nonconstancy. Any finite $C_T\exp(-t/4)$ tends to zero, contradicting this uniform positive lower bound. The non-tiling hypothesis in \cref{ld:rate} is therefore essential even within the one-tile NE family.
 \end{proof}
+
+
+\subsection{All space--time Gibbs measures in lower dimensions}
+
+\begin{corollary}[All space--time Gibbs measures on $\Z^5$ and $\Z^4$]\label{ld:gibbs}
+Let $\mathcal R$ and $G_{\mathcal R}^{(d)}$ be as in \cref{ld:rate}, with $d=4$ for the checker family of \cref{ld:z4} and $d=3$ for the generator family of \cref{ld:z3}. Let $N_d$ be their common neighbourhood, respectively $\Gamma\times S$ and $\{0,1\}\times S$. Fix $0<\eps\le e_0$ and put
+\[
+ p_{\mathcal R,\eps}(c\mid y)
+ =(1-\eps)\mathbf1_{\{c=G_{\mathcal R}^{(d)}(y)\}}
+       +\frac{\eps}{|A_{\mathcal R}|},\qquad
+ y\in A_{\mathcal R}^{N_d}.
+\]
+On $\Z^d\times\Z=\Z^{d+1}$ define the normalized finite-range interaction
+\[
+ \Psi_{\mathcal R,\eps,(v,t)}(\sigma)
+ =-\log p_{\mathcal R,\eps}\bigl(\sigma(v,t)\mid
+                     (\sigma(v+a,t-1))_{a\in N_d}\bigr).
+\]
+Its finite-volume specification $\gamma_V^\tau$ is that of \cite[equation~(6)]{DM26}: multiply all factors whose supports
+$\{(v,t)\}\cup\{(v+a,t-1):a\in N_d\}$ meet $V$, including factors of exterior children, and normalize with exterior $\tau$. A Gibbs measure means a DLR state, with no invariance assumed.
+\begin{enumerate}[label=(\roman*)]
+\item If $\mathcal R$ does not tile the plane, this interaction has exactly one Gibbs measure $\bar\pi_{\mathcal R,\eps}$, the two-sided stationary trajectory law of the unique invariant law. There are $C_*,c_*>0$, depending on $\mathcal R$ and $\eps$, such that for every finite $V\subset\Z^{d+1}$, every $E\subset V$ and all exteriors $\tau,\tau'$,
+\begin{align*}
+ \dtv((\gamma_V^\tau)_E,(\bar\pi_{\mathcal R,\eps})_E)
+ &\le C_*\sum_{z\in E}e^{-c_*\operatorname{dist}_\infty(z,V^c)},\\
+ \dtv((\gamma_V^\tau)_E,(\gamma_V^{\tau'})_E)
+ &\le2C_*\sum_{z\in E}e^{-c_*\operatorname{dist}_\infty(z,V^c)}.
+\end{align*}
+\item If $\mathcal R$ tiles the plane, the interaction has at least two Gibbs measures invariant under every translation of $\Z^{d+1}$.
+\end{enumerate}
+Thus at every fixed $0<\eps\le e_0$, uniqueness, uniqueness among fully translation-invariant Gibbs measures, and exponential weak spatial mixing each hold exactly on non-tiling inputs. At $\eps=e_0$ each is undecidable across either family. For the $\Z^4$ checker family these decision properties are $\Sigma^0_1$-complete, with $\Pi^0_1$-complete complements; for the $\Z^3$ generator family only undecidability is asserted.
+\end{corollary}
+\begin{proof}
+Suppose $\mathcal R\ne\varnothing$. Its alphabet is finite with at least two symbols. The finite neighbourhood $N_d$ contains zero: $0\in\Gamma$ (respectively $0\in\{0,1\}$), and $0\in S_0$. Both neighbourhoods have sup-radius $175$. Every table entry is at least $\eps/|A_{\mathcal R}|>0$, and rows update independently given the preceding row.
+
+At each space--time update take an independent pair consisting of a Bernoulli($\eps$) flag and a uniform letter in $A_{\mathcal R}$, with the two entries independent. It defines the local map $m(y)$ equal to that letter when the flag is set and to $G_{\mathcal R}^{(d)}(y)$ otherwise. For each $c,y$, $\Prob(m(y)=c)=p_{\mathcal R,\eps}(c\mid y)$, so these maps are an iid local-map representation in the sense of \cite[Section~2.2]{DM26}. Their chronological composites on $\Z^d$ are exactly the shared random maps of \cref{ld:rate}, using one common flag and replacement letter for every input row. Hence the common-map coefficient of \cite[equation~(4)]{DM26} is
+\[
+ q_t=\Prob\{\eta\mapsto F_t(\eta)(0)\text{ is not constant}\}
+       \le C_{\mathcal R}e^{-t/4}
+       \quad\text{for every integer }t\ge0.
+\]
+The map law is the same at every site, so this bound is uniform in the root. These check every hypothesis of \cite[Corollary~13.7]{DM26}, in spatial dimension $d$. That corollary, through its prefix-cap Theorem~13.3, gives (i), with its equations~(8) and~(7), respectively. The general transfer is the result of \cite{DM26}; the assertion here is its application to these two families. If $\mathcal R=\varnothing$, there is one space--time configuration, one DLR state, and both total-variation distances are zero; this handles the singleton alphabet separately from the cited theorem.
+
+For (ii), take the invariant laws $\mu_X,\mu_Y$ obtained as temporal Ces\`aro limits in the proofs of \cref{ld:z4,ld:z3}, using the Feller argument of \cref{ld:cftp}. At every spatial site $v$, write $\mathrm{LIVE}_v=\{x:x(v)\ne\bot\}$. The error covers and the sparse-root bound of \cref{ld:contours} give
+\[
+ \mu_X(\mathrm{LIVE}_v)\ge1-2\eps,\qquad
+ \mu_Y(\mathrm{LIVE}_v)\le2\eps.
+\]
+For the checker, agreement with the cloned tile implies LIVE, and every live site of the blank-started process is covered; for the generator these are the LIVE bounds already used in its proof. The blank-started law $\mu_Y$ is spatially invariant, because its start is and the dynamics commute with translations.
+
+The clone-started law need not be spatially invariant. Every translate of $\mu_X$ is stationary, and stationary laws form a weakly closed convex set. Average its translates over boxes $[-n,n]^d\cap\Z^d$ and take a weak limit point $\widehat\mu_X$. The boundary-to-volume ratio tends to zero, so this limit is invariant under every spatial translation, and it is stationary. At every site the LIVE lower bound survives the averages and their weak limit because LIVE is clopen. The two-sided stationary trajectories of $\widehat\mu_X$ and $\mu_Y$ are DLR states by \cite[Lemma~2.4]{DM26}, which assumes no spatial invariance. They are invariant under all space--time translations. Their time-zero LIVE probabilities differ by at least $1-4\eps>0$, so they are distinct. This is consistent with the classical translation-invariant correspondence of \cite{GKLM89}.
+
+Weak spatial mixing forces uniqueness: integrate its bound over the exteriors of two DLR states and let the distance of a fixed finite $E$ to $V^c$ tend to infinity. It therefore fails on tiling inputs. The map from a tile input to its table at $e_0$ is total computable. The raw domino problem \cite{Berger66,Robinson71} and Kari's restricted tiling theorem with the reflection used in \cref{ld:z3} \cite{Kari92,Kari05} give the two undecidability assertions. For the checker family, non-tiling is computably enumerable by finite-patch search and $\Sigma^0_1$-complete by the recalled Berger--Robinson reduction, as in \cref{nw:complexity}; the identity classification gives the asserted degrees. No many-one completeness claim is made for the generator family.
+\end{proof}
+
+Distance is the sup norm, as in \cite[Definition~2.3]{DM26}. Volumes may have holes and need not be connected. Distance is to the entire complement, so strong spatial mixing is not claimed. No uniformity of the Gibbs constants as $\eps\downarrow0$ is claimed. The robustness theorem and the scope of the $\Z^6$ Lean core are not transferred. The separate $\Z^4$ Lean core in \cref{app:lean-lower} does not formalize this corollary.

@@ -1,0 +1,151 @@
+{
+  "challenge_sha256": "a40464ced04770bc96bd2ef49d5e00c3c9cc2a680c1e357e0a991e7cb8315039",
+  "challenge_imports": [
+    "Mathlib.Probability.ProductMeasure",
+    "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+    "Mathlib.MeasureTheory.Constructions.BorelSpace.Basic",
+    "Mathlib.Topology.ContinuousMap.Bounded.Basic",
+    "Mathlib.Computability.Primrec.List",
+    "Mathlib.Computability.Partrec",
+    "Mathlib.Tactic.DeriveFintype",
+    "Mathlib.Analysis.SpecialFunctions.Exp",
+    "Mathlib.Topology.Instances.ENNReal.Lemmas",
+    "Mathlib.Computability.Halting",
+    "Mathlib.Data.Set.Countable",
+    "Mathlib.Data.List.Nodup"
+  ],
+  "challenge_imports_only_mathlib": true,
+  "frozen_statement_file": {
+    "path": "ForgettingLower/Statements.lean",
+    "sha256": "58cb7388400f05f2986d2b2cc9154a99a554eed4b384f10c8809b706d3b244c4",
+    "note": "frozen in session 3 (12 Nov 2026) after the blind fidelity read; recorded in STATUS.md as the statement of record"
+  },
+  "statement_files": {
+    "FixedNoiseErgodicity/Statements.lean": {
+      "sha256": "351c3058f66fc99235677f99d04f8b35af1d365f80153d9644c6b13d207b4879",
+      "source": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity/FixedNoiseErgodicity/Statements.lean",
+      "reference": null,
+      "identical_to_reference": null,
+      "sha256_asserted": "351c3058f66fc99235677f99d04f8b35af1d365f80153d9644c6b13d207b4879"
+    },
+    "UndecidablePhaseDiagram/Statements.lean": {
+      "sha256": "ef3ebe7fc60c792f1297dcf9a4596504f5a365de5e45012df84da227fa01482b",
+      "source": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UndecidablePhaseDiagram/UndecidablePhaseDiagram/Statements.lean",
+      "reference": null,
+      "identical_to_reference": null,
+      "sha256_asserted": "ef3ebe7fc60c792f1297dcf9a4596504f5a365de5e45012df84da227fa01482b"
+    },
+    "UncomputableNoiseDiagram/Statements.lean": {
+      "sha256": "b5c9e965b2ffbb39d2817ab4c3a41b3a71d463cbe1a0f6f186a8cc8833d0aa2c",
+      "source": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram/UncomputableNoiseDiagram/Statements.lean",
+      "reference": null,
+      "identical_to_reference": null,
+      "sha256_asserted": "b5c9e965b2ffbb39d2817ab4c3a41b3a71d463cbe1a0f6f186a8cc8833d0aa2c"
+    },
+    "ForgettingNaturalRule/Statements.lean": {
+      "sha256": "3e4f73e3bc4a71ac041e45186e4d992abcd294f33ad7cfe5f4c337b8c479b5d4",
+      "source": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/ForgettingNaturalRule/ForgettingNaturalRule/Statements.lean",
+      "reference": null,
+      "identical_to_reference": null,
+      "sha256_asserted": "3e4f73e3bc4a71ac041e45186e4d992abcd294f33ad7cfe5f4c337b8c479b5d4"
+    },
+    "ForgettingLower/Statements.lean": {
+      "sha256": "58cb7388400f05f2986d2b2cc9154a99a554eed4b384f10c8809b706d3b244c4",
+      "source": "/opt/forgetting-lower-arxiv-2026-11-12/project/ForgettingLower/Statements.lean",
+      "reference": null,
+      "identical_to_reference": null,
+      "sha256_asserted": "58cb7388400f05f2986d2b2cc9154a99a554eed4b384f10c8809b706d3b244c4"
+    }
+  },
+  "copies": {
+    "FixedNoiseErgodicity/Statements.lean": {
+      "what": "whole file except its import lines",
+      "sha256": "9ecf6c716576537208d41924592d16ddf07bd84242b5c168eee3067f5a4d4f20",
+      "reconstruction_check": "head + import lines + body == file (asserted)"
+    },
+    "UncomputableNoiseDiagram/Statements.lean": {
+      "what": "whole file except its import lines",
+      "sha256": "5466ec6d9e0deb0961ce57b2690929dbed837384d793938b7e446bb382899500",
+      "reconstruction_check": "head + import lines + body == file (asserted)"
+    },
+    "ForgettingNaturalRule/Statements.lean": {
+      "what": "whole file except its import lines",
+      "sha256": "a7c73760704859cd51c7c5a5a154b4faf633b8d76f4e23d22f3d2b6eb3cc0f49",
+      "reconstruction_check": "head + import lines + body == file (asserted)"
+    },
+    "ForgettingLower/Statements.lean": {
+      "what": "whole file except its import lines",
+      "sha256": "8909fa5f5584610c93dac3a7e956462fa9e5d5859c8ba7e719429cdec8305d48",
+      "reconstruction_check": "head + import lines + body == file (asserted)"
+    }
+  },
+  "excerpts": [
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "what": "header: options, section, opens, namespace",
+      "first_line": 41,
+      "last_line": 53,
+      "begin_marker": "-- BEGIN verbatim excerpt of UndecidablePhaseDiagram/Statements.lean, lines 41-53 (header: options, section, opens, namespace)",
+      "end_marker": "-- END verbatim excerpt of UndecidablePhaseDiagram/Statements.lean, lines 41-53",
+      "sha256": "5537235be734f10f080dbcc5ce77f29f4a6bdc68b4d44e4b1de8fb7806faf068",
+      "text_utf8": "set_option autoImplicit false\n\n-- The `deriving Fintype` handler builds the instance through nested sigma types; the records of\n-- Section 4 have up to 21 fields, which exceeds the default instance-size budget.\nset_option synthInstance.maxSize 100000\nset_option synthInstance.maxHeartbeats 2000000\n\nnoncomputable section\n\nopen MeasureTheory\nopen scoped ENNReal\n\nnamespace UPD"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "what": "Section 2.2: UPD.Machine, State, Symbol, Cfg, step, start, run, HaltsOn",
+      "first_line": 143,
+      "last_line": 206,
+      "begin_marker": "-- BEGIN verbatim excerpt of UndecidablePhaseDiagram/Statements.lean, lines 143-206 (Section 2.2: UPD.Machine, State, Symbol, Cfg, step, start, run, HaltsOn)",
+      "end_marker": "-- END verbatim excerpt of UndecidablePhaseDiagram/Statements.lean, lines 143-206",
+      "sha256": "6711776150f90bef4368c74e88ad02e7c4551829ce3535227ee744f81664a177",
+      "text_utf8": "/-! ## Section 2.2: Turing machines -/\n\n/-- Section 2.2. A deterministic Turing machine with a one-sided tape (cells `0, 1, 2, …`).\n**[choice]** Finite encoding: the states are `Fin (numStates + 1)` with initial state `0`; the\ntape symbols are `Fin (numSymbols + 2)`, with blank `0` and the symbol `1`; the halting states are\nthose with `halting q = true`; `trans q γ = (q', γ', D)`: write `γ'`, go to `q'`, move one cell\nright if `D = true` and one cell left if `D = false`. The initial state is not halting (the paper's\nmachine `M` enters the state `(q⁰_U, run)`, which exists only for a non-halting `q⁰_U`).\nEvery machine of Section 2.2 with a non-halting initial state has such an encoding. -/\nstructure Machine where\n  /-- the states are `Fin (numStates + 1)` -/\n  numStates : ℕ\n  /-- the tape symbols are `Fin (numSymbols + 2)` -/\n  numSymbols : ℕ\n  /-- the halting states -/\n  halting : Fin (numStates + 1) → Bool\n  /-- the transition function -/\n  trans : Fin (numStates + 1) → Fin (numSymbols + 2) →\n    Fin (numStates + 1) × Fin (numSymbols + 2) × Bool\n  /-- the initial state `0` is not halting -/\n  init_not_halting : halting 0 = false\n\nnamespace Machine\n\n/-- The states of a machine. -/\nabbrev State (U : Machine) := Fin (U.numStates + 1)\n\n/-- The tape symbols of a machine; `0` is the blank `⊔` and `1` is the symbol `1`. -/\nabbrev Symbol (U : Machine) := Fin (U.numSymbols + 2)\n\n/-- A configuration: state, head cell, one-sided tape. -/\nstructure Cfg (U : Machine) where\n  /-- the state -/\n  state : U.State\n  /-- the head cell -/\n  head : ℕ\n  /-- the tape -/\n  tape : ℕ → U.Symbol\n\n/-- Section 2.2. One step: write, change state, move one cell left or right.\n**[choice]** A move left from cell `0` ends the run without halting (`none`); the paper's\nconvention is that the machine never makes such a move, and then this case never occurs. -/\ndef step (U : Machine) (c : U.Cfg) : Option U.Cfg :=\n  let t := U.trans c.state (c.tape c.head)\n  if t.2.2 then some ⟨t.1, c.head + 1, Function.update c.tape c.head t.2.1⟩\n  else if c.head = 0 then none\n  else some ⟨t.1, c.head - 1, Function.update c.tape c.head t.2.1⟩\n\n/-- Section 2.2. The start on input `n`: initial state, head on cell `0`, cells `0, …, n-1` hold\nthe symbol `1`, all other cells are blank. -/\ndef start (U : Machine) (n : ℕ) : U.Cfg :=\n  ⟨0, 0, fun j => if j < n then 1 else 0⟩\n\n/-- The configuration after `t` steps on input `n` (`none` once the run has ended by a move left\nfrom cell `0`). -/\ndef run (U : Machine) (n : ℕ) : ℕ → Option U.Cfg\n  | 0 => some (U.start n)\n  | t + 1 => (U.run n t).bind U.step\n\n/-- Section 2.2. `U` halts on input `n` if, started on input `n`, it enters a halting state. -/\ndef HaltsOn (U : Machine) (n : ℕ) : Prop :=\n  ∃ (t : ℕ) (c : U.Cfg), U.run n t = some c ∧ U.halting c.state = true\n\nend Machine"
+    },
+    {
+      "file": "UndecidablePhaseDiagram/Statements.lean",
+      "what": "UPD.Universal",
+      "first_line": 1232,
+      "last_line": 1236,
+      "begin_marker": "-- BEGIN verbatim excerpt of UndecidablePhaseDiagram/Statements.lean, lines 1232-1236 (UPD.Universal)",
+      "end_marker": "-- END verbatim excerpt of UndecidablePhaseDiagram/Statements.lean, lines 1232-1236",
+      "sha256": "49b3ef2d308108046d80419da5a99fef3b1087eb8bdfa1d3ae104839c85b879a",
+      "text_utf8": "/-- Section 2.2: `U` is universal: its halting set `ℋ_U = {n ≥ 1 : U halts on n}` is not\ndecidable. **[choice]** The paper fixes `U` with `ℋ_U` `Σ⁰₁`-complete, \"in particular\nundecidable\"; only undecidability is used, so it is the hypothesis here (a weaker hypothesis, a\nstronger corollary). That such machines exist is `ExistsUniversal`. -/\ndef Universal (U : Machine) : Prop := ¬ ComputablePred (fun n : ℕ => 1 ≤ n ∧ U.HaltsOn n)"
+    }
+  ],
+  "fld_statements_lean_utf8": "/-\n# Statement file — FROZEN (12 Nov 2026): Section 12, Theorem 12.5 (ld:z4), v2.0.0\n\nFrozen after the blind fidelity read and QB rulings of 12 Nov 2026.\nThe sha256 in STATUS.md is the statement of record; this file never changes again.\nSource: fixed-noise-ergodicity-release/paper/sections/12-lower-dimensions.tex.\n\nREUSE: FNE.Tile/WangSet/Plane/TuringMachine/Halts, FNR.TilesPlane and Letter,\nUND.CA (including the actual uniform whole-symbol noise, probability laws,\nIsStationary, IsErgodic and FNE.WeakTendsto), FNR.IsPositiveRatePCA.\nADAPT: the transparent FNR cardinal-checker/quorum construction, with two\ntransverse coordinates, three boxes and h = 512. The first two coordinates\nof UND.Site 4 are planar. Option (Fin 2) indexes clusters 0,1,2.\n\nOnly target propositions are stated here; their proofs live in the proof files.\n**[choice]** Inherited encodings (natural-number tile colours, list-coded raw inputs,\nthe FNE machine model and UND noise time indexing) are reused verbatim from the frozen cores.\n-/\nimport ForgettingNaturalRule.Statements\n\nset_option autoImplicit false\n\nnoncomputable section\n\nnamespace FLD\n\nopen FNE (Tile WangSet Plane TuringMachine)\nopen MeasureTheory\n\n/-- Tiling with translations only, no distinguished tile; exactly FNR's predicate.\n**[choice]** Reuse its map-to-tiles encoding with membership in R. -/\nabbrev TilesPlane := FNR.TilesPlane\n\n/-- ld:constants: one cluster contains K = 16² offsets. -/\ndef K : ℕ := 16 ^ 2\n/-- ld:constants: three clusters. -/\ndef q : ℕ := 3 * K\n/-- Bound on the undirected ordinary degree, using |Λ| = 9. -/\ndef Delta : ℕ := 18 * q\n/-- The connected-edge encoding base 2Δ². -/\ndef B : ℕ := 2 * Delta ^ 2\n/-- The transverse l1 diameter of S. -/\ndef D : ℕ := 350\n/-- The all-path marked-parent density cutoff. -/\ndef delta : ℝ := 1 / (4 * ((D : ℝ) + 1))\n/-- Integer cost per flag of the whole path, spurs and contours. -/\ndef densityCost : ℕ := 16860\n/-- The single rational rate, independent of R. -/\ndef eps0Rat : ℚ := ((382205952 : ℚ) ^ 33720)⁻¹\n/-- ld:constants: e₀ = 382205952^(-33720), exactly as printed. -/\ndef eps0 : ℝ := ((382205952 : ℝ) ^ 33720)⁻¹\n\n/- The following definitions adapt FNR's statement definitions. `site` is\n(u₁,u₂,P₁,P₂); `corner none = 0`, `corner (some j) = 160 e_j`;\nProvider indexes S₀ ⊔ S₁ ⊔ S₂, and offset is corner + {0,...,15}².\nKeeps checks all five live cardinal letters and the four oriented edges.\ncheck keeps the central tile iff Keeps holds. natMap takes a live quorum\nof 512 votes, or blank. natNbhd = Γ × S is independent of R.\nletterEquiv reuses the existing alphabet bijection. natCA evaluates the\nrule on its neighbourhood; the extension by blank is immaterial by locality.\n-/\n/-- Section 12: site (u,P) in Z4.\n**[choice]** The planar coordinates come first. -/\ndef site (u : Plane) (P : Fin 2 → ℤ) : UND.Site 4 :=\n  Fin.cons (α := fun _ => ℤ) u.1 (Fin.cons (α := fun _ => ℤ) u.2 P)\n\n/-! ## The three provider boxes (Section 12, ld:constants) -/\n\n/-- ld:constants: the corners 0, 160e1, 160e2.\n**[choice]** Option (Fin 2) labels clusters: none is 0, some 0 is 1, some 1 is 2. -/\ndef corner : Option (Fin 2) → (Fin 2 → ℤ)\n  | none => 0\n  | some i => fun j => if j = i then 160 else 0\n\n/-- Three indexed boxes, each with 16 squared offsets. -/\nabbrev Provider := Option (Fin 2) × (Fin 2 → Fin 16)\n\n/-- The physical provider offset in its indexed box. -/\ndef offset (π : Provider) : Fin 2 → ℤ := corner π.1 + fun j => ((π.2 j : ℕ) : ℤ)\n\n/-- The explicit finite box S_c = corner c + {0,...,15} squared. -/\ndef providerBox (c : Option (Fin 2)) : Finset (Fin 2 → ℤ) :=\n  (Finset.univ : Finset (Fin 2 → Fin 16)).image fun o => offset (c, o)\n/-- S0 = {0,...,15} squared. -/\ndef S0 : Finset (Fin 2 → ℤ) := providerBox none\n/-- S1 = 160e1 + S0. -/\ndef S1 : Finset (Fin 2 → ℤ) := providerBox (some 0)\n/-- S2 = 160e2 + S0. -/\ndef S2 : Finset (Fin 2 → ℤ) := providerBox (some 1)\n/-- The union of all three provider boxes, indexed by Provider. -/\ndef S : Finset (Fin 2 → ℤ) := (Finset.univ : Finset Provider).image offset\n\n/-! ## The alphabet and cardinal checker (Section 12, natural rule) -/\n\nabbrev Letter (R : WangSet) := FNR.Letter R\n\n/-- Section 12: five live cardinal readings with matching shared edges. -/\ndef Keeps {R : WangSet} (x : UND.Site 4 → Letter R) (v : UND.Site 4) (c : R) : Prop :=\n  x v = some c ∧\n    (∃ b : R, x (v + site (1, 0) 0) = some b ∧ c.1.E = b.1.W) ∧\n    (∃ b : R, x (v + site (-1, 0) 0) = some b ∧ b.1.E = c.1.W) ∧\n    (∃ b : R, x (v + site (0, 1) 0) = some b ∧ c.1.N = b.1.S) ∧\n    (∃ b : R, x (v + site (0, -1) 0) = some b ∧ b.1.N = c.1.S)\n\nopen Classical in\n/-- Section 12: keep the centre exactly when its cardinal check passes. -/\ndef check {R : WangSet} (x : UND.Site 4 → Letter R) (v : UND.Site 4) : Letter R :=\n  if ∃ c, Keeps x v c then x v else none\n\n/-- The number of checked providers voting for a specified live tile. -/\ndef votes {R : WangSet} (x : UND.Site 4 → Letter R) (v : UND.Site 4) (s : R) : ℕ :=\n  (Finset.univ.filter fun π : Provider => check x (v + site 0 (offset π)) = some s).card\n\n/-- ld:constants: h = 2K = 512. -/\ndef quorum : ℕ := 2 * 16 ^ 2\n\nopen Classical in\n/-- G_R^(4): the unique live quorum tile if present, otherwise blank.\n**[choice]** Classical.choose selects the tile; 2 * 512 > 768 makes it unique. -/\ndef natMap (R : WangSet) (x : UND.Site 4 → Letter R) : UND.Site 4 → Letter R := fun v =>\n  if h : ∃ s : R, quorum ≤ votes x v s then some h.choose else none\n\n/-! ## The automaton `G_R` on `ℤ⁴` -/\n\nabbrev cardinal : Finset Plane := FNR.cardinal\n\n/-- Section 12: the common neighbourhood Gamma times S. -/\ndef natNbhd : Finset (UND.Site 4) :=\n  (cardinal ×ˢ (Finset.univ : Finset Provider)).image fun p => site p.1 (offset p.2)\n\n/-- Reuse FNR's bijection from R plus blank to the finite symbol alphabet.\n**[choice]** Fintype.equivFin relabels Option R as Fin |Option R|. -/\ndef letterEquiv (R : WangSet) : Letter R ≃ Fin (Fintype.card (Letter R)) :=\n  FNR.letterEquiv R\n\n/-- The explicit Z4 automaton, evaluated through its finite neighbourhood.\n**[choice]** Extend the pattern by blank outside natNbhd; those values are never read. -/\ndef natCA (R : WangSet) : UND.CA 4 where\n  numSymbols := Fintype.card (Letter R)\n  numSymbols_pos := Fintype.card_pos\n  nbhd := natNbhd\n  localRule pat := letterEquiv R (natMap R (fun z =>\n    if h : z ∈ natNbhd then (letterEquiv R).symm (pat ⟨z, h⟩) else none) 0)\n\n\n/-- Exactly the printed two distinct invariant probability laws; no spatial\ntranslation-invariance condition is added to Theorem 12.5. -/\ndef HasTwoInvariantLaws {d : ℕ} (A : UND.CA d) (e : ℝ) : Prop :=\n  ∃ μ ν : Measure A.Config, μ ≠ ν ∧\n    IsProbabilityMeasure μ ∧ A.IsStationary e μ ∧\n    IsProbabilityMeasure ν ∧ A.IsStationary e ν\n\n/-- Finite-window coupling from the past, simultaneously for all finite windows,\nall observation times, all sufficiently remote past horizons and all starts.\nThis uses UND.CA.flow and the existing two-sided iid noise measure verbatim.\n**[choice]** The added forall t is equivalent to the printed per-window form\nby countability of the time and finite-window index sets; it goes beyond the printed words. -/\ndef AllTimeCFTP {d : ℕ} (A : UND.CA d) (e : ℝ) : Prop :=\n  ∀ᵐ ω ∂(A.noiseLaw₂ e), ∀ t : ℤ, ∀ O : Finset (UND.Site d),\n    ∃ n₀ : ℕ, ∀ n : ℕ, n₀ ≤ n → ∀ x y : A.Config, ∀ w ∈ O,\n      A.flow ω (t - (n : ℤ)) n x w = A.flow ω (t - (n : ℤ)) n y w\n\n/-- Theorem 12.5 (ld:z4), every sentence. IsErgodic already states existence\nand uniqueness of an invariant probability law AND weak convergence from every\ninitial probability law. The non-tiling clause repeats it next to CFTP so that\nthis printed sentence remains explicit. Constants and natNbhd are global\ntransparent definitions independent of R; the common-neighbourhood clause is\nincluded literally. No convergence rate or Gibbs consequence is asserted.\n**[choice]** Ergodicity is repeated in the non-tiling clause to retain that printed sentence. -/\ndef Z4Classification : Prop :=\n  (∀ R : WangSet, (natCA R).nbhd = natNbhd) ∧\n  ∀ (R : WangSet) (e : ℝ), 0 < e → e ≤ eps0 →\n    ((natCA R).IsErgodic e ↔ ¬ TilesPlane R) ∧\n    (TilesPlane R → HasTwoInvariantLaws (natCA R) e) ∧\n    (¬ TilesPlane R → AllTimeCFTP (natCA R) e ∧ (natCA R).IsErgodic e)\n\n/-- The direct Z⁴ undecidability corollary. Same computable W for all allowed\nrates, with its domino specification, positive-rate property, classification,\nand no computable decider at any one fixed allowed rate. Machines and list\ncodes are exactly FNR's, so FNR.domino_reduction applies with no hypotheses.\n**[choice]** This strengthens the printed last sentence: every allowed rate,\nthe machine-indexed subfamily and a positive-rate clause. It implies Z4RawUndecidable. -/\ndef Z4MachineCorollary : Prop :=\n  ∃ W : TuringMachine → List Tile, Computable W ∧\n    (∀ M : TuringMachine, TilesPlane (W M).toFinset ↔ ¬ M.Halts) ∧\n    ∀ e : ℝ, 0 < e → e ≤ eps0 →\n      (∀ M : TuringMachine, FNR.IsPositiveRatePCA (natCA (W M).toFinset) e ∧\n        ((natCA (W M).toFinset).IsErgodic e ↔ M.Halts)) ∧\n      ¬ ∃ g : TuringMachine → Bool, Computable g ∧\n        ∀ M : TuringMachine, g M = true ↔ (natCA (W M).toFinset).IsErgodic e\n\n/-- Proof of Theorem 12.5, last sentence: fixed-rate undecidability on the raw family\nR ↦ G_R^(4) (abstract: \"one explicit positive rational replacement rate ... makes ergodicity\nundecidable\"). Raw inputs are lists of tiles, as in FNR.ErgodicityUndecidable; no hypothesis. -/\ndef Z4RawUndecidable : Prop :=\n  ∀ e : ℝ, 0 < e → e ≤ eps0 →\n    ¬ ∃ g : List Tile → Bool, Computable g ∧\n      ∀ l : List Tile, g l = true ↔ (natCA l.toFinset).IsErgodic e\n\nend FLD\n",
+  "targets": [
+    {
+      "name": "FLD.z4_classification",
+      "statement_utf8": "theorem z4_classification : Z4Classification",
+      "type": "FLD.Z4Classification",
+      "source": "ForgettingLower/Main.lean (namespace FLD)",
+      "hypotheses": []
+    },
+    {
+      "name": "FLD.z4_machine_corollary",
+      "statement_utf8": "theorem z4_machine_corollary : Z4MachineCorollary",
+      "type": "FLD.Z4MachineCorollary",
+      "source": "ForgettingLower/Reduction.lean (namespace FLD)",
+      "hypotheses": []
+    },
+    {
+      "name": "FLD.z4_raw_undecidable",
+      "statement_utf8": "theorem z4_raw_undecidable : Z4RawUndecidable",
+      "type": "FLD.Z4RawUndecidable",
+      "source": "ForgettingLower/Reduction.lean (namespace FLD)",
+      "hypotheses": []
+    }
+  ],
+  "not_in_challenge": [],
+  "auxiliary_proof_cache": "run_cmd Lean.modifyEnv (fun env => Lean.Meta.auxLemmasExt.modifyState env fun _ => {}) before each copy: empties the local (not persisted) per-file cache of auxiliary proofs, as at the start of a separate module (noise-diagram release, auxiliary command (d), accepted by QB on 12 Nov 2026)",
+  "options": {
+    "forgetting_copy": [
+      "bootstrap.genMatcherCode = false (fresh matcher cache, as in a separate module)"
+    ],
+    "hard_model_excerpt": [
+      "backward.isDefEq.respectTransparency = false (the option UndecidablePhaseDiagram/Statements.lean is compiled with)",
+      "bootstrap.genMatcherCode = false (fresh matcher cache, as in a separate module)"
+    ],
+    "scope": "set inside sections that also enclose the copies; restored at their ends"
+  },
+  "independence": "Only Mathlib imports; byte-identical copies/excerpts checked against the sources; no type_of%; generated/private names aligned by selecting the original module (setMainModule) while elaborating each copy."
+}

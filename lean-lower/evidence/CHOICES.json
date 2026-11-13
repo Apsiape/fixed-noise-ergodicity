@@ -1,0 +1,56 @@
+{
+  "count": 10,
+  "choices": [
+    {
+      "file": "ForgettingLower/Statements.lean",
+      "line": 16,
+      "text": "**[choice]** Inherited encodings (natural-number tile colours, list-coded raw inputs,"
+    },
+    {
+      "file": "ForgettingLower/Statements.lean",
+      "line": 31,
+      "text": "**[choice]** Reuse its map-to-tiles encoding with membership in R. -/"
+    },
+    {
+      "file": "ForgettingLower/Statements.lean",
+      "line": 63,
+      "text": "**[choice]** The planar coordinates come first. -/"
+    },
+    {
+      "file": "ForgettingLower/Statements.lean",
+      "line": 70,
+      "text": "**[choice]** Option (Fin 2) labels clusters: none is 0, some 0 is 1, some 1 is 2. -/"
+    },
+    {
+      "file": "ForgettingLower/Statements.lean",
+      "line": 119,
+      "text": "**[choice]** Classical.choose selects the tile; 2 * 512 > 768 makes it unique. -/"
+    },
+    {
+      "file": "ForgettingLower/Statements.lean",
+      "line": 132,
+      "text": "**[choice]** Fintype.equivFin relabels Option R as Fin |Option R|. -/"
+    },
+    {
+      "file": "ForgettingLower/Statements.lean",
+      "line": 137,
+      "text": "**[choice]** Extend the pattern by blank outside natNbhd; those values are never read. -/"
+    },
+    {
+      "file": "ForgettingLower/Statements.lean",
+      "line": 156,
+      "text": "**[choice]** The added forall t is equivalent to the printed per-window form"
+    },
+    {
+      "file": "ForgettingLower/Statements.lean",
+      "line": 169,
+      "text": "**[choice]** Ergodicity is repeated in the non-tiling clause to retain that printed sentence. -/"
+    },
+    {
+      "file": "ForgettingLower/Statements.lean",
+      "line": 181,
+      "text": "**[choice]** This strengthens the printed last sentence: every allowed rate,"
+    }
+  ],
+  "note": "All choices precede the freeze. No new mathematical choices in packaging."
+}

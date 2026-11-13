@@ -1,0 +1,17 @@
+LEAN ForgettingLower.Rule.Local (avail 14.9 GiB)
+  exit 0, 20.2 s, 0 warnings
+LEAN ForgettingLower.Rule.Bridge (avail 14.8 GiB)
+  exit 0, 2.5 s, 0 warnings
+LEAN ForgettingLower.Coherence.Providers (avail 14.7 GiB)
+  exit 0, 2.1 s, 0 warnings
+LEAN ForgettingLower.Coherence.Pairing (avail 14.8 GiB)
+  exit 0, 2.2 s, 0 warnings
+LEAN ForgettingLower.Coherence.Same (avail 14.7 GiB)
+  exit 0, 2.8 s, 0 warnings
+LEAN ForgettingLower.Main (avail 14.8 GiB)
+  exit 0, 1.6 s, 0 warnings
+LEAN ForgettingLower (avail 14.8 GiB)
+  exit 0, 2.1 s, 0 warnings
+LEAN ForgettingLower.Audit (avail 14.7 GiB)
+  exit 0, 4.7 s, 0 warnings
+BUILD OK

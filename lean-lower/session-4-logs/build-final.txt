@@ -1,0 +1,5 @@
+LEAN ForgettingLower.Main (avail 14.9 GiB)
+  exit 0, 20.3 s, 0 warnings
+LEAN ForgettingLower (avail 14.8 GiB)
+  exit 0, 2.1 s, 0 warnings
+BUILD OK

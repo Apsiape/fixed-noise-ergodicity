@@ -1,0 +1,6 @@
+Windows lean/lake processes: none
+WSL lean processes: none
+WSL lake processes: none
+58cb7388400f05f2986d2b2cc9154a99a554eed4b384f10c8809b706d3b244c4  /opt/forgetting-lower-lean/project/ForgettingLower/Statements.lean
+Windows Statements SHA256: 58cb7388400f05f2986d2b2cc9154a99a554eed4b384f10c8809b706d3b244c4
+No process was killed. No Lean process was launched outside the copied guards.

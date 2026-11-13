@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-12",
+  "rulings": "C:/Infanox/qb-relay-2026-10-22/codesk-lean-lower-dimensions-2026-11-12/QB-RULINGS-2026-11-12.md",
+  "statement_of_record": "58cb7388400f05f2986d2b2cc9154a99a554eed4b384f10c8809b706d3b244c4",
+  "pre_freeze_sha256": "a0e5c8e394570302950559108aa6d4159b1fbe2e5d6c03cc67b05dc7012f68ef",
+  "header_FROZEN": true,
+  "existing_declaration_tokens_preserved_except_removed_Draft_stubs": true,
+  "R1_text_exactly_matches_STATEMENT_READ": true,
+  "R1_proof": "FLD.raw_undecidable_of_machine_corollary",
+  "R2_Draft_stubs_removed": true,
+  "R3_choice_tags": 10,
+  "R4_paper_unchanged": true
+}

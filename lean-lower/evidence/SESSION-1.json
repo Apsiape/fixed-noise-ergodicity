@@ -1,0 +1,30 @@
+{
+  "session": 1,
+  "date": "2026-11-12",
+  "state": "DRAFT; mandatory targets unproved",
+  "statement_sha256": "a0e5c8e394570302950559108aa6d4159b1fbe2e5d6c03cc67b05dc7012f68ef",
+  "sorry_tokens": 2,
+  "sorry_files": [
+    "ForgettingLower/Statements.lean"
+  ],
+  "strict_finished_theorem_audits": 26,
+  "prefix_declarations": 88,
+  "prefix_sorry_declarations": 2,
+  "prefix_disallowed_axioms": 0,
+  "lint": "PASS",
+  "build": "PASS",
+  "flags": [
+    "-j1",
+    "-M5000"
+  ],
+  "minimum_linux_gib_reported_in_successful_builds": 14.7,
+  "host_guard": "copied HostGuard >=8 GiB before driver build; passed",
+  "lean_pin": "leanprover/lean4:v4.35.0",
+  "mathlib_pin_from_precedent": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "FNR_HEAD": "25dd58d06a08a748cc73edb08124baa6a4bd3434",
+  "FNR_statement_sha256": "3e4f73e3bc4a71ac041e45186e4d992abcd294f33ad7cfe5f4c337b8c479b5d4",
+  "process_check": "Windows lean and WSL lean lists empty after audit; no owned helper started",
+  "line_endings": "LF in compiled Windows source and git blob",
+  "final_build": "All 8 modules recompiled successfully after LF normalization; Audit force-recheck passed",
+  "final_build_minimum_linux_gib_reported": 14.8
+}

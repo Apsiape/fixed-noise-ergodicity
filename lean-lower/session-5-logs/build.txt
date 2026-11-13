@@ -1,0 +1,7 @@
+LEAN ForgettingLower.Memory.Branch (avail 14.9 GiB)
+  exit 0, 20.1 s, 0 warnings
+LEAN ForgettingLower.Memory.Invariant (avail 14.7 GiB)
+  exit 0, 1.9 s, 0 warnings
+LEAN ForgettingLower.Main (avail 14.7 GiB)
+  exit 0, 1.7 s, 0 warnings
+BUILD OK

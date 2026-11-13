@@ -1,0 +1,3400 @@
+{
+  "status": "PASS",
+  "lean_version": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "source_commit": "321e81225e73db9311a6c871057b513bfa020a9f",
+  "project_modules": 31,
+  "package_modules": 3,
+  "core_modules_compiled_by_core": {
+    "FixedNoiseErgodicity": 61,
+    "UndecidablePhaseDiagram": 1,
+    "UncomputableNoiseDiagram": 23,
+    "ForgettingNaturalRule": 14
+  },
+  "core_modules_compiled": 99,
+  "total_modules": 133,
+  "fresh_no_resume": true,
+  "lean_threads": 1,
+  "lean_heap_MiB": 5000,
+  "memory_floor_bytes": 8589934592,
+  "linux_process_tree_stop_rss_bytes": 9000000000,
+  "peak_observed_tree_rss_bytes": 5225230336,
+  "minimum_available_before_build_bytes": 11714920448,
+  "fresh_full_replay_seconds_total": 475.144,
+  "fresh_full_replay_warnings_total": 318,
+  "records": [
+    {
+      "module": "FixedNoiseErgodicity.Statements",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 20.002,
+      "peak_tree_bytes": 3364610048,
+      "free_before_bytes": 15947149312,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Statements.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Statements.ilean",
+        "FixedNoiseErgodicity/Statements.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UndecidablePhaseDiagram.Statements",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 4.723,
+      "peak_tree_bytes": 3364610048,
+      "free_before_bytes": 14177161216,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-Dbackward.isDefEq.respectTransparency=false",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Statements.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UndecidablePhaseDiagram/Statements.ilean",
+        "UndecidablePhaseDiagram/Statements.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UndecidablePhaseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.Statements",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.868,
+      "peak_tree_bytes": 3378982912,
+      "free_before_bytes": 14185332736,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Statements.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Statements.ilean",
+        "UncomputableNoiseDiagram/Statements.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingNaturalRule.Statements",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.917,
+      "peak_tree_bytes": 3383021568,
+      "free_before_bytes": 14147858432,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Statements.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Statements.ilean",
+        "ForgettingNaturalRule/Statements.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/ForgettingNaturalRule",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Statements",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.817,
+      "peak_tree_bytes": 3383402496,
+      "free_before_bytes": 13936795648,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Statements.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Statements.ilean",
+        "ForgettingLower/Statements.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Constants",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.719,
+      "peak_tree_bytes": 3383402496,
+      "free_before_bytes": 13784506368,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Constants.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Constants.ilean",
+        "ForgettingLower/Constants.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Combinatorics.EdgeCount",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.302,
+      "peak_tree_bytes": 3383402496,
+      "free_before_bytes": 13716000768,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Combinatorics/EdgeCount.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Combinatorics/EdgeCount.ilean",
+        "FixedNoiseErgodicity/Combinatorics/EdgeCount.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 3,
+      "log_sha256": "fc5499d3854f82f94bbe5ebcd2719e05a2a9d84d6103bd61dbebe8ce97ebb900"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.Contour.Grouped",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 4.037,
+      "peak_tree_bytes": 3383402496,
+      "free_before_bytes": 13714092032,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Contour/Grouped.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Contour/Grouped.ilean",
+        "UncomputableNoiseDiagram/Contour/Grouped.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.Parameters.Geometry",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.428,
+      "peak_tree_bytes": 3383402496,
+      "free_before_bytes": 13396971520,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Parameters/Geometry.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Parameters/Geometry.ilean",
+        "UncomputableNoiseDiagram/Parameters/Geometry.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.Parameters.Search",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.731,
+      "peak_tree_bytes": 3383402496,
+      "free_before_bytes": 13363494912,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Parameters/Search.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Parameters/Search.ilean",
+        "UncomputableNoiseDiagram/Parameters/Search.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 3,
+      "log_sha256": "a5e5503d10ca01bad0865d29d7e58b39c16f1a8f223c4a310c7f683f5821d7b8"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.Windows",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.368,
+      "peak_tree_bytes": 3397414912,
+      "free_before_bytes": 13425901568,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Windows.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Windows.ilean",
+        "UncomputableNoiseDiagram/Windows.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.Parameters.Threshold",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 4.181,
+      "peak_tree_bytes": 3435335680,
+      "free_before_bytes": 13361442816,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Parameters/Threshold.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Parameters/Threshold.ilean",
+        "UncomputableNoiseDiagram/Parameters/Threshold.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.Contour.Counting",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.721,
+      "peak_tree_bytes": 3437355008,
+      "free_before_bytes": 13302308864,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Contour/Counting.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Contour/Counting.ilean",
+        "UncomputableNoiseDiagram/Contour/Counting.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Geometry.Marked",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 2.319,
+      "peak_tree_bytes": 3437355008,
+      "free_before_bytes": 13284311040,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Geometry/Marked.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Geometry/Marked.ilean",
+        "ForgettingLower/Geometry/Marked.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.Rule.Checker",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.37,
+      "peak_tree_bytes": 3437355008,
+      "free_before_bytes": 13825433600,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Rule/Checker.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Rule/Checker.ilean",
+        "UncomputableNoiseDiagram/Rule/Checker.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.Rule.Proposal",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 7.751,
+      "peak_tree_bytes": 3437355008,
+      "free_before_bytes": 13851848704,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Rule/Proposal.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Rule/Proposal.ilean",
+        "UncomputableNoiseDiagram/Rule/Proposal.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.Rule.CA",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.944,
+      "peak_tree_bytes": 3437355008,
+      "free_before_bytes": 13867778048,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Rule/CA.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Rule/CA.ilean",
+        "UncomputableNoiseDiagram/Rule/CA.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Basic",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.776,
+      "peak_tree_bytes": 3437355008,
+      "free_before_bytes": 13777268736,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Basic.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Basic.ilean",
+        "FixedNoiseErgodicity/Basic.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 3,
+      "log_sha256": "eaa4fe810f15814d328cbff4944291a68db7e16ee754371790cb681bb2c967c2"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section2.Process",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 12.675,
+      "peak_tree_bytes": 3437355008,
+      "free_before_bytes": 13864669184,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/Process.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/Process.ilean",
+        "FixedNoiseErgodicity/Section2/Process.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 11,
+      "log_sha256": "9c8ff1bd22c08b71ec2d01986afe464a2911ce44e0b0dbead79b18d95b7c8c4b"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.PCA.Process",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.121,
+      "peak_tree_bytes": 3437355008,
+      "free_before_bytes": 13725720576,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/Process.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/Process.ilean",
+        "UncomputableNoiseDiagram/PCA/Process.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.Rule.Noise",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.767,
+      "peak_tree_bytes": 3437355008,
+      "free_before_bytes": 13855232000,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Rule/Noise.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Rule/Noise.ilean",
+        "UncomputableNoiseDiagram/Rule/Noise.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.PCA.Markov",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.471,
+      "peak_tree_bytes": 3437355008,
+      "free_before_bytes": 13861224448,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/Markov.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/Markov.ilean",
+        "UncomputableNoiseDiagram/PCA/Markov.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.PCA.Cylinder",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.07,
+      "peak_tree_bytes": 3437355008,
+      "free_before_bytes": 13775560704,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/Cylinder.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/Cylinder.ilean",
+        "UncomputableNoiseDiagram/PCA/Cylinder.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.PCA.Feller",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 3.171,
+      "peak_tree_bytes": 3445071872,
+      "free_before_bytes": 13668020224,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/Feller.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/Feller.ilean",
+        "UncomputableNoiseDiagram/PCA/Feller.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.PCA.Translation",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.817,
+      "peak_tree_bytes": 3445071872,
+      "free_before_bytes": 13653536768,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/Translation.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/Translation.ilean",
+        "UncomputableNoiseDiagram/PCA/Translation.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.PCA.ForgetErgodic",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.348,
+      "peak_tree_bytes": 3445071872,
+      "free_before_bytes": 13619232768,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/ForgetErgodic.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/ForgetErgodic.ilean",
+        "UncomputableNoiseDiagram/PCA/ForgetErgodic.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.PCA.Pullback",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.097,
+      "peak_tree_bytes": 3445071872,
+      "free_before_bytes": 13544259584,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/Pullback.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/Pullback.ilean",
+        "UncomputableNoiseDiagram/PCA/Pullback.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.Contour.Coherence",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 4.035,
+      "peak_tree_bytes": 3489853440,
+      "free_before_bytes": 13538861056,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Contour/Coherence.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Contour/Coherence.ilean",
+        "UncomputableNoiseDiagram/Contour/Coherence.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingNaturalRule.Rule.Local",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.585,
+      "peak_tree_bytes": 3489853440,
+      "free_before_bytes": 13558697984,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Rule/Local.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Rule/Local.ilean",
+        "ForgettingNaturalRule/Rule/Local.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/ForgettingNaturalRule",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Rule.Local",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 2.324,
+      "peak_tree_bytes": 3489853440,
+      "free_before_bytes": 13437079552,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Rule/Local.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Rule/Local.ilean",
+        "ForgettingLower/Rule/Local.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.Parameters.Bases",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.918,
+      "peak_tree_bytes": 3489853440,
+      "free_before_bytes": 13422088192,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Parameters/Bases.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Parameters/Bases.ilean",
+        "UncomputableNoiseDiagram/Parameters/Bases.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.Contour.RawPaths",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 4.122,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13435940864,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Contour/RawPaths.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/Contour/RawPaths.ilean",
+        "UncomputableNoiseDiagram/Contour/RawPaths.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Geometry.Noise",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.567,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13836124160,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Geometry/Noise.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Geometry/Noise.ilean",
+        "ForgettingLower/Geometry/Noise.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Rule.Coordinates",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.967,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13836124160,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Rule/Coordinates.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Rule/Coordinates.ilean",
+        "ForgettingLower/Rule/Coordinates.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.PCA.Attraction",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.817,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13833207808,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/Attraction.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/PCA/Attraction.ilean",
+        "UncomputableNoiseDiagram/PCA/Attraction.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Rule.Bridge",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 2.167,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13635395584,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Rule/Bridge.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Rule/Bridge.ilean",
+        "ForgettingLower/Rule/Bridge.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Coherence.Providers",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.917,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13505429504,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Coherence/Providers.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Coherence/Providers.ilean",
+        "ForgettingLower/Coherence/Providers.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Coherence.Pairing",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.967,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13425414144,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Coherence/Pairing.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Coherence/Pairing.ilean",
+        "ForgettingLower/Coherence/Pairing.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Geometry.Potentials",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 2.784,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13305610240,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Geometry/Potentials.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Geometry/Potentials.ilean",
+        "ForgettingLower/Geometry/Potentials.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Contour.Bracket",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.132,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13091987456,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Contour/Bracket.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Contour/Bracket.ilean",
+        "ForgettingLower/Contour/Bracket.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Contour.Finite",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 2.292,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13091987456,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Contour/Finite.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Contour/Finite.ilean",
+        "ForgettingLower/Contour/Finite.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Density.Slabs",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 2.082,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 12916006912,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Density/Slabs.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Density/Slabs.ilean",
+        "ForgettingLower/Density/Slabs.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Density.Witness",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 2.128,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 12813950976,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Density/Witness.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Density/Witness.ilean",
+        "ForgettingLower/Density/Witness.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Density.Probability",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 2.073,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 12688560128,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Density/Probability.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Density/Probability.ilean",
+        "ForgettingLower/Density/Probability.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Density.Rates",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.769,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 12947759104,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Density/Rates.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Density/Rates.ilean",
+        "ForgettingLower/Density/Rates.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Density.Eventual",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 2.167,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13201096704,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Density/Eventual.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Density/Eventual.ilean",
+        "ForgettingLower/Density/Eventual.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Coherence.Same",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 2.619,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13167337472,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Coherence/Same.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Coherence/Same.ilean",
+        "ForgettingLower/Coherence/Same.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Coherence.Edges",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.717,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13681520640,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Coherence/Edges.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Coherence/Edges.ilean",
+        "ForgettingLower/Coherence/Edges.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Coherence.Tiling",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.968,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13756559360,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Coherence/Tiling.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Coherence/Tiling.ilean",
+        "ForgettingLower/Coherence/Tiling.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Forget.Unique",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.868,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13567705088,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Forget/Unique.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Forget/Unique.ilean",
+        "ForgettingLower/Forget/Unique.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Forget.CFTP",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.717,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13404999680,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Forget/CFTP.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Forget/CFTP.ilean",
+        "ForgettingLower/Forget/CFTP.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Memory.Cover",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.868,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13404999680,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Memory/Cover.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Memory/Cover.ilean",
+        "ForgettingLower/Memory/Cover.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Forget.Roots",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 2.118,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13383553024,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Forget/Roots.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Forget/Roots.ilean",
+        "ForgettingLower/Forget/Roots.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Memory.Branch",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 2.118,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13157634048,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Memory/Branch.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Memory/Branch.ilean",
+        "ForgettingLower/Memory/Branch.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingNaturalRule.PCA.Average",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.891,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13137125376,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/PCA/Average.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/PCA/Average.ilean",
+        "ForgettingNaturalRule/PCA/Average.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/ForgettingNaturalRule",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Memory.Invariant",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.735,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13020225536,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Memory/Invariant.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Memory/Invariant.ilean",
+        "ForgettingLower/Memory/Invariant.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Density.Entropy",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.62,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13030014976,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Density/Entropy.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Density/Entropy.ilean",
+        "ForgettingLower/Density/Entropy.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Main",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.575,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13016571904,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Main.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Main.ilean",
+        "ForgettingLower/Main.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingNaturalRule.Constants",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.923,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13016571904,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Constants.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Constants.ilean",
+        "ForgettingNaturalRule/Constants.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/ForgettingNaturalRule",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingNaturalRule.Forget.Paths",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.921,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 12923453440,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Forget/Paths.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Forget/Paths.ilean",
+        "ForgettingNaturalRule/Forget/Paths.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/ForgettingNaturalRule",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingNaturalRule.Coherence.Rel",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.368,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 12941221888,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Coherence/Rel.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Coherence/Rel.ilean",
+        "ForgettingNaturalRule/Coherence/Rel.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/ForgettingNaturalRule",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingNaturalRule.Coherence.Tiling",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.867,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 12962893824,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Coherence/Tiling.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Coherence/Tiling.ilean",
+        "ForgettingNaturalRule/Coherence/Tiling.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/ForgettingNaturalRule",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingNaturalRule.Rule.Bridge",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.669,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13751341056,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Rule/Bridge.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Rule/Bridge.ilean",
+        "ForgettingNaturalRule/Rule/Bridge.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/ForgettingNaturalRule",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingNaturalRule.Forget.Unique",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.667,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13657763840,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Forget/Unique.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Forget/Unique.ilean",
+        "ForgettingNaturalRule/Forget/Unique.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/ForgettingNaturalRule",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingNaturalRule.Memory.Cover",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.817,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13652656128,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Memory/Cover.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Memory/Cover.ilean",
+        "ForgettingNaturalRule/Memory/Cover.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/ForgettingNaturalRule",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingNaturalRule.Memory.Branch",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.218,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13497520128,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Memory/Branch.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Memory/Branch.ilean",
+        "ForgettingNaturalRule/Memory/Branch.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/ForgettingNaturalRule",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingNaturalRule.Memory.Invariant",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.918,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13196427264,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Memory/Invariant.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Memory/Invariant.ilean",
+        "ForgettingNaturalRule/Memory/Invariant.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/ForgettingNaturalRule",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingNaturalRule.Main",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.667,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 12930371584,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Main.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Main.ilean",
+        "ForgettingNaturalRule/Main.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/ForgettingNaturalRule",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Scaffold.Tables",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 4.473,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 12930371584,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Tables.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Tables.ilean",
+        "FixedNoiseErgodicity/Scaffold/Tables.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Defs.TokenGame",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.729,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 12841201664,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Defs/TokenGame.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Defs/TokenGame.ilean",
+        "FixedNoiseErgodicity/Defs/TokenGame.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section2.TokenGame",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.853,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13004505088,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/TokenGame.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/TokenGame.ilean",
+        "FixedNoiseErgodicity/Section2/TokenGame.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 4,
+      "log_sha256": "e64460eb6a8b2fccdb2e64d0dcf0918afb0484a60d85d56f3c3bf08bf1178575"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section2.Compact",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.334,
+      "peak_tree_bytes": 3497963520,
+      "free_before_bytes": 13047398400,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/Compact.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/Compact.ilean",
+        "FixedNoiseErgodicity/Section2/Compact.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 6,
+      "log_sha256": "d72121c07903570d774f46f81b15559b2e3843723f12831d78b755805eaf96a4"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Scaffold.Substitution",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 5.037,
+      "peak_tree_bytes": 3680149504,
+      "free_before_bytes": 12995411968,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Substitution.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Substitution.ilean",
+        "FixedNoiseErgodicity/Scaffold/Substitution.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 3,
+      "log_sha256": "f0c21a190799eb6d3604386fcadb6aed2437ac4f9ba4f4cce4abdf49da3212b3"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Scaffold.WangSet",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 10.233,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13631901696,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/WangSet.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/WangSet.ilean",
+        "FixedNoiseErgodicity/Scaffold/WangSet.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Family.Tower",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.568,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 11726127104,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Tower.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Tower.ilean",
+        "FixedNoiseErgodicity/Family/Tower.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 7,
+      "log_sha256": "38b26f1c2166991af4df464b2b8dba4a24b241611e5269b744667215e8b79252"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Family.Red",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 3.675,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 11714920448,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Red.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Red.ilean",
+        "FixedNoiseErgodicity/Family/Red.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 25,
+      "log_sha256": "f692aa9c2cdaa0929ae5a8319b2771fa5ab6f3115fde55bb44d81bc12f672878"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Family.Walls",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 6.505,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 12265164800,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Walls.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Walls.ilean",
+        "FixedNoiseErgodicity/Family/Walls.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 8,
+      "log_sha256": "2fcd91f4cf1e5ddb89bb5708cfd839d2e30f17ff9c5f92b99b412b35716bebbe"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Family.Frames",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 3.602,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 12646989824,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Frames.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Frames.ilean",
+        "FixedNoiseErgodicity/Family/Frames.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Family.Routing",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 3.987,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 12577677312,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Routing.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Routing.ilean",
+        "FixedNoiseErgodicity/Family/Routing.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Family.Positive",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.37,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 12808052736,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Positive.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Positive.ilean",
+        "FixedNoiseErgodicity/Family/Positive.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Family.Free",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 4.271,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13866618880,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Free.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Free.ilean",
+        "FixedNoiseErgodicity/Family/Free.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Family.Machine",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 6.727,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 14044241920,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Machine.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Machine.ilean",
+        "FixedNoiseErgodicity/Family/Machine.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 24,
+      "log_sha256": "aece86adf1fee5a98682ac6e02bc682445e65ebb505e034120a79be8ae4b5685"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Family.Horn",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 5.875,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13854154752,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Horn.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Horn.ilean",
+        "FixedNoiseErgodicity/Family/Horn.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 1,
+      "log_sha256": "28fc6dbf7b89b735863f14ebe130a1d1ac586be4325a8d7f0150b347d10a4d54"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Family.Codes",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.868,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13776056320,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Codes.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Codes.ilean",
+        "FixedNoiseErgodicity/Family/Codes.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 2,
+      "log_sha256": "2df7c5a33949f0c4f4efe2568156a2a92c1e566e2fa325072dd9f8a6d479407a"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Family.FamilyR",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 6.479,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13776056320,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/FamilyR.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/FamilyR.ilean",
+        "FixedNoiseErgodicity/Family/FamilyR.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 49,
+      "log_sha256": "2e5c9d410fd628a578eb2b1ed939b9ef974ed51d8b1830f826282cc4d203d731"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Three.Interface",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.979,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13732917248,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Interface.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Interface.ilean",
+        "FixedNoiseErgodicity/Three/Interface.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Scaffold.Format",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.126,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13692977152,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Format.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Format.ilean",
+        "FixedNoiseErgodicity/Scaffold/Format.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Scaffold.Facts",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 4.277,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 14008225792,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Facts.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Scaffold/Facts.ilean",
+        "FixedNoiseErgodicity/Scaffold/Facts.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Three.CornerData",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.468,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13330747392,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/CornerData.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/CornerData.ilean",
+        "FixedNoiseErgodicity/Three/CornerData.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Three.CornerTables",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 9.884,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13301059584,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/CornerTables.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/CornerTables.ilean",
+        "FixedNoiseErgodicity/Three/CornerTables.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Three.CornerCheck",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 3.07,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13278228480,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/CornerCheck.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/CornerCheck.ilean",
+        "FixedNoiseErgodicity/Three/CornerCheck.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 4,
+      "log_sha256": "1b3cb9ec2d53f7f8bbddb4c3541f503aec7a689695e21b7ae5d26865d6961db9"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Three.Corner",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 5.6,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13123477504,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Corner.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Corner.ilean",
+        "FixedNoiseErgodicity/Three/Corner.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Three.Lists",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 4.261,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 12750299136,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Lists.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Lists.ilean",
+        "FixedNoiseErgodicity/Three/Lists.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 24,
+      "log_sha256": "05fa3167c61c1037598240183243e72eafbda140b6a8c35e97ae01e62cc05faf"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Three.Coarse",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 3.081,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13405163520,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Coarse.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Coarse.ilean",
+        "FixedNoiseErgodicity/Three/Coarse.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Three.Dyadic",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.821,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 14095736832,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Dyadic.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Dyadic.ilean",
+        "FixedNoiseErgodicity/Three/Dyadic.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 6,
+      "log_sha256": "7aabfec20a0918fe20c34b6286ca1bc628f29e47d819eac51100cfd143aa2596"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Three.Pairs",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.717,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 14092677120,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Pairs.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Pairs.ilean",
+        "FixedNoiseErgodicity/Three/Pairs.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Three.Walker",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 3.119,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13972975616,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Walker.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Walker.ilean",
+        "FixedNoiseErgodicity/Three/Walker.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Three.Promote",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.319,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13914296320,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Promote.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Promote.ilean",
+        "FixedNoiseErgodicity/Three/Promote.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 1,
+      "log_sha256": "7d2ef1da841c2295c45838d53de5068c6ae9564d79e2f1fa93a65eb32495d9de"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Family.HornHalt",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.819,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13886844928,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/HornHalt.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/HornHalt.ilean",
+        "FixedNoiseErgodicity/Family/HornHalt.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 1,
+      "log_sha256": "11c3ca531bab7f316f64072e4ac84fdafe99043f3c3fcb3fe3d2e3950e534132"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Three.Final",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 4.773,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13900115968,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Final.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Final.ilean",
+        "FixedNoiseErgodicity/Three/Final.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 24,
+      "log_sha256": "68bafd44131dc926a2645d6b15e861d75c88431e2606a4939720a64c044ede04"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Three.Board",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 6.345,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13803757568,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Board.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Board.ilean",
+        "FixedNoiseErgodicity/Three/Board.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Defs.Field",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.64,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13652922368,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Defs/Field.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Defs/Field.ilean",
+        "FixedNoiseErgodicity/Defs/Field.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section4.Deterministic",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.886,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13607055360,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section4/Deterministic.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section4/Deterministic.ilean",
+        "FixedNoiseErgodicity/Section4/Deterministic.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 3,
+      "log_sha256": "87b225821b1fb97e6c9986ef2ea1f91cf0b32dd0bd849fd9b67cc1809048d3ae"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section3.Transport",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.335,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 14136676352,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section3/Transport.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section3/Transport.ilean",
+        "FixedNoiseErgodicity/Section3/Transport.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 5,
+      "log_sha256": "5df4e7c2eb6daf76d7f3dc2dc7f835295f2fd137e752d78d36fd6745131a8b65"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section3.Graph",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.076,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 14108532736,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section3/Graph.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section3/Graph.ilean",
+        "FixedNoiseErgodicity/Section3/Graph.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 1,
+      "log_sha256": "ff743bfa476877c8cabf082c4fa8d71c836bf5ebff2ce882bbf15e860a4fc000"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Combinatorics.Contour",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 3.124,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 14124998656,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Combinatorics/Contour.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Combinatorics/Contour.ilean",
+        "FixedNoiseErgodicity/Combinatorics/Contour.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 11,
+      "log_sha256": "3a74480582abfe520b25c00522d5896a96f21b90f107d9442b8a9c0271d58f81"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section3.Contour",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.268,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 14128443392,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section3/Contour.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section3/Contour.ilean",
+        "FixedNoiseErgodicity/Section3/Contour.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 4,
+      "log_sha256": "90a4a0dd334747f7bfe737d68a392de61417cc6c0ee3912e5f773604455973bb"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section3.Peierls",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.218,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 14030376960,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section3/Peierls.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section3/Peierls.ilean",
+        "FixedNoiseErgodicity/Section3/Peierls.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 2,
+      "log_sha256": "64db88dd4351cee12a4c3a115aa5a54deca0720931ca264b286705911737ea0b"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section3.Constants",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.97,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13833150464,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section3/Constants.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section3/Constants.ilean",
+        "FixedNoiseErgodicity/Section3/Constants.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section2.Ergodic",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.918,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13729673216,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/Ergodic.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/Ergodic.ilean",
+        "FixedNoiseErgodicity/Section2/Ergodic.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 2,
+      "log_sha256": "06d543a7dfad0162a5dd4b257587682216c11f9ce4bdc1193aeafa0cf57105a9"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section4.Memory",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.569,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13755830272,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section4/Memory.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section4/Memory.ilean",
+        "FixedNoiseErgodicity/Section4/Memory.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 6,
+      "log_sha256": "d4ca7ae4695824269be8065e45c71c6c96e3b2d4bb52078fb379c2b645b7891e"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section3.Forgetting",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 3.771,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13750992896,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section3/Forgetting.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section3/Forgetting.ilean",
+        "FixedNoiseErgodicity/Section3/Forgetting.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 14,
+      "log_sha256": "71dd88e079e2df7d7cdb75094ef955ce0b74921bccedd8ec15cb404573b55b61"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section2.Markov",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 6.612,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13635645440,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/Markov.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/Markov.ilean",
+        "FixedNoiseErgodicity/Section2/Markov.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 8,
+      "log_sha256": "01c1c454d4bc126bd08eb13e76cc7c12e49456c75dfd34ebba521a1aabca2d8c"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section2.Feller",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 12.832,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 14126444544,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/Feller.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/Feller.ilean",
+        "FixedNoiseErgodicity/Section2/Feller.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 9,
+      "log_sha256": "3f820b3ccb6b516ac7827552ed88f18ea02df2bb30fb06708c1921d09dea8d18"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section2.ForgetErgodic",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.218,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13959782400,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/ForgetErgodic.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/ForgetErgodic.ilean",
+        "FixedNoiseErgodicity/Section2/ForgetErgodic.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 4,
+      "log_sha256": "b0a6b93761af39917fcd3e02e8209c35ac6a82709eb372f876ea7faafb504f33"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Section2.PCA",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.617,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13930303488,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/PCA.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Section2/PCA.ilean",
+        "FixedNoiseErgodicity/Section2/PCA.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 4,
+      "log_sha256": "68f0b21035e4dce4594dff91d81eeee946e732c059c8168ab8251c3c6d516a70"
+    },
+    {
+      "module": "FixedNoiseErgodicity.TheoremB",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.667,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13894873088,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/TheoremB.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/TheoremB.ilean",
+        "FixedNoiseErgodicity/TheoremB.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Three.Assembly",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.517,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13787607040,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Assembly.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Three/Assembly.ilean",
+        "FixedNoiseErgodicity/Three/Assembly.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Family.Decide",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.719,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13775888384,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Decide.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Decide.ilean",
+        "FixedNoiseErgodicity/Family/Decide.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 6,
+      "log_sha256": "72a302df73301583e593b9fcc26defc4032c5b108bedcb123e5cabbcaa1684d1"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Family.Computable",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 5.473,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13677543424,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Computable.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Family/Computable.ilean",
+        "FixedNoiseErgodicity/Family/Computable.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 4,
+      "log_sha256": "d6dcd8941841c270324b9aaf5e2dbafdc9e77d8430a0bcbb269c853e29855066"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Main",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.467,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13658673152,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Main.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Main.ilean",
+        "FixedNoiseErgodicity/Main.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Bridge",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.629,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13658673152,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Bridge.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Bridge.ilean",
+        "FixedNoiseErgodicity/Bridge.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Compiler.TM0",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 3.009,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 14019637248,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Compiler/TM0.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Compiler/TM0.ilean",
+        "FixedNoiseErgodicity/Compiler/TM0.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 17,
+      "log_sha256": "bc53ac8e97717779042ea289fb0be2c7363b8418519a413d0e22d9df1189d294"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Compiler.Universal",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.135,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13899608064,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Compiler/Universal.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Compiler/Universal.ilean",
+        "FixedNoiseErgodicity/Compiler/Universal.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 6,
+      "log_sha256": "852cd6846beb1933717b2eebab374cf39e60f00ff2f20d10bafce42db1687a15"
+    },
+    {
+      "module": "FixedNoiseErgodicity.Undecidable",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.575,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13847928832,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Undecidable.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/FixedNoiseErgodicity/Undecidable.ilean",
+        "FixedNoiseErgodicity/Undecidable.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/FixedNoiseErgodicity",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingNaturalRule.Reduction",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 1.572,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13847887872,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Reduction.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingNaturalRule/Reduction.ilean",
+        "ForgettingNaturalRule/Reduction.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/ForgettingNaturalRule",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Reduction",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.519,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13847887872,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Reduction.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Reduction.ilean",
+        "ForgettingLower/Reduction.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.518,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13741281280,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower.ilean",
+        "ForgettingLower.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "UncomputableNoiseDiagram.AuditCommand",
+      "kind": "core",
+      "exit": 0,
+      "seconds": 2.969,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13656358912,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/AuditCommand.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/UncomputableNoiseDiagram/AuditCommand.ilean",
+        "UncomputableNoiseDiagram/AuditCommand.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project/vendor/UncomputableNoiseDiagram",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "ForgettingLower.Audit",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 2.118,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13684867072,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Audit.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/ForgettingLower/Audit.ilean",
+        "ForgettingLower/Audit.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "d3c15a93e63dd4ba2e91dfe752c8c0e0105320330724c3e7f01c5abc5cd9b69e"
+    },
+    {
+      "module": "Challenge",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 3.02,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13266747392,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/Challenge.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/Challenge.ilean",
+        "Challenge.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 3,
+      "log_sha256": "a8b9f92616317b891cfa9e71456e0a44b8f7104202a6ed124ac1ed17098d65b5"
+    },
+    {
+      "module": "Solution",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.466,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13108539392,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/Solution.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/Solution.ilean",
+        "Solution.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "Audit",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 67.299,
+      "peak_tree_bytes": 5225230336,
+      "free_before_bytes": 13079904256,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/Audit.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/Audit.ilean",
+        "Audit.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "52baad67883d99131f21d92eb1f0d326fef4e0f666201369b388ec5efc2b4f82"
+    }
+  ],
+  "later_records": [
+    {
+      "module": "scratch.DevDump",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 1.679,
+      "peak_tree_bytes": 3470290944,
+      "free_before_bytes": 13615894528,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/scratch/DevDump.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/scratch/DevDump.ilean",
+        "scratch/DevDump.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 0,
+      "log_sha256": "7ae1ae59976dd1194b43a9a52b0ea59afc27965f2e367790e51cbebea04ae461"
+    },
+    {
+      "module": "scratch.ChDump",
+      "kind": "pkg",
+      "exit": 0,
+      "seconds": 3.282,
+      "peak_tree_bytes": 3470290944,
+      "free_before_bytes": 13396598784,
+      "command": [
+        "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/lean",
+        "-j1",
+        "-M5000",
+        "-o",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/scratch/ChDump.olean",
+        "-i",
+        "/opt/forgetting-lower-arxiv-2026-11-12/project/.lake/build/lib/lean/scratch/ChDump.ilean",
+        "scratch/ChDump.lean"
+      ],
+      "cwd": "/opt/forgetting-lower-arxiv-2026-11-12/project",
+      "warnings": 3,
+      "log_sha256": "bc7d8a3c30036cac5af1db8b61a6bc0d8528569f761648baa35a8b4ddd27b12e"
+    }
+  ],
+  "dependency_policy": "Four public cores compiled from sources; no core or development objects reused. Nine pinned dependencies use prebuilt objects.",
+  "compiled_source_hashes": {
+    "FixedNoiseErgodicity.Statements": {
+      "compiled_sha256": "351c3058f66fc99235677f99d04f8b35af1d365f80153d9644c6b13d207b4879",
+      "final_sha256": "351c3058f66fc99235677f99d04f8b35af1d365f80153d9644c6b13d207b4879"
+    },
+    "UndecidablePhaseDiagram.Statements": {
+      "compiled_sha256": "ef3ebe7fc60c792f1297dcf9a4596504f5a365de5e45012df84da227fa01482b",
+      "final_sha256": "ef3ebe7fc60c792f1297dcf9a4596504f5a365de5e45012df84da227fa01482b"
+    },
+    "UncomputableNoiseDiagram.Statements": {
+      "compiled_sha256": "b5c9e965b2ffbb39d2817ab4c3a41b3a71d463cbe1a0f6f186a8cc8833d0aa2c",
+      "final_sha256": "b5c9e965b2ffbb39d2817ab4c3a41b3a71d463cbe1a0f6f186a8cc8833d0aa2c"
+    },
+    "ForgettingNaturalRule.Statements": {
+      "compiled_sha256": "3e4f73e3bc4a71ac041e45186e4d992abcd294f33ad7cfe5f4c337b8c479b5d4",
+      "final_sha256": "3e4f73e3bc4a71ac041e45186e4d992abcd294f33ad7cfe5f4c337b8c479b5d4"
+    },
+    "ForgettingLower.Statements": {
+      "compiled_sha256": "58cb7388400f05f2986d2b2cc9154a99a554eed4b384f10c8809b706d3b244c4",
+      "final_sha256": "58cb7388400f05f2986d2b2cc9154a99a554eed4b384f10c8809b706d3b244c4"
+    },
+    "ForgettingLower.Constants": {
+      "compiled_sha256": "0170a4d656f49b5c7bf1da52903eba0fbec5f18d09d729cfc1b2b2a0315d4fcd",
+      "final_sha256": "0170a4d656f49b5c7bf1da52903eba0fbec5f18d09d729cfc1b2b2a0315d4fcd"
+    },
+    "FixedNoiseErgodicity.Combinatorics.EdgeCount": {
+      "compiled_sha256": "f18ba43264669d978631a2a1a84751a0e1949a13cacc6d5da943b1af8fda810f",
+      "final_sha256": "f18ba43264669d978631a2a1a84751a0e1949a13cacc6d5da943b1af8fda810f"
+    },
+    "UncomputableNoiseDiagram.Contour.Grouped": {
+      "compiled_sha256": "f3460d018ed3094a6e3122057897fa7e31afc507b0c22f5ca5a92f3c65e11677",
+      "final_sha256": "f3460d018ed3094a6e3122057897fa7e31afc507b0c22f5ca5a92f3c65e11677"
+    },
+    "UncomputableNoiseDiagram.Parameters.Geometry": {
+      "compiled_sha256": "bda87a2560e3f500f0209ed98a366a606f99e474515254d2d0861a9362046f78",
+      "final_sha256": "bda87a2560e3f500f0209ed98a366a606f99e474515254d2d0861a9362046f78"
+    },
+    "UncomputableNoiseDiagram.Parameters.Search": {
+      "compiled_sha256": "e7f255b6f23d895f20c182a0ec329fa2a9427b34298dce69866ca5a5ff1bf458",
+      "final_sha256": "e7f255b6f23d895f20c182a0ec329fa2a9427b34298dce69866ca5a5ff1bf458"
+    },
+    "UncomputableNoiseDiagram.Windows": {
+      "compiled_sha256": "1e16e09b36cb88a5713fa16c2b43453fa525acfd3a37387a73f0a64ebc3f6328",
+      "final_sha256": "1e16e09b36cb88a5713fa16c2b43453fa525acfd3a37387a73f0a64ebc3f6328"
+    },
+    "UncomputableNoiseDiagram.Parameters.Threshold": {
+      "compiled_sha256": "b8968b92938dd9c9a3025b31f8a3a83d77c1a8c065e5089c5b7fcdf92e95dcde",
+      "final_sha256": "b8968b92938dd9c9a3025b31f8a3a83d77c1a8c065e5089c5b7fcdf92e95dcde"
+    },
+    "UncomputableNoiseDiagram.Contour.Counting": {
+      "compiled_sha256": "80fc01172aee986b6cd44926fc9b8d7e9cf271ec2325208c59f0d894cf7e76ee",
+      "final_sha256": "80fc01172aee986b6cd44926fc9b8d7e9cf271ec2325208c59f0d894cf7e76ee"
+    },
+    "ForgettingLower.Geometry.Marked": {
+      "compiled_sha256": "99275a72c3dc5021f6778cc51aabf12fa62c7d93ef514a37bb9ac1a92c98de15",
+      "final_sha256": "99275a72c3dc5021f6778cc51aabf12fa62c7d93ef514a37bb9ac1a92c98de15"
+    },
+    "UncomputableNoiseDiagram.Rule.Checker": {
+      "compiled_sha256": "8999cbb006c3fa5243ad270170ac9f7363726beebd110b73ba8c69e93ef0a7f1",
+      "final_sha256": "8999cbb006c3fa5243ad270170ac9f7363726beebd110b73ba8c69e93ef0a7f1"
+    },
+    "UncomputableNoiseDiagram.Rule.Proposal": {
+      "compiled_sha256": "937807686162a8cf63796f9f8599f319e603dced69bf4076486a7d65e43c7abf",
+      "final_sha256": "937807686162a8cf63796f9f8599f319e603dced69bf4076486a7d65e43c7abf"
+    },
+    "UncomputableNoiseDiagram.Rule.CA": {
+      "compiled_sha256": "79405836691faec5704330221c311df5c841b56e46c8c206b9899d7cc3b48855",
+      "final_sha256": "79405836691faec5704330221c311df5c841b56e46c8c206b9899d7cc3b48855"
+    },
+    "FixedNoiseErgodicity.Basic": {
+      "compiled_sha256": "dd5d3b719911cd614b74db4b5e0feb04df03f7cd57887315b370a96b2e1ed475",
+      "final_sha256": "dd5d3b719911cd614b74db4b5e0feb04df03f7cd57887315b370a96b2e1ed475"
+    },
+    "FixedNoiseErgodicity.Section2.Process": {
+      "compiled_sha256": "510e918fda138a3cb419ec01b21e8d05baad5fa214933327bc2621a38a420ec7",
+      "final_sha256": "510e918fda138a3cb419ec01b21e8d05baad5fa214933327bc2621a38a420ec7"
+    },
+    "UncomputableNoiseDiagram.PCA.Process": {
+      "compiled_sha256": "cfdbdfbb0197b098b591821d92589988e847ec65a256f35f317868ed7aefb531",
+      "final_sha256": "cfdbdfbb0197b098b591821d92589988e847ec65a256f35f317868ed7aefb531"
+    },
+    "UncomputableNoiseDiagram.Rule.Noise": {
+      "compiled_sha256": "797e36c8d1f5148c76b70939692fb3843e6ee4a0a13f4150de3727a69121839b",
+      "final_sha256": "797e36c8d1f5148c76b70939692fb3843e6ee4a0a13f4150de3727a69121839b"
+    },
+    "UncomputableNoiseDiagram.PCA.Markov": {
+      "compiled_sha256": "cdc7b1c3ef491236a455a6fd45812f1a1ad52f84805f599c3a8e432491e2ee9c",
+      "final_sha256": "cdc7b1c3ef491236a455a6fd45812f1a1ad52f84805f599c3a8e432491e2ee9c"
+    },
+    "UncomputableNoiseDiagram.PCA.Cylinder": {
+      "compiled_sha256": "d7d42f69362928931defddf68aff7774cf3472e415b96a42e50fbd9b6fd448cc",
+      "final_sha256": "d7d42f69362928931defddf68aff7774cf3472e415b96a42e50fbd9b6fd448cc"
+    },
+    "UncomputableNoiseDiagram.PCA.Feller": {
+      "compiled_sha256": "77e1055efa0b25e6e7230bce5c9de938aa096ecab76dea70cae91c7f392185b0",
+      "final_sha256": "77e1055efa0b25e6e7230bce5c9de938aa096ecab76dea70cae91c7f392185b0"
+    },
+    "UncomputableNoiseDiagram.PCA.Translation": {
+      "compiled_sha256": "0e30018db9fda2cf6e19d8fc2aa78a33ae0980c535c739c1eb517a193933a18c",
+      "final_sha256": "0e30018db9fda2cf6e19d8fc2aa78a33ae0980c535c739c1eb517a193933a18c"
+    },
+    "UncomputableNoiseDiagram.PCA.ForgetErgodic": {
+      "compiled_sha256": "51938545ee656423478bdd5dabad8471f2855ca930791ab966ce82453846121a",
+      "final_sha256": "51938545ee656423478bdd5dabad8471f2855ca930791ab966ce82453846121a"
+    },
+    "UncomputableNoiseDiagram.PCA.Pullback": {
+      "compiled_sha256": "cab5c3263e769e18b1c5de897c4f2b8717d18cd91e0d7347d8e360633a5c799b",
+      "final_sha256": "cab5c3263e769e18b1c5de897c4f2b8717d18cd91e0d7347d8e360633a5c799b"
+    },
+    "UncomputableNoiseDiagram.Contour.Coherence": {
+      "compiled_sha256": "215bf938f2082d3ffe21cdd1205786329b5ae9414c476295bc71c98fa174c869",
+      "final_sha256": "215bf938f2082d3ffe21cdd1205786329b5ae9414c476295bc71c98fa174c869"
+    },
+    "ForgettingNaturalRule.Rule.Local": {
+      "compiled_sha256": "8bc2834747d749554242dddec95fdf818c79e496270aa0b0c6c3779092d66bae",
+      "final_sha256": "8bc2834747d749554242dddec95fdf818c79e496270aa0b0c6c3779092d66bae"
+    },
+    "ForgettingLower.Rule.Local": {
+      "compiled_sha256": "5761e2eca6df48f5e423df1a6c775df4e76533dc8291f020bacfef0df6404a8c",
+      "final_sha256": "5761e2eca6df48f5e423df1a6c775df4e76533dc8291f020bacfef0df6404a8c"
+    },
+    "UncomputableNoiseDiagram.Parameters.Bases": {
+      "compiled_sha256": "4800d08f52e18667c449813271cab5260fe00801d3cb3bb395e69187fb24df7d",
+      "final_sha256": "4800d08f52e18667c449813271cab5260fe00801d3cb3bb395e69187fb24df7d"
+    },
+    "UncomputableNoiseDiagram.Contour.RawPaths": {
+      "compiled_sha256": "00cf65b98cd46fb644cbb035493927e160d368adf257aa4e33ecb45a7f74124a",
+      "final_sha256": "00cf65b98cd46fb644cbb035493927e160d368adf257aa4e33ecb45a7f74124a"
+    },
+    "ForgettingLower.Geometry.Noise": {
+      "compiled_sha256": "5449bb831516607c49d93826a53b30e252f52d895d1b72ea3d3dae2f1e190595",
+      "final_sha256": "5449bb831516607c49d93826a53b30e252f52d895d1b72ea3d3dae2f1e190595"
+    },
+    "ForgettingLower.Rule.Coordinates": {
+      "compiled_sha256": "4b3f99d1340812df133ae38bd6c238d9ff30e090ea5bae4fbd38308ad76060b8",
+      "final_sha256": "4b3f99d1340812df133ae38bd6c238d9ff30e090ea5bae4fbd38308ad76060b8"
+    },
+    "UncomputableNoiseDiagram.PCA.Attraction": {
+      "compiled_sha256": "fd4dcdd4bce1d8c0d55158574f11866492f7637173fec02b479aab1943add3d7",
+      "final_sha256": "fd4dcdd4bce1d8c0d55158574f11866492f7637173fec02b479aab1943add3d7"
+    },
+    "ForgettingLower.Rule.Bridge": {
+      "compiled_sha256": "2cfb1949b1e27f0954ceefc553efad6dcefcd98a7d743e2bfda6278087acf67b",
+      "final_sha256": "2cfb1949b1e27f0954ceefc553efad6dcefcd98a7d743e2bfda6278087acf67b"
+    },
+    "ForgettingLower.Coherence.Providers": {
+      "compiled_sha256": "6434e021e94e511b523e8b0132a9fe447b769272b578e61c44ed4c0e2f135d8e",
+      "final_sha256": "6434e021e94e511b523e8b0132a9fe447b769272b578e61c44ed4c0e2f135d8e"
+    },
+    "ForgettingLower.Coherence.Pairing": {
+      "compiled_sha256": "e06f5cdf8e183dcc1981ff1f88a34d380aeb0140159cfceca9d66d42128672c8",
+      "final_sha256": "e06f5cdf8e183dcc1981ff1f88a34d380aeb0140159cfceca9d66d42128672c8"
+    },
+    "ForgettingLower.Geometry.Potentials": {
+      "compiled_sha256": "652da279e258a86656a27defdc0168940181af593acb1d12e8f5c08c076605e1",
+      "final_sha256": "652da279e258a86656a27defdc0168940181af593acb1d12e8f5c08c076605e1"
+    },
+    "ForgettingLower.Contour.Bracket": {
+      "compiled_sha256": "6d61c6b6c30ccdb5e3079f3694a48e7e143133b45e3730e63e590634f77d0217",
+      "final_sha256": "6d61c6b6c30ccdb5e3079f3694a48e7e143133b45e3730e63e590634f77d0217"
+    },
+    "ForgettingLower.Contour.Finite": {
+      "compiled_sha256": "e0dad4e70001be850958b53b051b12c6ce31a56b93aa286aaf7f3ae5303a5270",
+      "final_sha256": "e0dad4e70001be850958b53b051b12c6ce31a56b93aa286aaf7f3ae5303a5270"
+    },
+    "ForgettingLower.Density.Slabs": {
+      "compiled_sha256": "11111864691c9083e03833231d80524d3841bd7c2b5d01429eaa7a38bdd73e7d",
+      "final_sha256": "11111864691c9083e03833231d80524d3841bd7c2b5d01429eaa7a38bdd73e7d"
+    },
+    "ForgettingLower.Density.Witness": {
+      "compiled_sha256": "1ae297b6017959b73029062dcefcf282fa38033bd45c1b7a71f1c5658b9358f1",
+      "final_sha256": "1ae297b6017959b73029062dcefcf282fa38033bd45c1b7a71f1c5658b9358f1"
+    },
+    "ForgettingLower.Density.Probability": {
+      "compiled_sha256": "f0c1700774cde2197d0fcaeb601fa476dd9fe57771e4df55f4b3beeb71d2fdc0",
+      "final_sha256": "f0c1700774cde2197d0fcaeb601fa476dd9fe57771e4df55f4b3beeb71d2fdc0"
+    },
+    "ForgettingLower.Density.Rates": {
+      "compiled_sha256": "203e065045b1e0ee62b182f880dfd7779616547c5e3aaa74fb100561a641fc95",
+      "final_sha256": "203e065045b1e0ee62b182f880dfd7779616547c5e3aaa74fb100561a641fc95"
+    },
+    "ForgettingLower.Density.Eventual": {
+      "compiled_sha256": "ef34f4fd47b2e20382fefc0921ee13b3f79569ddf800087b83de4ee17d7855fc",
+      "final_sha256": "ef34f4fd47b2e20382fefc0921ee13b3f79569ddf800087b83de4ee17d7855fc"
+    },
+    "ForgettingLower.Coherence.Same": {
+      "compiled_sha256": "c52a65aaaf2e8bb080afc41b239504399dd065c06212ea1f7544c966be3ae074",
+      "final_sha256": "c52a65aaaf2e8bb080afc41b239504399dd065c06212ea1f7544c966be3ae074"
+    },
+    "ForgettingLower.Coherence.Edges": {
+      "compiled_sha256": "62ae2688548e7c1c44a9de0c396bbd7b71a5a0805a68440a6c551448c48a8da9",
+      "final_sha256": "62ae2688548e7c1c44a9de0c396bbd7b71a5a0805a68440a6c551448c48a8da9"
+    },
+    "ForgettingLower.Coherence.Tiling": {
+      "compiled_sha256": "9f624f3ad35bf5516ae459ef92eeea95ac0cb1647032a97ab77bda334a47916d",
+      "final_sha256": "9f624f3ad35bf5516ae459ef92eeea95ac0cb1647032a97ab77bda334a47916d"
+    },
+    "ForgettingLower.Forget.Unique": {
+      "compiled_sha256": "3926e63ca5b8869360f46ed8dd4b6ef1dbd183cfdfcd1e44d6d1edb7c13199d8",
+      "final_sha256": "3926e63ca5b8869360f46ed8dd4b6ef1dbd183cfdfcd1e44d6d1edb7c13199d8"
+    },
+    "ForgettingLower.Forget.CFTP": {
+      "compiled_sha256": "3e6f3b320b360d456df9125b36713d249c2670b863bf8bd5d2f8d861299b1faa",
+      "final_sha256": "3e6f3b320b360d456df9125b36713d249c2670b863bf8bd5d2f8d861299b1faa"
+    },
+    "ForgettingLower.Memory.Cover": {
+      "compiled_sha256": "71a1476a50e4edc895c6881676a878cfc4b207557fdb9495f27a56ee0c8a8a4f",
+      "final_sha256": "71a1476a50e4edc895c6881676a878cfc4b207557fdb9495f27a56ee0c8a8a4f"
+    },
+    "ForgettingLower.Forget.Roots": {
+      "compiled_sha256": "64fd344b69ec4b335217cedce496b073b5b23c7f90ef6822c85914524f9e5ab5",
+      "final_sha256": "64fd344b69ec4b335217cedce496b073b5b23c7f90ef6822c85914524f9e5ab5"
+    },
+    "ForgettingLower.Memory.Branch": {
+      "compiled_sha256": "4765992ebafa4b26b2bbb7b841f50c332379225e2eb28051dfe04afad7f86775",
+      "final_sha256": "4765992ebafa4b26b2bbb7b841f50c332379225e2eb28051dfe04afad7f86775"
+    },
+    "ForgettingNaturalRule.PCA.Average": {
+      "compiled_sha256": "bb6dd4a22ce6005e9d252e5f5940f28ff079a2d49d29fe27b93b145a3d8f91f5",
+      "final_sha256": "bb6dd4a22ce6005e9d252e5f5940f28ff079a2d49d29fe27b93b145a3d8f91f5"
+    },
+    "ForgettingLower.Memory.Invariant": {
+      "compiled_sha256": "1694d203099d2056c69f63bdd1272b541b4f40837a76005d6f87970b8cc526b8",
+      "final_sha256": "1694d203099d2056c69f63bdd1272b541b4f40837a76005d6f87970b8cc526b8"
+    },
+    "ForgettingLower.Density.Entropy": {
+      "compiled_sha256": "345f0b36dbe81ada75abfb5c3d4833c15585b47aa4cee3bd7ca9b7b66a96dbf4",
+      "final_sha256": "345f0b36dbe81ada75abfb5c3d4833c15585b47aa4cee3bd7ca9b7b66a96dbf4"
+    },
+    "ForgettingLower.Main": {
+      "compiled_sha256": "cc5d847490bae0ccfe36cf466a6894ffa57d443444bccb94973681ed90f06b5b",
+      "final_sha256": "cc5d847490bae0ccfe36cf466a6894ffa57d443444bccb94973681ed90f06b5b"
+    },
+    "ForgettingNaturalRule.Constants": {
+      "compiled_sha256": "fce60e7d0db2981036d41c57de6475cd7cd35a5a00ea11648a0427a714e568a0",
+      "final_sha256": "fce60e7d0db2981036d41c57de6475cd7cd35a5a00ea11648a0427a714e568a0"
+    },
+    "ForgettingNaturalRule.Forget.Paths": {
+      "compiled_sha256": "ed0cb767c57ca58e962ffd54b2a537b4d69eb5b7c298f957117d6d8fd984b263",
+      "final_sha256": "ed0cb767c57ca58e962ffd54b2a537b4d69eb5b7c298f957117d6d8fd984b263"
+    },
+    "ForgettingNaturalRule.Coherence.Rel": {
+      "compiled_sha256": "a38d67b427be369cb37d5a2a4f83a38139adb6acb4a0ed65ca8b6b65a8e19845",
+      "final_sha256": "a38d67b427be369cb37d5a2a4f83a38139adb6acb4a0ed65ca8b6b65a8e19845"
+    },
+    "ForgettingNaturalRule.Coherence.Tiling": {
+      "compiled_sha256": "af09adef7c37810f493f28d2d8922774c23c6db685b019763f34249fb5c6167e",
+      "final_sha256": "af09adef7c37810f493f28d2d8922774c23c6db685b019763f34249fb5c6167e"
+    },
+    "ForgettingNaturalRule.Rule.Bridge": {
+      "compiled_sha256": "4f6f6e87a554c7cc79b46d6d781d3c4b65604c4e1f8959a4be96add063b676b5",
+      "final_sha256": "4f6f6e87a554c7cc79b46d6d781d3c4b65604c4e1f8959a4be96add063b676b5"
+    },
+    "ForgettingNaturalRule.Forget.Unique": {
+      "compiled_sha256": "786b2ce7eafe498cb3d883292dbcd4e128eadc289ec92953ede37541682c1166",
+      "final_sha256": "786b2ce7eafe498cb3d883292dbcd4e128eadc289ec92953ede37541682c1166"
+    },
+    "ForgettingNaturalRule.Memory.Cover": {
+      "compiled_sha256": "4ef5376e658dd13464d945b6560bd3d1fa4b9954990cf6916c8111afff8f07d9",
+      "final_sha256": "4ef5376e658dd13464d945b6560bd3d1fa4b9954990cf6916c8111afff8f07d9"
+    },
+    "ForgettingNaturalRule.Memory.Branch": {
+      "compiled_sha256": "6df0a5bce730cac5f808e2b046a573f5a05fc933565d6cbe691e85cfe38f9104",
+      "final_sha256": "6df0a5bce730cac5f808e2b046a573f5a05fc933565d6cbe691e85cfe38f9104"
+    },
+    "ForgettingNaturalRule.Memory.Invariant": {
+      "compiled_sha256": "766c32e58bd8670918837aa768d4cd7d3fc3b82c84aed4544ccd83a44a2f81a0",
+      "final_sha256": "766c32e58bd8670918837aa768d4cd7d3fc3b82c84aed4544ccd83a44a2f81a0"
+    },
+    "ForgettingNaturalRule.Main": {
+      "compiled_sha256": "389facf189987e8e841ff98e158e8d4be743a2890953196df61552e93416d993",
+      "final_sha256": "389facf189987e8e841ff98e158e8d4be743a2890953196df61552e93416d993"
+    },
+    "FixedNoiseErgodicity.Scaffold.Tables": {
+      "compiled_sha256": "520e5f4d1386f8f7439b2fd9f5a7768a0c991f988d0436c2fdde286e53d84436",
+      "final_sha256": "520e5f4d1386f8f7439b2fd9f5a7768a0c991f988d0436c2fdde286e53d84436"
+    },
+    "FixedNoiseErgodicity.Defs.TokenGame": {
+      "compiled_sha256": "c905e3030d42ef8a481634e2019b12be4364a2cdb0885566192d13f36270a2c0",
+      "final_sha256": "c905e3030d42ef8a481634e2019b12be4364a2cdb0885566192d13f36270a2c0"
+    },
+    "FixedNoiseErgodicity.Section2.TokenGame": {
+      "compiled_sha256": "5cf1823eb1468bfcf5df9502daaebcd6ebee05606e4d7be2fa97e538491e2575",
+      "final_sha256": "5cf1823eb1468bfcf5df9502daaebcd6ebee05606e4d7be2fa97e538491e2575"
+    },
+    "FixedNoiseErgodicity.Section2.Compact": {
+      "compiled_sha256": "342ecf2cedc21bddc9e48aca91e8cc35cfe0d91c107a68f1d6fedb091bb48a4b",
+      "final_sha256": "342ecf2cedc21bddc9e48aca91e8cc35cfe0d91c107a68f1d6fedb091bb48a4b"
+    },
+    "FixedNoiseErgodicity.Scaffold.Substitution": {
+      "compiled_sha256": "56f21170dbbd96cb7a511ba4f1a10562d0053a0e1d06c2c798e183bc49879490",
+      "final_sha256": "56f21170dbbd96cb7a511ba4f1a10562d0053a0e1d06c2c798e183bc49879490"
+    },
+    "FixedNoiseErgodicity.Scaffold.WangSet": {
+      "compiled_sha256": "b2ec6613fcc8bb2a0cd0ca82302ff4112dcbe2a4dfcb650922842b28bf36fce9",
+      "final_sha256": "b2ec6613fcc8bb2a0cd0ca82302ff4112dcbe2a4dfcb650922842b28bf36fce9"
+    },
+    "FixedNoiseErgodicity.Family.Tower": {
+      "compiled_sha256": "0ba40f809d6c7ea731319a545dd04314afa7c18bbd961a4205ba57cb419656d4",
+      "final_sha256": "0ba40f809d6c7ea731319a545dd04314afa7c18bbd961a4205ba57cb419656d4"
+    },
+    "FixedNoiseErgodicity.Family.Red": {
+      "compiled_sha256": "453588053956e3885d9713e6a35c4c709df9fa4c55b818d34ab1c20f3bce5d32",
+      "final_sha256": "453588053956e3885d9713e6a35c4c709df9fa4c55b818d34ab1c20f3bce5d32"
+    },
+    "FixedNoiseErgodicity.Family.Walls": {
+      "compiled_sha256": "15a8e06235bcd1cdbd13396a1110e5eabeed4f8633b7adabb7785e3293d87da8",
+      "final_sha256": "15a8e06235bcd1cdbd13396a1110e5eabeed4f8633b7adabb7785e3293d87da8"
+    },
+    "FixedNoiseErgodicity.Family.Frames": {
+      "compiled_sha256": "cd655e4d20723fc8ee4216d4fae4af2edae892afc3e28ff0bc2fa044e753be03",
+      "final_sha256": "cd655e4d20723fc8ee4216d4fae4af2edae892afc3e28ff0bc2fa044e753be03"
+    },
+    "FixedNoiseErgodicity.Family.Routing": {
+      "compiled_sha256": "59187bc857e938c30c4dc6e434d705fbfb2916bb40b241fde598ed64dcf761b9",
+      "final_sha256": "59187bc857e938c30c4dc6e434d705fbfb2916bb40b241fde598ed64dcf761b9"
+    },
+    "FixedNoiseErgodicity.Family.Positive": {
+      "compiled_sha256": "6cd793c8c5fe670d02001a26a710e946eebb2ec45eac2fce8f530a0adb6f84ac",
+      "final_sha256": "6cd793c8c5fe670d02001a26a710e946eebb2ec45eac2fce8f530a0adb6f84ac"
+    },
+    "FixedNoiseErgodicity.Family.Free": {
+      "compiled_sha256": "c247f90b321b1e2858b24c6380f82a7941421f46acc7bf13bdd26de6970d5ae6",
+      "final_sha256": "c247f90b321b1e2858b24c6380f82a7941421f46acc7bf13bdd26de6970d5ae6"
+    },
+    "FixedNoiseErgodicity.Family.Machine": {
+      "compiled_sha256": "4ff5de264b7ada934bbef25866b39b0695118060047e825f312af14d89afd02c",
+      "final_sha256": "4ff5de264b7ada934bbef25866b39b0695118060047e825f312af14d89afd02c"
+    },
+    "FixedNoiseErgodicity.Family.Horn": {
+      "compiled_sha256": "be088934293feaec22094be7d64b0bece584529a933d4cdd3e26b814f8418a80",
+      "final_sha256": "be088934293feaec22094be7d64b0bece584529a933d4cdd3e26b814f8418a80"
+    },
+    "FixedNoiseErgodicity.Family.Codes": {
+      "compiled_sha256": "2fc932d17715ac46d6b65b6d9d7baa15dd65b8549a6ff0e17260c2d1b5ac6271",
+      "final_sha256": "2fc932d17715ac46d6b65b6d9d7baa15dd65b8549a6ff0e17260c2d1b5ac6271"
+    },
+    "FixedNoiseErgodicity.Family.FamilyR": {
+      "compiled_sha256": "89bdd9421b0bbc55ea448ed75a5e22ab1b5dc5e100ec6ff362dd6d1c38533804",
+      "final_sha256": "89bdd9421b0bbc55ea448ed75a5e22ab1b5dc5e100ec6ff362dd6d1c38533804"
+    },
+    "FixedNoiseErgodicity.Three.Interface": {
+      "compiled_sha256": "e762c646f39786d5682f310636ff1f1b5b3046723b5e136d71fcc708fe0e83d9",
+      "final_sha256": "e762c646f39786d5682f310636ff1f1b5b3046723b5e136d71fcc708fe0e83d9"
+    },
+    "FixedNoiseErgodicity.Scaffold.Format": {
+      "compiled_sha256": "b77cd465b6d25f8fab8585d8d45e2273c077494ba605f91849691e2e00544aa5",
+      "final_sha256": "b77cd465b6d25f8fab8585d8d45e2273c077494ba605f91849691e2e00544aa5"
+    },
+    "FixedNoiseErgodicity.Scaffold.Facts": {
+      "compiled_sha256": "5c4c542f9cb9caf0eab9b6debd442cd45951dfe613f547bfc73a009dacd1631c",
+      "final_sha256": "5c4c542f9cb9caf0eab9b6debd442cd45951dfe613f547bfc73a009dacd1631c"
+    },
+    "FixedNoiseErgodicity.Three.CornerData": {
+      "compiled_sha256": "68b808053e2a1971009210d66f43bfd5f90068b2a91a98c44397aa38975c7223",
+      "final_sha256": "68b808053e2a1971009210d66f43bfd5f90068b2a91a98c44397aa38975c7223"
+    },
+    "FixedNoiseErgodicity.Three.CornerTables": {
+      "compiled_sha256": "680fd93f3996c501af7a759c47d328f8b4a156c8f9c2749182329793399043c2",
+      "final_sha256": "680fd93f3996c501af7a759c47d328f8b4a156c8f9c2749182329793399043c2"
+    },
+    "FixedNoiseErgodicity.Three.CornerCheck": {
+      "compiled_sha256": "282bef6d7457a56219408cb16b227c9fd818f698048ef1cf536dd0bb8f9074bc",
+      "final_sha256": "282bef6d7457a56219408cb16b227c9fd818f698048ef1cf536dd0bb8f9074bc"
+    },
+    "FixedNoiseErgodicity.Three.Corner": {
+      "compiled_sha256": "995654a22689bcd3db6a8738ca9eedb0879a5999b539e521b7d767ff84dc6b53",
+      "final_sha256": "995654a22689bcd3db6a8738ca9eedb0879a5999b539e521b7d767ff84dc6b53"
+    },
+    "FixedNoiseErgodicity.Three.Lists": {
+      "compiled_sha256": "2a2f097e5b1c9e50a0a39a2a9ec7871cfddc3480ec8e63786158ad9369ba870a",
+      "final_sha256": "2a2f097e5b1c9e50a0a39a2a9ec7871cfddc3480ec8e63786158ad9369ba870a"
+    },
+    "FixedNoiseErgodicity.Three.Coarse": {
+      "compiled_sha256": "7275849c5ff4898f6ff93ae5ec6ea3c150b1744f375bb6cf87a4612f01db4457",
+      "final_sha256": "7275849c5ff4898f6ff93ae5ec6ea3c150b1744f375bb6cf87a4612f01db4457"
+    },
+    "FixedNoiseErgodicity.Three.Dyadic": {
+      "compiled_sha256": "07b3dffa361d3afaf9f75cdef94971aa9ab69f834b805b557984031308cc9ca2",
+      "final_sha256": "07b3dffa361d3afaf9f75cdef94971aa9ab69f834b805b557984031308cc9ca2"
+    },
+    "FixedNoiseErgodicity.Three.Pairs": {
+      "compiled_sha256": "7fc6eeada17c32cc7c3118ab1e42f7a1a09a14169b19eca1b385a8da6467664a",
+      "final_sha256": "7fc6eeada17c32cc7c3118ab1e42f7a1a09a14169b19eca1b385a8da6467664a"
+    },
+    "FixedNoiseErgodicity.Three.Walker": {
+      "compiled_sha256": "29c5e5bfb450d5f7da47eaa903db39b76b46d6d0c2f170dc5078093cc5870ae8",
+      "final_sha256": "29c5e5bfb450d5f7da47eaa903db39b76b46d6d0c2f170dc5078093cc5870ae8"
+    },
+    "FixedNoiseErgodicity.Three.Promote": {
+      "compiled_sha256": "87316deb137d578f7c3f6a23aee9980fe6fe7382a83bf8f1ca0356a47a08a3ff",
+      "final_sha256": "87316deb137d578f7c3f6a23aee9980fe6fe7382a83bf8f1ca0356a47a08a3ff"
+    },
+    "FixedNoiseErgodicity.Family.HornHalt": {
+      "compiled_sha256": "6d07b77ff5add0f9343b0e3664d064518ec78af7a5233584f163413ff52b7493",
+      "final_sha256": "6d07b77ff5add0f9343b0e3664d064518ec78af7a5233584f163413ff52b7493"
+    },
+    "FixedNoiseErgodicity.Three.Final": {
+      "compiled_sha256": "031dc3b053df32fc9d781dbc97a783e47f76b0ae6772c37be4d421a220dbc649",
+      "final_sha256": "031dc3b053df32fc9d781dbc97a783e47f76b0ae6772c37be4d421a220dbc649"
+    },
+    "FixedNoiseErgodicity.Three.Board": {
+      "compiled_sha256": "c30382cf8ed508069b1a6fa699ffaa52cddf998c850342694cd3b0140324d49c",
+      "final_sha256": "c30382cf8ed508069b1a6fa699ffaa52cddf998c850342694cd3b0140324d49c"
+    },
+    "FixedNoiseErgodicity.Defs.Field": {
+      "compiled_sha256": "6472c1bcac569a8cf915f9bb48d9f65f94d04468caea518e3d3170fdd529180c",
+      "final_sha256": "6472c1bcac569a8cf915f9bb48d9f65f94d04468caea518e3d3170fdd529180c"
+    },
+    "FixedNoiseErgodicity.Section4.Deterministic": {
+      "compiled_sha256": "08c7e2a3e6907ae9210342187b799fcb10798bef522201afb72320c2ec25e606",
+      "final_sha256": "08c7e2a3e6907ae9210342187b799fcb10798bef522201afb72320c2ec25e606"
+    },
+    "FixedNoiseErgodicity.Section3.Transport": {
+      "compiled_sha256": "e482c277c3296bb971ad8e5b9457ed92637a64fbc501cf5b25ec5b1e9fe11e7a",
+      "final_sha256": "e482c277c3296bb971ad8e5b9457ed92637a64fbc501cf5b25ec5b1e9fe11e7a"
+    },
+    "FixedNoiseErgodicity.Section3.Graph": {
+      "compiled_sha256": "24850c43e64aaa13d38eb1deae1826364e5268f6b9b01cd06bedfac505f92375",
+      "final_sha256": "24850c43e64aaa13d38eb1deae1826364e5268f6b9b01cd06bedfac505f92375"
+    },
+    "FixedNoiseErgodicity.Combinatorics.Contour": {
+      "compiled_sha256": "f840f75a33fd5ec030b6482d03f2d572f4e2050f224ae97265cb46f2ca9341fb",
+      "final_sha256": "f840f75a33fd5ec030b6482d03f2d572f4e2050f224ae97265cb46f2ca9341fb"
+    },
+    "FixedNoiseErgodicity.Section3.Contour": {
+      "compiled_sha256": "0aceec545b96ca4212115d1c999913eb4b347f7168317e43b972bf8099136ed7",
+      "final_sha256": "0aceec545b96ca4212115d1c999913eb4b347f7168317e43b972bf8099136ed7"
+    },
+    "FixedNoiseErgodicity.Section3.Peierls": {
+      "compiled_sha256": "44fbc659f18a544adaa3833e0cbcb6eb1c86a3c39226652cb17d55d4a7187e9a",
+      "final_sha256": "44fbc659f18a544adaa3833e0cbcb6eb1c86a3c39226652cb17d55d4a7187e9a"
+    },
+    "FixedNoiseErgodicity.Section3.Constants": {
+      "compiled_sha256": "887ff440e35a0747032095407b243ccb2eb665c4b4196741eea43c7dfb744058",
+      "final_sha256": "887ff440e35a0747032095407b243ccb2eb665c4b4196741eea43c7dfb744058"
+    },
+    "FixedNoiseErgodicity.Section2.Ergodic": {
+      "compiled_sha256": "cce5c45e0fb5cadbdb2fac9904ca77b6e2f856dfdc48f70a2c7bffa54fefc7fe",
+      "final_sha256": "cce5c45e0fb5cadbdb2fac9904ca77b6e2f856dfdc48f70a2c7bffa54fefc7fe"
+    },
+    "FixedNoiseErgodicity.Section4.Memory": {
+      "compiled_sha256": "d678251fba1c4ed98c894419f933f3a6c652ce63c8c7bd248e3392cf013ac95e",
+      "final_sha256": "d678251fba1c4ed98c894419f933f3a6c652ce63c8c7bd248e3392cf013ac95e"
+    },
+    "FixedNoiseErgodicity.Section3.Forgetting": {
+      "compiled_sha256": "949213df26712da3ad3ab0d6ca49378fc6b556e4a2662b561341a134ef113e10",
+      "final_sha256": "949213df26712da3ad3ab0d6ca49378fc6b556e4a2662b561341a134ef113e10"
+    },
+    "FixedNoiseErgodicity.Section2.Markov": {
+      "compiled_sha256": "24702368fcb394dc1be50210a71f6db2e53097abdfae85813648c91c57395d49",
+      "final_sha256": "24702368fcb394dc1be50210a71f6db2e53097abdfae85813648c91c57395d49"
+    },
+    "FixedNoiseErgodicity.Section2.Feller": {
+      "compiled_sha256": "578df3e2d382e3b2abd921251c879277e7445c86ee05b00a7a9dba29cc159137",
+      "final_sha256": "578df3e2d382e3b2abd921251c879277e7445c86ee05b00a7a9dba29cc159137"
+    },
+    "FixedNoiseErgodicity.Section2.ForgetErgodic": {
+      "compiled_sha256": "9d74d3b934ff6f8d409aea11f194e22e8f901ece428959e31852712ac9a620e7",
+      "final_sha256": "9d74d3b934ff6f8d409aea11f194e22e8f901ece428959e31852712ac9a620e7"
+    },
+    "FixedNoiseErgodicity.Section2.PCA": {
+      "compiled_sha256": "6be8eace23c5be7b67b71e4510d859bf8476af1d8d4bd2831a88ba249d7ed755",
+      "final_sha256": "6be8eace23c5be7b67b71e4510d859bf8476af1d8d4bd2831a88ba249d7ed755"
+    },
+    "FixedNoiseErgodicity.TheoremB": {
+      "compiled_sha256": "3de04ca5edf082b983280420076f48641fde5cfad7fe6c2f4eb275b5debd8a6e",
+      "final_sha256": "3de04ca5edf082b983280420076f48641fde5cfad7fe6c2f4eb275b5debd8a6e"
+    },
+    "FixedNoiseErgodicity.Three.Assembly": {
+      "compiled_sha256": "617f11d86fc51e64f88888e38370731458e741ec00747127b7e3259a08dfb8da",
+      "final_sha256": "617f11d86fc51e64f88888e38370731458e741ec00747127b7e3259a08dfb8da"
+    },
+    "FixedNoiseErgodicity.Family.Decide": {
+      "compiled_sha256": "033c4bf41f7a30ddfb913765c9f5d13c816bde2907f47cf11cfc7199343a67b6",
+      "final_sha256": "033c4bf41f7a30ddfb913765c9f5d13c816bde2907f47cf11cfc7199343a67b6"
+    },
+    "FixedNoiseErgodicity.Family.Computable": {
+      "compiled_sha256": "eec2f1e17e7970c3a018eb33cbc94fa61af076dd32dd8f17fc2398215984b916",
+      "final_sha256": "eec2f1e17e7970c3a018eb33cbc94fa61af076dd32dd8f17fc2398215984b916"
+    },
+    "FixedNoiseErgodicity.Main": {
+      "compiled_sha256": "7a5da770f8442eff94f0c7a61970217b69b7be53253cfc325ad6cf72b0f58d35",
+      "final_sha256": "7a5da770f8442eff94f0c7a61970217b69b7be53253cfc325ad6cf72b0f58d35"
+    },
+    "FixedNoiseErgodicity.Bridge": {
+      "compiled_sha256": "cde2ffc7a7216f1062b26b94bd38bf1488a2cf2d77e463117eb92dad5f2b76b7",
+      "final_sha256": "cde2ffc7a7216f1062b26b94bd38bf1488a2cf2d77e463117eb92dad5f2b76b7"
+    },
+    "FixedNoiseErgodicity.Compiler.TM0": {
+      "compiled_sha256": "f756883ae2a3d3e0b7ef91345158968f5bc6f8f34f38db7ae3521838d880e443",
+      "final_sha256": "f756883ae2a3d3e0b7ef91345158968f5bc6f8f34f38db7ae3521838d880e443"
+    },
+    "FixedNoiseErgodicity.Compiler.Universal": {
+      "compiled_sha256": "6593f8ff178391e583871ae5fcd4c8a9915d8fec72c74da42410a2ac7ebece44",
+      "final_sha256": "6593f8ff178391e583871ae5fcd4c8a9915d8fec72c74da42410a2ac7ebece44"
+    },
+    "FixedNoiseErgodicity.Undecidable": {
+      "compiled_sha256": "d481cd8e71d82410898638daaad044af96a204c9db537abe45e1bebd4239a5bc",
+      "final_sha256": "d481cd8e71d82410898638daaad044af96a204c9db537abe45e1bebd4239a5bc"
+    },
+    "ForgettingNaturalRule.Reduction": {
+      "compiled_sha256": "cffa4d02fa009501c1210add009810615f2ec7d7cc963394b93818438d1af883",
+      "final_sha256": "cffa4d02fa009501c1210add009810615f2ec7d7cc963394b93818438d1af883"
+    },
+    "ForgettingLower.Reduction": {
+      "compiled_sha256": "10503c3b265f9f15c41416c3a1b8944df0d3d217cfaeb89ee5db95c7925a99b3",
+      "final_sha256": "10503c3b265f9f15c41416c3a1b8944df0d3d217cfaeb89ee5db95c7925a99b3"
+    },
+    "ForgettingLower": {
+      "compiled_sha256": "ee95114ee85bf97b4d2542768b50736ffb9d67230bd94a664ad71733948a2be4",
+      "final_sha256": "ee95114ee85bf97b4d2542768b50736ffb9d67230bd94a664ad71733948a2be4"
+    },
+    "UncomputableNoiseDiagram.AuditCommand": {
+      "compiled_sha256": "71a2a5d762756c966a3b54965fb281d88f8994194e2812a0e8ae9f181868f2e0",
+      "final_sha256": "71a2a5d762756c966a3b54965fb281d88f8994194e2812a0e8ae9f181868f2e0"
+    },
+    "ForgettingLower.Audit": {
+      "compiled_sha256": "d6388fb66bdcd84125ffff67dcbc90740ed6f4dbb08b315e641cde99adcb9e89",
+      "final_sha256": "d6388fb66bdcd84125ffff67dcbc90740ed6f4dbb08b315e641cde99adcb9e89"
+    },
+    "Challenge": {
+      "compiled_sha256": "a40464ced04770bc96bd2ef49d5e00c3c9cc2a680c1e357e0a991e7cb8315039",
+      "final_sha256": "a40464ced04770bc96bd2ef49d5e00c3c9cc2a680c1e357e0a991e7cb8315039"
+    },
+    "Solution": {
+      "compiled_sha256": "ee95114ee85bf97b4d2542768b50736ffb9d67230bd94a664ad71733948a2be4",
+      "final_sha256": "ee95114ee85bf97b4d2542768b50736ffb9d67230bd94a664ad71733948a2be4"
+    },
+    "Audit": {
+      "compiled_sha256": "3d681d0d457315056c9e6e6924d95bcd0d19a38799a3e9ae41a31b7e6b4d850f",
+      "final_sha256": "3d681d0d457315056c9e6e6924d95bcd0d19a38799a3e9ae41a31b7e6b4d850f"
+    }
+  }
+}

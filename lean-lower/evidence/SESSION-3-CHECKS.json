@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-12",
+  "full_guarded_build": "PASS",
+  "warnings": 0,
+  "explicit_type_check": "PASS",
+  "lint": "PASS",
+  "census": 0,
+  "own_lean_files": 17,
+  "strict_theorems": 100,
+  "new_strict_theorems": 19,
+  "prefix_declarations": 279,
+  "disallowed": 0,
+  "sorry_dependent": 0,
+  "statement_sha256": "58cb7388400f05f2986d2b2cc9154a99a554eed4b384f10c8809b706d3b244c4",
+  "targets_still_unproved": [
+    "FLD.Z4Classification",
+    "FLD.Z4MachineCorollary",
+    "FLD.Z4RawUndecidable"
+  ],
+  "new_closed_nodes": [
+    "D3",
+    "D4"
+  ],
+  "guards_modified": false,
+  "precedents_modified": false,
+  "comparator_or_kernel_replay_claimed": false,
+  "procedural_deviation": "First Windows helper omitted -I; subsequent runs used -I; recorded in HANDOFF.md",
+  "sources": {
+    "ForgettingLower/Audit.lean": "8c6a9e4cae51986a341e254587eff18f1c19d6fd29c18180976980c299dd8957",
+    "ForgettingLower/Constants.lean": "0170a4d656f49b5c7bf1da52903eba0fbec5f18d09d729cfc1b2b2a0315d4fcd",
+    "ForgettingLower/Contour/Bracket.lean": "6d61c6b6c30ccdb5e3079f3694a48e7e143133b45e3730e63e590634f77d0217",
+    "ForgettingLower/Contour/Finite.lean": "e0dad4e70001be850958b53b051b12c6ce31a56b93aa286aaf7f3ae5303a5270",
+    "ForgettingLower/Density/Entropy.lean": "345f0b36dbe81ada75abfb5c3d4833c15585b47aa4cee3bd7ca9b7b66a96dbf4",
+    "ForgettingLower/Density/Eventual.lean": "ef34f4fd47b2e20382fefc0921ee13b3f79569ddf800087b83de4ee17d7855fc",
+    "ForgettingLower/Density/Probability.lean": "f0c1700774cde2197d0fcaeb601fa476dd9fe57771e4df55f4b3beeb71d2fdc0",
+    "ForgettingLower/Density/Rates.lean": "203e065045b1e0ee62b182f880dfd7779616547c5e3aaa74fb100561a641fc95",
+    "ForgettingLower/Density/Slabs.lean": "11111864691c9083e03833231d80524d3841bd7c2b5d01429eaa7a38bdd73e7d",
+    "ForgettingLower/Density/Witness.lean": "1ae297b6017959b73029062dcefcf282fa38033bd45c1b7a71f1c5658b9358f1",
+    "ForgettingLower/Geometry/Marked.lean": "99275a72c3dc5021f6778cc51aabf12fa62c7d93ef514a37bb9ac1a92c98de15",
+    "ForgettingLower/Geometry/Noise.lean": "5449bb831516607c49d93826a53b30e252f52d895d1b72ea3d3dae2f1e190595",
+    "ForgettingLower/Geometry/Potentials.lean": "652da279e258a86656a27defdc0168940181af593acb1d12e8f5c08c076605e1",
+    "ForgettingLower/Main.lean": "6c34a11cfe2987191745a18d2e80d52cdc7dfb02ac19e161377f711da32af64d",
+    "ForgettingLower/Reduction.lean": "b5f6dc38ee89570757e8dac1a3539e0fb772c43054a63ef038d26cc950245bf9",
+    "ForgettingLower/Statements.lean": "58cb7388400f05f2986d2b2cc9154a99a554eed4b384f10c8809b706d3b244c4"
+  }
+}

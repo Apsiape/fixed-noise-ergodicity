@@ -1,0 +1,5 @@
+Windows: no Lean/lake process
+Windows frozen SHA256: 58cb7388400f05f2986d2b2cc9154a99a554eed4b384f10c8809b706d3b244c4
+Running WSL distributions:
+lean-comparator: no Lean/lake process
+58cb7388400f05f2986d2b2cc9154a99a554eed4b384f10c8809b706d3b244c4  /opt/forgetting-lower-lean/project/ForgettingLower/Statements.lean

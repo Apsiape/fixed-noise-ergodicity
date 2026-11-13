@@ -1,0 +1,22 @@
+{
+  "exit": 0,
+  "seconds": 60.289,
+  "peak_tree_rss_bytes": 696524800,
+  "peak_tree_vms_bytes": 3534888960,
+  "stop_rss_bytes": 9000000000,
+  "memory_stop": false,
+  "command": [
+    "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/leanchecker",
+    "--from-export",
+    "/opt/forgetting-lower-arxiv-2026-11-12/results/Solution.ndjson"
+  ],
+  "binary_path": "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/leanchecker",
+  "binary_sha256": "12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6",
+  "export_sha256": "8beb8c9a9b88a935c2c475b053b45c1e4bd52581c277e471e1f5cd70db7bbebb",
+  "export_bytes": 310204729,
+  "host_free_before_bytes": 13230137344,
+  "linux_available_before_bytes": 15944806400,
+  "threads": 1,
+  "log_sha256": "b4a5a2119e1d34b46527d63317f417c74261b65eeb93f14026389da2519c2ead",
+  "log_tail": "Lean default kernel accepts the solution\n"
+}

@@ -1,0 +1,183 @@
+LEAN check evidence/SESSION-5-TYPES.lean (avail 14.8 GiB)
+  exit 0, 2.0 s, 0 warnings
+@FLD.Coh.ul_down : ∀ {R : FNE.WangSet} {D : ℤ → FLD.Geometry.ISite → Option ↥R} {E : ℤ → FLD.Geometry.ISite → Prop},
+  FLD.Coh.IsHistory D E →
+    ∀ {t : ℤ} {u : FNE.Plane} {P : Fin 2 → ℤ} {a : ↥R},
+      FLD.Coh.UL D (FLD.Geometry.marked E) t (u, P) a →
+        ∀ (k : ℕ), ∃ P', FLD.Coh.UL D (FLD.Geometry.marked E) (t - ↑k) (u, P') a
+@FLD.Coh.ul_move : ∀ {R : FNE.WangSet} {D : ℤ → FLD.Geometry.ISite → Option ↥R} {E : ℤ → FLD.Geometry.ISite → Prop},
+  FLD.Coh.IsHistory D E →
+    ∀ {u γ : FNE.Plane},
+      γ ∈ FLD.cardinal →
+        (∃ t P a, FLD.Coh.UL D (FLD.Geometry.marked E) t (u, P) a) →
+          ∃ t P a, FLD.Coh.UL D (FLD.Geometry.marked E) t (u + γ, P) a
+FLD.Coh.add_pair : ∀ (u : FNE.Plane) (a b c d : ℤ), u + (a, b) + (c, d) = u + (a + c, b + d)
+@FLD.Coh.ul_reach : ∀ {R : FNE.WangSet} {D : ℤ → FLD.Geometry.ISite → Option ↥R} {E : ℤ → FLD.Geometry.ISite → Prop},
+  FLD.Coh.IsHistory D E →
+    ∀ {u0 : FNE.Plane},
+      (∃ t P a, FLD.Coh.UL D (FLD.Geometry.marked E) t (u0, P) a) →
+        ∀ (u : FNE.Plane), ∃ t P a, FLD.Coh.UL D (FLD.Geometry.marked E) t (u, P) a
+@FLD.Coh.ul_common : ∀ {R : FNE.WangSet} {D : ℤ → FLD.Geometry.ISite → Option ↥R} {E : ℤ → FLD.Geometry.ISite → Prop},
+  FLD.Coh.IsHistory D E →
+    ∀ {t t' : ℤ} {u u' : FNE.Plane} {P P' : Fin 2 → ℤ} {a a' : ↥R},
+      FLD.Coh.UL D (FLD.Geometry.marked E) t (u, P) a →
+        FLD.Coh.UL D (FLD.Geometry.marked E) t' (u', P') a' →
+          ∃ Q Q',
+            FLD.Coh.UL D (FLD.Geometry.marked E) (min t t') (u, Q) a ∧
+              FLD.Coh.UL D (FLD.Geometry.marked E) (min t t') (u', Q') a'
+@FLD.Coh.ul_same : ∀ {R : FNE.WangSet} {D : ℤ → FLD.Geometry.ISite → Option ↥R} {E : ℤ → FLD.Geometry.ISite → Prop},
+  FLD.Coh.IsHistory D E →
+    FLD.Coh.DensityEvent E →
+      ∀ {t t' : ℤ} {u : FNE.Plane} {P P' : Fin 2 → ℤ} {a a' : ↥R},
+        FLD.Coh.UL D (FLD.Geometry.marked E) t (u, P) a → FLD.Coh.UL D (FLD.Geometry.marked E) t' (u, P') a' → a = a'
+@FLD.Coh.ul_east : ∀ {R : FNE.WangSet} {D : ℤ → FLD.Geometry.ISite → Option ↥R} {E : ℤ → FLD.Geometry.ISite → Prop},
+  FLD.Coh.IsHistory D E →
+    FLD.Coh.DensityEvent E →
+      ∀ {t t' : ℤ} {u : FNE.Plane} {P P' : Fin 2 → ℤ} {a a' : ↥R},
+        FLD.Coh.UL D (FLD.Geometry.marked E) t (u, P) a →
+          FLD.Coh.UL D (FLD.Geometry.marked E) t' (u + (1, 0), P') a' → (↑a).E = (↑a').W
+@FLD.Coh.ul_north : ∀ {R : FNE.WangSet} {D : ℤ → FLD.Geometry.ISite → Option ↥R} {E : ℤ → FLD.Geometry.ISite → Prop},
+  FLD.Coh.IsHistory D E →
+    FLD.Coh.DensityEvent E →
+      ∀ {t t' : ℤ} {u : FNE.Plane} {P P' : Fin 2 → ℤ} {a a' : ↥R},
+        FLD.Coh.UL D (FLD.Geometry.marked E) t (u, P) a →
+          FLD.Coh.UL D (FLD.Geometry.marked E) t' (u + (0, 1), P') a' → (↑a).N = (↑a').S
+@FLD.Coh.tiles_of_UL : ∀ {R : FNE.WangSet} {D : ℤ → FLD.Geometry.ISite → Option ↥R} {E : ℤ → FLD.Geometry.ISite → Prop},
+  FLD.Coh.IsHistory D E →
+    FLD.Coh.DensityEvent E → (∃ t w a, FLD.Coh.UL D (FLD.Geometry.marked E) t w a) → FLD.TilesPlane R
+@FLD.Coh.live_marked : ∀ {R : FNE.WangSet} {D : ℤ → FLD.Geometry.ISite → Option ↥R} {E : ℤ → FLD.Geometry.ISite → Prop},
+  FLD.Coh.IsHistory D E →
+    FLD.Coh.DensityEvent E →
+      ¬FLD.TilesPlane R → ∀ {t : ℤ} {w : FLD.Geometry.ISite}, D t w ≠ none → FLD.Geometry.marked E t w
+FLD.Coh.extraction_ae : ∀ (R : FNE.WangSet) {e : ℝ},
+  0 ≤ e →
+    e ≤ FLD.eps0 →
+      ∀ᵐ (ω : (FLD.natCA R).Noise₂) ∂(FLD.natCA R).noiseLaw₂ e,
+        ∀ (X : ℤ → (FLD.natCA R).Config),
+          (FLD.natCA R).IsComplete ω X →
+            (∃ t w a, FLD.Coh.UL (fun s => FLD.Rule.dec (X s)) (FLD.Geometry.marked (FLD.Geometry.flagsOf ω)) t w a) →
+              FLD.TilesPlane R
+@FLD.Forget.disc_step : ∀ {R : FNE.WangSet},
+  ¬FLD.TilesPlane R →
+    ∀ {ω : (FLD.natCA R).Noise₂} {X Y : ℤ → (FLD.natCA R).Config},
+      (FLD.natCA R).IsComplete ω X →
+        (FLD.natCA R).IsComplete ω Y →
+          FLD.Coh.DensityEvent (FLD.Geometry.flagsOf ω) →
+            ∀ {t : ℤ} {w : FLD.Geometry.ISite},
+              FLD.Rule.dec (X t) w ≠ FLD.Rule.dec (Y t) w →
+                FLD.Geometry.marked (FLD.Geometry.flagsOf ω) t w ∧
+                  ∃ w', FLD.Geometry.OrdStep w w' ∧ FLD.Rule.dec (X (t - 1)) w' ≠ FLD.Rule.dec (Y (t - 1)) w'
+@FLD.Forget.disc_path : ∀ {R : FNE.WangSet},
+  ¬FLD.TilesPlane R →
+    ∀ {ω : (FLD.natCA R).Noise₂} {X Y : ℤ → (FLD.natCA R).Config},
+      (FLD.natCA R).IsComplete ω X →
+        (FLD.natCA R).IsComplete ω Y →
+          FLD.Coh.DensityEvent (FLD.Geometry.flagsOf ω) →
+            ∀ {t : ℤ} {w : FLD.Geometry.ISite},
+              FLD.Rule.dec (X t) w ≠ FLD.Rule.dec (Y t) w →
+                ∃ p,
+                  p 0 = w ∧
+                    (∀ (k : ℕ), FLD.Geometry.OrdStep (p k) (p (k + 1))) ∧
+                      ∀ (k : ℕ), FLD.Geometry.marked (FLD.Geometry.flagsOf ω) (t - ↑k) (p k)
+@FLD.Forget.unique_complete_all : ∀ {R : FNE.WangSet},
+  ¬FLD.TilesPlane R →
+    ∀ {e : ℝ},
+      0 ≤ e →
+        e ≤ FLD.eps0 →
+          ∀ᵐ (ω : (FLD.natCA R).Noise₂) ∂(FLD.natCA R).noiseLaw₂ e,
+            ∀ (X Y : ℤ → (FLD.natCA R).Config),
+              (FLD.natCA R).IsComplete ω X → (FLD.natCA R).IsComplete ω Y → ∀ (t : ℤ), X t = Y t
+@FLD.Forget.unique_complete : ∀ {R : FNE.WangSet},
+  ¬FLD.TilesPlane R →
+    ∀ {e : ℝ},
+      0 ≤ e →
+        e ≤ FLD.eps0 →
+          ∀ᵐ (ω : (FLD.natCA R).Noise₂) ∂(FLD.natCA R).noiseLaw₂ e,
+            ∀ (X Y : ℤ → (FLD.natCA R).Config), (FLD.natCA R).IsComplete ω X → (FLD.natCA R).IsComplete ω Y → X 0 = Y 0
+@FLD.Forget.ergodic_of_not_tiles : ∀ {R : FNE.WangSet},
+  ¬FLD.TilesPlane R → ∀ {e : ℝ}, 0 ≤ e → e ≤ FLD.eps0 → (FLD.natCA R).IsErgodic e
+@FLD.Forget.flow_timeNoise : ∀ {d : ℕ} (A : UND.CA d) (ω : A.Noise₂) (t s : ℤ) (n : ℕ) (x : A.Config),
+  A.flow (FLD.Forget.timeNoise A ω t) s n x = A.flow ω (s + t) n x
+@FLD.Forget.complete_timeNoise : ∀ {d : ℕ} (A : UND.CA d) {ω : A.Noise₂} {t : ℤ} {X : ℤ → A.Config},
+  A.IsComplete (FLD.Forget.timeNoise A ω t) X → A.IsComplete ω fun s => X (s - t)
+@FLD.Forget.all_time_singleton : ∀ {d : ℕ} (A : UND.CA d) {ω : A.Noise₂},
+  (∀ (X Y : ℤ → A.Config), A.IsComplete ω X → A.IsComplete ω Y → ∀ (t : ℤ), X t = Y t) →
+    ∀ (t : ℤ) (O : Finset (UND.Site d)),
+      ∃ n₀, ∀ (n : ℕ), n₀ ≤ n → ∀ (x y : A.Config), ∀ w ∈ O, A.flow ω (t - ↑n) n x w = A.flow ω (t - ↑n) n y w
+@FLD.Forget.allTimeCFTP_of_not_tiles : ∀ {R : FNE.WangSet},
+  ¬FLD.TilesPlane R → ∀ {e : ℝ}, 0 ≤ e → e ≤ FLD.eps0 → FLD.AllTimeCFTP (FLD.natCA R) e
+@FLD.Memory.traj_succ : ∀ {R : FNE.WangSet} {D : ℤ → FLD.Geometry.ISite → Option ↥R}
+  {E : ℤ → FLD.Geometry.ISite → Prop},
+  FLD.Rule.IsTraj 0 D E → ∀ {n : ℕ} {w : FLD.Geometry.ISite}, ¬E (↑(n + 1)) w → D (↑(n + 1)) w = FLD.Rule.GI (D ↑n) w
+@FLD.Memory.clone_cover : ∀ {R : FNE.WangSet} {D : ℤ → FLD.Geometry.ISite → Option ↥R}
+  {E : ℤ → FLD.Geometry.ISite → Prop} {θ : FNE.Plane → ↥R},
+  FLD.Rule.Legal θ →
+    FLD.Rule.IsTraj 0 D E →
+      D 0 = FLD.Rule.clone θ →
+        ∀ (n : ℕ) (w : FLD.Geometry.ISite), D (↑n) w ≠ FLD.Rule.clone θ w → FLD.Geometry.markedFrom E 0 n w
+@FLD.Memory.blank_cover : ∀ {R : FNE.WangSet} {D : ℤ → FLD.Geometry.ISite → Option ↥R}
+  {E : ℤ → FLD.Geometry.ISite → Prop},
+  FLD.Rule.IsTraj 0 D E →
+    (D 0 = fun x => none) → ∀ (n : ℕ) (w : FLD.Geometry.ISite), D (↑n) w ≠ none → FLD.Geometry.markedFrom E 0 n w
+@FLD.Memory.marked_of_markedFrom : ∀ {E : ℤ → FLD.Geometry.ISite → Prop} {n : ℕ} {w : FLD.Geometry.ISite},
+  FLD.Geometry.markedFrom E 0 n w → FLD.Geometry.marked E (↑n) w
+FLD.Forget.root_encoding : ∀ (A : UND.CA 4) (cost : ℕ),
+  12 ≤ cost →
+    ∀ (z : FLD.Geometry.Pt) {ω : A.Noise₂},
+      FLD.Geometry.marked (FLD.Geometry.flagsOf ω) z.2 z.1 →
+        ∃ Fl K,
+          1 ≤ Fl.card ∧
+            UND.Counting.IsEncoding FLD.Geometry.nbr z (cost * Fl.card) K Fl ∧ ∀ y ∈ Fl, FLD.Geometry.flagsOf ω y.2 y.1
+FLD.Forget.root_measure_le : ∀ (A : UND.CA 4) (cost : ℕ),
+  12 ≤ cost →
+    ∀ {e : ℝ},
+      0 ≤ e →
+        e ≤ 1 →
+          ∀ (z : FLD.Geometry.Pt),
+            (A.noiseLaw₂ e) {ω | FLD.Geometry.marked (FLD.Geometry.flagsOf ω) z.2 z.1} ≤
+              4 * ∑' (j : ℕ), (↑FLD.B ^ cost * ENNReal.ofReal e) ^ (j + 1)
+@FLD.Forget.root_base_le : ∀ {e : ℝ}, e ≤ FLD.eps0 → ↑FLD.B ^ FLD.densityCost * ENNReal.ofReal e ≤ 32⁻¹
+@FLD.Forget.root_tail_le : ∀ {r : ENNReal}, r ≤ 32⁻¹ → 4 * ∑' (j : ℕ), r ^ (j + 1) ≤ 4⁻¹
+FLD.Forget.root_bound : ∀ (A : UND.CA 4) {e : ℝ},
+  0 ≤ e →
+    e ≤ FLD.eps0 →
+      ∀ (w : FLD.Geometry.ISite) (t : ℤ), (A.noiseLaw₂ e) {ω | FLD.Geometry.marked (FLD.Geometry.flagsOf ω) t w} ≤ 4⁻¹
+@FLD.Memory.dec_cloneCfg : ∀ {R : FNE.WangSet} (θ : FNE.Plane → ↥R),
+  FLD.Rule.dec (FLD.Memory.cloneCfg θ) = FLD.Rule.clone θ
+@FLD.Memory.dec_blankCfg : ∀ {R : FNE.WangSet}, FLD.Rule.dec FLD.Memory.blankCfg = fun x => none
+@FLD.Memory.dec_siteEquiv : ∀ {R : FNE.WangSet} (x : (FLD.natCA R).Config) (v : UND.Site 4),
+  FLD.Rule.dec x (FLD.Geometry.siteEquiv v) = (FLD.letterEquiv R).symm (x v)
+@FLD.Memory.law_bad_le : ∀ {R : FNE.WangSet} (x : (FLD.natCA R).Config) {ε : ℝ},
+  0 ≤ ε →
+    ε ≤ FLD.eps0 →
+      ∀ (n : ℕ) (v : UND.Site 4) (S : Set (FLD.natCA R).Sym),
+        (∀ (ω : (FLD.natCA R).Noise₂),
+            (FLD.natCA R).flow ω 0 n x v ∈ S →
+              FLD.Geometry.marked (FLD.Geometry.flagsOf ω) (↑n) (FLD.Geometry.siteEquiv v)) →
+          ((FLD.natCA R).law ε (MeasureTheory.Measure.dirac x) n) {y | y v ∈ S} ≤ 4⁻¹
+@FLD.Memory.memory_branch : ∀ {R : FNE.WangSet},
+  FLD.TilesPlane R → ∀ {ε : ℝ}, 0 ≤ ε → ε ≤ FLD.eps0 → ¬(FLD.natCA R).IsErgodic ε
+@FLD.Memory.clone_blank_le : ∀ {R : FNE.WangSet} {θ : FNE.Plane → ↥R},
+  FLD.Rule.Legal θ →
+    ∀ {ε : ℝ},
+      0 ≤ ε →
+        ε ≤ FLD.eps0 →
+          ∀ (t : ℕ) (v : UND.Site 4),
+            ((FLD.natCA R).law ε (MeasureTheory.Measure.dirac (FLD.Memory.cloneCfg θ)) t)
+                {y | y v ∈ {(FLD.letterEquiv R) none}} ≤
+              4⁻¹
+@FLD.Memory.blank_live_le : ∀ {R : FNE.WangSet} {ε : ℝ},
+  0 ≤ ε →
+    ε ≤ FLD.eps0 →
+      ∀ (t : ℕ) (v : UND.Site 4),
+        ((FLD.natCA R).law ε (MeasureTheory.Measure.dirac FLD.Memory.blankCfg) t)
+            {y | y v ∈ {(FLD.letterEquiv R) none}ᶜ} ≤
+          4⁻¹
+@FLD.Memory.twoInvariant_of_tiles : ∀ {R : FNE.WangSet},
+  FLD.TilesPlane R → ∀ {ε : ℝ}, 0 ≤ ε → ε ≤ FLD.eps0 → FLD.HasTwoInvariantLaws (FLD.natCA R) ε
+FLD.z4_classification : FLD.Z4Classification
+FLD.z4_machine_corollary : FLD.Z4MachineCorollary
+FLD.z4_raw_undecidable : FLD.Z4RawUndecidable
+'FLD.z4_classification' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FLD.z4_machine_corollary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FLD.z4_raw_undecidable' depends on axioms: [propext, Classical.choice, Quot.sound]

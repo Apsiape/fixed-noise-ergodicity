@@ -1,7 +1,7 @@
 \section{Open problems}\label{sec:discussion}
 
 \paragraph{Dimension and the old token question.}
-Fixed-rate positive-noise undecidability now holds on $\Z^3$ by \cref{ld:z3}, and the natural rule on every raw Wang set is classified on $\Z^4$ by \cref{ld:z4}. The old three-token family and its $\Z^8$ realization remain formally checked. One token never suffices for an undecidable tiling family (\cref{set:one-token-family}); the existence of a two-token family is still open. Such a family would give another $\Z^6$ route at the thin-provider rate. A forgetting mechanism using fewer than $2j$ transverse coordinates would improve the inspector route. The $\Z^6$ natural rule's equilibrium statements and its stack live on $\Z^7$; the retained machine route's corresponding dimensions are nine and nine. No lower-dimensional equilibrium transfer is asserted here.
+Fixed-rate positive-noise undecidability now holds on $\Z^3$ by \cref{ld:z3}, and the natural rule on every raw Wang set is classified on $\Z^4$ by \cref{ld:z4}. The old three-token family and its $\Z^8$ realization remain formally checked. One token never suffices for an undecidable tiling family (\cref{set:one-token-family}); the existence of a two-token family is still open. Such a family would give another $\Z^6$ route at the thin-provider rate. A forgetting mechanism using fewer than $2j$ transverse coordinates would improve the inspector route. The $\Z^6$ natural rule's equilibrium statements and its stack live on $\Z^7$; the retained machine route's corresponding dimensions are nine and nine. For the lower-dimensional rules, \cref{ld:gibbs} gives the corresponding Gibbs dichotomies on $\Z^5$ and $\Z^4$; no lower-dimensional stacking or robustness theorem is asserted.
 
 \begin{problem}\label{prob:dimension}
 What is the least dimension $d\le3$ for which ergodicity of positive-rate cellular automata on $\Z^d$ at one fixed replacement rate is undecidable? In particular, can this be done on $\Z^2$ or $\Z$? What is the least token width of a computable family with undecidable tiling problem: two or three?
@@ -29,7 +29,7 @@ If $R$ tiles but has only countably many tilings, does the noisy $G_R$ itself ha
 \end{problem}
 
 \paragraph{Quantitative lower-dimensional results.}
-\Cref{ld:rate} proves exponential all-input forgetting on the non-tiling side of both lower-dimensional families, with a universal exponent and an effectively findable input-dependent prefactor. Stronger mixing, all-Gibbs transfer, robustness and an improved noise interval remain questions.
+\Cref{ld:rate} proves exponential all-input forgetting on the non-tiling side of both lower-dimensional families, with a universal exponent and an effectively findable input-dependent prefactor. \Cref{ld:gibbs} gives all-Gibbs uniqueness and arbitrary-volume exponential weak spatial mixing. Stronger forms of mixing, robustness and an improved noise interval remain questions. The all-Gibbs clause of the following version~2.1.0 problem is answered by \cref{ld:gibbs}; its other clauses remain open.
 
 \begin{problem}\label{prob:lower-stronger}
 For the rules of \cref{ld:z4,ld:z3}, can one prove stronger forms of mixing, transfer uniqueness to all space--time Gibbs measures, or establish robustness under perturbation of the local table? Can their common sufficient noise interval be improved?

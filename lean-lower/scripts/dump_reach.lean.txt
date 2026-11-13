@@ -1,0 +1,42 @@
+
+open Lean Elab Command in
+/-- Dump the project constants (prefixes FNE, UPD, UND, FNR, FLD) reachable from the given targets: name, kind,
+hash of the type, hash of the value for definitions. The targets themselves: type only. -/
+elab "#dump_reach " ids:ident* : command => do
+  let env ← getEnv
+  let roots : Array Name := ids.map (·.getId)
+  let proj (n : Name) : Bool := match n.getRoot with
+    | `FNE | `UPD | `UND | `FNR | `FLD => true
+    | _ => false
+  let mut todo : Array Name := roots
+  let mut seen : NameSet := {}
+  let mut out : Array String := #[]
+  while !todo.isEmpty do
+    let n := todo.back!
+    todo := todo.pop
+    if seen.contains n then continue
+    seen := seen.insert n
+    match env.find? n with
+    | none => out := out.push s!"{n} MISSING"
+    | some ci =>
+      let isRoot := roots.contains n
+      let (kind, val?) : String × Option Expr := match ci with
+        | .defnInfo d => ("def", if isRoot then none else some d.value)
+        | .thmInfo _ => ("thm", none)
+        | .opaqueInfo d => ("opaque", some d.value)
+        | .inductInfo _ => ("induct", none)
+        | .ctorInfo _ => ("ctor", none)
+        | .recInfo _ => ("rec", none)
+        | .axiomInfo _ => ("axiom", none)
+        | .quotInfo _ => ("quot", none)
+      let vh := match val? with | some v => toString v.hash | none => "-"
+      out := out.push s!"{n} {kind} {ci.type.hash} {vh}"
+      let mut cs := ci.type.getUsedConstants
+      if let some v := val? then cs := cs ++ v.getUsedConstants
+      if let .inductInfo d := ci then cs := cs ++ d.ctors.toArray
+      for c in cs do
+        if proj c && !seen.contains c then todo := todo.push c
+  let sorted := out.qsort (· < ·)
+  logInfo m!"DUMP-BEGIN {sorted.size}\n{String.intercalate "\n" sorted.toList}\nDUMP-END"
+
+#dump_reach FLD.z4_classification FLD.z4_machine_corollary FLD.z4_raw_undecidable

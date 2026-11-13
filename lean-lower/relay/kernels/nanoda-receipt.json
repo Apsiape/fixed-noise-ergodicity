@@ -1,0 +1,35 @@
+{
+  "exit": 0,
+  "seconds": 39.162,
+  "peak_tree_rss_bytes": 531308544,
+  "peak_tree_vms_bytes": 631377920,
+  "stop_rss_bytes": 9000000000,
+  "memory_stop": false,
+  "command": [
+    "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/nanoda_bin",
+    "/opt/forgetting-lower-arxiv-2026-11-12/kernels/nanoda.json"
+  ],
+  "binary_path": "/opt/forgetting-lower-arxiv-2026-11-12/toolchain/bin/nanoda_bin",
+  "binary_sha256": "cbf13950fc4a48f635a0beceeb5ed32dd82568b870cfd081b6391c1f2cf02ba5",
+  "export_sha256": "8beb8c9a9b88a935c2c475b053b45c1e4bd52581c277e471e1f5cd70db7bbebb",
+  "export_bytes": 310204729,
+  "host_free_before_bytes": 12823564288,
+  "linux_available_before_bytes": 15942049792,
+  "threads": 1,
+  "stack_rlimit_bytes": 134217728,
+  "config": {
+    "use_stdin": false,
+    "export_file_path": "/opt/forgetting-lower-arxiv-2026-11-12/results/Solution.ndjson",
+    "num_threads": 1,
+    "nat_extension": true,
+    "string_extension": true,
+    "permitted_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "unpermitted_axiom_hard_error": true
+  },
+  "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "log_tail": ""
+}

@@ -1,0 +1,8 @@
+.lake/
+*.olean
+*.ilean
+__pycache__/
+scratch/
+vendor/
+*.ndjson
+!relay/bwrap-invocations.ndjson

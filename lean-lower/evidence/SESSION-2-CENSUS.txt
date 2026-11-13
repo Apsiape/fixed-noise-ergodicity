@@ -1,0 +1,4 @@
+sorry census: 2 sorry token(s) in 13 files
+  ForgettingLower/Statements.lean:183: in `theorem z4`
+  ForgettingLower/Statements.lean:186: in `theorem machine_corollary`
+forbidden constructs: none

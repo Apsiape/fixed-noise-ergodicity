@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "reference": "vendor/FixedNoiseErgodicity/pins/DEPENDENCY-SOURCES.json",
+  "reference_sha256": "c830bf9d45917bebf411a261396bb97df1049ac1f1d5ff012987d4f890d33fc0",
+  "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "checked_dependency_source_files": 10268,
+  "mismatches": [],
+  "unlisted_lean_sources": [],
+  "note": "Sources checked file by file; prebuilt dependency objects used. Standalone kernels check the exported proof closure."
+}

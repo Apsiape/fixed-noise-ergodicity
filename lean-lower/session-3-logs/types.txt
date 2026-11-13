@@ -1,0 +1,74 @@
+LEAN check evidence/SESSION-3-TYPES.lean (avail 14.9 GiB)
+  exit 0, 23.1 s, 0 warnings
+FLD.Z4Classification : Prop
+FLD.Z4MachineCorollary : Prop
+FLD.Z4RawUndecidable : Prop
+FLD.raw_undecidable_of_machine_corollary : FLD.Z4MachineCorollary → FLD.Z4RawUndecidable
+FLD.Geometry.toSite_injective : Function.Injective FLD.Geometry.toSite
+FLD.Geometry.noiseCoord_injective : Function.Injective FLD.Geometry.noiseCoord
+FLD.Geometry.flags_measure : ∀ (A : UND.CA 4) {e : ℝ},
+  0 ≤ e →
+    e ≤ 1 →
+      ∀ (Fl : Finset FLD.Geometry.Pt),
+        (A.noiseLaw₂ e) {ω | ∀ y ∈ Fl, FLD.Geometry.flagsOf ω y.2 y.1} = ENNReal.ofReal e ^ Fl.card
+@FLD.Density.minFlags_le_card : ∀ {N f : ℕ}, ↑N / 1404 ≤ 12 * ↑f → FLD.Density.minFlags N ≤ f
+@FLD.Density.minFlags_pos : ∀ {N : ℕ}, 1 ≤ N → 1 ≤ FLD.Density.minFlags N
+FLD.Density.densePathEv_encoding : ∀ (A : UND.CA 4) (z : FLD.Geometry.Pt) (N : ℕ) {ω : A.Noise₂},
+  ω ∈ FLD.Density.densePathEv A z N →
+    ∃ Fl K,
+      FLD.Density.minFlags N ≤ Fl.card ∧
+        UND.Counting.IsEncoding FLD.Geometry.nbr z (FLD.densityCost * Fl.card) K Fl ∧
+          ∀ y ∈ Fl, FLD.Geometry.flagsOf ω y.2 y.1
+FLD.Density.densePathEv_measure_le : ∀ (A : UND.CA 4) {e : ℝ},
+  0 ≤ e →
+    e ≤ 1 →
+      ∀ (z : FLD.Geometry.Pt) (N : ℕ),
+        (A.noiseLaw₂ e) (FLD.Density.densePathEv A z N) ≤
+          4 * ∑' (j : ℕ), (↑FLD.B ^ FLD.densityCost * ENNReal.ofReal e) ^ (j + FLD.Density.minFlags N)
+@FLD.Const.density_base_le : ∀ {e : ℝ}, e ≤ FLD.eps0 → ↑FLD.B ^ FLD.densityCost * e ≤ (↑FLD.B ^ FLD.densityCost)⁻¹
+FLD.Const.inv_densityCost_lt_quarter : (↑FLD.B ^ FLD.densityCost)⁻¹ < 1 / 4
+@FLD.Const.density_base_lt_quarter : ∀ {e : ℝ}, e ≤ FLD.eps0 → ↑FLD.B ^ FLD.densityCost * e < 1 / 4
+FLD.Density.div_le_minFlags : ∀ (N : ℕ), N / 16848 ≤ FLD.Density.minFlags N
+@FLD.Density.tsum_pow_div_ne_top : ∀ {a : ENNReal}, a < 1 → ∑' (N : ℕ), a ^ (N / 16848) ≠ ⊤
+@FLD.Density.tsum_density_tail_ne_top : ∀ {a : ENNReal},
+  a < 1 → ∑' (N : ℕ), 4 * ∑' (j : ℕ), a ^ (j + FLD.Density.minFlags N) ≠ ⊤
+FLD.Density.tsum_densePathEv_ne_top : ∀ (A : UND.CA 4) {e : ℝ},
+  0 ≤ e → e ≤ FLD.eps0 → ∀ (z : FLD.Geometry.Pt), ∑' (N : ℕ), (A.noiseLaw₂ e) (FLD.Density.densePathEv A z N) ≠ ⊤
+FLD.Density.eventually_sparse_at : ∀ (A : UND.CA 4) {e : ℝ},
+  0 ≤ e →
+    e ≤ FLD.eps0 →
+      ∀ (z : FLD.Geometry.Pt),
+        ∀ᵐ (ω : A.Noise₂) ∂A.noiseLaw₂ e,
+          ∃ N0,
+            ∀ (N : ℕ),
+              N0 ≤ N →
+                ∀ (Q : ℕ → FLD.Geometry.Pt),
+                  Q 0 = z →
+                    (∀ k < N, ∃ π, ∃ μ ∈ FNE.box 1, Q (k + 1) = FLD.Geometry.par (Q k) π μ) →
+                      ↑{i ∈ Finset.range N | FLD.Geometry.H (FLD.Geometry.flagsOf ω) (Q i)}.card < FLD.delta * ↑N
+FLD.Density.all_path_density : ∀ (A : UND.CA 4) {e : ℝ},
+  0 ≤ e →
+    e ≤ FLD.eps0 →
+      ∀ᵐ (ω : A.Noise₂) ∂A.noiseLaw₂ e,
+        ∀ (z : FLD.Geometry.Pt),
+          ∃ N0,
+            ∀ (N : ℕ),
+              N0 ≤ N →
+                ∀ (Q : ℕ → FLD.Geometry.Pt),
+                  Q 0 = z →
+                    (∀ k < N, ∃ π, ∃ μ ∈ FNE.box 1, Q (k + 1) = FLD.Geometry.par (Q k) π μ) →
+                      ↑{i ∈ Finset.range N | FLD.Geometry.H (FLD.Geometry.flagsOf ω) (Q i)}.card < FLD.delta * ↑N
+FLD.Density.no_infinite_marked_paths : ∀ (A : UND.CA 4) {e : ℝ},
+  0 ≤ e →
+    e ≤ FLD.eps0 →
+      ∀ᵐ (ω : A.Noise₂) ∂A.noiseLaw₂ e,
+        ∀ (Q : ℕ → FLD.Geometry.Pt),
+          (∀ (k : ℕ), ∃ π, ∃ μ ∈ FNE.box 1, Q (k + 1) = FLD.Geometry.par (Q k) π μ) →
+            ¬∀ (k : ℕ), FLD.Geometry.marked (FLD.Geometry.flagsOf ω) (Q k).2 (Q k).1
+FLD.Density.raw_paths : ∀ (A : UND.CA 4) {e : ℝ},
+  0 ≤ e →
+    e ≤ FLD.eps0 →
+      ∀ᵐ (ω : A.Noise₂) ∂A.noiseLaw₂ e,
+        ∀ (t : ℤ) (p : ℕ → FLD.Geometry.ISite),
+          (∀ (k : ℕ), FLD.Geometry.OrdStep (p k) (p (k + 1))) →
+            ¬∀ (k : ℕ), FLD.Geometry.marked (FLD.Geometry.flagsOf ω) (t - ↑k) (p k)
