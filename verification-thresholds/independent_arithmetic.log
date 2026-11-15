@@ -1,0 +1,88 @@
+PRECHECK: <=200 checks; <=400 corner gains; 8 polynomial entries; 60x7 stencil; <64 MiB numerical work.
+OK A5 derived by differentiation
+OK A7 derived by differentiation
+OK Eulerian sums
+OK old Z6 drift floors
+OK new Z6 drift floors
+OK Z4 drift floors
+OK old Z6 coefficient
+OK old Z4 coefficient
+OK new Z6 coefficient
+OK new Z4 coefficient
+OK Z6 walk/connector budgets
+OK Z4 geometry and packing
+OK Z4 weighted exponent
+OK Z6 q and degree
+OK Z4 q and old B
+OK Z6 overlap and mortality arithmetic
+OK Z4 overlap arithmetic
+OK rounded Z6 sparse factors imply lambda
+OK rounded Z6 path factors imply kappa
+OK rounded Z4 factors imply kappa
+OK ND weakened density endpoint
+OK Z6 sparse displayed Z upper
+OK Z6 sparse displayed power upper
+OK Z6 lambda bound
+OK Z6 crude memory < 1e-4
+OK Z6 actual rational memory < 3.9e-8
+OK Z6 optional 4e-8 bound
+OK memory separation > 1/2
+VALUE Z6 lambda at 2e-24 0.0094498274112179
+VALUE Z6 p at 2e-24 3.897627146026e-08
+OK Z6 recovery at 1e-40
+OK Z6 path displayed Z upper
+OK Z6 path displayed power upper
+OK Z6 path base <= 1/8
+OK Z6 robustness base <= 1/4
+VALUE Z6 kappa at 1e-24 0.11165017165438
+OK coalescence prefactor 8/7
+OK coalescence c factor
+OK robust slope log2/8
+OK old Z6 interval included
+OK Z4 exact Zhalf
+OK Z4 lambda < 1e-17
+OK Z4 sparse < 2e
+VALUE Z4 lambda 8.68646912e-18
+VALUE Z4 excess divided by e 2.3026960990208e-09
+OK analytic e upper certificate
+OK Z4 large interval displayed Z
+OK Z4 large interval displayed power
+OK Z4 small walk power
+OK Z4 kappa <= .1594
+OK Z4 mu < .00039
+OK Z4 mu <= 1/2
+OK Z4 rho < exp(-1/6000)
+VALUE Z4 kappa at 1e-30 0.15936260036391
+VALUE Z4 mu at 1e-30 0.00038906748739935
+OK tiny interval rho <= exp(-1)
+OK tiny interval mu <= 1/16
+OK tiny density prefactor <= 16/15
+OK old lower interval below 1e-4535
+OK U case I covers 701b
+OK U case II covers constants
+OK floor case I multiplier <4
+OK floor case II multiplier <16
+OK rates from gamma/4
+OK polynomial maxima
+OK maximum correction <=0
+OK small t prefactor
+OK cone coefficient
+OK fixed geometric inequalities
+OK TI 60 distinct steps
+OK TI coordinate budgets
+OK TI original gains
+OK TI good gains
+OK TI arm50 and walk150
+OK TI Newton coefficients nonnegative
+OK TI Newton polynomial identity
+VALUE TI Newton coefficients [1, 323162, 20858800, 225345520, 881336720, 1558189600, 1275204480, 393550080]
+OK TI path kappa <= .0885
+OK TI path kappa <= 1/2
+VALUE TI kappa at 1e-22 0.088467793418856
+OK TI sparse lambda <1
+OK TI p <= 2.4e-8
+OK TI p <1/2
+OK TI old rate included
+VALUE TI lambda at 1e-22 0.0051469555575568
+VALUE TI p at 1e-22 2.3782185533187e-08
+TOTAL 75 exact checks passed.

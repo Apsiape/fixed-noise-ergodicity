@@ -92,17 +92,23 @@ The latter contains zero; redundant inputs are ignored in \eqref{nw:rule}. The g
 
 For estimates put
 \begin{equation}\label{nw:constants}
- \Delta=18q,\qquad B=2\Delta^2,\qquad
- \eps_*=B^{-200},\qquad\kappa=4B^{-99},\qquad
- c=\frac{\log(1/\kappa)}{50}.
+  \eps_*=10^{-24},\qquad \kappa=\frac18,\qquad
+  c=\frac{\log(1/\kappa)}{16}=\frac{3}{16}\log 2 .
 \end{equation}
-These are effective constants independent of $R$. Indeed $q=5\cdot2^{16}$, $\Delta=90\cdot2^{16}$ and $B=16200\cdot2^{32}>2^{45}$. In particular $\kappa<1$. Numerical sizes are orientation only; every estimate will follow from the displayed integer inequalities.
+These are effective constants independent of $R$. They come from the provider geometry alone,
+through the arm coefficient $16$ of Lemma~\ref{nw:arms} and the volume growth of the space--time
+graph in Lemma~\ref{nw:volume}; the rational inequality behind $\kappa$ is displayed after
+\eqref{nw:pathtail}. Numerical sizes are orientation only; every estimate follows from displayed
+rational inequalities. (Version~2.2.0 used $\eps_*=(2(18q)^2)^{-200}$, $\kappa=4B^{-99}$ and
+$c=\log(1/\kappa)/50$ with $B=2(18q)^2$. The new interval contains the old one, so every
+statement proved here for $0<\eps\le\eps_*$ holds in particular on the old interval.
+The Lean statements of \cref{app:lean} are stated with the old value and cover only the old interval.)
 
 \subsection{The geometry behind the two budgets}
 
 The boxes serve two jobs. Their separation supplies affine charges with positive drift away from one bad cluster per charge. Their thickness supplies many offset pairs one lattice step apart. Only the second job is used for coherence; only the first is used to count contours. A large separation cannot compensate for an overlap deficit, and a thick box alone cannot supply the balanced charge condition. The choices $16$ and $160$ meet both requirements with explicit slack.
 
-The number $q$ counts provider offsets, not checker input sites. One provider reads five cardinal letters; nearby providers in the same transverse box lie in different planes. During the proof the enclosing Moore graph allows nine planar offsets per provider and hence $9q$ backward neighbours. We use its undirected degree $18q$ to count connected edge witnesses. This degree is deliberately an overestimate for the actual rule. It also lets the later robustness statement allow maps on every input of $\overline N$ without changing the path count.
+The number $q$ counts provider offsets, not checker input sites. One provider reads five cardinal letters; nearby providers in the same transverse box lie in different planes. During the proof the enclosing Moore graph allows nine planar offsets per provider and hence $9q$ backward neighbours. Its polynomial volume growth (\cref{nw:volume}), rather than its degree, enters the flag-position count. This enclosing graph also allows the robustness statement to use every input of $\overline N$.
 
 \begin{figure}[ht]
 \centering
@@ -170,7 +176,7 @@ For now sample the Bernoulli flags at all integer times, including auxiliary neg
  (u,P,t)\longrightarrow(u+d,P+a,t-1),
  \qquad d\in\Lambda,\ a\in S.
 \end{equation}
-The associated undirected graph has degree at most $2\cdot9q=\Delta$. Each edge changes time by exactly one. The larger Moore neighbourhood is convenient for estimates and robustness; the deterministic rule uses only its cardinal subset.
+The associated undirected graph has degree at most $18q$; its volume growth in \cref{nw:volume} enters the estimates. Each edge changes time by exactly one. The larger Moore neighbourhood is convenient for estimates and robustness; the deterministic rule uses only its cardinal subset.
 
 For an integer $t_0$, start a marked set empty at time $t_0$, and thereafter mark every flagged vertex and every vertex having marked parents in two distinct transverse clusters. The union as $t_0\to-\infty$ is denoted $\nwM$. Equivalently it is the least set containing all flags and closed under the rule
 \begin{equation}\label{nw:mark}
@@ -200,37 +206,60 @@ This assertion depends on the flag field alone. It holds simultaneously for ever
 
 Ignore $u$ and assign the potentials
 \begin{equation}\label{nw:potentials}
- \psi_0(P,t)=5\sum_{i=1}^4P_i+640t,\qquad
- \psi_i(P,t)=-5P_i-160t\quad(1\le i\le4).
+  \psi_0(P,t)=4\sum_{i=1}^{4}P_i+560t,\qquad
+  \psi_i(P,t)=-4P_i-140t\quad(1\le i\le 4).
 \end{equation}
-Their sum is identically zero. A backward edge with transverse displacement $a$ has gains $5\sum_i a_i-640$ for charge zero and $160-5a_i$ for charge $i$. If its cluster is nonzero, the first gain is at least $160$. If its cluster differs from $i$, the second gain is at least $160-75=85$. All gains, including the other choices, are at least $-715$.
+Their sum is identically zero. A backward edge with transverse displacement $a$ has gains
+$4\sum_i a_i-560$ for charge zero and $140-4a_i$ for charge $i$. If its cluster is nonzero, the
+first gain is at least $4\cdot160-560=80$. If its cluster differs from $i$, the second gain is at
+least $140-4\cdot15=80$. All gains, including the other choices, are at least $-560$.
 
-For any two selected supports in distinct clusters, every charge can choose one of them with gain at least $85$: charge zero avoids cluster zero, and charge $i\ge1$ avoids cluster $i$. Call that support good for the charge. The choices for different charges can differ. A support graph is not a tree of five independent paths; the same physical edge or terminal may be used by several arms. The next construction keeps that multiplicity for the potential accounting and removes it only when counting physical witnesses.
+For any two selected supports in distinct clusters, every charge can choose one of them with gain
+at least $80$: charge zero avoids cluster zero, and charge $i\ge1$ avoids cluster $i$. Call that
+support good for the charge. If neither support lies in cluster $c$, both are good for charge $c$.
+The choices for different charges can differ. A support graph is not a tree of five independent
+paths; the same physical edge or terminal may be used by several arms. The next construction keeps
+that multiplicity for the potential accounting and removes it only when counting physical
+witnesses.
 
-\paragraph{Checking every gain analytically.}
-For charge zero, offsets in $S_0$ have coordinate sum between zero and $60$, so the gain lies between $-640$ and $-340$. In any nonzero cluster that sum is between $160$ and $220$, giving gains between $160$ and $460$. For charge $i\ge1$, a provider in cluster $i$ has coordinate $a_i$ between $160$ and $175$, giving gains between $-715$ and $-640$. In any other cluster $a_i$ is between zero and $15$, giving gains between $85$ and $160$. These interval computations check all offsets at once. There is no enumeration of the $5\cdot16^4$ providers and no finite computed premise.
+\emph{Checking every gain analytically.} For charge zero, offsets in $S_0$ have coordinate sum
+between zero and $60$, so the gain lies between $-560$ and $-320$. In any nonzero cluster that sum
+is between $160$ and $220$, giving gains between $80$ and $320$. For charge $i\ge1$, a provider in
+cluster $i$ has coordinate $a_i$ between $160$ and $175$, giving gains between $-560$ and $-500$.
+In any other cluster $a_i$ is between zero and $15$, giving gains between $80$ and $140$. These
+interval computations check all offsets at once.
 
 \begin{table}[ht]
 \centering\small
-\begin{tabular}{@{}lcc@{}}
+\begin{tabular}{lcc}
 \toprule
 Charge & its excluded cluster & every other cluster\\
 \midrule
-$0$ & $[-640,-340]$ in $S_0$ & $[160,460]$\\
-$i\in\{1,2,3,4\}$ & $[-715,-640]$ in $S_i$ & $[85,160]$\\
+$0$ & $[-560,-320]$ in $S_0$ & $[80,320]$\\
+$i\in\{1,2,3,4\}$ & $[-560,-500]$ in $S_i$ & $[80,140]$\\
 \bottomrule
 \end{tabular}
-\caption{Backward gains. A support pair in distinct clusters always includes a good choice for every charge. The sum of the five potentials is zero at every source and every terminal.}
+\caption{Backward gains. A support pair in distinct clusters always includes a good choice for
+every charge, and both supports are good for each of the three charges whose cluster contains
+neither. The sum of the five potentials is zero at every source and every terminal.}
 \end{table}
 
-The balance is algebraic, not a probabilistic cancellation. Each transverse coefficient $5P_i$ of $\psi_0$ cancels the coefficient $-5P_i$ of $\psi_i$, and $640t$ cancels four copies of $-160t$. The possible negative gain pays only for first edges introduced when a frontier component splits. That is why the edge bound is proportional to the number of \emph{new sources}, which is the number of distinct selected flags minus one. Counting all branch occurrences instead would lose the useful Bernoulli exponent.
+The balance is algebraic, not a probabilistic cancellation. Each transverse coefficient $4P_i$ of
+$\psi_0$ cancels the coefficient $-4P_i$ of $\psi_i$, and $560t$ cancels four copies of $-140t$. The
+possible negative gain pays only for first edges introduced when a frontier component splits, and
+at one split at most two of the five first edges can be bad. That is why the edge bound is
+proportional to the number of new sources, which is the number of distinct selected flags minus
+one.
+
 \begin{lemma}[Finite charge-arm witness]\label{nw:arms}
-For a marked root there is a connected physical ordinary-edge witness containing the root and $f\ge1$ distinct flags. It has an abstract copied-arm realization with at most
+For a marked root there is a connected physical ordinary-edge witness containing the root and
+$f\ge1$ distinct flags. It has an abstract copied-arm realization with at most
 \begin{equation}\label{nw:armcount}
- e_{\rm arm}\le\frac{4000}{85}(f-1)<50(f-1)
- \quad\text{when }f>1
+  e_{\mathrm{arm}}\le 16(f-1)
 \end{equation}
-edge occurrences. Its physical edge count and its time span are at most $e_{\rm arm}$. A flagged root may use the singleton witness $f=1$, $e_{\rm arm}=0$; an unflagged root has $f\ge2$.
+edge occurrences. All its vertices lie between its earliest terminal time and the root time, and its
+physical edge count and its time span are at most $e_{\mathrm{arm}}$. A flagged root may use the
+singleton witness $f=1$, $e_{\mathrm{arm}}=0$; an unflagged root has $f\ge2$.
 \end{lemma}
 \begin{proof}
 Stop the finite support graph at flags. Name a terminal by its physical space--time coordinate, and for each vertex $v$ let $D(v)$ be its nonempty set of descendant terminal names. At a nonterminal with selected supports $a,b$,
@@ -239,7 +268,9 @@ Stop the finite support graph at flags. Name a terminal by its physical space--t
 \]
 We first construct arms so that distinct terminal names, rather than unfolded tree leaves, pay for their length.
 
-Expose the graph from root to terminals in a topological order. A frontier is the set of unexposed vertices currently reached. Join two frontier vertices when their descendant terminal sets overlap. Initially the frontier is just the root. Exposing $v$ replaces it by its supports, retaining one physical copy of an already present support. Because $D(a)$ and $D(b)$ are subsets of $D(v)$, the replacement cannot meet an outside overlap component. It splits its own component into at most two. To verify the latter assertion, follow an old overlap path from a remaining vertex toward $v$. Its last common terminal with $v$ belongs to $D(a)$ or $D(b)$, so its remaining part attaches to one of the supports. Every resulting component therefore contains $a$ or $b$. In a genuine split the two daughter components have disjoint sets of descendant terminal names.
+Expose the graph from root to terminals in a topological order: only nonterminal vertices are
+exposed, each after every vertex from which it is reached, and terminals stay in the frontier until
+the end. A frontier is the set of unexposed vertices currently reached. Join two frontier vertices when their descendant terminal sets overlap. Initially the frontier is just the root. Exposing $v$ replaces it by its supports, retaining one physical copy of an already present support. Because $D(a)$ and $D(b)$ are subsets of $D(v)$, the replacement cannot meet an outside overlap component. It splits its own component into at most two. To verify the latter assertion, follow an old overlap path from a remaining vertex toward $v$. Its last common terminal with $v$ belongs to $D(a)$ or $D(b)$, so its remaining part attaches to one of the supports. Every resulting component therefore contains $a$ or $b$. In a genuine split the two daughter components have disjoint sets of descendant terminal names.
 
 Fix a good-parent choice for every charge at every nonterminal. Starting at a given support and repeatedly following good parents reaches a terminal, since the support graph is finite and acyclic. Begin with one source occurrence at the root and five good arms, one for each charge. Track each arm by its eventual terminal name. Maintain the invariant that in each frontier overlap component there is exactly one endpoint name for each charge, counting arm occurrences.
 
@@ -247,11 +278,41 @@ When exposure causes no split, the invariant persists: a terminal name in the ol
 
 At the final frontier each component is one terminal name. For each charge, source occurrences and terminal names are in bijection via their arms. Now take separate abstract copies of all arm interiors. Identify the five starts belonging to a source occurrence, and identify endpoints with the same terminal name. Keep different source occurrences distinct even when their coordinates agree. Retain the connected component containing the original root source. Restricting the charge bijections to it is valid, since every arm connects its source and endpoint within a single component. If $f$ terminal names remain, exactly $f$ source occurrences remain, with one incidence of each charge at each source and terminal.
 
-At most $5(f-1)$ edges are bad: only the first edge from each nonoriginal source can be bad for its charge. Sum potential increments along all abstract arms, with their multiplicities. At each source the sum of the five starting potentials is zero; at each terminal the sum of the five ending potentials is zero. Thus the total increment equals zero. Every good edge gains at least $85$, every bad edge at least $-715$. Consequently
+The accounting uses only the following facts, each established above.
+(A1) Every nonflagged mark has its two selected supports in two distinct clusters, by \eqref{nw:mark};
+so they are distinct vertices, and for every charge at least one of them is good.
+(A2) The bad set of charge $c$ is exactly one cluster ($S_0$ for $c=0$, $S_i$ for $c=i$; see the gain table above), so
+whether an edge is good for $c$ depends only on the cluster of its offset.
+(A3) The support graph is finite, acyclic and reachable from the root, every edge lowers time by
+exactly one, and flags are terminals even when they also have two marked parents.
+(A4) Terminal names are physical space--time coordinates; a vertex reached twice is one physical vertex.
+(A5) Only nonterminals are exposed, in a topological order, and terminals stay in the frontier.
+(A6) The potentials ignore $u$, so a gain depends only on the transverse offset.
+(A7) The first edge of a new arm goes from the split vertex to one of its two selected supports.
+(A8) The five arms of the original root source start with good-parent edges.
+(A9) Edge occurrences are counted with multiplicity on both sides of the telescoping sum.
+
+Only the first edge from a nonoriginal source can be bad for its charge; every edge of the five
+arms of the original root source, and every later edge of every arm, is a good-parent edge and gains
+at least $80$. Consider a nonoriginal source occurrence at a split vertex $w$, with selected supports
+$a$ in cluster $S_i$ and $b$ in cluster $S_j$, $i\ne j$. By construction the first edge of each
+charge goes from $w$ to $a$ or to $b$ (A7). By (A2) the edge to $a$ is bad only for charge $i$ and
+the edge to $b$ only for charge $j$. For each of the three charges outside $\{i,j\}$ both
+possibilities are good, so that first edge gains at least $80$. Each of the two remaining first
+edges gains at least $-560$. Hence the five first edges at one nonoriginal source gain at least
+$3\cdot80-2\cdot560=-880$ in total.
+
+Sum potential increments along all abstract arms, with their multiplicities. At each source the sum
+of the five starting potentials is zero; at each terminal the sum of the five ending potentials is
+zero. Thus the total increment equals zero. There are exactly $f-1$ nonoriginal sources, each with
+five first edges, and every other edge occurrence gains at least $80$. Consequently
 \[
- 0\ge85e_{\rm arm}-(85+715)5(f-1),
+  0\ \ge\ 80\bigl(e_{\mathrm{arm}}-5(f-1)\bigr)-880(f-1)
+   \;=\;80\,e_{\mathrm{arm}}-1280(f-1),
 \]
-which gives \eqref{nw:armcount}. An unflagged original source has outgoing good edges, so $e_{\rm arm}>0$ and $f\ge2$.
+which gives \eqref{nw:armcount}.
+
+An unflagged original source has outgoing good edges, so $e_{\rm arm}>0$ and $f\ge2$.
 
 Projection of the retained abstract component to physical edges is connected, contains the root and the $f$ distinct flags, and can only reduce the edge count. Every projected vertex is at or before the root time. A vertex of minimum time in the abstract graph must be a terminal: a source or arm interior has an outgoing edge to an earlier time. A simple undirected path in this connected graph from the root to a minimum-time terminal uses at most $e_{\rm arm}$ edge occurrences. Each changes time by exactly one, so its time span is at most $e_{\rm arm}$. Every vertex lies between those two times. No unary edge or identification changes the clock, because there are no unary links and terminal names are actual space--time coordinates.
 \end{proof}
@@ -262,74 +323,212 @@ The separation of abstract arms from physical edges is load-bearing. Potential t
 The frontier is a partition of the remaining terminal names into overlap components, rather than a partition of the original support vertices into independent branches. After exposing a vertex, all terminal names previously reachable are still reachable through one of its supports. If the component splits, its two terminal-name unions are disjoint. Each old arm endpoint therefore has one definite daughter, even if several abstract arms pass through the same physical intermediate vertex. Adding a new source supplies only the missing daughter for each charge; it does not duplicate an already counted flag.
 
 At the end a source-to-terminal arm graph may have several connected components. Discarding those away from the original root is legitimate for two reasons. First, every retained arm connects one retained source to one retained terminal, so each charge's bijection restricts to the retained component. Second, the potential sum is balanced at each individual source and terminal, so it telescopes within that component without using discarded arms. This is why the proof can obtain a connected physical witness and an exact count of distinct terminal flags at the same time. Neither connectedness nor distinctness is inferred from the support graph being a tree.
-\subsection{Counting connected witnesses}
+\subsection{Counting flag positions}
 
-Fix an ordering of the at most $\Delta$ neighbours of every vertex of the ordinary graph. A connected $n$-edge set containing a specified root can be doubled to an Eulerian multigraph. Choose a deterministic Euler walk starting at that root. Its $2n$ neighbour indices encode the edge set, so there are at most $\Delta^{2n}$ possible sets. The walk may revisit vertices and edges; that is why doubling suffices even when the physical witness has cycles.
+\theoremstyle{plain}
+\newtheorem{letteredlemmainner}{Lemma}
+\newenvironment{letteredlemma}[1]
+ {\renewcommand{\theletteredlemmainner}{#1}\def\theHletteredlemmainner{#1}%
+  \addtocounter{letteredlemmainner}{-1}\begin{letteredlemmainner}}
+ {\end{letteredlemmainner}}
+\theoremstyle{remark}
+We bound the probability of a bad event by a union over the ordered positions of the distinct
+flags that it forces, weighted against the polynomial volume growth of the space--time graph.
+Witness shapes and paths are never counted: two witnesses with the same flags give the same event.
+Hence neither the degree of the graph nor the number of possible witnesses enters the estimates.
+For a fixed set of $f$ distinct vertices, the probability that all are flags is exactly
+$\eps^f$. The remaining support conditions are discarded. Thus adaptive selection of a
+support graph never creates a conditional independence claim: we take a countable union over
+deterministic finite sequences of flag positions.
 
-A connected $n$-edge set has at most $n+1$ vertices. At most $2^{n+1}$ subsets can be designated as terminal flags. We may count every subset, including impossible support witnesses, since this is an upper bound. Combining the counts gives
+Let $\mathcal{G}$ be the undirected graph on $\Z^2\times\Z^4\times\Z$ whose
+edges are the ordinary edges \eqref{nw:edge}, and let $d$ be its graph distance. For $0<y<1$ put
+\[
+  Z(y)=\sum_{x}y^{d(x_0,x)},
+\]
+which does not depend on $x_0$ by translation invariance. Let
+\[
+\begin{aligned}
+ A_7(y)&=1+120y+1191y^2+2416y^3+1191y^4+120y^5+y^6,\\
+ A_5(y)&=1+26y+66y^2+26y^3+y^4.
+\end{aligned}
+\]
+\[
+  \widehat Z_6(y)=\frac{4\cdot175^4\,A_7(y)}{(1-y)^8},\qquad
+  \widehat Z_4(y)=\frac{4\cdot175^2\,A_5(y)}{(1-y)^6}.
+\]
+
+\begin{letteredlemma}{2.3A}[Volume growth]\label[lemma]{nw:volume}
+Let $m\in\{1,2\}$, $k\ge1$, let $J\subseteq\{-1,0,1\}^m$ and let $S'\subseteq\{0,\dots,175\}^k$ be
+finite and nonempty. Consider the undirected graph on $\Z^m\times\Z^k\times\Z$
+with an edge between $(u,P,t)$ and $(u+j,P+a,t-1)$ for every $j\in J$ and $a\in S'$. For every vertex
+$x_0$ and every integer $r\ge0$, the number of vertices at graph distance exactly $r$ from $x_0$ is
+at most $(r+1)(2r+1)^m(175r+1)^k$.
+\begin{enumerate}
+\item[(a)] For $\mathcal{G}$ ($m=2$, $k=4$, $J=\Lambda$, $S'=S$): this number is at most
+  $4\cdot175^4(r+1)^7$, and $Z(y)\le\widehat Z_6(y)$ for $0<y<1$.
+\item[(b)] For the ordinary graphs of \cref{sec:lower} ($k=2$, $S'=S$ of \eqref{ld:setup}, and $m=2$ with
+  any $J\subseteq\{-1,0,1\}^2$, or $m=1$ with any $J\subseteq\{-1,0,1\}$; the checker uses
+  $J=\{-1,0,1\}^2$ and the generator $J=\{0,1\}$): this number is at most $4\cdot175^2(r+1)^5$, and
+  the corresponding generating function is at most $\widehat Z_4(y)$ for $0<y<1$.
+\end{enumerate}
+\end{letteredlemma}
+
+\begin{proof}
+A vertex at distance $r$ is the endpoint of a walk of exactly $r$ edges from $x_0$. Suppose $j$ of
+its edges are traversed backward, changing $(u,P,t)$ by $(d,a,-1)$ with $d\in J$, $a\in S'$, and
+$r-j$ forward, changing it by $(-d,-a,+1)$. The time coordinate of the endpoint is $t_0+r-2j$,
+which takes at most $r+1$ values. Each logical coordinate changes by at most one per edge, so takes
+at most $2r+1$ values. For a fixed value of $j$, each transverse coordinate of the endpoint lies in
+the interval $[P_{0,i}-175(r-j),\,P_{0,i}+175j]$, because $S'\subseteq[0,175]^k$; this interval
+contains at most $175r+1$ integers. Multiplying over the $r+1$ values of $j$ (which fix the time),
+the $m$ logical and the $k$ transverse coordinates gives the first bound. For (a) use
+$(2r+1)^2\le4(r+1)^2$ and $(175r+1)^4\le175^4(r+1)^4$. For (b) use $2r+1\le(2r+1)^2\le4(r+1)^2$
+and $(175r+1)^2\le175^2(r+1)^2$.
+
+For the generating functions, $Z(y)=\sum_{r\ge0}y^r\,\#\{x:d(x_0,x)=r\}$, and it remains to show
+$\sum_{r\ge0}(r+1)^ny^r=A_n(y)/(1-y)^{n+1}$ for $n=7,5$. Multiply the left side by $(1-y)^{n+1}=\sum_i(-1)^i\binom{n+1}{i}y^i$. The coefficient of $y^r$ in the product is $\sum_{i=0}^{n+1}(-1)^i\binom{n+1}{i}(r+1-i)^n$, where terms with $r<i$ are omitted. For $r\ge n$ every omitted term vanishes (for $r=n$ the only one has $i=n+1$ and equals $0^n=0$), so the coefficient is an $(n+1)$-st finite difference of the polynomial $s\mapsto s^n$ of degree $n$, hence zero. For $r<n$ the coefficients are those of $A_7$ and $A_5$ displayed above, as one checks
+directly. Since all terms are nonnegative, the bounds on spheres give the bounds on $Z$.
+\end{proof}
+
+\begin{letteredlemma}{2.3B}[Counting flag positions]\label[lemma]{nw:flagcount}
+Let $G$ be a graph on a countable vertex set with graph distance $d$, let $0<y<1$, and suppose
+$Z_G(y):=\sup_{x_0}\sum_x y^{d(x_0,x)}<\infty$. Let the vertices carry independent Bernoulli$(e)$
+flags. Let $x_0$ be a vertex, $\Phi$ a set of positive integers and $L:\Phi\to[0,\infty)$. Let $E$ be
+an event on which there exist $f\in\Phi$ and distinct flagged vertices $T_1,\dots,T_f$ with
+$\sum_{j=1}^{f}d(T_{j-1},T_j)\le L(f)$, where $T_0=x_0$. Then
 \begin{equation}\label{nw:encoding}
- \#\{\text{rooted edge set, terminal subset}\}
- \le2(2\Delta^2)^n=2B^n.
+  \mathbb{P}(E)\le\sum_{f\in\Phi}e^f\,y^{-L(f)}\,Z_G(y)^f .
 \end{equation}
-For a fixed subset of $f$ distinct vertices, the probability that all are flags is exactly $\eps^f$. The remaining support conditions are discarded. Thus adaptive selection of a support graph never creates a conditional independence claim: we take a countable union over deterministic finite witnesses.
+\end{letteredlemma}
+
+\begin{proof}
+$E$ is contained in the countable union, over $f\in\Phi$ and over sequences $(x_1,\dots,x_f)$ of
+distinct vertices with $\sum_jd(x_{j-1},x_j)\le L(f)$ (where $x_0$ is the given vertex), of the
+events that $x_1,\dots,x_f$ are all flagged. Each such event has probability $e^f$, since the
+vertices are distinct and the flags independent. For fixed $f$, since
+$\mathbf 1[s\le L]\le y^{s-L}$ for $0<y<1$, the number of admissible sequences is at most
+\[
+  \sum_{x_1,\dots,x_f}y^{\sum_{j=1}^fd(x_{j-1},x_j)-L(f)}
+  \le y^{-L(f)}Z_G(y)^f,
+\]
+by summing first over $x_f$, then over $x_{f-1}$, and so on down to $x_1$, each sum being at most
+$Z_G(y)$.
+\end{proof}
+
+\begin{letteredlemma}{2.3C}[Walk ordering]\label[lemma]{nw:walk}
+Let $w$ be a walk of length $\ell$ starting at $x_0$ in a graph with distance $d$, and let
+$T_1,\dots,T_f$ be distinct vertices visited by $w$, listed in the order of their first visits.
+Then $\sum_{j=1}^fd(T_{j-1},T_j)\le\ell$, where $T_0=x_0$. If $H$ is a finite connected subgraph with
+at most $k$ edges and $x_0\in H$, there is a closed walk from $x_0$ of length at most $2k$ that
+visits every vertex of $H$.
+\end{letteredlemma}
+
+\begin{proof}
+Let $0\le\tau_1<\dots<\tau_f\le\ell$ be the first-visit times, and $\tau_0=0$. The piece of $w$
+between times $\tau_{j-1}$ and $\tau_j$ is a walk from $T_{j-1}$ to $T_j$ of length
+$\tau_j-\tau_{j-1}\ge d(T_{j-1},T_j)$. Summing gives at most $\tau_f\le\ell$. For the second claim,
+$H$ has a spanning tree with $|V(H)|-1\le k$ edges, and the depth-first tour of that tree from $x_0$
+traverses each tree edge twice.
+\end{proof}
 
 \begin{lemma}[Sparse roots]\label{nw:sparse}
-At every vertex, uniformly in $R$ and $0<\eps\le\eps_*$,
+Let the marked set $\nwM$ be built from independent flags of density $e$. For every vertex $v$ and every
+$0<y<1$ with $\lambda:=e\,\widehat Z_6(y)\,y^{-32}<1$,
 \begin{equation}\label{nw:rootbound}
- \Prob(v\in\nwM)\le
- \eps\left(1+\frac{2\lambda}{1-\lambda}\right)<2\eps,
- \qquad\lambda=B\eps^{1/50}.
+  \mathbb{P}(v\in \nwM)\le e+e\,\widehat Z_6(y)\frac{\lambda}{1-\lambda}
+  \le e+\frac{\lambda^2}{1-\lambda}.
 \end{equation}
-The same strict bound holds with a source density $e\le2\eps_*$ in place of $\eps$.
+For every $0<e\le2\eps_*$, uniformly in $R$, this gives $\mathbb{P}(v\in \nwM)\le p_*:=10^{-4}$.
+In particular $\mathbb{P}(v\in \nwM)\le p_*$ at every $0<\eps\le\eps_*$.
 \end{lemma}
+
 \begin{proof}
-A flagged root costs $\eps$. Otherwise its witness has $n\ge1$ physical edges and $f\ge1+n/50$ distinct flags, by \cref{nw:arms}. For a fixed terminal subset this costs at most $\eps^{1+n/50}$. Therefore \eqref{nw:encoding} gives
+A flagged root costs $e$. If $v$ is marked and unflagged, Lemma~\ref{nw:arms} gives a connected
+physical witness $H$ containing $v$ and $f\ge2$ distinct flags, with at most $16(f-1)$ edges. By
+Lemma~\ref{nw:walk} there is a closed walk from $v$ of length at most $32(f-1)$ visiting all of
+them; listing the flags in the order of first visits gives distinct flagged $T_1,\dots,T_f$ with
+$\sum_jd(T_{j-1},T_j)\le32(f-1)$. Lemma~\ref{nw:flagcount} with $\Phi=\{2,3,\dots\}$,
+$L(f)=32(f-1)$ and Lemma~\ref{nw:volume}(a) bound this case by
 \[
- \Prob(v\in\nwM)\le\eps+
- \sum_{n\ge1}2B^n\eps^{1+n/50}
- =\eps\left(1+\frac{2\lambda}{1-\lambda}\right).
+  \sum_{f\ge2}e^fy^{-32(f-1)}\widehat Z_6(y)^f=e\,\widehat Z_6(y)\frac{\lambda}{1-\lambda}.
 \]
-Since $\lambda\le B^{-3}\le1/8$, the bracket is less than $2$. For $e\le2B^{-200}$, $Be^{1/50}\le2^{1/50}B^{-3}<1/8$, using $B>2^{45}$. The identical argument applies.
+Finally $e\,\widehat Z_6(y)=\lambda y^{32}\le\lambda$. For the numerical claim take $y=785/1000$.
+Then $\widehat Z_6(785/1000)\le2.043\cdot10^{18}$ and $(1000/785)^{32}\le2313$, so for
+$e\le2\eps_*=2\cdot10^{-24}$ we get $\lambda\le95/10^4$ and
+$e+\lambda^2/(1-\lambda)\le2\cdot10^{-24}+(95/10^4)^2/(1-95/10^4)<10^{-4}$. The bound is increasing
+in $e$, so it holds throughout $0<e\le2\eps_*$.
 \end{proof}
+
+\begin{remark*}
+For $0<e\le10^{-40}$ the first bound in \eqref{nw:rootbound} with $y=5/8$ gives
+$\widehat Z_6(5/8)\,\lambda/(1-\lambda)<1$, hence the sharper form $\mathbb{P}(v\in \nwM)<2e$ of
+version~2.2.0, in particular on its interval $0<e\le(2(18q)^2)^{-200}$. For
+$e\le2\eps_*$ the first bound at $y=785/1000$ gives $\mathbb{P}(v\in \nwM)\le4\cdot10^{-8}$. Only
+$\mathbb{P}(v\in \nwM)\le p_*$ is used below.
+\end{remark*}
 
 The estimate does not mention the alphabet size, the replacement values, or a property of $R$. It controls one binary field for all starts and all tile sets at once. A sparse one-point field alone does not exclude an infinite path; the following packing argument supplies that additional fact and its finite-prefix tail.
 
 \subsection{Packing contours along a marked path}
 
 \begin{lemma}[Finite marked-path tail]\label{nw:paths}
-For a specified root and $N\ge1$, the probability of an ordinary backward path of $N$ edges all of whose vertices belong to $\nwM$ is at most
+Let $\nwM$ be built from independent flags of density $e$. For a specified root, $N\ge1$ and every
+$0<y<1$ with $\kappa_y(e):=e\,\widehat Z_6(y)\,y^{-48}<1$, the probability of an ordinary backward
+path of $N$ edges all of whose vertices belong to $\nwM$ is at most
 \begin{equation}\label{nw:pathtail}
- \sum_{f\ge\lceil N/50\rceil}(4B^{101}\eps)^f.
+  \sum_{f\ge\lceil N/16\rceil}\kappa_y(e)^f\ \le\ \frac{\kappa_y(e)^{N/16}}{1-\kappa_y(e)} .
 \end{equation}
-Almost surely there is no infinite such path, simultaneously at every root. The finite bound holds for any independent source density $e$ after replacing $\eps$ by $e$.
+With $y=849/1000$, $\kappa_y(e)\le\kappa=1/8$ for $0<e\le\eps_*$ and
+$\kappa_y(e)\le1/4$ for $0<e\le2\eps_*$. Almost surely there is no infinite such path,
+simultaneously at every root.
 \end{lemma}
+
 \begin{proof}
-Fix a finite marked path whenever one exists. At its root choose the full witness of \cref{nw:arms}, including its selected flags. If the earliest terminal has time $s$, restart at the path vertex at time $s-1$, provided the path has not ended. Repeat. Successive witnesses lie in disjoint closed time slabs, so all selected terminal flags are distinct across witnesses. This conclusion uses the span assertion, not just an edge count.
+Fix a finite marked path whenever one exists, with vertices $p_1=v$ at the root and so on. At $p_1$
+choose the full witness $W_1$ of Lemma~\ref{nw:arms}, including its $f_1$ selected flags. If its
+earliest terminal has time $s_1$, restart at the path vertex $p_2$ at time $s_1-1$, provided the path
+has not ended. Repeat, obtaining witnesses $W_1,\dots,W_m$ with $f_1,\dots,f_m$ flags. Every vertex of
+$W_i$ lies between its earliest terminal time $s_i$ and the time of $p_i$, and $p_{i+1}$ is earlier
+than $s_i$, so the witnesses lie in disjoint closed time slabs and all $f=\sum_if_i$ selected flags
+are distinct. This uses the span assertion of Lemma~\ref{nw:arms}, not just an edge count.
 
-For one witness with $f_i$ flags, its span is at most $50(f_i-1)$. It covers at most that span plus one path steps, including the restart edge, hence at most $50f_i$. For the final witness retain the \emph{whole contour}, even if its earliest terminal is earlier than the path endpoint. Truncate only the connecting path piece. This preserves distinct terminals and gives the same upper bound on covered path length. In particular the total number $f=\sum_i f_i$ satisfies $N\le50f$.
+The span of $W_i$ is at most $16(f_i-1)$. The path piece from $p_i$ to $p_{i+1}$, including the
+restart edge, has at most $16(f_i-1)+1\le16f_i$ edges. For the final witness retain the whole
+contour, even if its earliest terminal is earlier than the path endpoint, and truncate only the
+connecting path piece. Hence $N\le16f$, that is, $f\ge\lceil N/16\rceil$. A flagged path vertex is
+allowed: its singleton witness has no edge and covers one restart step.
 
-The physical union of these witnesses and the used path pieces is connected and contains the original root and all $f$ selected flags. Each contour has at most $50(f_i-1)$ physical edges, and its connecting path piece at most $50f_i$ edges. Thus the union has at most $100f$ edges, and the convenient larger bound $101f$ is valid. A flagged path root is allowed: its singleton contour has zero edges and covers one restart step. This includes the case in which every path vertex is flagged.
+Now form a walk from $v$: for $i=1,\dots,m$, perform the closed tour of a spanning tree of $W_i$
+from $p_i$, of length at most $32(f_i-1)$ by Lemma~\ref{nw:walk}, and then follow the path piece
+from $p_i$ to $p_{i+1}$ (or to the path end). Its length is at most
+$\sum_i\bigl(48(f_i-1)+1\bigr)\le48f$, and it visits all $f$ distinct flags. Lemma~\ref{nw:walk},
+Lemma~\ref{nw:flagcount} with $\Phi=\{f:f\ge\lceil N/16\rceil\}$, $L(f)=48f$, and
+Lemma~\ref{nw:volume}(a) give the bound
+$\sum_{f\ge\lceil N/16\rceil}e^fy^{-48f}\widehat Z_6(y)^f$, which is \eqref{nw:pathtail}. No path and
+no witness shape is counted; only the positions of the distinct flags are.
 
-For fixed $f$, sum the encoding bound over physical edge counts $0\le n\le101f$. The singleton case is included by allowing $n=0$ and overcounting its possible subsets. As $B\ge2$,
-\[
- \sum_{n=0}^{101f}2B^n\le4B^{101f}
- \le(4B^{101})^f.
-\]
-Not every encoded subset has $f$ elements; count only those that do, bounded by the same expression. Their joint flag probability is $\eps^f$. A union over $f\ge\lceil N/50\rceil$ gives \eqref{nw:pathtail}. No path is counted independently of its contour: the connected witness already encodes the necessary union.
-
-At the stipulated rate the base obeys
-\[
- 4B^{101}\eps\le4B^{-99}=\kappa<1.
-\]
-The tail tends to zero as $N\to\infty$. An infinite marked path gives a finite marked path of every length from its root; these events decrease. Their probabilities tending to zero suffices. Countably many roots give the simultaneous almost-sure statement. For source density $e$ the same proof uses $e^f$ for a fixed terminal subset.
+The numerical claims follow from $\widehat Z_6(849/1000)\le4.33\cdot10^{19}$ and
+$(1000/849)^{48}\le2586$: then $\kappa_y(10^{-24})\le4.33\cdot10^{19}\cdot2586\cdot10^{-24}<1/8$ and
+$\kappa_y(2\cdot10^{-24})<1/4$; $\kappa_y(e)$ is linear in $e$. The tail tends to zero as
+$N\to\infty$. An infinite marked path gives a finite marked path of every length from its root;
+these events decrease, and their probabilities tend to zero. Countably many roots give the
+simultaneous almost-sure statement.
 \end{proof}
 
-\paragraph{A ledger for the path witness.}
-It helps to separate three counts. The number $f_i$ is the number of distinct flags selected by one contour, $e_i$ is its abstract arm length, and $n_i$ is the number of physical edges after projection. Their relations are $n_i\le e_i\le50(f_i-1)$ and span at most $e_i$. The connecting path portion is counted separately. It may cross edges of a contour already present in the union; charging it again only increases the upper bound. Successive contours can have geometric projections that meet, but their selected physical time slabs are disjoint, so their terminal flags remain distinct. Spatial overlap never changes their independent Bernoulli cost.
+\emph{A ledger for the path witness.} It helps to separate three counts. The number $f_i$ is the
+number of distinct flags selected by one contour, $e_i$ its abstract arm length and $n_i$ its number
+of physical edges after projection. Their relations are $n_i\le e_i\le16(f_i-1)$ and span at most
+$e_i$. The connecting path pieces are walked separately; they may cross edges of a contour already
+visited, which only lengthens the walk and so only weakens the bound. Successive contours can have
+geometric projections that meet, but their selected physical time slabs are disjoint, so their
+terminal flags remain distinct. Spatial overlap never changes their independent Bernoulli cost.
+The last contour is kept whole because cut vertices at the path endpoint need not be flags. The
+walk budget is $48$ per flag: $32$ for the closed tour of a contour and $16$ for its connector. At
+the maximum permitted source density for the unperturbed rule the base is at most $1/8$; for
+robustness the source density doubles and the base is at most $1/4$. None of these margins depends
+on how late the first forbidden square appears.
 
-There is also a reason for keeping the last contour whole. If one cut that contour at the prescribed path endpoint, the newly exposed cut vertices would not necessarily be flags. They could not be charged with independent source probabilities. The complete final contour retains its genuine terminals, even when its bottom time is below the path endpoint. The only truncated object is the path connector, which can only shorten the edge count. Thus the lower bound $f\ge\lceil N/50\rceil$ and upper bound of $101f$ witness edges concern the same legitimate terminal subset.
-
-The estimates are deliberately coarse. The exact arm coefficient is $4000/85=800/17<48$, whereas the path packing uses $50$ for span coverage and $101$ for its combined edge budget. The noise exponent $200$ leaves room beyond the resulting $101$ in the witness count. At the maximum permitted source density for the unperturbed rule the final geometric base is $4B^{-99}$. For robustness its source density merely doubles and the base becomes $8B^{-99}$, still below one. None of these margins depends on how late the first forbidden square appears.
 \subsection{Successful and unaffected providers}
 
 We turn from probability to deterministic geometry. Fix any flag realization, any replacement values and one arbitrary trajectory started at time zero. All coherence statements refer to that one trajectory; starts will be compared only after the deterministic statements are established.
@@ -467,12 +666,11 @@ Fix the entire innovation realization. If the output map at $(v,t)$ is nonconsta
 
 At every discrepant vertex of age at least $T_R$, at least one of its two letters is live: two different letters cannot both equal $\bot$. By \cref{nw:mortality} that vertex belongs to the single field $\nwM$. Consequently, for $t>T_R$, existence of \emph{any} discrepant pair forces an ordinary marked backward path of $N=t-T_R$ edges from $(v,t)$ down to age $T_R$. This is a deterministic inclusion of events. Although the pair was chosen after seeing the innovations, its existence is covered by the same flag-only event; no sum over pairs or initial configurations is taken.
 
-By \cref{nw:paths} and \eqref{nw:constants},
-\begin{align*}
- a_t&\le\sum_{f\ge\lceil(t-T_R)/50\rceil}\kappa^f\\
- &\le\frac{1}{1-\kappa}
-       \exp\left\{-\frac{\log(1/\kappa)}{50}(t-T_R)\right\}.
-\end{align*}
+By Lemma~\ref{nw:paths} and \eqref{nw:constants},
+\[
+  a_t\le\sum_{f\ge\lceil(t-T_R)/16\rceil}\kappa^f
+  \le\frac{1}{1-\kappa}\exp\Bigl(-\frac{\log(1/\kappa)}{16}(t-T_R)\Bigr).
+\]
 For $t\le T_R$ the same bound is at least one, so $a_t\le1$ completes the estimate for all ages. The auxiliary negative-time flags caused no change to the positive-time process: the deterministic inclusion holds for every extension of its positive-time flags, so averaging over an independent extension is legitimate. Replacement values never enter the tail calculation.
 \end{proof}
 
@@ -532,23 +730,30 @@ An unflagged live $Y$ output requires at least $h=4K$ live checked providers. Th
 \begin{lemma}[Persistent separation]\label{nw:memory}
 For every $v=(u,P)$ and $t\ge0$,
 \begin{equation}\label{nw:memorybounds}
- \Prob_{\xi_\theta}\{X_t(v)\ne\theta(u)\}<2\eps,
- \qquad
- \Prob_{\bot}\{X_t(v)\ne\bot\}<2\eps.
+  \mathbb{P}_{\xi_\theta}\{X_t(v)\ne\theta(u)\}\le p_*,\qquad
+  \mathbb{P}_{\bot}\{X_t(v)\ne\bot\}\le p_*,\qquad p_*=10^{-4}.
 \end{equation}
-At positive times the two laws have a fixed one-site cylinder gap at least $1-4\eps>0$, uniformly in time. There are two distinct stationary laws.
+At positive times the two laws have a fixed one-site cylinder gap at least $1-2p_*>1/2$, uniformly
+in time. There are two distinct stationary laws.
 \end{lemma}
+
 \begin{proof}
-Apply \cref{nw:sparse} to the two inclusions of \cref{nw:memorycover}. The clopen cylinder $E=\{x:x(v)=\theta(u)\}$ has probability at least $1-2\eps$ from the clone and at most $2\eps$ from blank. Its gap persists under time averages. The Feller compactness argument of \cref{nw:ergodic} produces subsequential stationary limits for each average. The event is clopen, so its probability converges under these weak limits. They are distinct by the same gap. At time zero separation is exact. Since $\eps_*<1/8$, the displayed positive gap is in fact greater than $1/2$ throughout our interval.
+Apply Lemma~\ref{nw:sparse} to the two inclusions of Lemma~\ref{nw:memorycover}. The clopen cylinder
+$E=\{x:x(v)=\theta(u)\}$ has probability at least $1-p_*$ from the clone and at most $p_*$ from
+blank. Its gap persists under time averages. The Feller compactness argument of
+Lemma~\ref{nw:ergodic} produces subsequential stationary limits for each average. The event is
+clopen, so its probability converges under these weak limits. They are distinct by the same gap. At
+time zero separation is exact. Since $p_*=10^{-4}$, the displayed positive gap is in fact greater
+than $1/2$ throughout our interval.
 \end{proof}
 
-This already proves nonergodicity without a periodic tiling or a spatially invariant reference. It also proves that $a_t$ cannot tend to zero on tiling inputs: the all-input discrepancy probability dominates the total-variation distance of this fixed pair of starts, which is at least $1-4\eps$.
+This already proves nonergodicity without a periodic tiling or a spatially invariant reference. It also proves that $a_t$ cannot tend to zero on tiling inputs: the all-input discrepancy probability dominates the total-variation distance of this fixed pair of starts, which is at least $1-2p_*$.
 
 \subsection{Fully translation-invariant stationary laws}
 
 The stationary laws just selected need not be spatially invariant, because a chosen tiling need not be. To obtain the stronger statement of \cref{nw:classification}, first average the Dirac law at $\theta$ over larger and larger planar squares. A weak subsequential limit $\nu$ exists on the compact tiling space. For each fixed planar translation $z$, the fraction of the averaging square changed by $z$ tends to zero; therefore $\nu$ is shift invariant and remains supported on tilings.
 
-Clone a tiling sampled from $\nu$ in all transverse coordinates. Its row law is invariant under all translations of $\Z^6$. The kernel commutes with those translations. All its time marginals and their Ces\`aro limits are therefore spatially invariant. Integrating the first bound of \eqref{nw:memorybounds} over $\nu$ shows that the live probability at every site is at least $1-2\eps$. From the all-blank start it is at most $2\eps$. The corresponding invariant limits are distinguished by the fixed event $\{x:x(v)\ne\bot\}$. This proves the two fully translation-invariant stationary laws, even for an aperiodic tile set.
+Clone a tiling sampled from $\nu$ in all transverse coordinates. Its row law is invariant under all translations of $\Z^6$. The kernel commutes with those translations. All its time marginals and their Ces\`aro limits are therefore spatially invariant. Integrating the first bound of \eqref{nw:memorybounds} over $\nu$ shows that the live probability at every site is at least $1-p_*$. From the all-blank start it is at most $p_*$. The corresponding invariant limits are distinguished by the fixed event $\{x:x(v)\ne\bot\}$. This proves the two fully translation-invariant stationary laws, even for an aperiodic tile set.
 
 These laws are not asserted to be extreme in the \emph{full} stationary simplex merely because they are translation invariant. Extremality in that full simplex is a separate issue treated for the canonical phases in \cref{nw:continuum}. The present argument needs only stationarity, invariance and the live-density separation.
 
@@ -578,7 +783,7 @@ The failure events decrease and their probabilities tend to zero. Time stationar
 If $R$ does not tile, \cref{nw:forbidden} supplies a finite $n_R$. The deterministic mortality lemma and marked-path estimate give \eqref{nw:coalescence}, and \cref{nw:ergodic} gives uniqueness and attraction from every initial law. If $R$ tiles, \cref{nw:memorycover,nw:memory} and planar averaging give two distinct fully translation-invariant stationary laws. The empty input is the one-point case. These exhaust all finite inputs.
 \end{proof}
 
-The dependencies can be read directly from the proof. The flag field, graph degree, potentials, arm count and path-tail base are fixed by the provider geometry. The raw alphabet has no role in their numerical constants. The non-tiling certificate enters only through $T_R=762n_R+1$. For the memory side a tiling supplies the reference, but no period or invariant tiling is required until spatial averaging is requested. The replacement values enter only through equality of the common constant maps at flags; their probabilities never enter the contour estimate.
+The dependencies can be read directly from the proof. The flag field, graph volume growth, potentials, arm count and path-tail base are fixed by the provider geometry. The raw alphabet has no role in their numerical constants. The non-tiling certificate enters only through $T_R=762n_R+1$. For the memory side a tiling supplies the reference, but no period or invariant tiling is required until spatial averaging is requested. The replacement values enter only through equality of the common constant maps at flags; their probabilities never enter the contour estimate.
 
 This is also why the new route is shorter than the old inspector route. Thick boxes give the strict pairing surplus \eqref{nw:surplus}, which transports equality through any finite transverse distance one unit at a time. A finite forbidden square then kills every unmarked live output deterministically after a delay. The thin-provider rule in \cref{sec:setting} has no comparable unit-shift surplus, so its proof transports a fixed finite collection of inspectors and assumes token refutability. Neither argument asserts that every non-tiling Wang set has bounded token width.
 

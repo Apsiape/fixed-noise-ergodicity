@@ -2,8 +2,8 @@
   "title": "Forgetting under noise is undecidable",
   "upload_type": "publication",
   "publication_type": "preprint",
-  "version": "2.2.0",
-  "publication_date": "2026-11-13",
+  "version": "3.0.0",
+  "publication_date": "2026-11-15",
   "creators": [
     {
       "name": "Douglas, Seth",
@@ -14,7 +14,7 @@
       "orcid": "0009-0005-6534-1118"
     }
   ],
-  "description": "A natural noisy Wang rule on Z^4 is ergodic exactly when its finite raw tile set does not tile the plane. A cardinal checker and a fixed 512-of-768 quorum use the tiles themselves and one blank. A transverse-quorum lift of Kari's nilpotency reduction gives the same equivalence on Z^3 for north/east deterministic tile sets. At every 0 < epsilon <= 382205952^(-33720), non-tiling inputs in either family have all-input nonconstancy probability on a finite window F at most |F| C_R exp(-t/4), with universal exponent and an effectively findable input-dependent prefactor uniform in epsilon. Their normalized space-time interactions on Z^5 and Z^4, respectively, have exactly one Gibbs measure, with no invariance assumed, and exponential weak spatial mixing in arbitrary finite volumes. Tiling gives two invariant laws and at least two fully translation-invariant Gibbs measures; a one-tile example shows why the rate requires non-tiling. Ergodicity, Gibbs uniqueness and exponential weak spatial mixing are undecidable at one fixed rational rate in both families. A saturation theorem explains the earlier budget-only dimension obstruction. The retained Z^6 natural rule also has robustness. Its Theorems D and A and the qualitative Z^4 classification (Theorem E) are verified in Lean. The Z^3 classification, the lower-dimensional rates and the new Gibbs corollary are not formalized. The inspector theory and Z^8 machine-family Lean core are retained.",
+  "description": "Can ongoing positive noise make the long-term behaviour of a finite local rule decidable? A natural noisy Wang rule is ergodic exactly when its raw tile set does not tile the plane, at every replacement rate up to 10^-24 on Z^6 and 10^-30 on Z^4. A related construction on Z^3 gives the same equivalence for north/east deterministic tile sets. On non-tiling inputs the lower-dimensional all-input nonconstancy probability on a finite window F is at most |F| C_R exp(-t/24000), with an effectively findable input-dependent prefactor uniform in the rate; the exponent 1/4 is retained for rates up to 10^-4535. On those inputs their normalized space-time interactions have uniqueness among all Gibbs measures and exponential weak spatial mixing. Ergodicity, Gibbs uniqueness and exponential weak spatial mixing are therefore undecidable at one fixed rational rate. A different family on Z^6, of fixed range 11, makes uniqueness among translation-invariant stationary laws Pi^0_2-complete at the single rational rate 10^-22, under a stated published-source condition C_T; the corresponding translation-invariant Gibbs problem is Pi^0_2-complete on Z^7. The enlarged intervals are paper proofs with exact arithmetic. Lean covers only the version 2.2.0 intervals of the retained natural-rule cores; the machine-family core is unchanged. Finite forbidden patterns give forgetting bounds, while infinite tilings protect distinct stationary laws.",
   "keywords": [
     "probabilistic cellular automata",
     "ergodicity",
@@ -34,7 +34,7 @@
   "access_right": "open",
   "license": "cc-by-4.0",
   "language": "eng",
-  "notes": "Preprint. It has not been peer reviewed. Version 2.2.0 updates version 2.1.0 (10.5281/zenodo.24178276). New: Corollary 12.14, exactly one Gibbs measure and exponential weak spatial mixing for the non-tiling inputs of the Z^4 natural rule and of the Z^3 family (space-time interactions on Z^5 and Z^4), at least two translation-invariant Gibbs measures for tiling inputs, and undecidability of Gibbs uniqueness at one fixed rate; and a new Lean core (lean-lower/) for Theorem E, the Z^4 classification, with its two undecidability corollaries. All three Lean folders build from a fresh clone with lake exe cache get and lake build. No existing statement or number changes. Text: CC BY 4.0. Scripts and Lean sources: MIT or Apache 2.0.",
+  "notes": "Preprint. It has not been peer reviewed. Version 3.0.0 updates version 2.2.0 (10.5281/zenodo.24207965). New: much larger noise intervals (Theorems D and A on Z^6 at every rate up to 10^-24, Theorems E and F on Z^4 and Z^3 up to 10^-30; Theorem 12.12 with rate exp(-t/24000) on the whole interval and exp(-t/4) up to 10^-4535), certified by an exact-arithmetic program in verification-thresholds/; and Section 14, uniqueness among translation-invariant stationary laws Pi^0_2-complete at the rational rate 10^-22 on Z^6 and the translation-invariant Gibbs problem Pi^0_2-complete on Z^7, under a stated published-source condition C_T. The Lean cores are unchanged and cover only the version 2.2.0 intervals. Every earlier statement number is unchanged. The authors have not independently verified the new mathematical arguments. Text: CC BY 4.0. Scripts and Lean sources: MIT or Apache 2.0.",
   "related_identifiers": [
     {
       "identifier": "https://finite.works/papers/fixed-noise-ergodicity/",

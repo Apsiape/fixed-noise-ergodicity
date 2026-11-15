@@ -1,0 +1,52 @@
+\section{Proof of the totality source}\label{app:ti-source-proof}
+
+\begin{proof}[Proof of \cref{ti:source}]
+Input-erasure and output-erasure trajectories are respectively the trajectories of the nondeterministic automata $\hat F$ and $\tilde F$ attached to a CA $F$ in \cite[Section~2]{Torma15}; simulations and their rigidity are \cite[Definitions~7--8]{Torma15}. Besides the statements named in $C_T$, the construction uses from \cite{Torma15} composition of rigidity (Lemma~11), sparse simulation and its parents and sparsity properties (Lemmas~14--19), the resource hypotheses of Lemma~24, the amplifier of Theorem~30, chain rigidity (Lemma~31), Claims~33--34 in Lemma~32, and the parent and covering statements of Lemma~35 and Corollary~36, which are printed without proof. The parameter and density arguments below supply the needed versions of that construction and of the argument surrounding Theorem~37.
+
+Run $\varphi_e(0),\varphi_e(1),\ldots$ sequentially and report after each completed run. Put
+\[
+ N_e=\{2^t:\text{a report occurs at step }t\}.
+\]
+Membership is decidable in time polynomial in binary input length: reject nonpowers of two and otherwise simulate only $\log_2 n$ steps. The set is infinite exactly on totality. Apply the sparse-amplifier construction with effective levels $n\in N_e$.
+
+Use actual colony length $Q_n$ and work period $U_n$ in the local program; the colony-length minus one in the printed Algorithm~7 is replaced by $Q_n$. A field with inclusive upper bound $M$ has $\lceil\log_2(M+1)\rceil$ bits. Normalize invalid encodings only in that layer's own bookkeeping fields; every simulated-data bit remains legal data. Undefined agent transitions produce Die. Compile these tests and cleaned neighbour reads into each template before self-reference. Reserve the all-zero enum code for blank or no-kind, so an all-blank neighbourhood cannot satisfy a live kind test. In every universal template execute the final age increment only if Live is still true. Birth clears all fields before leaving blank or making a live birth. Every output is a valid own-field word, and every nonblank two-sided symbol is live. These changes preserve honest simulation and demanding paths. A changed output is blank, which is available under input erasure by erasing all inputs; the published hat-trajectory implications therefore apply with the condition stated above.
+
+For $h(n)=\lceil\log_2(n+2)\rceil$ choose
+\[
+ Q_n=2^{H+B h(n)},\qquad U_n=2^{H+(B+6)h(n)}.
+\]
+Symbolic polynomial composition of the guarded programs gives effective $K,k$, independent of the numerical $H,B$, bounding both interpreter requirements by $K(1+H+B)^k(n+2)^k$. Padding is confined to inert read-only parameters. Choose $B\ge\max(k,1)$ and then $H\ge4$ by finite search with $2^H\ge K(1+H+B)^k$. Exponential domination makes the search terminate. Then $Q_n$ bounds the interpreter space and time, $Q_n\ge32$, $4\mid Q_n$, $U_n/Q_n\ge64$ and $U_n\ge6Q_n+\text{required time}$. \cite[Lemma~24]{Torma15} requires that $Q_n$ bound the interpreter space and that $U_n\ge6Q_n$ plus the interpreter time; the conditions $Q_n\ge32$, $4\mid Q_n$ and $U_n\ge64Q_n$ are used in the overlap argument below. No totality test enters these choices. Choose the separate final universal wrapper with the same conventions and sufficiently large powers of two.
+
+Write $B_n,W_n$ for composed simulation widths and periods, and $Q'_n=Q_nM_n$, $U'_n=U_nM_n$, where $M_n=2n+1$ at effective levels and $1$ otherwise. The needed absolute overlap statement is: two $S_n$ macrocells in one output-erasure trajectory with anchor differences at most $2B_n/3$ and $2W_n/3$ in absolute value have the same anchor. Here is the absolute form of the crossing argument. Order the macrocells by time. In the earlier one choose the vertical demanding column at $3Q/4$ or $Q/4$, according as the later one is to its right or left. The later returning sweep runs from $((Q-1)M,QM)$ to $(0,2QM)$ relative to its anchor; its sparse starting coordinate is $(Q-1)M$. The hypotheses $Q\ge32$, $U\ge64Q$ give strict horizontal crossing margins and keep the sweep inside the earlier column's safe time interval, including a delay $2U/3$.
+
+Induct on the composed level. At levels above one, Claim~34 supplies a previous-row white macrocell under each black path vertex. At a polygonal crossing of their lower grids, a black and white anchor have absolute normalized offsets at most $1/2$ on each axis. Indeed compare the two crossing steps' bottom times. If their gap is at most $1/2$, intersecting intervals of length zero or one have an endpoint pair within $1/2$. If the gap exceeds $1/2$, use the earlier step's upper and the later step's lower black endpoints; both gaps are at most one minus that time gap. Absolute induction aligns the lower grids. Crossing black paths are then weakly connected, since a diagonal swap has a vertical cross-edge. For counter $c$, the conserved sparse phases are
+\[
+ t-c\pmod M,\qquad
+ \begin{cases}i-c&\text{Right},\\ i+c&\text{Left},\\ i+c+1&\text{Returning}\end{cases}\pmod M.
+\]
+Each nonblank output shares these phases with every nonblank actual predecessor, by the branches of the sparse rule. At the composed induction step $M$ is $M_{n-1}$, the current sparse factor. Phase conservation forces divisibility by that factor; the absolute universal Corollary~26 then identifies the parent anchors. At the bottom level lower-grid divisibility is automatic. This proves the absolute overlap assertion used in the following packing.
+
+Fix an effective $n\ge1$ and a bottom-column time slab of length $W_{n+1}=W_nU'_n$. Sparse ancestry takes at most $2n$ steps. Its parent offset lies in $[-2n,2n]$, correcting the printed narrower window. Universal live coverage, followed by the sparse connecting lift, assigns each nonblank lower $S_n$ macrocell to an actual higher $S_{n+1}$ parent in the same decoded output-erasure trajectory. Its relative anchor is in
+\[
+ [-3Q'_n,2Q'_n]\times[-3U'_n,0].
+\]
+Bottom coverage uses lower anchors in
+\[
+ [-4B_n,3B_n]\times[\ell W_{n+1}-4W_n,(\ell+1)W_{n+1}-1].
+\]
+The higher parents lie in a box of width $12B_{n+1}$ and height $8W_{n+1}$. Absolute overlap allows at most one parent per half-size bin, so at most $25\cdot17=425<1024$ parents occur. Group lower macrocells by their actual parent. They lie on its grid and, by the constructed paths, are connected to its same source base in that one decoded trajectory. Grid congruence alone would not imply this connection.
+
+In a fixed sparse weak component, phase conservation gives, on a fixed spatial column, at most $3r/M_n+3\le3r/n+3$ cells in $r$ successive source times. The lower-anchor box has at most eight coarse columns and $U'_n+5$ coarse rows, so one parent contributes at most
+\[
+ 8\bigl[3(U'_n+5)/n+3\bigr]\le168U'_n/n
+\]
+lower cells. Here $U'_n\ge n+5$ follows from the chosen periods. Each lower anchor covers at most $5W_n$ bottom times. The nonblank fraction in the original slab is therefore at most
+\[
+ \frac{5\cdot168\cdot1024}{n}<\frac{2^{20}}n.
+\]
+This bound is uniform over trajectories, slabs and columns; it is used in place of the printed Claim~39. On totality the effective $n$ are unbounded. Tile long column intervals by these slabs and discard a bounded remainder. Every two-sided output-erasure trajectory has zero temporal upper nonblank density in each column. For a TI law, bounded convergence therefore gives zero nonblank probability.
+
+Put one strongly rigid universal wrapper around the bottom amplifier. By strong rigidity, any input-erasure wrapper trajectory, on each fixed grid offset, decodes to an output-erasure amplifier trajectory. Its decoded TI law is blank on totality. Unit translation invariance gives zero activity at every anchor offset. Lemma~29 covers each live wrapper cell by a nonblank macrocell at one of finitely many nearby anchors. The finite union has probability zero. The live guard and valid-word convention identify all nonblank symbols with live ones, proving (i).
+
+If $N_e$ is finite, choose a level above its last effective member. All higher links are universal. A completely nonblank row at arbitrarily high level $K$ lifts honestly to the fixed level $m$ with every cell live for $\prod_{j=m}^{K-1}U_j$ steps; a colony dies only at a work-period end if the next simulated row becomes blank. These horizons diverge. Compactness gives an all-live forward level-$m$ trajectory. The finite simulations down to the bottom and through the final wrapper place a nonblank base in every fixed $B\times W$ block. Average over growing space--time boxes whose time windows recede from the initial boundary. A subsequential limit is a fully TI two-sided ordinary trajectory law of activity at least $1/(BW)>0$. This proves (ii).
+\end{proof}

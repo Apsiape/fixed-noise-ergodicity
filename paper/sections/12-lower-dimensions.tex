@@ -1,6 +1,6 @@
 \section{Lower dimensions}\label{sec:lower}
 
-The natural raw-Wang rule can be realized on $\Z^4$, and a transverse-quorum lift of Kari's nilpotency reduction gives fixed-rate undecidability on $\Z^3$. The original classification statements below are supplemented by the exponential all-input estimate of \cref{ld:rate} at the end of this section. \Cref{ld:gibbs} then gives all-Gibbs uniqueness and exponential weak spatial mixing for the normalized space--time interactions on $\Z^5$ and $\Z^4$. The qualitative $\Z^4$ classification now has its own Lean core (\cref{app:lean-lower}); the $\Z^3$ classification, the rates and the Gibbs corollary are not formalized. The robustness theorem and the scope of the $\Z^6$ Lean core remain separate. The change is to pair provider offsets only when neither of the two vertices has a marked parent, and to control all backward paths at once at the other steps.
+The natural raw-Wang rule can be realized on $\Z^4$, and a transverse-quorum lift of Kari's nilpotency reduction gives fixed-rate undecidability on $\Z^3$. The original classification statements below are supplemented by the exponential all-input estimate of \cref{ld:rate} at the end of this section. \Cref{ld:gibbs} then gives all-Gibbs uniqueness and exponential weak spatial mixing for the normalized space--time interactions on $\Z^5$ and $\Z^4$. The qualitative $\Z^4$ classification has its own Lean core (\cref{app:lean-lower}) on the version~2.2.0 interval; the enlarged interval is proved on paper with exact arithmetic; the $\Z^3$ classification, the rates and the Gibbs corollary are not formalized. The robustness theorem and the scope of the $\Z^6$ Lean core remain separate. The change is to pair provider offsets only when neither of the two vertices has a marked parent, and to control all backward paths at once at the other steps.
 
 \subsection{Why the budget-only estimate stops at six}
 
@@ -79,34 +79,50 @@ This says nothing about the actual noisy automaton's ergodicity. Correlations, o
 
 \subsection{Three boxes and an all-path density lemma}
 
-All constants in the rest of this section are local to the lower-dimensional constructions; they do not replace the constants of \cref{sec:natural}. Put
-\begin{gather}
- K=16^2=256,\quad q=3K=768,\quad h=2K=512,\nonumber\\
- S_0=\{0,\ldots,15\}^2,\quad
- S_1=160e_1+S_0,\quad S_2=160e_2+S_0,\quad S=S_0\cup S_1\cup S_2,\\
- \Delta=18q=13824,\quad B=2\Delta^2=382205952,\quad D=350,\nonumber\\
- \delta=\frac1{4(D+1)}=\frac1{1404},\quad
- C_\delta=12/\delta+12=16860,\quad
- e_0=B^{-2C_\delta}=B^{-33720}.\label{ld:constants}
-\end{gather}
-Here $D=\operatorname{diam}_{\ell^1}(S)$: the coordinate bounds give at most $350$, attained between $(175,0)$ and $(0,175)$.
+All constants in the rest of this section are local to the lower-dimensional constructions; they do
+not replace the constants of Section~2. Put
+\begin{equation}\label{ld:setup}
+\begin{gathered}
+  K=16^2=256,\qquad q=3K=768,\qquad h=2K=512,\\
+  S_0=\{0,\dots,15\}^2,\quad S_1=160e_1+S_0,\quad S_2=160e_2+S_0,\quad S=S_0\cup S_1\cup S_2,
+\end{gathered}
+\end{equation}
+\begin{equation}\label{ld:constants}
+  D=350,\qquad \delta=\frac{1}{4(D+1)}=\frac1{1404},\qquad
+  \alpha_4=\frac{96}{13},\qquad e_0=10^{-30}.
+\end{equation}
+Here $D=\operatorname{diam}_{\ell^1}(S)$: the coordinate bounds give at most $350$, attained between
+$(175,0)$ and $(0,175)$. (Version~2.2.0 used $e_0=382205952^{-33720}$, obtained from
+$B=2(18q)^2$; the Lean statement of \cref{app:lean-lower} keeps that value.)
 
-For the common noise argument take a logical coordinate $u\in\Z^r$ and a finite nonempty logical parent set $J\subset\Z^r$ with $|J|\le9$. An ordinary parent of $(u,P,t)$ is
+For the common noise argument take a logical coordinate $u\in\Z^r$ and a finite nonempty
+logical parent set $J\subseteq\{-1,0,1\}^r$. An ordinary parent of $(u,P,t)$ is
 \[
- (u+j,P+a,t-1),\qquad j\in J,\ a\in S.
+  (u+j,P+a,t-1),\qquad j\in J,\ a\in S .
 \]
-The undirected ordinary graph has degree at most $2|J|q\le\Delta$. We will use $r=2$, $J=\{-1,0,1\}^2$ for the planar checker and $r=1$, $J=\{0,1\}$ for the generator. Fix any $0<e\le e_0$ and independent Bernoulli($e$) flags $\eta$ at every integer time. Let $M$ be the least set containing the flags and closed whenever a vertex has two marked ordinary parents in distinct clusters $S_i,S_j$. Let
+We will use $r=2$, $J=\{-1,0,1\}^2$ for the planar checker and $r=1$, $J=\{0,1\}$ for the generator;
+for every $J\subseteq\{-1,0,1\}^r$, $r\in\{1,2\}$, Lemma~\ref{nw:volume}(b) bounds the spheres of the
+undirected ordinary graph, and we write $Z(y)\le\widehat Z_4(y)$ for its generating function. (Version
+2.2.0 allowed any $J$ with $|J|\le9$; the constructions here, and the reflected generator
+$J=\{-1,0\}$, satisfy $J\subseteq\{-1,0,1\}^r$.) Fix any $0<e\le e_0$ and independent
+Bernoulli$(e)$ flags $\eta$ at every integer time. Let $M$ be the least set containing the flags and
+closed whenever a vertex has two marked ordinary parents in distinct clusters $S_i,S_j$. Let
 \[
- H(v)\quad\Longleftrightarrow\quad
- \text{$v$ has some ordinary parent in $M$}.
+  H(v)\iff v\text{ has some ordinary parent in }M.
 \]
 The recurrence for $M$ still requires two distinct clusters; $H$ is only an auxiliary event.
 
 \begin{lemma}[Finite contours and sparse roots]\label{ld:contours}
-Every mark has a finite derivation DAG ending at flags. An unmarked vertex is unflagged and has marked parents in at most one cluster, so at most $K$ provider offsets have a marked input. Every marked root has a connected physical witness with $f\ge1$ distinct flagged terminals and at most $12(f-1)$ edges. All its vertices lie between its earliest terminal time and its root time, and its time span is at most $12(f-1)$. A flagged root can use $f=1$ and no edges. Moreover, for every vertex $v$,
+Every mark has a finite derivation DAG ending at flags. An unmarked vertex is unflagged and has
+marked parents in at most one cluster, so at most $K$ provider offsets have a marked input. Every
+marked root has a connected physical witness with $f\ge1$ distinct flagged terminals and an abstract
+arm realization with at most $\alpha_4(f-1)$ edge occurrences, $\alpha_4=96/13<12$. All its vertices
+lie between its earliest terminal time and its root time, and its physical edge count and time span
+are at most $\alpha_4(f-1)$. A flagged root can use $f=1$ and no edges. Moreover, for every vertex $v$
+and every $0<e\le e_0$,
 \begin{equation}\label{ld:sparse}
- \Prob(v\in M)\le e\left(1+\frac{2\lambda}{1-\lambda}\right)<2e,
- \qquad \lambda=Be^{1/12}\le B^{-2809}<1/8.
+  \mathbb{P}(v\in M)\le e\Bigl(1+\widehat Z_4(\tfrac12)\frac{\lambda}{1-\lambda}\Bigr)<2e,
+  \qquad \lambda=2^{15}e\,\widehat Z_4(\tfrac12)<10^{-17}.
 \end{equation}
 \end{lemma}
 \begin{proof}
@@ -119,43 +135,101 @@ The charge-arm construction of \cref{nw:arms} transfers with three balanced pote
 \]
 For charge zero a backward step in $S_1$ or $S_2$ gains between $130$ and $220$; for charge $i$ a step outside $S_i$ gains between $130$ and $175$. Every possible gain is at least $-350$. Each distinct-cluster support pair offers a gain of at least $130$ to each charge.
 
-For clarity, the merged-support accounting is as follows. Give frontier vertices their descendant physical terminal-name sets and join them when those sets overlap. Exposing a vertex replaces its set by the union of its two support sets; it cannot join an outside component and can split its component into at most two, since each remaining overlap branch attaches to one support. Begin one good arm of each charge at the root, track its eventual terminal name, and maintain one endpoint name of each charge per overlap component. At a split add a source copy at the exposed vertex; for each charge send an arm to the daughter missing its old endpoint, then follow good supports to a terminal. Only the initial edge of such a new arm may be bad. At the terminal frontier each physical terminal name has one endpoint of each charge. Copy arm interiors, identify each source's three starts and each terminal name's endpoints, and retain the component of the original root source. Each charge gives a bijection of sources and terminals there. If there are $f$ terminals, there are $f$ sources, of which $f-1$ are new. Balance at every source and terminal yields, for the edge count $E$ with arm multiplicity,
+For clarity, the merged-support accounting is as follows. Give frontier vertices their descendant physical terminal-name sets and join them when those sets overlap. Exposing a vertex replaces its set by the union of its two support sets; it cannot join an outside component and can split its component into at most two, since each remaining overlap branch attaches to one support. Begin one good arm of each charge at the root, track its eventual terminal name, and maintain one endpoint name of each charge per overlap component. At a split add a source copy at the exposed vertex; for each charge send an arm to the daughter missing its old endpoint, then follow good supports to a terminal. Only the initial edge of such a new arm may be bad. At the terminal frontier each physical terminal name has one endpoint of each charge. Copy arm interiors, identify each source's three starts and each terminal name's endpoints, and retain the component of the original root source. Each charge gives a bijection of sources and terminals there. If there are $f$ terminals, there are $f$ sources, of which $f-1$ are new. The facts (A1)--(A9) listed in the proof of Lemma~\ref{nw:arms} hold here with three charges and three
+clusters (the logical offset $j\in J$ plays the role of $d\in\Lambda$ in (A6)). Only the initial
+edge of a new arm can be bad. At a split with selected supports in clusters
+$S_i\ne S_j$, the initial edge of each charge goes to one of the two supports; for the one charge
+outside $\{i,j\}$ both are good and gain at least $130$, and each of the two other initial edges
+gains at least $-350$. So the three initial edges at a new source gain at least $130-700=-570$, and
+every other edge occurrence gains at least $130$. Balance at every source and terminal yields, for
+the edge count $E$ with arm multiplicity,
 \[
- 0\ge130E-480\cdot3(f-1),\qquad
- E\le\frac{144}{13}(f-1)<12(f-1)\quad(f>1).
+  0\ \ge\ 130\bigl(E-3(f-1)\bigr)-570(f-1),\qquad
+  E\le\frac{96}{13}(f-1)=\alpha_4(f-1).
 \]
-Projection only reduces the edge count. As in the span paragraph of \cref{nw:arms}, all sources and arms are at or below the root time, and a minimum-time vertex of the abstract arm graph must be a terminal. Thus \emph{every} contour vertex lies in the closed interval from the earliest terminal time to the root time; connectedness bounds the span by $E$. This time bracket is needed below.
+Projection only reduces the edge count. As in the span paragraph of Lemma~\ref{nw:arms}, all sources
+and arms are at or below the root time, and a minimum-time vertex of the abstract arm graph must be a
+terminal. Thus every contour vertex lies in the closed interval from the earliest terminal time to
+the root time; connectedness bounds the span by $E$. This time bracket is needed below.
 
-The encoding \eqref{nw:encoding} also transfers unchanged: a rooted connected $n$-edge set has at most $\Delta^{2n}$ canonical doubled-edge walks and at most $2^{n+1}$ terminal subsets, hence at most $2B^n$ encodings. For a nonflagged root, $n\ge1$ and $f\ge1+n/12$. A fixed $f$-element terminal set is flagged with probability $e^f$. Summing deterministic witnesses gives
+For \eqref{ld:sparse}, a flagged root costs $e$. An unflagged marked root has a witness with
+$f\ge2$ flags and at most $\alpha_4(f-1)$ edges; by Lemma~\ref{nw:walk} its flags lie on a closed
+walk from $v$ of length at most $2\alpha_4(f-1)\le15(f-1)$. Lemma~\ref{nw:flagcount} with
+$\Phi=\{2,3,\dots\}$, $L(f)=15(f-1)$, $y=1/2$ and Lemma~\ref{nw:volume}(b) give
 \[
- \Prob(v\in M)\le e+\sum_{n\ge1}2B^n e^{1+n/12},
+  \mathbb{P}(v\in M)\le e+\sum_{f\ge2}e^f2^{15(f-1)}\widehat Z_4(\tfrac12)^f
+  =e\Bigl(1+\widehat Z_4(\tfrac12)\frac{\lambda}{1-\lambda}\Bigr).
 \]
-which is \eqref{ld:sparse}. This counts distinct physical flags even when arms or support branches merge; no conditional independence of selected paths is used.
+Here $\widehat Z_4(\frac12)=265\,090\,000$ exactly, so for $e\le10^{-30}$ we have
+$\lambda\le2^{15}\cdot265\,090\,000\cdot10^{-30}<10^{-17}$ and
+$\widehat Z_4(\frac12)\lambda/(1-\lambda)<1$, which is \eqref{ld:sparse}. This counts distinct
+physical flags even when arms or support branches merge; no conditional independence of selected
+paths is used.
+
 \end{proof}
 
 \begin{lemma}[All-path marked-parent density]\label{ld:density}
-For each root $v$ and integer $N\ge1$, let $A_N(v)$ be the event that some ordinary backward path of $N$ edges from $v$ has $H$ at at least $\delta N$ of its initial $N$ vertices. With $a=B^{C_\delta}e$, one has
+For each root $v$ and integer $N\ge1$, let $A_N(v)$ be the event that some ordinary backward path of
+$N$ edges from $v$ has $H$ at at least $\delta N$ of its initial $N$ vertices. For every $0<y<1$ with
+$\mu:=e\,\widehat Z_4(y)\,y^{-15}<1$,
 \begin{equation}\label{ld:densitybound}
- \Prob(A_N(v))\le4\sum_{f\ge\lceil\delta N/12\rceil}a^f,
- \qquad a\le B^{-16860}<1/4.
+  \mathbb{P}(A_N(v))\ \le\ y^{-N}\!\!\sum_{f\ge\lceil N/10368\rceil}\!\!\mu^f
+  \ \le\ \frac{\rho^N}{1-\mu},\qquad
+  \rho:=\bigl(e\,\widehat Z_4(y)\,y^{-10383}\bigr)^{1/10368}.
 \end{equation}
-Almost surely, simultaneously at every root $v$, there is a finite $N_0(v)$ such that for every $N\ge N_0(v)$ and every ordinary backward $N$-edge path from $v$, fewer than $\delta N$ of those vertices have $H$. In particular there is no infinite all-$M$ ordinary backward path.
+In particular, $\mathbb{P}(A_N(v))\le2\exp(-N/6000)$ for every $0<e\le e_0=10^{-30}$, and
+$\mathbb{P}(A_N(v))\le\frac{16}{15}\exp(-N)\le\frac{16}{3}\exp(-N)$ for every $0<e\le10^{-4535}$.
+Almost surely, simultaneously at every root $v$, there is a finite $N_0(v)$ such that for every
+$N\ge N_0(v)$ and every ordinary backward $N$-edge path from $v$, fewer than $\delta N$ of those
+vertices have $H$. In particular there is no infinite all-$M$ ordinary backward path.
 \end{lemma}
-\begin{proof}
-Given a path in $A_N(v)$, select its latest remaining $H$ occurrence. Attach a spur to one marked parent and a full contour of \cref{ld:contours} at that parent. If the contour's earliest terminal time is $\tau$, skip all remaining occurrences whose parent time is at least $\tau$, then repeat. Retain the entire final contour even if it extends below the path endpoint. By the contour time bracket, successive closed terminal slabs are disjoint. Their selected flags are therefore distinct.
 
-A selected contour with $f_j$ terminals has span at most $12(f_j-1)$ and accounts for at most $12(f_j-1)+1\le12f_j$ path time positions. Thus $f=\sum_jf_j\ge\lceil\delta N/12\rceil$. The union of the \emph{whole} original $N$-edge path, all parent spurs and all full contours is rooted and connected, with edge count
+\begin{proof}
+Given a path in $A_N(v)$, select its latest remaining $H$ occurrence $w_j$. Attach a spur to one
+marked parent $p_j$ and a full contour $W_j$ of Lemma~\ref{ld:contours} at that parent, with $f_j$
+flags. If the contour's earliest terminal time is $\tau$, skip all remaining occurrences whose parent
+time is at least $\tau$, then repeat. Retain the entire final contour even if it extends below the
+path endpoint. By the contour time bracket, successive closed terminal slabs are disjoint. Their
+selected flags are therefore distinct.
+
+A selected contour with $f_j$ terminals has span at most $\alpha_4(f_j-1)$ and accounts for at most
+$\alpha_4(f_j-1)+1\le\alpha_4f_j$ path time positions. Thus $\delta N\le\alpha_4f$ for $f=\sum_jf_j$,
+that is, $f\ge\lceil\delta N/\alpha_4\rceil=\lceil N/10368\rceil$, since
+$\alpha_4/\delta=\frac{96}{13}\cdot1404=10368$.
+
+Form a walk from $v$: follow the path; at each selected $w_j$ step to $p_j$, perform the closed tour
+of a spanning tree of $W_j$ from $p_j$ (length at most $2\alpha_4(f_j-1)$ by Lemma~\ref{nw:walk}),
+step back to $w_j$ and continue. Its length is at most
+$N+\sum_j\bigl(2+2\alpha_4(f_j-1)\bigr)\le N+15f$, because $2\alpha_4=192/13<15$, and it visits all
+$f$ distinct flags. Lemma~\ref{nw:walk}, Lemma~\ref{nw:flagcount} with
+$\Phi=\{f:f\ge\lceil N/10368\rceil\}$, $L(f)=N+15f$ and Lemma~\ref{nw:volume}(b) give
 \[
- n\le N+\sum_j[1+12(f_j-1)]\le N+12f\le C_\delta f.
+  \mathbb{P}(A_N(v))\le\sum_{f\ge\lceil N/10368\rceil}e^fy^{-N-15f}\widehat Z_4(y)^f
+  =y^{-N}\sum_{f\ge\lceil N/10368\rceil}\mu^f .
 \]
-For fixed $f$ the union and terminal subset have at most
+Since $\mu<1$, the last sum is at most $\mu^{N/10368}/(1-\mu)$, and
+$y^{-N}\mu^{N/10368}=\bigl(\mu\,y^{-10368}\bigr)^{N/10368}=\rho^N$. This proves \eqref{ld:densitybound}.
+The path itself is never encoded; $\delta$ enters only through $\alpha_4/\delta=10368$.
+
+For $e\le10^{-30}$ take $y=99942/100000$. Then $\widehat Z_4(y)\le3.857\cdot10^{26}$,
+$y^{-10383}\le413.19$ and $y^{-15}\le1.01$, so $e\,\widehat Z_4(y)y^{-10383}\le0.1594$ and
+$\mu\le1/2$. To bound $\exp(1)$, put $S=\sum_{j=0}^{16}1/j!$. Its factorial-series tail is at most $(1/17!)/(1-1/18)$, so $\exp(1)<S+(1/17!)/(1-1/18)<27183/10000$. Since $0.1594^{6000}\cdot2.7183^{10368}<1$ and $2.7183>\exp(1)$, we get
+$\rho<\exp(-1/6000)$, hence $\mathbb{P}(A_N(v))\le2\exp(-N/6000)$. For $e\le10^{-4535}$ take
+$y=999422/10^6$. The exact-arithmetic certificate in \texttt{verification-\allowbreak thresholds/} gives
 \[
- \sum_{n=0}^{C_\delta f}2B^n\le4B^{C_\delta f}
+ e\,\widehat Z_4(y)y^{-10383}\le(10000/27183)^{10368},
 \]
-encodings. Keep only subsets of size $f$ and charge probability $e^f$ to each. This proves \eqref{ld:densitybound}, including the entropy of the entire path. The bound is summable in $N$, because $a<1$ and $\lceil\delta N/12\rceil$ grows linearly. Borel--Cantelli and countably many roots give the asserted event. It quantifies over all paths, even paths chosen using all innovations and noncausally selected symbol histories. On an infinite all-$M$ path each vertex has its next marked vertex as a parent and thus has $H$, contradicting that event.
+so
+$\rho\le\exp(-1)$, and $\mu\le1/16$; hence $\mathbb{P}(A_N(v))\le\frac{16}{15}\exp(-N)$. All these bounds
+increase with $e$. The bound is summable in $N$ because $\rho<1$. Borel--Cantelli and countably many
+roots give the asserted event. It quantifies over all paths, even paths chosen using all
+innovations and noncausally selected symbol histories. On an infinite all-$M$ path each vertex has
+its next marked vertex as a parent and thus has $H$, contradicting that event.
 \end{proof}
 
-The integer $12$ rounds up the arm coefficient $144/13$; $\delta=1/[4(D+1)]$ leaves a factor-two margin for two paths; $C_\delta$ pays for the path and contours. The factor two in $e_0=B^{-2C_\delta}$ is slack. For these estimates, the weaker requirements $B^{C_\delta}e<1/4$ and $Be^{1/12}<1/3$ would suffice (in particular $B^{-16861}$ suffices). We keep the stated $B^{-33720}$ throughout.
+The coefficient $\alpha_4=96/13$ replaces the rounded $12$ of version~2.2.0 (any bound below $12$
+suffices for every qualitative use, and the arm count ``at most $12(f-1)$ edges'' remains true).
+$\delta=1/[4(D+1)]$ leaves a factor-two margin for two paths. In particular, with $B_0=382205952$, the old condition $0<e\le B_0^{-33720}$ implies $e\le10^{-4535}$ and hence the retained bound $\Prob(A_N(v))\le(16/3)\exp(-N)$. This holds for both the checker and the reflected generator $J=\{-1,0\}$.
 
 \subsection{The natural rule on four spatial dimensions}
 
@@ -269,11 +343,11 @@ Define $G_T^{(3)}$ to output a live tile occurring at least $h$ times among the 
 \begin{theorem}[Fixed-rate undecidability on $\Z^3$]\label{ld:z3}
 For every finite north/east deterministic Wang set $T$ and every $0<e\le e_0$, this perturbation of $G_T^{(3)}$ is ergodic if and only if $T$ does not tile the plane. Non-tiling gives finite-window all-start coupling from the past and attraction from every initial law. Tiling gives two distinct invariant laws. The family is total computable with one common finite neighbourhood. In particular ergodicity is undecidable across it at the single rational rate
 \[
- e_0=382205952^{-33720}.
+ e_0=10^{-30}.
 \]
 \end{theorem}
 \begin{proof}
-Use the common marked construction with logical parents $J=\{0,1\}$. Its actual undirected degree is at most $4q$, so the enlarged bound $\Delta=18q$ is valid. The potentials ignore the logical coordinate; hence \cref{ld:contours,ld:density} apply with precisely the constants \eqref{ld:constants}. At an unmarked live output at least $K$ successful providers are clean, meaning both inputs are unmarked.
+Use the common marked construction with logical parents $J=\{0,1\}$. Its logical parent set $J=\{0,1\}$ is covered by \cref{nw:volume}(b) with $m=1$. The potentials ignore the logical coordinate; hence \cref{ld:contours,ld:density} apply with precisely the constants \eqref{ld:constants}. At an unmarked live output at least $K$ successful providers are clean, meaning both inputs are unmarked.
 
 We prove same-site coherence in every complete history on the probability-one density event. Suppose two unmarked live readings at one logical $i,t$, at transverse $P,Q$, have different tiles. At a step where neither vertex has $H$, use the same $720$ injective pairs as in \cref{ld:z4coherence}; at most $2K=512$ are killed by unsuccessful providers. The surviving providers have different live outputs under the \emph{same function} $f_T$. Their input pairs are live, since a $\bot$ input would force $\bot$ output. Different outputs force a common index $j\in\{0,1\}$ at which the two input tiles differ. Follow that same $j$ on both sides. These are unmarked live readings at the same logical site $i+j$ and time $t-1$, at transverse distance $d-1$. At a step with at least one $H$ vertex, take arbitrary clean successful providers on both sides and again follow a common differing input index. The distance is at most $d+D$.
 
@@ -305,31 +379,37 @@ The two classifications above assert ergodicity and two invariant laws on the re
 
 \subsection{Exponential all-input coalescence for non-tiling inputs}
 
-This supplement uses the constants in \eqref{ld:constants}. The noise threshold, provider geometry and both local rules are unchanged.
-
+This supplement uses the geometry of \eqref{ld:setup}--\eqref{ld:constants} and the density
+bounds of Lemma~\ref{ld:density}. The noise interval, provider geometry and both local rules are those of \cref{ld:z4,ld:z3}.
 \begin{theorem}[Uniform exponential rate on $\Z^4$ and $\Z^3$]\label{ld:rate}
-Let $\mathcal R$ be either a finite raw Wang set for $G_{\mathcal R}^{(4)}$ of \cref{ld:z4}, or a finite north/east deterministic Wang set for $G_{\mathcal R}^{(3)}$ of \cref{ld:z3}. Suppose $\mathcal R$ does not tile the plane. There is an effectively findable integer $C_{\mathcal R}\ge1$, depending only on this input, such that for every $0<\eps\le e_0=382205952^{-33720}$, every integer $t\ge0$ and every finite spatial observation set $F$,
+Let $\mathcal R$ be either a finite raw Wang set for $G^{(4)}_{\mathcal R}$ of Theorem~\ref{ld:z4}, or a finite
+north/east deterministic Wang set for $G^{(3)}_{\mathcal R}$ of Theorem~\ref{ld:z3}. Suppose $\mathcal R$ does not tile
+the plane. There is an effectively findable integer $C_{\mathcal R}\ge1$, depending only on this input, such that
+for every $0<\eps\le e_0=10^{-30}$, every integer $t\ge0$ and every finite spatial observation
+set $F$,
 \[
- \Prob\{\text{the $t$-step shared random map from all starts is
- nonconstant on $F$}\}
- \le |F|C_{\mathcal R}\exp(-t/4).
+  \mathbb{P}\{\text{the $t$-step shared random map from all starts is nonconstant on }F\}
+  \le|F|\,C_{\mathcal R}\exp(-t/24000),
 \]
-The exponent and noise interval are common to both families; $C_{\mathcal R}$ is independent of $\eps$. The prefactor search is required to terminate only on non-tiling inputs.
+and, if moreover $0<\eps\le10^{-4535}$, the same probability is at most
+$|F|\,C_{\mathcal R}\exp(-t/4)$. The exponents and noise intervals are common to both families; $C_{\mathcal R}$ is
+independent of $\eps$. The prefactor search is required to terminate only on non-tiling
+inputs.
 \end{theorem}
+
 \begin{proof}
 We give finite-history versions of the coherence and extraction arguments, then control full discrepancies. All initial rows are arbitrary. Use one common flag and replacement letter at every update, and extend the flags independently to all integer times to define the noise-only $M,H,A_N$ of \cref{ld:contours,ld:density}. This auxiliary extension does not change any finite-time random map. No time-zero symbol is marked for free.
 
-\emph{The quantitative density bound.}
-With $a=B^{16860}\eps$, Lemma~12.4 and \eqref{ld:densitybound} give
+\emph{The quantitative density bound.} Fix one of the two cases:
+(I) $0<\eps\le10^{-30}$, $\rho_*=\exp(-1/6000)$, $C_A=2$; or
+(II) $0<\eps\le10^{-4535}$, $\rho_*=e^{-1}$, $C_A=16/3$. Put $\gamma=\log(1/\rho_*)$, so
+$\gamma=1/6000$ in case (I) and $\gamma=1$ in case (II). By Lemma~\ref{ld:density},
 \[
- \Prob(A_N(v))\le4\sum_{f\ge\lceil N/16848\rceil}a^f
- \le\frac{16}{3}\exp(-N),\qquad N\ge1.
+  \mathbb{P}(A_N(v))\le C_A\,\rho_*^N,\qquad N\ge1 .
 \]
-Indeed $a\le B^{-16860}<1/4$, $B>\exp(1)$ and $16860>16848$. Consequently,
-\[
- a^{\lceil N/16848\rceil}\le\exp(-16860N/16848)\le\exp(-N).
-\]
-The distinct-terminal contour and complete-path counting have already been paid for in Lemmas~12.3--12.4; the bound includes every ordinary path, even one selected using all innovations and initial symbols.
+The distinct-terminal contour and flag-position counting have already been paid for in
+Lemmas~\ref{ld:contours}--\ref{ld:density}; the bound includes every ordinary path, even one
+selected using all innovations and initial symbols.
 
 \emph{Finite-time coherence.}
 Consider one history begun at time zero. Suppose two unmarked live readings at the same logical site and time $s$ differ, at transverse distance $d_0>0$. Follow their paired ancestry for any $N\le s$ steps. When neither root has $H$, use the $720$ injectively paired offsets of \cref{ld:z4coherence}; at most $2(q-h)=512$ pairs are lost, so successful providers reduce the distance by one. For the checker follow their central inputs, preserving their different tile labels. For the generator, distinct successful outputs of the same function $f_{\mathcal R}$ force a common index $j\in\{0,1\}$ at which the inputs differ. Follow that same index on both sides. These inputs are live and unmarked. Their labels may change, but inequality and alignment of the logical sites persist, exactly as in the proof of \cref{ld:z3}.
@@ -353,9 +433,13 @@ with no legal labeling. Each search tests finitely many assignments at each stag
 
 Put $b=r+1$ and define the effective integers
 \[
- J_b=(b+1)(2b+1)^2(175b+1)^2,\qquad
- U_{\mathcal R}=6J_b\,3^{701b}.
+  J_b=(b+1)(2b+1)^2(175b+1)^2,\qquad
+  U_{\mathcal R}=\begin{cases}2J_b\,2^b&\text{in case (I)},\\ 6J_b\,3^{701b}&\text{in case (II)}.\end{cases}
 \]
+In both cases $U_{\mathcal R}\ge C_AJ_b\rho_*^{-b}$ and $U_{\mathcal R}\ge\rho_*^{-701b}$. In case (I) this holds because
+$\rho_*^{-701b}=\exp(701b/6000)<2^b$, as $\exp(701/6000)\le1/(1-701/6000)=6000/5299<2$; in case (II)
+because $3>\exp(1)$ and $6>16/3$.
+
 Let $L_t(v)$ be the event that $v$ at time $t$ is unmarked and live in at least one history begun at time zero. The existential quantifier is over \emph{all} initial rows, including a row chosen after seeing the noise.
 
 \emph{Uniform unmarked-liveness tail.}
@@ -370,12 +454,14 @@ For the generator, at depth $k\le r$ identify the labels at logical positions $i
 \]
 because coherence identifies its inputs with the chosen next-level labels. Lemma~12.10 maps $(i+j,t-k)$ to the translated triangle position $(j,k-j)$; these relations check all internal north/east edges of $T_r$. This also contradicts the chosen obstruction. The argument uses inequality, rather than preservation of tile identities, in generator ancestry.
 
-Therefore $L_t(v)$ implies $A_N$ at one of at most $J_b$ fixed candidate points. A finite union bound gives
+Therefore $L_t(v)$ implies $A_N$ at one of at most $J_b$ fixed candidate points. A finite union bound
+gives
 \[
- \Prob(L_t(v))\le\frac{16}{3}J_b\exp[-(t-b)]
- \le U_{\mathcal R}\exp(-t)\qquad(t\ge701b).
+  \mathbb{P}(L_t(v))\le C_A\,J_b\,\rho_*^{\,t-b}\le U_{\mathcal R}\,\rho_*^{\,t}\qquad(t\ge701b).
 \]
-For smaller $t$ the same bound follows from probability at most one and $U_{\mathcal R}\ge\exp(701b)$. Here $3>\exp(1)$ and $6>16/3$ justify the chosen integer. This is a uniform existential event bound; there is no union over initial configurations.
+For smaller $t$ the same bound follows from probability at most one and $U_{\mathcal R}\rho_*^t\ge
+U_{\mathcal R}\rho_*^{701b}\ge1$. This is a uniform existential event bound; there is no union over initial
+configurations.
 
 \emph{Full all-input coupling.}
 Let $D_t(v)$ mean that the shared $t$-step map is nonconstant at $v$. Fix any two witnessing starts. At each discrepancy the common replacement flag is absent, since a replacement writes the same letter. A differing deterministic output has a differing actual parent. Trace such parents for $k=\lfloor t/2\rfloor$ edges, where $t\ge2$. Each of the first $k$ vertices is discrepant and has a live reading in at least one of the two histories, since $\bot$ is the only non-live symbol.
@@ -386,18 +472,26 @@ If all first $k$ vertices are marked, they are \emph{nonflagged} marks and hence
 \]
 Indeed $k+1\le t+1$, $2k+1\le t+1$ and $175k+1\le175(t+1)$; the generator cone is smaller. Since $t-j\ge t-k\ge t/2$, the preceding bounds imply
 \[
- \Prob(D_t(v))\le\frac{16}{3}\exp(-k)
-       +30625U_{\mathcal R}(t+1)^5\exp(-t/2).
+  \mathbb{P}(D_t(v))\le C_A\,\rho_*^{\,k}+30625\,U_{\mathcal R}\,(t+1)^5\rho_*^{\,t/2}.
 \]
-Use $\exp(-\lfloor t/2\rfloor)\le\exp(1)\exp(-t/2)$, $\exp(1)<3$ and
+Use $k=\lfloor t/2\rfloor\ge(t-1)/2$, so $C_A\rho_*^k\le C_A\rho_*^{-1/2}\rho_*^{t/2}$, where
+$C_A\rho_*^{-1/2}=2\exp(1/12000)<4$ in case (I) and $\frac{16}{3}e^{1/2}<16$ in case (II). Also
+$(t+1)^5\rho_*^{t/4}=\exp\bigl(5\log(t+1)-\gamma t/4\bigr)\le(20/\gamma)^5$ for $t\ge0$: the exponent
+has derivative $5/(t+1)-\gamma/4$, so its maximum is at $t+1=20/\gamma$ and equals
+$5\log(20/\gamma)-5+\gamma/4\le5\log(20/\gamma)$. Thus $(t+1)^5\rho_*^{t/4}\le120000^5$ in case (I)
+and $\le20^5$ in case (II). With $\rho_*^{t/2}\le\rho_*^{t/4}$, the explicitly effective integers
 \[
- (t+1)^5\exp(-t/4)\le20^5\qquad(t\ge0).
+\begin{aligned}
+ C^{(\mathrm I)}_{\mathcal R}&=4+30625\cdot120000^5\cdot2J_b2^b,\\
+ C^{(\mathrm{II})}_{\mathcal R}&=16+30625\cdot20^5\cdot6J_b3^{701b},\\
+ C_{\mathcal R}&=\max\bigl(C^{(\mathrm I)}_{\mathcal R},C^{(\mathrm{II})}_{\mathcal R}\bigr).
+\end{aligned}
 \]
-For the latter inequality the logarithmic derivative is $5/(t+1)-1/4$, with maximum at $t=19$. The explicitly effective integer
-\[
- C_{\mathcal R}=16+30625\cdot20^5U_{\mathcal R}
-\]
-therefore gives $\Prob(D_t(v))\le C_{\mathcal R}\exp(-t/4)$ for $t\ge2$, and trivially for $t=0,1$. All witness implications hold simultaneously for every pair of starts. Integrating out the auxiliary nonpositive-time flags leaves the same bound for the actual finite-time maps. Finally, nonconstancy on $F$ entails nonconstancy at one of its coordinates, so a union bound supplies $|F|$. Past and future blocks have the same law under iid innovations. This proves the claimed all-input rate throughout the common noise interval.
+give $\mathbb{P}(D_t(v))\le C_{\mathcal R}\rho_*^{t/4}=C_{\mathcal R}\exp(-\gamma t/4)$ for $t\ge2$, that is
+$C_{\mathcal R}\exp(-t/24000)$ in case (I) and $C_{\mathcal R}\exp(-t/4)$ in case (II); for $t=0,1$ the bound is trivial
+since $C_{\mathcal R}\rho_*^{1/4}\ge4e^{-1/4}>1$.
+
+All witness implications hold simultaneously for every pair of starts. Integrating out the auxiliary nonpositive-time flags leaves the same bound for the actual finite-time maps. Finally, nonconstancy on $F$ entails nonconstancy at one of its coordinates, so a union bound supplies $|F|$. Past and future blocks have the same law under iid innovations. This proves the claimed all-input rate throughout the common noise interval.
 \end{proof}
 
 \begin{example}[Why non-tiling is necessary]\label{ld:rate-necessity}
@@ -414,7 +508,7 @@ For completeness, outside $M^{[0]}$ the output is unflagged and at most $K=256$ 
  \Prob(X_t(v)=a)\ge1-2\eps,\qquad
  \Prob(Y_t(v)=a)\le2\eps.
 \]
-Thus $\Prob(X_t(v)\ne Y_t(v))\ge1-4\eps$, and this discrepancy is contained in all-input nonconstancy. Any finite $C_T\exp(-t/4)$ tends to zero, contradicting this uniform positive lower bound. The non-tiling hypothesis in \cref{ld:rate} is therefore essential even within the one-tile NE family.
+Thus $\Prob(X_t(v)\ne Y_t(v))\ge1-4\eps$, and this discrepancy is contained in all-input nonconstancy. Any finite multiple of $\exp(-t/24000)$, indeed any exponentially decaying bound, tends to zero, contradicting this uniform positive lower bound. The non-tiling hypothesis in \cref{ld:rate} is therefore essential even within the one-tile NE family.
 \end{proof}
 
 
@@ -453,9 +547,8 @@ Suppose $\mathcal R\ne\varnothing$. Its alphabet is finite with at least two sym
 
 At each space--time update take an independent pair consisting of a Bernoulli($\eps$) flag and a uniform letter in $A_{\mathcal R}$, with the two entries independent. It defines the local map $m(y)$ equal to that letter when the flag is set and to $G_{\mathcal R}^{(d)}(y)$ otherwise. For each $c,y$, $\Prob(m(y)=c)=p_{\mathcal R,\eps}(c\mid y)$, so these maps are an iid local-map representation in the sense of \cite[Section~2.2]{DM26}. Their chronological composites on $\Z^d$ are exactly the shared random maps of \cref{ld:rate}, using one common flag and replacement letter for every input row. Hence the common-map coefficient of \cite[equation~(4)]{DM26} is
 \[
- q_t=\Prob\{\eta\mapsto F_t(\eta)(0)\text{ is not constant}\}
-       \le C_{\mathcal R}e^{-t/4}
-       \quad\text{for every integer }t\ge0.
+  q_t=\mathbb{P}\{\eta\mapsto F_t(\eta)(0)\text{ is not constant}\}\le C_{\mathcal R}\,e^{-t/24000}
+  \qquad\text{for every integer }t\ge0.
 \]
 The map law is the same at every site, so this bound is uniform in the root. These check every hypothesis of \cite[Corollary~13.7]{DM26}, in spatial dimension $d$. That corollary, through its prefix-cap Theorem~13.3, gives (i), with its equations~(8) and~(7), respectively. The general transfer is the result of \cite{DM26}; the assertion here is its application to these two families. If $\mathcal R=\varnothing$, there is one space--time configuration, one DLR state, and both total-variation distances are zero; this handles the singleton alphabet separately from the cited theorem.
 
@@ -471,4 +564,7 @@ The clone-started law need not be spatially invariant. Every translate of $\mu_X
 Weak spatial mixing forces uniqueness: integrate its bound over the exteriors of two DLR states and let the distance of a fixed finite $E$ to $V^c$ tend to infinity. It therefore fails on tiling inputs. The map from a tile input to its table at $e_0$ is total computable. The raw domino problem \cite{Berger66,Robinson71} and Kari's restricted tiling theorem with the reflection used in \cref{ld:z3} \cite{Kari92,Kari05} give the two undecidability assertions. For the checker family, non-tiling is computably enumerable by finite-patch search and $\Sigma^0_1$-complete by the recalled Berger--Robinson reduction, as in \cref{nw:complexity}; the identity classification gives the asserted degrees. No many-one completeness claim is made for the generator family.
 \end{proof}
 
+Compare Sandhu's independent fixed-temperature Gibbs-uniqueness result on $\Z^2$ \cite[Theorem~1.1]{Sandhu26}, described after \cref{cor:gibbs}.
+
 Distance is the sup norm, as in \cite[Definition~2.3]{DM26}. Volumes may have holes and need not be connected. Distance is to the entire complement, so strong spatial mixing is not claimed. No uniformity of the Gibbs constants as $\eps\downarrow0$ is claimed. The robustness theorem and the scope of the $\Z^6$ Lean core are not transferred. The separate $\Z^4$ Lean core in \cref{app:lean-lower} does not formalize this corollary.
+

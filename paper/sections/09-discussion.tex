@@ -8,10 +8,10 @@ What is the least dimension $d\le3$ for which ergodicity of positive-rate cellul
 \end{problem}
 
 \paragraph{The exact degree.}
-On the $\Z^6$ natural family ergodicity, Gibbs uniqueness and exponential weak spatial mixing have exact degree $\Sigma^0_1$, with $\Pi^0_1$ complements (\cref{nw:complexity}). This settles the restricted-family question, not the full-table question. For rational positive tables, ergodicity has the $\Pi^0_2$ upper bound of \cite[Remark~10.9]{DM26}; the old hardness conclusions of \cref{pf:arith,cor:gibbs} remain valid.
+On the $\Z^6$ natural family ergodicity, Gibbs uniqueness and exponential weak spatial mixing have exact degree $\Sigma^0_1$, with $\Pi^0_1$ complements (\cref{nw:complexity}). This settles the raw-family question. For the translation-invariant variants the degree is now known under the source condition of \cref{ti:source}: by \cref{ti:degree}, uniqueness among translation-invariant stationary laws on $\Z^6$, and among fully translation-invariant Gibbs measures on $\Z^7$, is $\Pi^0_2$-complete at one fixed rational rate. For rational positive tables, ergodicity has the $\Pi^0_2$ upper bound of \cite[Remark~10.9]{DM26}; the old hardness conclusions of \cref{pf:arith,cor:gibbs} remain valid.
 
 \begin{problem}\label{prob:degree}
-Is ergodicity of positive-rate cellular automata at one fixed noise rate $\Pi^0_2$-complete on the full class of tables? What are the exact degrees there of all-DLR uniqueness and exponential weak spatial mixing for the normalized space--time interactions?
+Is ergodicity of positive-rate cellular automata at one fixed noise rate $\Pi^0_2$-complete on the full class of tables? Its translation-invariant variant is answered by \cref{ti:degree} under that theorem's source condition; the problem as stated remains open. What are the exact degrees of uniqueness among all stationary laws, all-DLR uniqueness and exponential weak spatial mixing for the normalized space--time interactions?
 \end{problem}
 
 \paragraph{Natural rules below four dimensions.}
@@ -29,8 +29,8 @@ If $R$ tiles but has only countably many tilings, does the noisy $G_R$ itself ha
 \end{problem}
 
 \paragraph{Quantitative lower-dimensional results.}
-\Cref{ld:rate} proves exponential all-input forgetting on the non-tiling side of both lower-dimensional families, with a universal exponent and an effectively findable input-dependent prefactor. \Cref{ld:gibbs} gives all-Gibbs uniqueness and arbitrary-volume exponential weak spatial mixing. Stronger forms of mixing, robustness and an improved noise interval remain questions. The all-Gibbs clause of the following version~2.1.0 problem is answered by \cref{ld:gibbs}; its other clauses remain open.
+\Cref{ld:rate} proves exponential all-input forgetting on the non-tiling side of both lower-dimensional families, with a universal exponent and an effectively findable input-dependent prefactor. \Cref{ld:gibbs} gives all-Gibbs uniqueness and arbitrary-volume exponential weak spatial mixing. Stronger forms of mixing and robustness remain questions. The common interval is now $0<\eps\le10^{-30}$, with exponent $1/24000$ and exponent $1/4$ retained for $\eps\le10^{-4535}$. The all-Gibbs clause of the following version~2.1.0 problem is answered by \cref{ld:gibbs}; its other clauses remain open.
 
 \begin{problem}\label{prob:lower-stronger}
-For the rules of \cref{ld:z4,ld:z3}, can one prove stronger forms of mixing, transfer uniqueness to all space--time Gibbs measures, or establish robustness under perturbation of the local table? Can their common sufficient noise interval be improved?
+For the rules of \cref{ld:z4,ld:z3}, can one prove stronger forms of mixing, transfer uniqueness to all space--time Gibbs measures, or establish robustness under perturbation of the local table? Can their common sufficient noise interval be enlarged substantially beyond $10^{-30}$, or the exponent $1/4$ retained on the whole interval?
 \end{problem}

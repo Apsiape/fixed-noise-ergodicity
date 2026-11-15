@@ -1,0 +1,175 @@
+\section{The degree of translation-invariant uniqueness}\label{sec:ti-degree}
+
+Even at one fixed positive replacement rate, a uniqueness question can be $\Pi^0_2$-complete. Here the property is uniqueness among spatially translation-invariant stationary laws, abbreviated TI stationary laws. The distinction from ergodicity matters: uniqueness in this class does not assert attraction from arbitrary starts. We use a different rule from the raw-Wang families of the preceding sections.
+
+\begin{theorem}[The TI uniqueness degree]\label{ti:degree}
+Assume the source condition $C_T$ stated in \cref{ti:source}. There is a total computable family $e\mapsto G_e$ of deterministic finite-alphabet rules on $\Z^6$, of maximum-norm range at most $11$, such that at each fixed rational rate $0<\eps\le10^{-22}$ uniform whole-symbol replacement gives exactly one TI stationary law if $\varphi_e$ is total, and at least two otherwise. At each such rate TI stationary uniqueness is $\Pi^0_2$-complete, and TI coexistence is $\Sigma^0_2$-complete, under computable many-one reductions. The normalized space--time interactions have the same degrees for fully TI Gibbs uniqueness and coexistence on $\Z^7$. Their local Boltzmann factors are strictly positive rationals.
+\end{theorem}
+
+Thus $\eps=10^{-22}$ may be fixed once for the whole decision problem. The alphabets vary effectively; the dimension, range and rate do not. Our Rice paper already contains this construction at the rate $160000^{-101}$: its Lemma~6.1 gives the same six-dimensional family and the same totality dichotomy under the same source condition, and its Theorem~C with $r=1$ makes TI stationary uniqueness $\Pi^0_2$-complete on $\Z^7$ \cite[Lemma~6.1 and Theorem~C]{DMrice}. This section extends the dichotomy to every fixed rational rate in $(0,10^{-22}]$, states the six-dimensional degree, adds the translation-invariant Gibbs degree on $\Z^7$, and writes the proof out in full. T\"orm\"a established the deterministic unique-ergodicity degree \cite[Proposition~48]{Torma15}. Sandhu's independent fixed-temperature family \cite[Theorem~1.1]{Sandhu26} has a halting-versus-uniqueness dichotomy on $\Z^2$. Its promised-family uniqueness degree is $\Sigma^0_1$, as is that of our natural raw-Wang family on $\Z^6$ (\cref{nw:complexity}). These results concern different families and predicates.
+
+\begin{center}\small
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xl@{}}
+\toprule
+Family & Decision property & Degree\\
+\midrule
+T\"orm\"a \cite{Torma15} & deterministic unique ergodicity & $\Pi^0_2$-complete\\
+Sandhu \cite{Sandhu26} & fixed-temperature Gibbs uniqueness on its family, $\Z^2$ & $\Sigma^0_1$-complete\\
+Natural rule on $\Z^6$, \cref{nw:complexity} & fixed-noise ergodicity and Gibbs uniqueness & $\Sigma^0_1$-complete\\
+Rice, Lemma~6.1, Theorem~C \cite{DMrice} & TI stationary uniqueness at $160000^{-101}$, $\Z^7$ ($\Z^6$ dichotomy), under $C_T$ & $\Pi^0_2$-complete\\
+\Cref{ti:degree} & fixed-noise TI uniqueness, $\Z^6$, under $C_T$ & $\Pi^0_2$-complete\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{The source and its precise dependency}
+
+Condition $C_T$ is that the statements of \cite[Lemma~25, Corollary~26 and Lemmas~27--29]{Torma15}, on macrocells, absence of overlap, strong rigidity, strong connection and live coverage of the universal simulator, hold as published for the universal simulators used below, and that their blank state is quiescent. Their printed proofs are used without re-derivation. This is the published-source dependency of the condition of \cite[Section~6.1]{DMrice}.
+
+\begin{lemma}[The totality source under $C_T$]\label{ti:source}
+Assume $C_T$. There is a total computable family of one-dimensional radius-one CA $U_e$, with finite alphabet $D_e$, blank $0$ and local map $u_e:D_e^3\to D_e$, satisfying:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item $u_e(0,0,0)=0$. If $\varphi_e$ is total, every fully $\Z^2$-TI law on the two-sided input-erasure trajectory SFT of $U_e$ is all blank.
+\item If $\varphi_e$ is nontotal, the ordinary two-sided trajectory SFT of $U_e$ has a fully $\Z^2$-TI law of positive nonblank activity.
+\end{enumerate}
+Input erasure replaces any selected subset of the three inputs by $0$, from one common preceding row. The repaired source reserves zero for every bookkeeping field's blank or no-kind code, normalizes invalid own bookkeeping to blank, leaves simulated data unrestricted, and increments age only while live. Field widths are fixed before self-reference.
+\end{lemma}
+The proof is in \cref{app:ti-source-proof}.
+
+\subsection{A finite checker and five providers}
+
+Set
+\[
+ L_e=\{0\}\sqcup\{(a,w):a\ne0,\ w\in D_e^3,\ u_e(w)=a\},\qquad
+ \pi(0)=0,\quad\pi(a,w)=a.
+\]
+On $u=(i,s)\in\Z^2$, let $H_{0,e}$ retain a nonblank full center $b=(a,w)$ precisely when
+\[
+ \pi(x(i+r,s-1))=w_r\quad\text{for each }r\in\{-1,0,1\}\text{ with }w_r\ne0.
+\]
+Otherwise it outputs $0$; a blank center stays blank. This rule only deletes labels. Its stencil is $N_0=\{0,(-1,-1),(0,-1),(1,-1)\}$, where $s$ is a spatial source coordinate, not stochastic evolution time. Every fixed field projects to an input-erasure trajectory: use its stored witness at a nonblank output and erase every input at a blank one. Conversely an ordinary trajectory lifts by storing its actual predecessor triple at each nonblank output. The lift is local and translation covariant. Since no nonblank full label projects to zero, \cref{ti:source} gives only the blank TI fixed-field law on totality and a positive-activity TI fixed-field law on nontotality.
+
+The physical sites are $(u,P)\in\Z^2\times\Z^4$. In addition to the $H_{0,e}$ tests at the same $P$, require all eight transverse unit neighbours to equal the same full center label. Call this deletion rule $H_e$. Its twelve read offsets are
+\[
+ N_*=(N_0\times\{0\})\cup\{(0,\pm e_j):1\le j\le4\}.
+\]
+Put $c_0=0$, $c_j=10e_j$ for $1\le j\le4$. The rule $G_e$ returns a nonblank label if at least four of the five values $H_e(x)(u,P+c_j)$ equal it, and returns $0$ otherwise. The read offsets are fixed and have range at most $11$. The finite alphabet and table are total computable from $e$. The noisy table is
+\[
+ p_e(a\mid x)=(1-\eps)\mathbf1_{\{a=G_e(x)\}}+\eps/|L_e|.
+\]
+For the fixed rational $\eps$ this table is positive and rational.
+
+\subsection{The two noise estimates}
+
+Use physical evolution time $\tau$. Mark a space--time vertex if it is a replacement flag, or if two distinct providers each have some marked $N_*$ parent one time earlier. Empty starts receding into the past give an increasing minimal mark field $E^*$. It is a stationary, translation-covariant, causal factor of the iid flags. Finitary closure implies that every mark already occurs in a finite-start field and has a finite explanation ending at physical flags.
+
+The sixty parent steps have the form $(d,c_j+n,-1)$ with $(d,n)\in N_*$. Providers have disjoint stencils: their centers have transverse $\ell^1$ distance at least $10$ and the checker offsets differ by at most $2$. The undirected degree is at most $120$. For the contour use
+\[
+ \psi_j(P,\tau)=-P_j-2\tau\ (1\le j\le4),\qquad
+ \psi_0(P,\tau)=\sum_jP_j+8\tau.
+\]
+Their sum is zero. Through provider $k$, the gains are $2-10\mathbf1_{\{k=j\}}-n_j$ and $10\mathbf1_{\{k\ne0\}}+\sum_jn_j-8$. Outside its excluded provider every charge gains at least $1$; all gains are at least $-9$.
+
+For completeness, the copied-arm construction applies with these gains as follows. Choose lower-rank supports at every nonflag mark in a finite explanation and stop at flags. Give each vertex its descendant physical terminal set. Expose nonterminals in root-to-parent order, retaining terminals on the frontier. Replacing one set by the union of its two support sets cannot merge overlap components: an intersection with a support already intersected its parent. Each remaining vertex of the old component has an overlap path to one of the two supports, so a component can split into at most two daughters with disjoint terminal unions. Maintain one eventual arm endpoint of each charge per component. At a split put a new source at the exposed vertex and send each charge toward its missing daughter; after this possibly bad initial edge, follow good supports. The original source starts with good edges. At the terminal frontier each physical terminal has one endpoint of each charge.
+
+Copy arm interiors and identify starts belonging to a source and ends with the same terminal name. A new source need not lie on an old arm. Retain only the abstract component of the original root. Each charge's source-to-terminal bijection restricts to that component, giving $m$ sources and $m$ distinct flags. Only the five initial edges at each of its $m-1$ nonroot sources can be bad. Thus, with multiplicities,
+\[
+ 0\ge e_{\rm arm}-10\cdot5(m-1),\qquad e_{\rm arm}\le50(m-1).
+\]
+Projection gives a connected physical contour with at most this many edges. A minimum-time vertex of the abstract component is a terminal, because every other vertex has an outgoing arm edge to an earlier time. All vertices lie between the earliest selected flag and the root, with time span at most $50(m-1)$. An unflagged root has $m\ge2$; a flagged root may use its singleton contour.
+
+We now count flag positions with \cref{nw:flagcount,nw:walk}. For one graph edge each logical coordinate changes by at most one, physical time by one and transverse $\ell^1$ distance by at most $11$. The radius-$r$ ball is therefore contained in
+\[
+ [-r,r]^3\times\{P\in\Z^4:|P|_1\le11r\}.
+\]
+The four-dimensional integer $\ell^1$ ball has size
+\[
+ L_4(R)=\sum_{j=0}^4 2^j\binom4j\binom Rj.
+\]
+Choose its $j$ nonzero coordinates, their signs and positive magnitudes of total at most $R$; the latter choices number $\binom Rj$. Consequently the graph ball is bounded by the degree-seven polynomial $b(r)=(2r+1)^3L_4(11r)$. Its Newton coefficients are
+\[
+ \begin{split}
+ (D_0,\ldots,D_7)={}&(1,323162,20858800,225345520,\\
+ &881336720,1558189600,1275204480,393550080).
+ \end{split}
+\]
+Taking successive differences proves $b(r)=\sum_{j=0}^7D_j\binom rj$ for every integer $r\ge0$. The ball-to-sphere identity and the binomial generating series give the explicit bound
+\[
+ Z_G(y)=(1-y)\sum_{r\ge0}|\operatorname{Ball}_G(r)|y^r
+ \le Z_b(y):=\sum_{j=0}^7D_j\left(\frac y{1-y}\right)^j,\qquad0<y<1.
+\]
+
+
+A contour tour has length at most $100(m-1)$. If $\lambda=\eps Z_b(y)y^{-100}<1$, the flag-position bound gives
+\[
+ p:=\Prob(E^*(0)=1)\le\eps+\sum_{m\ge2}\eps^mZ_b(y)^my^{-100(m-1)}
+ =\eps+\eps Z_b(y)\frac\lambda{1-\lambda}.
+\]
+For a backward $N$-edge path whose first $N$ vertices are marked and nonflagged, select whole contours in successive disjoint terminal slabs, restarting one time below the preceding earliest terminal. Keep the final contour whole and truncate only its connector. A contour with $m_i$ terminals covers at most $50(m_i-1)+1\le50m_i$ of the prescribed vertices. All $m=\sum_i m_i$ selected flags are distinct and $m\ge\lceil N/50\rceil$. Tour the contours and follow the path connectors. The walk length is at most
+\[
+ \sum_i[100(m_i-1)+50(m_i-1)+1]\le150m.
+\]
+The last connector stops at the prescribed endpoint; a possible final step is already included in the span-plus-one budget. With $\kappa_y=\eps Z_b(y)y^{-150}<1$ we obtain
+\[
+ \Prob\{\text{such a path from }v\}\le
+ \sum_{m\ge\lceil N/50\rceil}\kappa_y^m
+ \le\frac{\kappa_y^{N/50}}{1-\kappa_y}.
+\]
+For any finite path every selected mark has a finite-start explanation; take a common sufficiently early start. Thus the same proof applies to the minimal field. The tail excludes infinite marked nonflagged paths, simultaneously at all roots.
+
+Here are the endpoint inequalities, stated as rational comparisons. At $\eps=10^{-22}$,
+\[
+ \begin{gathered}
+ y=\frac{1193}{1250}:\qquad
+ 10^{-22}Z_b(y)y^{-150}\le\frac{885}{10000}<\frac12,\\
+ y=\frac{9322}{10000}:\qquad
+ \lambda=10^{-22}Z_b(y)y^{-100}<1,\qquad
+ 10^{-22}+10^{-22}Z_b(y)\frac\lambda{1-\lambda}\le\frac{24}{10^9}<\frac12.
+ \end{gathered}
+\]
+The independent exact-arithmetic certificate in \texttt{verification-\allowbreak thresholds/} derives the Newton coefficients and checks these inequalities. All expressions increase with $\eps$ on their domains, proving both noise estimates throughout the stated interval. In particular the density bound used below is $p\le2.4\cdot10^{-8}$.
+
+\subsection{Clean coherence and exhaustion on totality}
+
+Call a vertex clean when $E^*=0$. In every two-sided noisy trajectory, two clean nonblank full labels at the same source coordinate $u$ and time $\tau$, at transverse positions $P,Q$, agree. If they differ, choose a unit direction taking $P$ toward $Q$. Each root has at least four supporting providers; their support sets meet in at least three indices. At each clean root at most one provider has any marked parent. Excluding the pair's at most two dirty indices leaves a common supporter with wholly clean neighbourhoods at both roots. The transverse equality test supplies the first label at $P+c_k+a$ one time earlier and the second at $Q+c_k$, reducing their distance by one. Repetition would put two different labels at one physical vertex. This finite descent proves coherence without a bound on how far back the trajectory extends.
+
+Let $\rho$ be any TI stationary law. Form its two-sided stationary Markov trajectory with fresh independent innovations: the consistent finite-interval laws start from $\rho$ at their left endpoint. Append the causal $E^*$. For every $u,\tau$ define $y_\tau(u)$ to be $b\ne0$ if some clean transverse site carries $b$, and $0$ otherwise. Coherence makes the nonblank choice unique. The countable existential definition is measurable; its law is source-TI and stationary in physical time.
+
+A nonblank $y_\tau(u)=b$ has a clean witness. A supporting provider with wholly clean neighbourhood gives the same old center $b$ and realizes every nonzero stored predecessor in $y_{\tau-1}$. In particular $y_\tau\le y_{\tau-1}$ in the flat order, in which $0$ is below each nonblank label. Stationarity makes the probabilities of nonblank activity equal at successive times; deletion therefore has probability zero. Countably many sites and times give $y_\tau=y_{\tau-1}$ everywhere almost surely. All old parent assertions now hold in this same field, which is $H_{0,e}$-fixed. On totality \cref{ti:source} makes it blank. Thus every nonblank symbol of every TI stationary law is marked by $E^*$.
+
+For any two TI stationary margins, evolve their product with common innovations and take a Ces\`aro limit. The pair kernel is Feller; its margins remain the prescribed laws and its limit is TI and stationary. In a two-sided realization the extraction above applies to both margins with the same $E^*$. A discrepancy cannot occur at a replacement, since the written symbol is common. A deterministic discrepancy has a parent discrepancy in the finite read stencil. Choosing such parents gives an infinite nonflagged discrepancy path. Every discrepancy has a nonblank margin and hence is marked. The path estimate excludes it. The joining is diagonal, so the margins agree. Existence follows by Feller compactness and Ces\`aro averaging from the blank TI start. This proves exactly one TI stationary law on totality.
+
+\subsection{Two stationary laws on nontotality}
+
+Choose a TI $H_{0,e}$-fixed source law $m$, either blank or the positive-activity law. Clone its sample as $\operatorname{Ref}(u,P)=Z(u)$; this is fixed by $G_e$. Consider the finite-alphabet joint process $(\operatorname{Ref},X,E)$, with the reference fixed, $X$ updated by the noisy rule and $E$ by the mark recurrence with the same flags. Start $X=\operatorname{Ref}$ and give $E$ its stationary minimal marginal, independently of the reference. This extended process is Feller and translation covariant.
+
+The relation $X_v\ne\operatorname{Ref}_v\Rightarrow E_v=1$ is preserved. At a nonflagged unmarked output, at most one provider has a marked parent, so four fully correct providers pass the reference checks and force its label. This holds also for a blank reference. All joint iterates retain the reference marginal, the stationary $E^*$ marginal and their independence. Ces\`aro compact limits are stationary and retain the closed coordinatewise error relation. Their $X$ marginals are TI stationary laws of the target rule.
+
+For fixed $u$, the transverse averages of $E^*(u,P)$ concentrate below $1/2$. Indeed approximate its indicator in $L^1$ by a finite-start mark, which reads finitely many iid flags. Sufficiently separated transverse translates of that approximant are independent. Hence the covariance of the limiting indicators tends to zero at large separation. Averaging covariances over growing transverse cubes $Q_L=[-L,L]^4\cap\Z^4$ gives
+\[
+ \operatorname{Var}\left(\frac1{|Q_L|}\sum_{P\in Q_L}E^*(u,P)\right)\longrightarrow0.
+\]
+The mean $p<1/2$, so Chebyshev gives $\delta_L:=\Prob\{|Q_L|^{-1}\sum_PE^*(u,P)\ge1/2\}\to0$. Let $D_L(X)(u)$ be the strict majority full label in that cube, choosing $0$ when there is none. Failure to recover the constant reference label requires at least half the sites to be errors. Thus its error probability is at most $\delta_L$, uniformly in the reference law.
+
+Let $a>0$ be the positive source activity. For the positive-reference and blank-reference stationary lifts,
+\[
+ \Prob_1\{D_L(X)(u)\ne0\}\ge a-\delta_L,\qquad
+ \Prob_0\{D_L(X)(u)\ne0\}\le\delta_L.
+\]
+Some finite $L$ has $\delta_L<a/3$, and the resulting cylinder observable separates the two laws. The reduction stays effective although $a$ and $L$ need not be computable.
+
+\subsection{Arithmetic upper bounds and the Gibbs consequence}
+
+We finish the proof of \cref{ti:degree}. Totality, the set
+\[
+ \mathrm{TOT}=\{e:\forall n\ \exists s\ [\varphi_e(n)\text{ halts by }s]\},
+\]
+is $\Pi^0_2$-complete: from a decidable relation $S(a,n,s)$ construct the program on input $n$ searching for an $s$ with $S(a,n,s)$. It is total exactly when $\forall n\exists s\,S(a,n,s)$. The preceding construction reduces TOT to TI stationary uniqueness and its complement to coexistence.
+
+For membership, let a rational finite-range PCA table be given. Marginal probability tables on increasing boxes, satisfying all TI and stationarity cylinder equations whose supports fit, form nonempty rational outer polytopes. Their restrictions preserve earlier constraints. Stationarity equations are linear because the expected updated cylinder indicator is a computable rational cylinder function of the preceding row. Exact rational linear optimization, for example by finite vertex enumeration, computes the two extrema of every fixed cylinder probability on each polytope. These nested extrema converge to the genuine extrema over TI stationary laws: extend optimizing finite tables arbitrarily to full configurations, take a weakly convergent subsequence, and pass each fixed equation once its finite support fits. The converse follows by restricting any genuine law.
+
+The nonempty stationary TI set is a singleton precisely when, for every cylinder $C$ and integer $m$, some finite outer polytope has cylinder width below $2^{-m}$. The width is a rational computable number; the formula is $\forall(C,m)\exists n$ with a decidable matrix. This proves $\Pi^0_2$ membership and $\Sigma^0_2$ membership of coexistence.
+
+Finally put the normalized factors $p_e(\text{child}\mid\text{parents})$ on $\Z^6\times\Z$. Finite-volume specifications include every touching factor, including factors of exterior children. Positivity, finite alphabet, finite range and independent-site updates check the hypotheses of the classical TI space--time correspondence \cite{GKLM89}, in the form \cite[Lemma~2.4, Theorem~10.3 and Corollary~10.4]{DM26}. It is an affine bijection between TI stationary row laws and fully TI Gibbs laws. The stationary trajectory satisfies the DLR equations by local cancellation. Conversely the TI Gibbs law has the PCA's product conditional transitions: the normalized causal law and the full touching-factor law differ by a bounded log density per boundary site; the chronological relative-entropy chain rule bounds the sum of nonnegative causal conditional defects by a boundary term. Translation invariance and a vanishing boundary-to-volume ratio force each defect to zero. This is exactly the TI converse of the cited theorem. The new degree conclusion uses its existing statement.
+
+The Gibbs upper bound can also be read directly from rational constraints. Test every finite-volume DLR identity against every finite outside cylinder, together with TI and marginal equations. With positive rational factors each conditional kernel is a rational cylinder function. Finite-volume limits followed by spatial averaging give nonempty TI Gibbs sets. The same nested-polytopes argument gives a $\Pi^0_2$ singleton test. For translation-invariant Gibbs sets this upper bound has an effective antecedent in Gayral, Sablik and Taati \cite[Propositions~14--15]{GST25}: they compute pressure and semidecide avoidance of a closed rational ball by the union of translation-invariant equilibrium sets over a rational inverse-temperature interval, so at one rational inverse temperature this compact set is uniformly $\Pi_1$-computable and singleton testing gives a $\Pi^0_2$ description. Their realization theorem concerns zero-temperature accumulation sets. The affine correspondence supplies the lower bound and proves the stated Gibbs degrees. The rational objects here are the Boltzmann factors; their potentials $-\log p_e$ are real. The theorem concerns TI uniqueness. All-law ergodicity, uniqueness among all Gibbs laws, exact nontotal phase counts and the smallest possible dimension remain separate questions.

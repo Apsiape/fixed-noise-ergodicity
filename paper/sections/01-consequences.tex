@@ -1,20 +1,20 @@
 \section{Consequences for the natural rule}\label{sec:natural-consequences}
 
-Throughout this section $G_R$, $\overline N$, $B$, $\eps_*$, $\kappa$ and $c$ have the meanings of \cref{sec:natural}. Unless otherwise stated $0<\eps\le\eps_*$ and replacement is uniform. The old machine-family corollaries remain separately in \cref{sec:proofs}; this section applies directly to the raw input $R$.
+Throughout this section $G_R$, $\overline N$, $\eps_*$, $\kappa$, $c$ and $p_*$ have the meanings of \cref{sec:natural}. Unless otherwise stated $0<\eps\le\eps_*$ and replacement is uniform. The old machine-family corollaries remain separately in \cref{sec:proofs}; this section applies directly to the raw input $R$.
 
 \subsection{The domino reduction and nilpotency}
 
 \begin{corollary}[Theorem A on $\Z^6$]\label{nw:machine}
-There is a total computable map $M\mapsto W_M$ to finite Wang sets such that $W_M$ tiles if and only if $M$ does not halt. For every $\eps\in(0,\eps_*]$, $G_{W_M}$ with uniform replacement is a positive-rate PCA on $\Z^6$ that is ergodic if and only if $M$ halts. In particular ergodicity is undecidable at each one of these fixed rates.
+There is a total computable map $M\mapsto W_M$ to finite Wang sets such that $W_M$ tiles if and only if $M$ does not halt. For every $\eps\in(0,\eps_*]$, $G_{W_M}$ with uniform replacement is a positive-rate PCA on $\Z^6$ that is ergodic if and only if $M$ halts. In particular ergodicity is undecidable at each fixed rational rate in this interval.
 \end{corollary}
 \begin{proof}
 Use the classical effective unseeded domino reduction of Berger and Robinson \cite{Berger66,Robinson71}, with translations of edge-coloured squares and no distinguished origin tile. Its output tiles precisely on the nonhalting branch. Apply \cref{nw:classification} to that same output. The rule table is an explicit finite construction from its raw tiles. A decision procedure for ergodicity would decide halting.
 \end{proof}
 
 \paragraph{The reduction through our machine family.}
-The printed proof uses the classical Berger--Robinson reduction \cite{Berger66,Robinson71}. Our total computable family $R_M$ (\cref{def:family}) also supplies it: $R_M$ tiles if and only if $M$ does not halt. The nonhalting direction is \cref{prop:tiles}. If $M$ halts, \cref{thm:three} makes $R_M$ $3$-token refutable, so Theorem~B (\cref{thm:forgetting}) makes its quorum rule on $\Z^8$ ergodic at $0<\eps\le490000^{-99}$. A tiling set would instead give memory by Theorem~B (\cref{thm:memory}), hence nonergodicity by \cref{set:memory-nonergodic}, a contradiction. This is the route taken by the Lean development: \nolinkurl{FNR.domino_reduction} and \nolinkurl{FNR.domino_undecidable} prove the reduction and the undecidability of the domino problem, and \nolinkurl{FNR.theorem_A} and \nolinkurl{FNR.machine_corollary} verify Theorem~A on $\Z^6$ and all of \cref{nw:machine}, without a named hypothesis (\cref{app:lean}). Berger and Robinson are the classical sources of the domino reduction and its undecidability consequence.
+The printed proof uses the classical Berger--Robinson reduction \cite{Berger66,Robinson71}. Our total computable family $R_M$ (\cref{def:family}) also supplies it: $R_M$ tiles if and only if $M$ does not halt. The nonhalting direction is \cref{prop:tiles}. If $M$ halts, \cref{thm:three} makes $R_M$ $3$-token refutable, so Theorem~B (\cref{thm:forgetting}) makes its quorum rule on $\Z^8$ ergodic at $0<\eps\le490000^{-99}$. A tiling set would instead give memory by Theorem~B (\cref{thm:memory}), hence nonergodicity by \cref{set:memory-nonergodic}, a contradiction. This is the route taken by the Lean development: \nolinkurl{FNR.domino_reduction} and \nolinkurl{FNR.domino_undecidable} prove the reduction and the undecidability of the domino problem, and \nolinkurl{FNR.theorem_A} and \nolinkurl{FNR.machine_corollary} verify Theorem~A on $\Z^6$ and all of \cref{nw:machine} on the version~2.2.0 interval $0<\eps\le(2(18q)^2)^{-200}$, without a named hypothesis (\cref{app:lean}). Berger and Robinson are the classical sources of the domino reduction and its undecidability consequence.
 
-The classical proof above uses no theorem about bounded token width. The detailed machine family gives the larger interval $0<\eps\le490000^{-99}$ for its own quorum rule on $\Z^8$. The natural-rule rate is approximately $10^{-2768.5}$, versus approximately $10^{-563.3}$ for that route.
+The classical proof above uses no theorem about bounded token width. The detailed machine family gives the interval $0<\eps\le490000^{-99}$ for its own quorum rule on $\Z^8$. The natural-rule interval $0<\eps\le10^{-24}$ is now larger. The machine-route constant is unchanged.
 
 \begin{corollary}[Nilpotency]\label{nw:nilpotent}
 At zero noise $G_R$ is nilpotent if and only if $R$ does not tile. More precisely, if no legal $n\times n$ pattern exists, then
@@ -93,7 +93,7 @@ For every finite $R$, every $0<\eps\le\eps_*$, and every local PCA kernel $Q$ on
 $Q$ is ergodic if and only if $R$ does not tile. The radius is the same for every $R$ and every permitted $\eps$. The dynamical assertion allows zero entries in $Q$.
 \end{corollary}
 \begin{proof}
-Put $e_0=2\eps_*$. At every parent word,
+Put $e_0=2\eps_*=2\cdot10^{-24}$. At every parent word,
 \[
  Q(G_R(y)\mid y)\ge1-\eps-\eps_*\ge1-e_0.
 \]
@@ -103,13 +103,11 @@ Entrywise subtraction therefore gives a stochastic table $Q'$ with
 \]
 At each exceptional flag sample a local map by drawing one $Q'(\cdot\mid y)$ output for each parent word $y$; samples at different update sites are independent. This finite random-map representation evaluates identical parent words identically. It is the exceptional-map device of \cref{cor:robust,pf:robust-scope} and \cite[Theorem~B.1]{DMdiagram}, which in turn cites \cite[Proposition~4.5]{DM26}.
 
-Use the same marked closure with source density $e_0$. Away from marks the update is still $G_R$, so the exclusion budget, coherence and forbidden-square mortality are unchanged. At an exceptional flag two different output values need not coincide. They still require a discrepant parent in $\overline N$, because the shared sampled map is a function. At every late discrepant vertex a live symbol marks it by mortality. Thus the whole backward discrepancy path is marked, even when it passes through exceptional flags. The tail base is now
-\[
- \kappa_1=4B^{101}e_0=8B^{-99}<1.
-\]
-The all-input estimate now has slope $\log(1/\kappa_1)/50$ and the same delay $T_R$. It gives exponential coalescence on every non-tiler. Feller compactness and coupling give ergodicity.
+Use the same marked closure with source density $e_0$. Away from marks the update is still $G_R$, so the exclusion budget, coherence and forbidden-square mortality are unchanged. At an exceptional flag two different output values need not coincide. They still require a discrepant parent in $\overline N$, because the shared sampled map is a function. At every late discrepant vertex a live symbol marks it by mortality. Thus the whole backward discrepancy path is marked, even when it passes through exceptional flags. By \cref{nw:paths}, at source density $e_0$ the tail base is at most $\kappa_1=1/4$ on the same enclosing graph. The all-input estimate has slope $\log(1/\kappa_1)/16=(\log2)/8$ and the same delay $T_R$, hence is at most $(4/3)\exp\{((\log2)/8)(T_R-t)\}$.
 
-On a tiler, charge every exceptional flag as a source. Off flags the two-cluster memory cover is unchanged. The sparse-root estimate at density $e_0$ bounds both errors by $2e_0$, leaving a live-density gap $1-4e_0>0$. Planar tiling averaging and temporal Ces\`aro limits give two fully translation-invariant stationary laws.
+It gives exponential coalescence on every non-tiler. Feller compactness and coupling give ergodicity.
+
+On a tiler, charge every exceptional flag as a source. Off flags the two-cluster memory cover is unchanged. The sparse-root estimate at density $e_0$ bounds both errors by $p_*=10^{-4}$, leaving a live-density gap $1-2p_*>0$. Planar tiling averaging and temporal Ces\`aro limits give two fully translation-invariant stationary laws.
 \end{proof}
 
 If a Gibbs statement for \emph{every} nearby table is desired, also impose $d(Q,p_{R,\eps})\le\eps/(2|A_R|)$. Then every entry of $Q$ is at least $\eps/(2|A_R|)>0$; the same all-input proof and \cite[Corollary~13.7]{DM26} give the corresponding normalized Gibbs dichotomy. This smaller positivity radius depends on the alphabet size. The dynamical radius $\eps_*$ does not. Both statements fix the alphabet and the neighbourhood, as do \cref{cor:robust,pf:robust-scope} and \cite[Theorem~B.1]{DMdiagram}.
@@ -130,7 +128,10 @@ Off a source a wrong majority requires wrong tests at two different offsets. Eac
 \[
  3(z_1+z_2)+2t,\quad-3z_1-t,\quad-3z_2-t
 \]
-have good gains at least one and arbitrary gains at least $-2$. The finite-arm argument with three charges gives at most $9(f-1)$ edges. The undirected degree is at most $12$. Repeating the rooted encoding with $B_0=288$ and the fixed-source bound gives error probability
+have good gains at least one and arbitrary gains at least $-2$. The finite-arm argument with three charges gives at most $9(f-1)$ edges. The undirected degree is at most $12$. The doubled-edge Euler encoding in the proof of \cref{fgt:count}, which uses only a degree bound, shows that
+at most $12^{2n}$ connected $n$-edge sets contain a given root; with at most $2^{n+1}$ terminal subsets
+this gives at most $2B_0^n$ encodings, $B_0=2\cdot12^2=288$. Together with the fixed-source bound it gives
+error probability
 \[
  \rho\le e_L\left(1+\frac{2\lambda_L}{1-\lambda_L}\right),
  \qquad\lambda_L=288e_L^{1/9}.
@@ -180,7 +181,7 @@ Fix rational $0<\eps\le\eps_*$. No total computable function of $R$ bounds, on e
 \begin{proof}
 At rational rate, finite-cone enumeration computes both $a_t$ and $\delta_R(t)$ exactly as rationals. Enumerate all initial words on the finite cone and all flags and replacement letters in it; the weights are rational. For $a_t$ test constancy for each fixed realization, and for $\delta_R(t)$ compute the finite family of output distributions and its largest total-variation distance.
 
-Both sequences are nonincreasing. For $a_t$, use nested pullback images under common maps and time stationarity. For $\delta_R(t)$, any time-$(t+1)$ output law is a mixture of time-$t$ output laws, and taking their convex hull cannot increase total-variation diameter. On non-tilers they tend to zero. On tilers the fixed clone-versus-blank cylinder gap gives $\delta_R(t)\ge1-4\eps>1/2$ at every $t$, and $a_t\ge\delta_R(t)$.
+Both sequences are nonincreasing. For $a_t$, use nested pullback images under common maps and time stationarity. For $\delta_R(t)$, any time-$(t+1)$ output law is a mixture of time-$t$ output laws, and taking their convex hull cannot increase total-variation diameter. On non-tilers they tend to zero. On tilers the fixed clone-versus-blank cylinder gap gives $\delta_R(t)\ge1-2p_*>1/2$ at every $t$, and $a_t\ge\delta_R(t)$.
 
 If a total computable bound $b(R)$ worked on all non-tilers, evaluate the corresponding rational coefficient at $b(R)$. Monotonicity would make it less than $1/2$ on every non-tiler and greater than $1/2$ on every tiler. This would decide tiling, a contradiction. For the partial algorithm search for a forbidden square, compute $T_R=762n_R+1$, then use the explicit geometric bound for the requested accuracy.
 \end{proof}
@@ -205,10 +206,10 @@ The stationary-history map from stationary row laws is affine and injective, wit
 
 The error bounds pass to the limits:
 \[
- \mu_\theta\{x(u,P)=\theta(u)\}\ge1-2\eps,
- \qquad \mu_\bot\{x(u,P)\ne\bot\}\le2\eps.
+ \mu_\theta\{x(u,P)=\theta(u)\}\ge1-p_*,
+ \qquad \mu_\bot\{x(u,P)\ne\bot\}\le p_*.
 \]
-Distinct tilings differ at some planar site; their laws are separated there by at least $1-4\eps$. In particular the map is injective. For continuity, approximate any finite marginal uniformly in $\theta$ by a finite-depth reference pullback using \eqref{nw:reference-tail}. At fixed depth it reads only a finite planar part of $\theta$ and is locally constant as a function of that tiling. Uniform approximation proves continuity. Compactness of $\nwT(R)$ makes this a homeomorphism onto its image.
+Distinct tilings differ at some planar site; their laws are separated there by at least $1-2p_*$. In particular the map is injective. For continuity, approximate any finite marginal uniformly in $\theta$ by a finite-depth reference pullback using \eqref{nw:reference-tail}. At fixed depth it reads only a finite planar part of $\theta$ and is locally constant as a function of that tiling. Uniform approximation proves continuity. Compactness of $\nwT(R)$ makes this a homeomorphism onto its image.
 
 An uncountable compact metrizable tiling space has cardinal continuum. The embedding gives that many stationary extremes, and the space of all probability laws on a countable finite-alphabet product has cardinal at most continuum. For Gibbs extremes, pass the tiling-labelled row laws to their stationary trajectories, which are DLR by \cite[Lemma~2.4]{DM26}. Their time-zero cylinders give an uncountable family uniformly separated in total variation.
 
@@ -235,7 +236,7 @@ For every $0<\eps\le\eps_*$:
 \begin{proof}
 For each $j$ set $Z_s^j(v)=X_s(v,j-s)$. Substituting the update equation shows that $Z^j$ follows the base rule from initial slice $j$. The innovation families for different $j$ are disjoint. As the entire stack start varies, its slice $h+t$ ranges over all base starts. Thus the one-site common-map coefficient and the supremum one-site output-law diameter equal their base counterparts. This proves the exponential and timing claims in (i) and (iv), by \cref{nw:allinput,nw:ergodic,nw:times}.
 
-On a tiler choose the two fully translation-invariant stationary base laws $\nu^-,\nu^+$ with live densities $a_-\le2\eps$ and $a_+\ge1-2\eps$. Put $\rho_p=(1-p)\nu^-+p\nu^+$ and let $\mu_p$ have independent slices, each of law $\rho_p$. Updating from slice $h+1$ preserves this product, since $\rho_p$ is stationary and characteristic noises are independent. The product is fully spatially invariant. Finite cylinder probabilities are polynomials in $p$, and the one-site live probability $(1-p)a_-+pa_+$ is strictly increasing. Hence the parameterization is continuous and injective, and compactness gives the homeomorphism claim.
+On a tiler choose the two fully translation-invariant stationary base laws $\nu^-,\nu^+$ with live densities $a_-\le p_*$ and $a_+\ge1-p_*$. Put $\rho_p=(1-p)\nu^-+p\nu^+$ and let $\mu_p$ have independent slices, each of law $\rho_p$. Updating from slice $h+1$ preserves this product, since $\rho_p$ is stationary and characteristic noises are independent. The product is fully spatially invariant. Finite cylinder probabilities are polynomials in $p$, and the one-site live probability $(1-p)a_-+pa_+$ is strictly increasing. Hence the parameterization is continuous and injective, and compactness gives the homeomorphism claim.
 
 For extremality, suppose a stationary law $\alpha$ satisfies $\lambda\alpha\le\mu_p$ for some $\lambda>0$. Its bounded density can be approximated in $L^1(\mu_p)$ by a function $f$ of finitely many slices. For a cylinder observable $g$, the function $P^tg$ depends only on its original slice indices translated by $t$. At large $t$ those slices are disjoint from the ones read by $f$, and product independence gives
 \[
